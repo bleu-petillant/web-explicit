@@ -17,7 +17,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
-   
+
 
     /**
      * The attributes that are mass assignable.
@@ -25,9 +25,11 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
+        'prenom',
         'name',
         'email',
         'password',
+        'role_id'
     ];
 
     /**
@@ -59,4 +61,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function role()
+    {
+        return $this->belongsTo('App\Models\Role');
+    }
 }

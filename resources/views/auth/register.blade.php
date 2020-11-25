@@ -8,10 +8,13 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-
             <div>
-                <x-jet-label for="name" value="{{ __('Pseudo') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="votre pseudo...." />
+                <x-jet-label for="prenom" value="{{ __('Prénom') }}" />
+                <x-jet-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" :value="old('prenom')" required autofocus autocomplete="prenom" placeholder="votre prénom...." />
+            </div>
+            <div>
+                <x-jet-label for="name" value="{{ __('nom') }}" />
+                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="votre nom...." />
             </div>
 
             <div class="mt-4">
@@ -29,10 +32,26 @@
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
+            <p for="role-select" class="font-semibold text-gray-700">enregistrer en tant que :</p>
+                <div class="flex justify-between items-center">
+                    <label for="admin">Admin
+                        <input type="radio" value="1" id="admin" name="role_id">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label for="teacher">Professeur
+                    <input type="radio" value="2" id="teacher" name="role_id">
+                    <span class="checkmark"></span>
+                </label>
+                <label for="student">étudient
+                    <input type="radio" value="3" id="student" name="role_id">
+                    <span class="checkmark"></span>
+                </label>
+                </div>
+            @error('role_id')
+                <span class="text-red-400 text-sm block">{{ $message }}</span>
+            @enderror
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
 
                 <x-jet-button class="ml-4">
                     {{ __('Register') }}

@@ -22,18 +22,13 @@
         <div>
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    <livewire:search />
                     @auth
-                        @if (auth()->check()->role_id == '1')
-                            <a href="{{ route('admin.dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
-                        @elseif(auth()->check()->role_id == '2')
-                            <a href="{{ route('teacher.dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
-                        @else
-                            <a href="{{ route('student.dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
-                        @endif
+                    
+                    <a href="{{route('resources.index')}}" class="text-sm text-gray-700 underline">resources</a>
 
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">se connecter</a>
+
 
                     @endif
                 </div>

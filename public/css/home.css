@@ -1,0 +1,282 @@
+
+
+/* Première section avec l'image du livre et le titre d'accroche */
+
+.first-image-home{
+    background: url("../img/bookfirst.jpg");
+    background-size: cover;
+    width: 100%;
+}
+
+.main-title{
+    /* border-left: 4px #6d7aea solid; */
+}
+
+.main-title::before{
+    content: "";
+    position: absolute;
+    left: 0px;
+    display: block;
+    height: 87%;
+    top: 19px;
+    background-color: #6d7aea;
+    width: 5px;
+    margin-right: 10px;
+}
+
+
+
+/*Présentation section*/
+
+
+
+.presentation-home-text{
+    border-left: #6d7aea 5px solid;
+    height: 100%;
+    margin-left: 8vw;
+}
+
+.presentation-home-title{
+margin-top: -14px;
+}
+
+.home-present-tex2{
+    border-left: #6d7aea 5px solid;
+    height: 100%;
+}
+
+.image-presentation-content{
+    width: 138%;
+    height: 100%;
+    box-sizing: border-box;
+    border-left: 100px solid #fff;
+    border-bottom: 400px solid transparent;
+    background: url("../img/present-image.jpg") no-repeat ;
+    background-size: 150%;
+    background-position: top 0 center;
+    
+}
+
+
+.image-presentation-content::before{
+    width: 80px;
+    height: 80px;
+    border-radius:0 40px 40px 0;
+    background-color:#FFF;    
+    display:inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    content: '';
+}
+
+
+.present-image{
+    width: 154%;
+}
+
+.present-image-md{
+    display: none;
+    width: 100%;
+}
+
+/* ressource */
+
+.ressource-home-title {
+    margin-top: -14px;
+}
+
+.ressources-text{
+    margin: 8% 4%;
+}
+
+.card-image{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.category{
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.pdf-color{
+ color: #66cc99;
+}
+
+.podcast-color{
+    color: #cc6699;
+   }
+
+.video-color{
+    color: #6699cc;
+   }
+
+
+   .ressource-home-button{
+       color: #6d7aea;
+       border:  solid #6d7aea 2px;
+       border-radius: 7px;
+       padding: 7px 50px;
+   }
+
+
+/* Formation interactives */
+
+.formation-image-md{
+    display: none;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.formation-home-img{
+    position: relative;
+    z-index: 2;
+}
+
+.formation-home-text{
+    width: 100%;
+    background-color: #6d7aea;
+    /* border-left: white solid 4px; */
+    margin: 4% 4% 5% -9%;
+    position: relative;
+    z-index: 1;
+    padding-left: 10%;
+}
+
+/*cas d'usage*/
+
+
+.cas-usage:hover .cas-usage-miniature{
+    opacity: 0.7;
+}
+
+.cas-usage1:hover .button-usage-1{
+    visibility: visible;
+}
+
+.cas-usage2:hover .button-usage-2{
+    visibility: visible;
+}
+
+
+.cas-usage3:hover .button-usage-3{
+    visibility: visible;
+}
+
+
+.play-usage-button{
+    background-color: white;
+    color: #6d7aea;
+    display: inline-block;
+    /* position: relative; */
+    position: absolute;
+    border-radius: 60px;
+    padding: 0.3em 0.6em;
+    margin-top: -7%;
+    margin-left: 9%;
+    font-size: 1.5rem;
+    visibility: hidden;
+}
+
+.mobile-cas-usage{
+    display: none!important;
+}
+
+.slick-slide {
+    margin-bottom: 2%;
+}
+
+
+
+
+
+/* ------------------------------------- Responsive */
+
+@media screen and (max-width: 1200px) {
+    
+    .presentation-home-text{
+        border-left: #6d7aea 5px solid;
+        height: 100%;
+        margin-left: 4vw;
+    }
+    
+}
+
+@media screen and (max-width: 1024px) {
+
+    .present-image{
+        display: none;
+    }
+
+    .presentation-home-text{
+        border-left: #6d7aea 5px solid;
+        height: 100%;
+        margin-left: 0;
+    }
+
+    .present-image-md{
+        display: block;
+    }
+
+    .ressource-book{
+        display: none;
+    }
+
+    .ressources-text{
+        margin: 2% 0%;
+    }
+
+    .formation-home-img{
+        display: none;
+    }
+
+    .formation-image-md{
+        display: block;
+    }
+
+    .formation-home-text {
+        width: 100%;
+        background-color: #6d7aea;
+        margin: 0;
+        position: relative;
+        z-index: 1;
+        padding-left: 0;
+        padding-top: 14%;
+        margin-top: -12%;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+    .home-present-tex2{
+        border-left: none;
+        height: 100%;
+    }
+
+    
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .first-image-home{
+        background: url("../img/bookfirst-phone.jpg");
+        background-size: cover;
+        width: 100%;
+    }
+
+    .main-title::before{
+        display: none;
+    }
+
+    .laptop-tablette-cas-usage{
+        display: none;
+    }
+
+    .mobile-cas-usage{
+        display: block!important;
+    }
+
+}

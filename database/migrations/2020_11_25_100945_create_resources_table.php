@@ -15,6 +15,15 @@ class CreateResourcesTable extends Migration
     {
         Schema::create('resources', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->unique();
+            $table->longText('desc')->nullable();
+            $table->string('slug');
+            $table->integer('course_id')->nullable();
+            $table->string('first_url')->nullable();
+            $table->string('second_url')->nullable();
+            $table->string('pdf')->nullable();
+            $table->string('image');
+            $table->string('alt')->nullable();
             $table->timestamps();
         });
     }

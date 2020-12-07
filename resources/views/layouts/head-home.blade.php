@@ -13,7 +13,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.css' />
         <script src="{{ asset('js/app.js') }}"></script>
-        <title>Web Explicit (version dev)</title>
+        <title>Explicit (version dev)</title>
         @livewireStyles
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>

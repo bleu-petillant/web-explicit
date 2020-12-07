@@ -5,12 +5,12 @@ namespace App\Http\Controllers\teacher;
 use Illuminate\Routing\Controller;
 
 
-class TeacherController extends Controller
+class TeacherDashboardController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('teacher');
+       $this->middleware('teacher');
     }
 
     public function dashboard()

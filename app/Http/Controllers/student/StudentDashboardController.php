@@ -5,7 +5,7 @@ namespace App\Http\Controllers\student;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class StudentDashboardController extends Controller
 {
     public function __construct()
     {

@@ -8,9 +8,9 @@ use Livewire\Component;
 
 class Search extends Component
 {
-    public string $query = '';
+    public $query = '';
     public $courses = [];
-    public Int $selectedIndex = 0;
+    public $selectedIndex = 0;
 
     public function incrementIndex()
     {

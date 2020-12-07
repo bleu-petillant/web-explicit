@@ -20,7 +20,7 @@
                 @foreach ($courses as $index=>$course)
                 <ul>
                     <li class="list-none bg-gray-200 border text-center">
-                        <a href="#!" class="text-gray-400 text-md {{ $index === $selectedIndex ? 'text-green-500' : '' }}">{{$course->title}}</a>
+                    <a href="{{route('course.show',[$course->id])}}" class="text-gray-400 text-md {{ $index === $selectedIndex ? 'text-green-500' : '' }}">{{$course->slug}}</a>
                     </li>
                 </ul>
 

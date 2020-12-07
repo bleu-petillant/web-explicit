@@ -34,6 +34,7 @@
                 {{ $slot ?? '' }}
                 @yield('resources')
                 @yield('home')
+                @yield('course')
             </main>
         </div>
 

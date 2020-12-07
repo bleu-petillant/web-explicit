@@ -3,7 +3,7 @@
 <head>
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-<title>404</title>
+<title>500</title>
 <meta name='description' content='404'>
 <meta name='viewport' content='width=device-width,initial-scale=1'>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/css/mdb.min.css' rel='stylesheet'>
@@ -24,7 +24,7 @@
 
         <h3 class="font-weight-bold">erreur</h3>
 
-        <p class="lead">vous n'avez pas accées à cette partie du site ,vous devez avoir un compte et y être connecter, veuillez consulter l' admin du site ! </p>
+        <p class="lead">oups !  erreur du serveur veuillez recharger la page ou retourner à l'aceuil</p>
 
       <a href="{{ route('home')}}" class="btn btn-outline-white btn-md waves-effect ml-0" role="button"><i class="fas fa-clone mr-2"></i>retournez sur le site</a>
       </div>

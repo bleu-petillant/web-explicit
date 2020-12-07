@@ -20,9 +20,27 @@ class AdminSeeder extends Seeder
             'prenom'=>'Admin',
             'name' => 'Admin',
             'email'=> 'admin@admin.com',
-            'password' => Hash::make('Explicit2020!'),
-            'role_id' => '1'
+            'password' => Hash::make('123456'),
+            'role_id' => '1',
+
         ]);
 
+        DB::table('users')->insert([
+            'prenom'=>'teacher',
+            'name' => 'Teacher',
+            'email'=> 'teacher@test.com',
+            'password' => Hash::make('123456'),
+            'role_id' => '2',
+
+        ]);
+
+        DB::table('users')->insert([
+            'prenom'=>'dave',
+            'name' => 'friquet',
+            'email'=> 'test@test.com',
+            'password' => Hash::make('123456'),
+            'role_id' => '3',
+
+        ]);
     }
 }

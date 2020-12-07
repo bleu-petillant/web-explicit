@@ -2,12 +2,17 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Route;
 use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\UpdateUserProfileInformation;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
+use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
+use Laravel\Fortify\Contracts\TwoFactorLoginResponse as TwoFactorLoginResponseContract;
+use App\Http\Responses\LoginResponse;
+use App\Http\Responses\TwoFactorLoginResponse;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -18,9 +23,14 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->registerResponseBindings();
     }
 
+    protected function registerResponseBindings()
+    {
+        $this->app->singleton(LoginResponseContract::class, LoginResponse::class);
+        $this->app->singleton(TwoFactorLoginResponseContract::class, TwoFactorLoginResponse::class);
+    }
     /**
      * Bootstrap any application services.
      *

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResourcesTable extends Migration
+class CreateReferencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,20 @@ class CreateResourcesTable extends Migration
      */
     public function up()
     {
-        Schema::create('resources', function (Blueprint $table) {
+        Schema::create('references', function (Blueprint $table) {
             $table->id();
             $table->string('title')->unique();
             $table->longText('desc')->nullable();
             $table->string('slug');
-            $table->integer('course_id')->nullable();
-            $table->string('first_url')->nullable();
-            $table->string('second_url')->nullable();
+            $table->foreignId('category_id')->constrained('categories')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('link')->nullable();
             $table->string('pdf')->nullable();
             $table->string('image');
+            $table->string('meta');
             $table->string('alt')->nullable();
+            $table->foreignId('teacher_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->date('published_at')->nullable();
+            $table->string('duration')->nullable()->default('10 min');
             $table->timestamps();
         });
     }
@@ -35,6 +38,6 @@ class CreateResourcesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resources');
+        Schema::dropIfExists('references');
     }
 }

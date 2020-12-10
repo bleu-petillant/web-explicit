@@ -4,40 +4,60 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Course;
-use App\Models\Resources;
+use App\Models\Reference;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $categories =  Category::all();
+        $references = Reference::with('category')->orderBy('created_at','DESC')->take(4)->get();
+        return view('index',compact('references'));
+    }
+    public function usage()
+    {
+        return view('usage');
+    }
+    public function contact()
+    {
+        return view('contact');
     }
 
 
     public function allResources()
     {
-        return view('allresources');
+        $references = Reference::with('category')->get();
+        return view('resources',compact('references'));
     }
 
-    public function allCourse()
+    public function allCourses()
     {
-        return view('allcourse');
+        return view('allcourses');
     }
 
     public function showResources(request $request,$slug)
     {
-        return view('resources');
+        $reference = Reference::with('category')->where('slug',$slug)->first();
+        if($reference)
+        {
+           
+            return view('resources',compact('reference'));
+        }else
+        {
+         
+            return redirect('/404');
+        }
+
     }
 
     public function showCourse(request $request,$slug)
     {
-        $course = Course::with('category','resources')->where('slug',$slug)->first();
-        $references = Resources::with('category')->where('id','=',$course->id)->get();
-        $categories = Category::all();
+        $course = Course::with('category','references')->where('slug',$slug)->first();
+        $references = Reference::with('category')->where('id','=',$course->id)->get();
         if($course)
         {
-            return view('course',compact(['course','references','categories']));
+            return view('course',compact(['course','references']));
         }else
         {
             return redirect('/404');

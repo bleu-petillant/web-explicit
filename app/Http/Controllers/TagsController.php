@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Session;
-use App\Models\Tags;
+use App\Models\Tag;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class TagsController extends Controller
 {
@@ -19,7 +19,7 @@ class TagsController extends Controller
      */
    public function index()
     {
-        $tags = Tags::all();
+        $tags = Tag::all();
         if(Auth::user()->role_id == 1){
 
             return view('admin.tag.index',compact('tags'));
@@ -63,7 +63,7 @@ class TagsController extends Controller
 
         ]);
 
-        Tags::create([
+        Tag::create([
             'name' => $request->name,
             'slug' => Str::slug($request->name,'-'),
             'description' => $request->description
@@ -79,7 +79,7 @@ class TagsController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tags $tag)
+    public function edit(Tag $tag)
     {
         if(Auth::user()->role_id == 1){
 
@@ -100,7 +100,7 @@ class TagsController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tags $tag)
+    public function update(Request $request, Tag $tag)
     {
         $this->validate($request,
         [
@@ -127,7 +127,7 @@ class TagsController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tags $tag)
+    public function destroy(Tag $tag)
     {
         if($tag)
         {

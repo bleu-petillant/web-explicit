@@ -81,7 +81,7 @@
                 </a>
             </li>
             <li class="nav-item my-2 bg-gradient-orange">
-                <a href="{{ route('resources.index') }}" class="nav-link">
+                <a href="{{ route('reference.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-book-open"></i>liste des ressources
                 </a>
             </li>
@@ -131,7 +131,7 @@
                 </a>
             </li>
             <li class="nav-item my-2 bg-gradient-orange">
-                <a href="{{ route('resources.index') }}" class="nav-link">
+                <a href="{{ route('reference.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-book-open"></i>liste des ressources
                 </a>
             </li>

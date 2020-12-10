@@ -20,9 +20,9 @@ class CreateTagsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('resources_tag', function (Blueprint $table) {
+        Schema::create('reference_tag', function (Blueprint $table) {
 
-            $table->integer('resource_id');
+            $table->integer('reference_id');
             $table->integer('tag_id');
 
         });
@@ -43,6 +43,7 @@ class CreateTagsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('tags');
-        Schema::dropIfExists('post_tags');
+        Schema::dropIfExists('courses_tag');
+        Schema::dropIfExists('reference_tag');
     }
 }

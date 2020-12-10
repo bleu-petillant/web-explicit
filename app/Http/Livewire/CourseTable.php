@@ -16,11 +16,10 @@ class CourseTable extends LivewireDatatable
     {
         return [
 
-            Column::name('id')->linkTo('/course')
+            Column::name('id')
                  ->label('#')
                  ->defaultSort('asc')
-                 ->filterable()
-                 ,
+                 ->filterable(),
 
             Column::name('title')
                 ->label('Titre')

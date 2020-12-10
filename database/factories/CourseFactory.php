@@ -2,13 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\Category;
+use App\Models\Tag;
 use App\Models\Course;
-use App\Models\Resources;
-use App\Models\Tags;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Category;
+use App\Models\Resource;
+
 
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CourseFactory extends Factory
 {
@@ -32,7 +33,6 @@ class CourseFactory extends Factory
             'slug' => Str::slug($this->faker->sentence()),
             'image'=> $this->faker->imageUrl($width = 200, $height = 200),
             'category_id' => Category::factory(),
-            'resources_id' => Resources::factory(),
             'user_id' => $this->faker->numberBetween($min = 4, $max = 20),
         ];
     }

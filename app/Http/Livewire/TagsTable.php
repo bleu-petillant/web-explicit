@@ -2,14 +2,14 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Tags;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
 class TagsTable extends LivewireDatatable
 {
-    public $model = Tags::class;
+    public $model = Tag::class;
 
     public function columns()
     {

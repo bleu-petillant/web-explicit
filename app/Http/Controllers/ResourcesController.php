@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Resources;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ResourcesController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware(['auth:sanctum']);
+        $this->middleware(['super']);
     }
     /**
      * Display a listing of the resource.
@@ -19,7 +21,24 @@ class ResourcesController extends Controller
      */
     public function index()
     {
-        return view('resources');
+        $resources = Resources::all();
+
+
+        if(Auth::user()->role_id == 1)
+        {
+
+            return view('admin.ressources.index',compact('resources'));
+
+        }
+        else if(Auth::user()->role_id == 2)
+        {
+
+            return view('teacher.ressources.index',compact('resources'));
+        }
+        else
+        {
+           return view('404.404');
+        }
     }
 
     /**
@@ -29,7 +48,13 @@ class ResourcesController extends Controller
      */
     public function create()
     {
-        //
+        if(Auth::user()->role_id == 1)
+        {
+            return view('admin.ressources.create');
+        }else if(Auth::user()->role_id == 2)
+        {
+            return view('errors.permissions');
+        }
     }
 
     /**
@@ -62,7 +87,13 @@ class ResourcesController extends Controller
      */
     public function edit(Resources $resources)
     {
-        //
+        if(Auth::user()->role_id == 1)
+        {
+            return view('admin.ressources.edit');
+        }else if(Auth::user()->role_id == 2)
+        {
+            return view('errors.permissions');
+        }
     }
 
     /**

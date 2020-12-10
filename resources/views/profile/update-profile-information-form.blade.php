@@ -55,7 +55,7 @@
         <!-- Prénom -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="prenom" value="{{ __('Prénom') }}" />
-            <x-jet-input id="prenom" type="text" class="mt-1 block w-full" wire:model.defer="state.prenom" autocomplete="prenom" />
+            <x-jet-input id="prenom" type="text" class="mt-1 block w-full" name="prenom" wire:model.defer="state.prenom" autocomplete="prenom" />
             <x-jet-input-error for="prenom" class="mt-2" />
         </div>
                 <!-- Nom -->

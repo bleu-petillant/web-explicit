@@ -67,12 +67,25 @@
                         <div class="block px-4 py-2 text-xs text-gray-400">
                             {{ __('Manage Account') }}
                         </div>
-
+                        @if(auth()->user()->role_id == 1)
+                        <x-jet-dropdown-link href="{{ route('admin.dashboard') }}">
+                            {{ __('Profile') }}
+                        </x-jet-dropdown-link>
+                        @elseif(auth()->user()->role_id == 2)
+                        <x-jet-dropdown-link href="{{ route('teacher.dashboard') }}">
+                            {{ __('Profile') }}
+                        </x-jet-dropdown-link>
+                        @else
                         <x-jet-dropdown-link href="{{ route('profile.show') }}">
                             {{ __('Profile') }}
                         </x-jet-dropdown-link>
-                            <x-jet-dropdown-link href="{{ route('resources.index') }}">
-                            {{ __('resources') }}
+                        @endif
+
+                            <x-jet-dropdown-link href="{{ route('nos cours') }}">
+                            {{ __('les cours') }}
+                        </x-jet-dropdown-link>
+                        <x-jet-dropdown-link href="{{ route('les resources') }}">
+                            {{ __('les resources') }}
                         </x-jet-dropdown-link>
 
                         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -161,21 +174,27 @@
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="flex items-center px-4">
+                @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                 <div class="flex-shrink-0">
                     <img class="h-10 w-10 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                 </div>
-
-                <div class="ml-3">
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-                </div>
+                @endif
             </div>
-
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
-                <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                    {{ __('Profile') }}
-                </x-jet-responsive-nav-link>
+                    @if(auth()->user()->role_id == 1)
+                        <x-jet-responsive-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
+                            {{ __('Profile') }}
+                        </x-jet-responsive-nav-link>
+                        @elseif(auth()->user()->role_id == 2)
+                        <x-jet-responsive-nav-link href="{{ route('teacher.dashboard') }}" :active="request()->routeIs('teacher.dashboard')">
+                            {{ __('Profile') }}
+                        </x-jet-responsive-nav-link>
+                        @else
+                        <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                            {{ __('Profile') }}
+                        </x-jet-responsive-nav-link>
+                    @endif
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                     <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">

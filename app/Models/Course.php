@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
+    protected $guarded = ['created_at','updated_at'];
+
+    protected $date = ['published_at'];
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category');
+    }
+    public function students()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    public function resources()
+    {
+        return $this->belongsTo('App\Models\Resources');
+    }
 }

@@ -15,9 +15,18 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->text('desc')->nullable();
-            $table->string('slug')->nullable();
+            $table->string('title')->unique();
+            $table->longText('desc');
+            $table->string('slug');
+            $table->string('image');
+            $table->string('alt')->nullable();
+            $table->integer('category_id')->unsigned();
+            $table->integer('resources_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->date('published_at')->nullable();
+            $table->string('meta')->nullable();
+            $table->unsignedTinyInteger('activated')->default(0);
+            $table->unsignedTinyInteger('validate')->default(0);
             $table->timestamps();
         });
     }
@@ -30,5 +39,6 @@ class CreateCoursesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('courses');
+
     }
 }

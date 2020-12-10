@@ -20,9 +20,9 @@ class AdminAction
         if(auth()->check())
         {
             $user = Auth::user();
-            if ($user->role_id != 1) {
+            if ($user->role_id == 3) {
 
-                return redirect()->to('/404');
+                return redirect()->to('/permissions');
 
             }else
             {

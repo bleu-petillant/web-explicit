@@ -105,7 +105,7 @@
                 <div class="play-usage-button button-usage-1"><i class="fas fa-play"></i></div>
                 <div class="py-3 pl-2">
                     <h3 class="card-title text-2xl font-bold">Recherche et formation <br> en STAPS</h3>
-                    <p class="card-text">Détails sur la ressource</p>
+                    <p class="card-text">Détails sur le cas</p>
                 </div>
             </a>
                 
@@ -114,7 +114,7 @@
                 <div class="play-usage-button button-usage-2"><i class="fas fa-play"></i></div>
                 <div class="py-3 pl-2">
                     <h3 class="card-title text-2xl font-bold">Recherche et formation <br> à la méditation</h3>
-                    <p class="card-text">Détails sur la ressource</p>
+                    <p class="card-text">Détails sur le cas</p>
                 </div>
             </a>
                 
@@ -123,7 +123,7 @@
                 <div class="play-usage-button button-usage-3"><i class="fas fa-play"></i></div>
                 <div class="py-3 pl-2">
                     <h3 class="card-title text-2xl font-bold">Formation des pompiers <br> <br> </h3>
-                    <p class="card-text">Détails sur la ressource</p>
+                    <p class="card-text">Détails sur le cas</p>
                 </div>
             </a>
     </div>

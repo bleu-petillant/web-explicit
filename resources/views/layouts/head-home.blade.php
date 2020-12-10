@@ -28,7 +28,21 @@
     </head>
     <body class="antialiased">
         <div>
-           
+
+            @if (Route::has('login'))
+                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                    @auth
+                    
+                    <a href="{{route('resources.index')}}" class="text-sm text-gray-700 underline">resources</a>
+
+                    @else
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">se connecter</a>
+
+
+                    @endif
+                </div>
+            @endif
+
         </div>
         @yield('home')
         @yield('ressources')

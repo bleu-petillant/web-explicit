@@ -12,12 +12,11 @@
       <div class="col-12">
       	<div class="card card-list">
         <div class="card-header bg-dark py-3 d-flex justify-content-center my-4">
-          <a href="{{route('resources.create')}}" class="btn btn-success btn-md px-3 my-0 mr-0 white-text"><i class="fas fa-plus pr-2"></i>créer une nouvelle ressources</a>
+          <a href="{{route('reference.create')}}" class="btn btn-success btn-md px-3 my-0 mr-0 white-text"><i class="fas fa-plus pr-2"></i>créer une nouvelle ressources</a>
           </div>
           <div class="card-body">
             <livewire:resources-table searchable="ressources,slug,name"/>
           </div>
-
         </div>
       </div>
     </div>

@@ -81,10 +81,10 @@
                         </x-jet-dropdown-link>
                         @endif
 
-                            <x-jet-dropdown-link href="{{ route('nos cours') }}">
+                            <x-jet-dropdown-link href="{{ route('formations.all') }}">
                             {{ __('les cours') }}
                         </x-jet-dropdown-link>
-                        <x-jet-dropdown-link href="{{ route('les resources') }}">
+                        <x-jet-dropdown-link href="{{ route('ressources.all') }}">
                             {{ __('les resources') }}
                         </x-jet-dropdown-link>
 

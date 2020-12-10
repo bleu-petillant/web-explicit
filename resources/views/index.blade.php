@@ -1,11 +1,4 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Home Page') }}
-        </h2>
-    </x-slot>
-    <h2> bienvenue sur Explicit.com</h2>
-</x-app-layout>
+@extends('layouts.app')
 @section('home')
 
 <!-- image avec titre -->
@@ -49,69 +42,38 @@
   <!-- cartes des ressources -->
     <div class="my-20 w-3/4 mx-auto">
         <div class="flex mx-auto justify-center ressource-cards py-2">
-
-            <div class="card bg-white shadow-lg w-1/5 hover:shadow-xl mx-8 ">
-                <a href=""  >
-                        <img class=" card-image w-full h-40 object-cover" src="img/ressource/ress-1.jpg" alt="">
+            @foreach ($references as $reference)
+             <div class="card bg-white shadow-lg w-1/5 hover:shadow-xl mx-8 ">
+                @if ($reference->category_id == '1')
+             <a href="{{ $reference->pdf }}" target="_blank" >
+                @else
+                <a href="{{ $reference->link }}" target="_blank" >
+                @endif
+                <img class=" card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
                         <div class="py-3 pl-2">
-                            <p class="category pdf-color ">pdf</p>
-                            <h3 class="card-title text-2xl font-bold">Titre</h3>
-                            <p class="card-text">Détails sur la ressource</p>
+                            @if ($reference->category_id == '1')
+                                <p class="category pdf-color ">pdf</p>
+                            @elseif($reference->category_id == '2')
+                                 <p class="category video-color ">vidéo</p>
+                                 @elseif($reference->category_id == '3')
+                                    <p class="category podcast-color ">podcast</p>
+                                 @endif
+                            <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
+                            <p class="card-text">{{$reference->desc}}</p>
                         </div>
                 </a>
             </div>
-           
-            <div class="card bg-white shadow-lg w-1/5 hover:shadow-xl mx-8">
-                <a href="" >   
-                    <img class=" card-image w-full h-40 object-cover" src="img/ressource/ress-2.jpg" alt="">
-                    <div class="py-3 pl-2">
-                        <p class="category podcast-color ">podcast</p>
-                        <h3 class="card-title text-2xl font-bold">Titre</h3>
-                        <p class="card-text">Détails sur la ressource</p>
-                    </div>
-                </a>      
-            </div >       
-            
-            <div class="card bg-white shadow-lg w-1/5 hover:shadow-xl mx-8">
-                <a href="" >
-                    <img class=" card-image w-full h-40 object-cover" src="img/ressource/ress-3.jpg" alt="">
-                    <div class="py-3 pl-2">
-                        <p class="category pdf-color ">pdf</p>
-                        <h3 class="card-title text-2xl font-bold">Titre</h3>
-                        <p class="card-text">Détails sur la ressource</p>
-                    </div>
-                </a>
-            </div>
-                                
-            <div class="card bg-white shadow-lg w-1/5 hover:shadow-xl mx-8">
-                <a href="" >
-                    <img class=" card-image w-full h-40 object-cover" src="img/ressource/ress-4.jpg" alt="">
-                    <div class="py-3 pl-2">
-                        <p class="category video-color ">video</p>
-                        <h3 class="card-title text-2xl font-bold">Titre</h3>
-                        <p class="card-text">Détails sur la ressource</p>
-                    </div>
-                </a>
-            </div>
-            
-            
+            @endforeach 
         </div>
-
         <div class="flex mx-auto justify-center">
             <div class="w-1/5 mx-8" ></div>
             <div class="w-1/5 mx-8"></div>
             <div class="w-1/5 mx-8"></div>
             <div class="w-1/5 mx-8 mb-5 ">
-                <a href="" class=" bg-white text-lg ressource-home-button uppercase relative float-right  "> les ressources</a>
+            <a href="{{route('ressources.all')}}" class=" bg-white text-lg ressource-home-button uppercase relative float-right  "> les ressources</a>
             </div>
         </div>
-        
-
     </div>
-    
-   
-
-    
 </section>
 
 <!-- formation interactive -->
@@ -125,9 +87,9 @@
             <div class="formation-home-text pt-10 pr-20 pb-10 pl-20">
                 <div class="border-l-4 border-white">
                     <h2 class="leading-tight text-white ressource-home-title uppercase font-bold text-4xl ml-4" >formation <br> interactive</h2>
-                    <p class=" text-white text-xl text-justify px-4 pt-3 w-3/4 text-justify font-light mb-4">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>                   
+                    <p class=" text-white text-xl text-justify px-4 pt-3 w-3/4 font-light mb-4">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>                   
                 </div>
-                <p class="text-center"><a class="justify-center text-lg bg-white uppercase my-1 py-2 px-10 rounded" href="">Commencer</a></p>
+            <p class="text-center"><a class="justify-center text-lg bg-white uppercase my-1 py-2 px-10 rounded" href="{{route('formations.all')}}">Commencer</a></p>
             </div>
         
     </div>
@@ -196,7 +158,7 @@
 
     </div>
 
-    <a class="bg-white text-lg ressource-home-button uppercase relative float-right  mx-8 mt-2 mb-8 md:mx-auto" href=""> les cas d'usage</a>
+<a class="bg-white text-lg ressource-home-button uppercase relative float-right  mx-8 mt-2 mb-8 md:mx-auto" href="{{route('usage')}}"> les cas d'usage</a>
 
 </section>
 

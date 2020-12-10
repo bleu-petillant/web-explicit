@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Tags;
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-class TagsFactory extends Factory
+class TagFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Tags::class;
+    protected $model = Tag::class;
 
     /**
      * Define the model's default state.

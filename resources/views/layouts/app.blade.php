@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 
         @livewireStyles
 
@@ -24,6 +25,12 @@
 
             <!-- Page Heading -->
             <header class="bg-white shadow">
+                <a href="{{route('home')}}" class="text-sm text-gray-700 underline">Home</a>
+                        <a href="{{route('ressources.all')}}" class="text-sm text-gray-700 underline">Ressources</a>
+                        <a href="{{route('formations.all')}}" class="text-sm text-gray-700 underline">Formation Intéractive</a>
+                        <a href="{{route('usage')}}" class="text-sm text-gray-700 underline">Cas  d' usage</a>
+                        <a href="{{route('contact')}}" class="text-sm text-gray-700 underline">Contact</a>
+                       
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     {{ $header ?? '' }}
                 </div>
@@ -35,6 +42,8 @@
                 @yield('resources')
                 @yield('home')
                 @yield('course')
+                @yield('usage')
+                @yield('contact')
             </main>
         </div>
 

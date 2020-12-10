@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Category;
-use App\Models\Resources;
+use App\Models\Reference;
+use App\Models\Tag;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
+
 
 
 class CourseController extends Controller
@@ -55,10 +56,11 @@ class CourseController extends Controller
     {
 
         $categories = Category::all();
-        $resources = Resources::all();
+        $references = Reference::all();
+        $tags = Tag::all();
         if(Auth::user()->role_id == 1)
         {
-            return view('admin.course.create',compact('categories','resources'));
+            return view('admin.course.create',compact('categories','references','tags'));
 
         }else if(Auth::user()->role_id == 2)
         {
@@ -76,10 +78,11 @@ class CourseController extends Controller
     {
         $this->validate($request,
         [
-            'title'=>'required|unique:posts,title',
+            'title'=>'required|unique:courses,title',
             'category'=>'required',
-            'resources'=>'required',
+            'resources'=>'nullable',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'video' => 'mimetypes:video/avi,video/mp4,video/webm,video/mkv,video/wmv,video/movie',
             'alt'=>'required',
             'meta'=>'required',
             'desc'=>'required',
@@ -90,50 +93,53 @@ class CourseController extends Controller
             'content' => $request->content,
             'slug' => Str::slug($request->title,'-'),
             'image' => 'image',
+            'video'=>'video',
             'alt'=>$request->alt,
             'category_id' => $request->category,
-            'resource_id' => $request->resources,
+            'teacher_id'=>auth()->user()->id,
             'meta'=> $request->meta,
+            'desc'=>$request->desc,
+            'tag_id'=>1,
             'published_at'=> Carbon::now()
         ]);
 
-        $course->resources()->attach($request->resources);
+        $course->tags()->attach($request->tags);
 
-        // foreach ($request->input('thumbnail', []) as $file) {
-        //     $course->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('thumbnail');
-        // }
 
-        // if ($request->input('video', false)) {
-        //     $course->addMedia(storage_path('tmp/uploads/' . $request->input('video')))->toMediaCollection('video');
-        // }
-
-        // if ($media = $request->input('ck-media', false)) {
-        //     Media::whereIn('id', $media)->update(['model_id' => $course->id]);
-        // }
-
-        if($request->hasFile('image'))
+        if($request->hasFile('image') && $request->hasFile('video'))
         {
 
             $file = $request->file('image');
+            $file_movie = $request->file('video');
 
             // Get filename with extension
             $filenameWithExt = $file->getClientOriginalName();
+            $filename_movWithExt = $file_movie->getClientOriginalName();
 
             // Get file path
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $filename_movie = pathinfo($filename_movWithExt, PATHINFO_FILENAME);
 
             // Remove unwanted characters
             $filename = preg_replace("/[^A-Za-z0-9 ]/", '', $filename);
             $filename = preg_replace("/\s+/", '-', $filename);
 
+            $filename_movie = preg_replace("/[^A-Za-z0-9 ]/", '', $filename_movie);
+            $filename_movie = preg_replace("/\s+/", '-', $filename_movie);
+
             // Get the original image extension
             $extension = $file->getClientOriginalExtension();
+            $extension_mov = $file_movie->getClientOriginalExtension();
 
             // Create unique file name
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            $fileMovieNameToStore = $filename_movie.'_'.time().'.'.$extension_mov;
 
-            $file->move('storage/post/',$fileNameToStore);
-            $course->image = 'storage/post/' .$fileNameToStore;
+            $file->move('storage/course/thumb/',$fileNameToStore);
+            $course->image = 'storage/course/thumb/' .$fileNameToStore;
+
+            $file_movie->move('storage/course/video/',$fileMovieNameToStore);
+            $course->video = 'storage/course/video/' .$fileMovieNameToStore;
             $course->save();
         }
 
@@ -178,8 +184,22 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy( $id)
     {
-        //
+        $course = Course::find($id);
+        if($course)
+        {
+            if(file_exists(public_path($course->image)))
+            {
+                unlink(public_path($course->image));
+            }
+            if(file_exists(public_path($course->video)))
+            {
+                unlink(public_path($course->video));
+            }
+
+            $course->delete();
+            return view('admin.course.index');
+        }
     }
 }

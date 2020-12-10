@@ -17,7 +17,7 @@
           <a href="{{route('category.create')}}" class="btn btn-success btn-md px-3 my-0 mr-0 white-text"><i class="fas fa-plus pr-2"></i> ajouter une catégorie</a>
         </div>
             <div class="card-body">
-                <livewire:category-table searchable="category,slug,name"/>
+                <livewire:category-table searchable="category,name"/>
             </div>
         </div>
       </div>

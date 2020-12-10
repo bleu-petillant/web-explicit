@@ -19,14 +19,13 @@ class CreateCoursesTable extends Migration
             $table->longText('desc');
             $table->string('slug');
             $table->string('image');
+            $table->string('video');
             $table->string('alt')->nullable();
-            $table->integer('category_id')->unsigned();
-            $table->integer('resources_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('teacher_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->date('published_at')->nullable();
             $table->string('meta')->nullable();
             $table->unsignedTinyInteger('activated')->default(0);
-            $table->unsignedTinyInteger('validate')->default(0);
             $table->timestamps();
         });
     }

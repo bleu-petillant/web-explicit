@@ -30,13 +30,18 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                    
-                    <a href="{{route('resources.index')}}" class="text-sm text-gray-700 underline">resources</a>
-
-                    @else
+                         <a href="{{route('les resources')}}" class="text-sm text-gray-700 underline">Ressources</a>
+                        <a href="{{route('nos cours')}}" class="text-sm text-gray-700 underline">Formation Intéractive</a>
+                        <a href="{{route('usage')}}" class="text-sm text-gray-700 underline">Cas  d' usage</a>
+                        <a href="{{route('contact')}}" class="text-sm text-gray-700 underline">Contact</a>
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">se connecter</a>
 
-
+                    @else
+                        <a href="{{route('les resources')}}" class="text-sm text-gray-700 underline">Ressources</a>
+                        <a href="{{route('nos cours')}}" class="text-sm text-gray-700 underline">Formation Intéractive</a>
+                        <a href="{{route('usage')}}" class="text-sm text-gray-700 underline">Cas  d' usage</a>
+                        <a href="{{route('contact')}}" class="text-sm text-gray-700 underline">Contact</a>
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">se connecter</a>
                     @endif
                 </div>
             @endif

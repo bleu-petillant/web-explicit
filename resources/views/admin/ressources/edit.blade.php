@@ -8,7 +8,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">acceuil du site</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('resources.index') }}">liste des ressources</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('reference.index') }}">liste des ressources</a></li>
                         <li class="breadcrumb-item active">modifier la ressource</li>
                     </ol>
                 </div><!-- /.col -->
@@ -16,18 +16,22 @@
         </div><!-- /.container-fluid -->
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <p class="h4 mb-4">modifier la ressources - <span class="text-danger font-perso font-italic">{{ $resources->title }}</span></p>
+                <p class="h4 mb-4">modifier la ressources - <span class="text-danger font-perso font-italic">{{ $reference->title }}</span></p>
                     @include('includes.errors')
-                    <form class="text-center" action="{{ route('resources.update',$resources->id) }}" method="POST" enctype="multipart/form-data">
+                    <form class="text-center" action="{{ route('reference.update',$reference->id) }}" method="POST" enctype="multipart/form-data">
                         @method('PATCH')
                         @csrf
                         <label for="category">selectionez une catégorie</label>
                     <select name="category" id="category" class="custom-select custom-select-sm my-2">
                         <option value=""selected style="display: none">selectionez une catégorie</option>
                         @foreach ($categories as $cat)
-                    <option value="{{ $cat->id }}" @if($resources->category_id == $cat->id) selected @endif>{{ $cat->name }}</option>
+                    <option value="{{ $cat->id }}" @if($reference->category_id == $cat->id) selected @endif>{{ $cat->name }}</option>
                         @endforeach
                     </select>
+
+                     <hr class="hr-light my-2">
+                    <label for="link">ajouter votre lien externe<small class="text-danger">(exemples: https://www.monlien.fr)</small></label>
+                    <input type="url" id="link" name="link" value="{{ old('link')}}" class="form-control my-2" placeholder="{{ $reference->link }}">
 
                     <hr class="hr-light">
                     <div class="form-group">
@@ -35,14 +39,14 @@
                         @foreach ($tags as $tag)
                         <div class="custom-control custom-checkbox custom-control-inline">
                             <input type="checkbox" class="custom-control-input" id="tag{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}"
-                            @foreach ($resources->tags as $t)
+                            @foreach ($reference->tags as $t)
                                 @if ($tag->id == $t->id)checked
 
                                 @endif
-                            @endforeach>
+                             @endforeach>
                             <label class="custom-control-label" for="tag{{ $tag->id }}">{{ $tag->name }}</label>
                         </div>
-                        @endforeach
+                        @endforeach 
                     </div>
                     <div class="d-flex justify-content-around align-content-center">
                         <div class="col-6">
@@ -53,22 +57,25 @@
                         </div>
                         <div class="col-6">
                             <div style="max-width: 150px;max-height:150px;overflow:hidden">
-                                <img src="{{ asset($resources->image) }}" class="img-fluid" alt="">
+                                <img src="{{ asset($reference->image) }}" class="img-fluid" alt="">
                             </div>
                         </div>
                     </div>
 
                     <hr class="hr-light">
                     <label for="title">modifiez le titre</label>
-                    <input type="text" id="title" name="title" value="{{ $resources->title }}" class="form-control my-2" placeholder="">
+                    <input type="text" id="title" name="title" value="{{ $reference->title }}" class="form-control my-2" placeholder="">
 
                     <label for="meta">modifiez votre meta description <small class="text-danger">(max 255 caractères)</small></label>
-                    <input type="text" id="meta" name="meta" value="{{ $resources->meta }}" class="form-control my-2" placeholder="meta description" required>
+                    <input type="text" id="meta" name="meta" value="{{ $reference->meta }}" class="form-control my-2" placeholder="meta description">
 
-
+                     <div class="my-2"></div>
+                      <label for="alt" class="label"> ajouter une description pour l'image (ALT)</label>
+                      <input type="text" id="alt" name="alt" value="{{ old('alt')}}" class="form-control my-2" placeholder="{{ $reference->alt }}">
+                    </div>
                     <hr class="hr-light">
                     <label for="content">modifiez votre article</label>
-                    <textarea type="text" id="content" name="content" class="form-control my-2 editor" placeholder="">{{ $resources->content }}"</textarea>
+                    <textarea type="text" id="desc" name="desc" class="form-control my-2 editor" placeholder="{{ $reference->desc }}"></textarea>
 
                         <button class="btn btn-success btn-block" type="submit"><span class="fas fa-pen pr-2"></span>modifier la ressource</button>
                     </form>

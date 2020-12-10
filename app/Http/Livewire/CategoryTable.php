@@ -24,19 +24,12 @@ class CategoryTable extends LivewireDatatable
                 ->label('Nom de la  catégorie')
                 ->filterable(),
 
-            Column::name('slug')
-                ->label('Slug')
-                ->filterable(),
-
-            Column::name('desc')
-                ->label('description'),
-
-            Column::callback(['id', 'slug'], function ($id, $slug) {
+            Column::callback(['id', 'name'], function ($id, $name) {
                 if(Auth::user()->role_id == 1){
-                    return view('admin.action.categoriesaction', ['id' => $id, 'slug' => $slug]);
+                    return view('admin.action.categoriesaction', ['id' => $id, 'name' => $name]);
                 }else
                 {
-                    return;
+                    return view('errors.permissions');
                 }
 
             }),

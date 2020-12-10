@@ -10,10 +10,10 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ResourcesController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\ReferenceController;
 use App\Http\Controllers\student\StudentDashboardController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\teacher\TeacherDashboardController;
-use App\Models\Tags;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +29,10 @@ use App\Models\Tags;
 
 // homepage without login needed, it's the homepage off the application
 Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/resources',[HomeController::class,'allResources'])->name('ressources.all');
+Route::get('/ressource/{slug}',[HomeController::class,'showResources'])->name('ressource.show');
+Route::get('/cas d usage',[HomeController::class,'usage'])->name('usage');
+Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 
 // student dashboard
 Route::middleware(['auth:sanctum','verified','student'])->get('student/dashboard',[StudentDashboardController::class,'dashboard'])->name('student.dashboard');
@@ -50,9 +54,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['super']], function(){
         'student' => StudentController::class,
         'teacher' => TeacherController::class,
         'course' => CourseController::class,
-        'resources' => ResourcesController::class,
         'category' => CategoryController::class,
-        'tag'=>TagsController::class
+        'tag'=>TagsController::class,
+        'reference'=>ReferenceController::class
     ]);
 
 });
@@ -71,11 +75,11 @@ Route::group(['prefix' => 'student','middleware' => ['student']], function(){
 // route for resources only for all auth logged
 Route::group(['middleware' => ['auth:sanctum','verified']], function () {
 
-Route::get('/course',[HomeController::class,'allCourse'])->name('nos cours');
-Route::get('/resources',[HomeController::class,'allResources'])->name('les resources');
+Route::get('/nos formations',[HomeController::class,'allCourses'])->name('formations.all');
 
-Route::get('/course/{slug}',[HomeController::class,'showCourse'])->name('show.course');
-Route::get('/resources/{slug}',[HomeController::class,'showResources'])->name('show.ressources');
+
+Route::get('/formation/{slug}',[HomeController::class,'showCourse'])->name('formation.show');
+
 });
 
 

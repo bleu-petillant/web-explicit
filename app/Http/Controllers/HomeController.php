@@ -24,6 +24,7 @@ class HomeController extends Controller
         return view('contact');
     }
 
+
     public function allResources()
     {
         $references = Reference::with('category')->get();
@@ -61,6 +62,7 @@ class HomeController extends Controller
         {
             return redirect('/404');
         }
+
 
     }
 }

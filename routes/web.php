@@ -20,6 +20,7 @@ use App\Http\Controllers\teacher\TeacherProfilController;
 */
 
 Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/ressources',[HomeController::class,'ressources'])->name('ressources');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 

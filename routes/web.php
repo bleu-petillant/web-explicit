@@ -29,6 +29,7 @@ use App\Models\Tags;
 
 // homepage without login needed, it's the homepage off the application
 Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/ressources',[HomeController::class,'ressources'])->name('ressources');
 
 // student dashboard
 Route::middleware(['auth:sanctum','verified','student'])->get('student/dashboard',[StudentDashboardController::class,'dashboard'])->name('student.dashboard');

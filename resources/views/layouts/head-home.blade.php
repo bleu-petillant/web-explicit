@@ -11,6 +11,7 @@
         <link rel="alternate" href="rss.xml" type="application/rss+xml" title="RSS">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/ressource.css') }}" rel="stylesheet">
         <link href="{{ asset('css/header.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.css' />
@@ -23,6 +24,7 @@
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/home.js') }}"></script>
+        <script src="{{ asset('js/ressource.js') }}"></script>
     </head>
     <body class="antialiased">
         <div>
@@ -43,11 +45,13 @@
 
         </div>
         @yield('home')
+        @yield('ressources')
         @livewireScripts
     </body>
 
     <footer>
 
     </footer>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 </html>

@@ -14,6 +14,7 @@ class HomeController extends Controller
         return view('index');
     }
 
+
     public function allResources()
     {
         return view('allresources');
@@ -41,6 +42,7 @@ class HomeController extends Controller
         {
             return redirect('/404');
         }
+
 
     }
 }

@@ -8,7 +8,6 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ResourcesController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\ReferenceController;
 use App\Http\Controllers\student\StudentDashboardController;

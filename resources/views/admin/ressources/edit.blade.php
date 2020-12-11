@@ -29,11 +29,11 @@
                         @endforeach
                     </select>
 
-                     <hr class="hr-light my-2">
+                   
                     <label for="link">ajouter votre lien externe<small class="text-danger">(exemples: https://www.monlien.fr)</small></label>
                     <input type="url" id="link" name="link" value="{{ old('link')}}" class="form-control my-2" placeholder="{{ $reference->link }}">
 
-                    <hr class="hr-light">
+                
                     <div class="form-group">
                         <p class="text-center">modifiez les tags</p>
                         @foreach ($tags as $tag)
@@ -62,22 +62,21 @@
                         </div>
                     </div>
 
-                    <hr class="hr-light">
+
                     <label for="title">modifiez le titre</label>
                     <input type="text" id="title" name="title" value="{{ $reference->title }}" class="form-control my-2" placeholder="">
 
                     <label for="meta">modifiez votre meta description <small class="text-danger">(max 255 caractères)</small></label>
                     <input type="text" id="meta" name="meta" value="{{ $reference->meta }}" class="form-control my-2" placeholder="meta description">
 
-                     <div class="my-2"></div>
+                     <div class="my-2">
                       <label for="alt" class="label"> ajouter une description pour l'image (ALT)</label>
                       <input type="text" id="alt" name="alt" value="{{ old('alt')}}" class="form-control my-2" placeholder="{{ $reference->alt }}">
                     </div>
                     <hr class="hr-light">
-                    <label for="content">modifiez votre article</label>
-                    <textarea type="text" id="desc" name="desc" class="form-control my-2 editor" placeholder="{{ $reference->desc }}"></textarea>
-
-                        <button class="btn btn-success btn-block" type="submit"><span class="fas fa-pen pr-2"></span>modifier la ressource</button>
+                    <label for="desc">modifiez la description de votre ressource</label>
+                    <textarea id="desc" name="desc" class="form-control my-2 " value="{{ $reference->desc }}" placeholder="{{ $reference->desc }}"  rows="5" cols="5"></textarea>
+                        <button class="btn btn-success " type="submit"><span class="fas fa-pen pr-2"></span>modifier la ressource</button>
                     </form>
             </div>
         </div>

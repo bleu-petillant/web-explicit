@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tag;
 use App\Models\Category;
 use App\Models\Reference;
+use Conner\Tagging\Model\Tag as ModelTag;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -24,12 +25,13 @@ class ReferenceController extends Controller
     public function index()
     {
         $reference = Reference::all();
+        $categories = Category::all();
 
 
         if(Auth::user()->role_id == 1)
         {
 
-            return view('admin.ressources.index',compact('reference'));
+            return view('admin.ressources.index',compact('reference','categories'));
 
         }
         else if(Auth::user()->role_id == 2)
@@ -50,8 +52,10 @@ class ReferenceController extends Controller
      */
     public function create()
     {
+        $tags = Reference::existingTags()->pluck('name');
+      
         $categories = Category::all();
-        $tags = Tag::all();
+  
         return view('admin.ressources.create',compact('categories','tags'));
     }
 
@@ -71,11 +75,12 @@ class ReferenceController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
             'pdf'=>'nullable|mimetypes:application/pdf',
             'link'=>'nullable|active_url',
+            'tags' => 'required',
             'alt'=>'required',
             'meta'=>'required',
             'desc'=>'required',
         ]);
-           
+        $tags = explode(",", $request->tags);
         $ressources = Reference::create([
             'title' => $request->title,
             'content' => $request->content,
@@ -91,9 +96,9 @@ class ReferenceController extends Controller
             'tag_id'=>1,
             'published_at'=> Carbon::now()
         ]);
+            $ressources->tag($tags);
            
         
-        $ressources->tags()->attach($request->tags);
 
 
         if($request->hasFile('image') )
@@ -173,7 +178,7 @@ class ReferenceController extends Controller
     public function edit(Reference $reference)
     {
         $categories = Category::all();
-        $tags = Tag::all();
+        $tags = ModelTag::all();
         return view('admin.ressources.edit',compact(['reference','categories','tags']));
     }
 
@@ -200,6 +205,11 @@ class ReferenceController extends Controller
             {
                 
                 $reference->title  = $reference->title;
+            }
+            if($reference->isClean('desc'))
+            {
+                
+                $reference->desc  = $reference->desc;
             }
             
             $reference->title  = $request->title;
@@ -267,7 +277,7 @@ class ReferenceController extends Controller
         $reference->save();
 
         $request->session()->flash('success', 'votre ressources as bien été modifier');
-        return redirect('admin/dashboard');
+        return redirect('admin/reference');
     }
     
 

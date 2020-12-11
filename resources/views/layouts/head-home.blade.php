@@ -27,30 +27,28 @@
         <script src="{{ asset('js/ressource.js') }}"></script>
     </head>
     <body class="antialiased">
-        <div>
-
+       
             @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                         <a href="{{route('les resources')}}" class="text-sm text-gray-700 underline">Ressources</a>
-                        <a href="{{route('nos cours')}}" class="text-sm text-gray-700 underline">Formation Intéractive</a>
+                    <a href="{{route('home')}}" class="text-sm text-gray-700 underline">Home</a>
+                        <a href="{{route('ressources.all')}}" class="text-sm text-gray-700 underline">Ressources</a>
+                        <a href="{{route('formations.all')}}" class="text-sm text-gray-700 underline">Formation Intéractive</a>
                         <a href="{{route('usage')}}" class="text-sm text-gray-700 underline">Cas  d' usage</a>
                         <a href="{{route('contact')}}" class="text-sm text-gray-700 underline">Contact</a>
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">se connecter</a>
-
+                    @livewire('navigation-dropdown')  
                     @else
-                        <a href="{{route('les resources')}}" class="text-sm text-gray-700 underline">Ressources</a>
-                        <a href="{{route('nos cours')}}" class="text-sm text-gray-700 underline">Formation Intéractive</a>
+                    <a href="{{route('home')}}" class="text-sm text-gray-700 underline">Home</a>
+                        <a href="{{route('ressources.all')}}" class="text-sm text-gray-700 underline">Ressources</a>
+                        <a href="{{route('formations.all')}}" class="text-sm text-gray-700 underline">Formation Intéractive</a>
                         <a href="{{route('usage')}}" class="text-sm text-gray-700 underline">Cas  d' usage</a>
                         <a href="{{route('contact')}}" class="text-sm text-gray-700 underline">Contact</a>
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">se connecter</a>
                     @endif
-                </div>
             @endif
-
-        </div>
+           
+        
         @yield('home')
-        @yield('ressources')
+        @yield('resources')
         @livewireScripts
     </body>
 

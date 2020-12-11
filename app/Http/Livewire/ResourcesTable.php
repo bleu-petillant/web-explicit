@@ -30,6 +30,9 @@ class ResourcesTable extends LivewireDatatable
 
                 Column::name('image')
                 ->label('Image'),
+                
+                Column::name('desc')
+                ->label('description'),
 
             Column::callback(['id', 'slug'], function ($id, $slug) {
                 if(Auth::user()->role_id == 1){

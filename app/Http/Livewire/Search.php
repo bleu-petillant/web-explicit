@@ -3,18 +3,19 @@
 namespace App\Http\Livewire;
 
 use App\Models\Course;
+use App\Models\Reference;
 use Livewire\Component;
 
 
 class Search extends Component
 {
     public $query = '';
-    public $courses = [];
+    public $references = [];
     public $selectedIndex = 0;
 
     public function incrementIndex()
     {
-        if($this->selectedIndex === count($this->courses) -1){
+        if($this->selectedIndex === count($this->references) -1){
             $this->selectedIndex = 0;
             return;
         }
@@ -24,7 +25,7 @@ class Search extends Component
     public function decrementIndex()
     {
         if($this->selectedIndex === 0){
-            $this->selectedIndex = (count($this->courses) -1);
+            $this->selectedIndex = (count($this->references) -1);
             return;
         }
 
@@ -35,7 +36,7 @@ class Search extends Component
     {
         $search = '%'. $this->query .'%';
         if(strlen($this->query) > 2 ){
-            $this->courses = Course::where('slug','like',$search)
+            $this->references = Reference::where('slug','like',$search)
             ->orWhere('title','like',$search)
             ->orWhere('desc','like',$search)
             ->get();

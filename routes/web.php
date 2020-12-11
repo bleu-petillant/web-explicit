@@ -8,7 +8,6 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ResourcesController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\ReferenceController;
 use App\Http\Controllers\student\StudentDashboardController;
@@ -29,12 +28,10 @@ use App\Http\Controllers\teacher\TeacherDashboardController;
 
 // homepage without login needed, it's the homepage off the application
 Route::get('/',[HomeController::class,'index'])->name('home');
-
 Route::get('/resources',[HomeController::class,'allResources'])->name('ressources.all');
 Route::get('/ressource/{slug}',[HomeController::class,'showResources'])->name('ressource.show');
 Route::get('/cas d usage',[HomeController::class,'usage'])->name('usage');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
-
 
 // student dashboard
 Route::middleware(['auth:sanctum','verified','student'])->get('student/dashboard',[StudentDashboardController::class,'dashboard'])->name('student.dashboard');

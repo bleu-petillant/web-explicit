@@ -11,12 +11,16 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('admin/css/adminlte.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" />
+<link rel="stylesheet" href="{{asset('admin/css/selectize.bootstrap3.css')}}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.9.2/tailwind.min.css" integrity="sha512-l7qZAq1JcXdHei6h2z8h8sMe3NbMrmowhOl+QkP3UhifPpCW2MC4M0i26Y8wYpbz1xD9t61MLT9L1N773dzlOA==" crossorigin="anonymous" />
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css'/>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     @livewireStyles
     <!-- Scripts -->
+    <script src="http://demo.itsolutionstuff.com/plugin/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
 </head>
 <body class="hold-transition sidebar-mini">
@@ -231,6 +235,21 @@
             window.scrollTo(0, 0);
             bsCustomFileInput.init();
         });
+        $('#tags').selectize({
+        delimiter: ',',
+        persist: false,
+        valueField: 'tag',
+        labelField: 'tag',
+        searchField: 'tag',
+        options: tags,
+        create: function(input) {
+            return {
+                tag: input
+            }
+        }
+    });
+
+
     </script>
 </body>
 </html>

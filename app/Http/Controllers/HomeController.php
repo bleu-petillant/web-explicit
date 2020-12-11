@@ -28,7 +28,8 @@ class HomeController extends Controller
     public function allResources()
     {
         $references = Reference::with('category')->get();
-        return view('resources',compact('references'));
+        $categories = Category::all();
+        return view('resources',compact('references','categories'));
     }
 
     public function allCourses()
@@ -38,8 +39,9 @@ class HomeController extends Controller
 
     public function showResources(request $request,$slug)
     {
-        $reference = Reference::with('category')->where('slug',$slug)->first();
-        if($reference)
+       $references = Reference::with('category')->orderBy('created_at','DESC')->take(4)->get();
+       $categories = Category::all();
+        if($references)
         {
            
             return view('resources',compact('reference'));

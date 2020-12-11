@@ -31,8 +31,13 @@
                     <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                         @endforeach
                     </select>
+                    		<div class="form-group">
+			                <label>Tags:</label>
+                            <br/>
+                            <input type="text" name="tags" id="tags">
+                    		</div>
 
-                    <hr class="hr-light my-2">
+                    <hr class="my-2">
                     <div class="custom-file">
                       <input type="file" class="custom-file-input my-2" name="image" id="image" lang="fr">
                       <label class="custom-file-label" for="image">Sélectionner une image</label>
@@ -64,5 +69,11 @@
             </div>
         </div>
     </div>
-
+    <script>
+            var tags = [
+        @foreach ($tags as $tag)
+        {tag: "{{$tag}}" },
+         @endforeach
+    ];
+    </script>
 @endsection

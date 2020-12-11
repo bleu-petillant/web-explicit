@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tag;
+
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Conner\Tagging\Model\Tag;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -59,14 +60,13 @@ class TagsController extends Controller
     {
         $this->validate($request,
         [
-            'name'=>'required|unique:tags,name',
+            'name'=>'required|unique:tagging_tags,name',
 
         ]);
 
         Tag::create([
             'name' => $request->name,
             'slug' => Str::slug($request->name,'-'),
-            'description' => $request->description
         ]);
 
         $request->session()->flash('success', 'le tag as bien été créer');
@@ -104,7 +104,7 @@ class TagsController extends Controller
     {
         $this->validate($request,
         [
-            'name'=>"required|unique:tags,name,$tag->name",
+            'name'=>"required|unique:tagging_tags,name,$tag->name",
 
         ]);
 

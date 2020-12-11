@@ -3,13 +3,14 @@
 namespace App\Http\Livewire;
 
 use App\Models\Tag;
+use Conner\Tagging\Model\Tag as ModelTag;
 use Illuminate\Support\Facades\Auth;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
 class TagsTable extends LivewireDatatable
 {
-    public $model = Tag::class;
+    public $model = ModelTag::class;
 
     public function columns()
     {

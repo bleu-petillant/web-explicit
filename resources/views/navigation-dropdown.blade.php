@@ -6,21 +6,9 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-
-                    @if (auth()->user()->role_id == 1)
-                    <a href="{{ route('admin.dashboard') }}">
+                    <a href="{{ route('home') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
-                    @elseif(auth()->user()->role_id == 2)
-                    <a href="{{ route('teacher.dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
-                    </a>
-                    @else
-                    <a href="{{ route('student.dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
-                    </a>
-                    @endif
-
                 </div>
 
                 <!-- Navigation Links -->

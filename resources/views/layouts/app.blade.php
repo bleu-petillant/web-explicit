@@ -15,6 +15,7 @@
         <link href="{{ asset('css/header.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.css' />
+        <link rel="stylesheet" type="text/css" href="{{asset("vendor/cookie-consent/css/cookie-consent.css")}}">
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/home.css') }}">
@@ -24,12 +25,9 @@
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/home.js') }}"></script>
         <script src="{{ asset('js/ressource.js') }}"></script>
-
         @livewireStyles
-
-        <!-- Scripts -->
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
     </head>
+
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
             @livewire('navigation-dropdown')
@@ -52,14 +50,20 @@
                 {{ $slot ?? '' }}
                 @yield('resources')
                 @yield('home')
-                @yield('course')
+                @yield('allcourse')
                 @yield('usage')
                 @yield('contact')
+                @yield('mentions')
+                @yield('polices')
+
             </main>
         </div>
 
         @stack('modals')
 
         @livewireScripts
+        <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+        <script src="{{asset('vendor/cookie-consent/js/cookie-consent.js')}}"></script>
     </body>
 </html>

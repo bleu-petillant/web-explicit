@@ -27,7 +27,7 @@ class ReferenceFactory extends Factory
             'title' => $this->faker->sentence(2),
             'desc' => $this->faker->text(),
             'slug' => Str::slug($this->faker->sentence()),
-            'image'=> $this->faker->imageUrl($width = 200, $height = 200),
+            'image'=> 'https://picsum.photos/200/200?random=' .$this->faker->numberBetween($min = 1, $max = 75) ,
             'category_id' =>$this->faker->numberBetween($min = 1, $max = 4),
             'link'=>'https://www.youtube.com/watch?v=7X8II6J-6mU',
             'pdf'=>'pdf',

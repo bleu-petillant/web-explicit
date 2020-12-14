@@ -9,6 +9,7 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">dashboard admin</a></li>
                         <li class="breadcrumb-item active">créer un nouveau cours</li>
+                        <li class="breadcrumb-item"><a href="{{ route('course.index') }}" >revenir à la liste des cours</a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -19,18 +20,18 @@
                     @csrf
                     <p class="h4 mb-4">créer un nouveau cours</p>
                     <p>
-                        <a href="{{ route('course.index') }}" class="btn btn-info btn-md">revenir à la liste des cours</a></li>
+                        
                     </p>
                     @include('includes.errors')
-                    <label for="category">selectionez une catégorie</label>
+                    {{-- <label for="category">selectionez une catégorie</label>
                     <select name="category" id="category" class="custom-select custom-select-sm my-2">
                         <option value=""selected style="display: none">selectionez une catégorie</option>
                         @foreach ($categories as $cat)
                     <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                         @endforeach
-                    </select>
+                    </select> --}}
                     <hr class="hr-light">
-                    {{-- <div class="form-group">
+                     <div class="form-group">
                         <label class="text-center" for="resources">selectionez une resource</label>
                         <select class="custom-select custom-select-sm my-2" name="resources" id="resources">
                             <option value=""selected style="display: none">selectionez une resource</option>
@@ -38,7 +39,11 @@
                             <option value="{{ $reference->id }}">{{ $reference->slug }}</option>
                         @endforeach
                         </select>
-                    </div> --}}
+                    </div> 
+                        <div class="form-group my-5">
+                                <label for="tags">écrivez vos tags ici <strong class="text-red-800">(5 maximum)</strong>(mots clef court de quelques lettres qui seront associer à cette formation )</label>
+                                <input data-role="tagsinput" type="text" name="tags" id="tags" placeholder="psychologie,cerveau,humain,psy,cas,maladie etc......">
+                        </div>
                     <hr class="hr-light my-2">
                     <div class="custom-file">
                       <input type="file" class="custom-file-input my-2" name="image" id="image" lang="fr">

@@ -1,7 +1,9 @@
 @extends('layouts.admin')
 
 @section('admin.category')
-
+<style>
+  [x-cloak=""] { display: none; }
+</style>
 
    <div class="elegant-color">
        <div class="jumbotron text-center">
@@ -13,11 +15,11 @@
    <div class="row">
       <div class="col-12">
       	<div class="card card-list">
-        <div class="card-header bg-dark py-3 d-flex justify-content-center my-4">
+        {{-- <div class="card-header bg-dark py-3 d-flex justify-content-center my-4">
           <a href="{{route('category.create')}}" class="btn btn-success btn-md px-3 my-0 mr-0 white-text"><i class="fas fa-plus pr-2"></i> ajouter une catégorie</a>
-        </div>
+        </div> --}}
             <div class="card-body">
-                <livewire:category-table searchable="category,name"/>
+                <livewire:category-table searchable="category,name" />
             </div>
         </div>
       </div>

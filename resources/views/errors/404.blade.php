@@ -13,8 +13,7 @@
     <div class="container my-5 px-0 z-depth-1">
 
   <!--Section: Content-->
-  <section class="text-center white-text grey p-5"
-    style="background-image: url(https://mdbootstrap.com/img/Photos/Others/background.jpg);">
+  <section class="text-center white-text grey p-5">
 
     <!--Grid row-->
     <div class="row d-flex justify-content-center">
@@ -22,11 +21,11 @@
       <!--Grid column-->
       <div class="col-md-6">
 
-        <h3 class="font-weight-bold">erreur</h3>
+        <h3 class="font-weight-bold">404</h3>
 
-        <p class="lead">vous n'avez pas accées à cette partie du site, vous devez possèder un compte admin et vous connecter ! </p>
+        <p class="lead">oups !! nous vous avons perdu</p>
 
-      <a href="{{ route('home')}}" class="btn btn-outline-white btn-md waves-effect ml-0" role="button"><i class="fas fa-clone mr-2"></i>retournez sur le site</a>
+      <a href="{{ route('/')}}" class="btn btn-outline-white btn-md waves-effect ml-0" role="button"><i class="fas fa-clone mr-2"></i>retournez sur le site</a>
       </div>
       <!--Grid column-->
     </div>

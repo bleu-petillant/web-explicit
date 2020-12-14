@@ -4,6 +4,8 @@
     <livewire:search />
 </div>
 <section >
+    @if ($courses->count() > 0)
+        
     @foreach ($courses as $course)
     
         <div class="container">
@@ -21,5 +23,9 @@
             </div>
     </div>
         @endforeach
+    @else
+    <p>pas de formation pour le moment</p>
+        @endif
+        
 </section>
 @endsection

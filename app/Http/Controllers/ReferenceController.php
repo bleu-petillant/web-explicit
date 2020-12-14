@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tag;
+
 use App\Models\Category;
 use App\Models\Reference;
 use Conner\Tagging\Model\Tag as ModelTag;
@@ -26,6 +26,7 @@ class ReferenceController extends Controller
     {
         $reference = Reference::all();
         $categories = Category::all();
+
 
 
         if(Auth::user()->role_id == 1)
@@ -80,10 +81,11 @@ class ReferenceController extends Controller
             'meta'=>'required',
             'desc'=>'required',
         ]);
+        $tags= strtolower($request->tags);
         $tags = explode(",", $request->tags);
+        
         $ressources = Reference::create([
             'title' => $request->title,
-            'content' => $request->content,
             'slug' => Str::slug($request->title,'-'),
             'image' => 'image',
             'pdf'=>'pdf',
@@ -93,7 +95,6 @@ class ReferenceController extends Controller
             'teacher_id'=>auth()->user()->id,
             'meta'=> $request->meta,
             'desc'=>$request->desc,
-            'tag_id'=>1,
             'published_at'=> Carbon::now()
         ]);
             $ressources->tag($tags);
@@ -154,7 +155,7 @@ class ReferenceController extends Controller
         $ressources->save();
 
         $request->session()->flash('success', 'votre ressources as bien été publier');
-        return redirect('admin/dashboard');
+        return redirect('admin/reference');
     }
 
     /**
@@ -178,7 +179,7 @@ class ReferenceController extends Controller
     public function edit(Reference $reference)
     {
         $categories = Category::all();
-        $tags = ModelTag::all();
+        $tags = $reference->tagged;
         return view('admin.ressources.edit',compact(['reference','categories','tags']));
     }
 
@@ -193,12 +194,12 @@ class ReferenceController extends Controller
     {
         $this->validate($request,
         [
-            'title'=>'sometimes',
+            'title'=>'required',
             'category'=>'required',
             'link'=>'nullable|active_url',
-            'alt'=>'sometimes',
-            'meta'=>'sometimes',
-            'desc'=>'sometimes',
+            'alt'=>'required',
+            'meta'=>'required',
+            'desc'=>'required',
         ]);
            
             if($reference->isClean('title'))
@@ -211,7 +212,8 @@ class ReferenceController extends Controller
                 
                 $reference->desc  = $reference->desc;
             }
-            
+            $tags= $request->tags;
+
             $reference->title  = $request->title;
             $reference->slug  = Str::slug($reference->title,'-');
             $reference->link = $request->link;
@@ -221,6 +223,7 @@ class ReferenceController extends Controller
             $reference->meta = $request->meta;
             $reference->desc =$request->desc;
             $reference->published_at = Carbon::now();
+            $reference->retag($tags);
 
 
 

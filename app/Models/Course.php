@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Conner\Tagging\Taggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Course extends Model
 {
     use HasFactory;
+    use Taggable;
     protected $guarded = ['created_at','updated_at'];
 
     protected $date = ['published_at'];
@@ -30,8 +32,5 @@ class Course extends Model
     {
         return $this->belongsTo(Reference::class);
     }
-     public function tags()
-    {
-        return $this->belongsToMany(Tag::class);
-    }
+
 }

@@ -1,7 +1,9 @@
 @extends('layouts.admin')
 
 @section('admin.course')
-
+<style>
+  [x-cloak=""] { display: none; }
+</style>
    <div class="elegant-color">
        <div class="jumbotron text-center">
            <h1 class="text-info display-2">Liste des cours</h1>

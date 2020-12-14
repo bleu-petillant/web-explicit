@@ -11,6 +11,13 @@ class ResourcesTable extends LivewireDatatable
 {
     public $model = Reference::class;
 
+    public function builder()
+    {
+        return Reference::query()
+        ->with('tagged')
+        ->with('category');
+        
+    }
     public function columns()
     {
         return [
@@ -26,20 +33,21 @@ class ResourcesTable extends LivewireDatatable
                 ->filterable(),
 
                 Column::name('link')
-                ->label('URL ressources'),
-
-                Column::name('image')
-                ->label('Image'),
+                ->label('Lien de la  ressource'),
                 
                 Column::name('desc')
-                ->label('description'),
+                ->label('Description'),
+
+                Column::name('category.name')
+                ->label('Categories'),
+
+                Column::name('tagged.tag_name')
+                ->label('Tags associés'),
+
 
             Column::callback(['id', 'slug'], function ($id, $slug) {
                 if(Auth::user()->role_id == 1){
                     return view('admin.action.resourcesaction', ['id' => $id, 'slug' => $slug]);
-                }else
-                {
-                    return view('teacher.action.resourcesaction', ['id' => $id, 'slug' => $slug]);
                 }
 
             }),

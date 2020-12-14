@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Category;
 use App\Models\Reference;
-use App\Models\Tag;
+use Conner\Tagging\Model\Tag;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -18,7 +18,7 @@ class CourseController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['super']);
+        $this->middleware(['admin']);
     }
     /**
      * Display a listing of the resource.
@@ -43,7 +43,7 @@ class CourseController extends Controller
         }
         else
         {
-           return view('404.404');
+           return view('errors.permissions');
         }
     }
 
@@ -55,12 +55,10 @@ class CourseController extends Controller
     public function create()
     {
 
-        $categories = Category::all();
         $references = Reference::all();
-        $tags = Tag::all();
         if(Auth::user()->role_id == 1)
         {
-            return view('admin.course.create',compact('categories','references','tags'));
+            return view('admin.course.create',compact('references'));
 
         }else if(Auth::user()->role_id == 2)
         {
@@ -79,31 +77,30 @@ class CourseController extends Controller
         $this->validate($request,
         [
             'title'=>'required|unique:courses,title',
-            'category'=>'required',
             'resources'=>'nullable',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
             'video' => 'mimetypes:video/avi,video/mp4,video/webm,video/mkv,video/wmv,video/movie',
             'alt'=>'required',
             'meta'=>'required',
             'desc'=>'required',
+            'tags'=>'required'
         ]);
-
+        $tags= strtolower($request->tags);
+        $tags = explode(",", $request->tags);
         $course = Course::create([
             'title' => $request->title,
-            'content' => $request->content,
             'slug' => Str::slug($request->title,'-'),
             'image' => 'image',
             'video'=>'video',
             'alt'=>$request->alt,
-            'category_id' => $request->category,
             'teacher_id'=>auth()->user()->id,
             'meta'=> $request->meta,
             'desc'=>$request->desc,
-            'tag_id'=>1,
             'published_at'=> Carbon::now()
         ]);
 
-        $course->tags()->attach($request->tags);
+        $course->tag($tags);
+
 
 
         if($request->hasFile('image') && $request->hasFile('video'))
@@ -157,9 +154,11 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
+        $categories = Category::all();
+        $tags = $course->tagged;
         if(Auth::user()->role_id == 1)
         {
-            return view('admin.course.edit');
+            return view('admin.course.edit',compact(['course','categories','tags']));
         }else if(Auth::user()->role_id == 2)
         {
             return view('errors.permissions');
@@ -175,7 +174,7 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+        
     }
 
     /**

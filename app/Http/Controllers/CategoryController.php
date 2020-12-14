@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Session;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['super']);
+        $this->middleware(['admin']);
 
 
     }

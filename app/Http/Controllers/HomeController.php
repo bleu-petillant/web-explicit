@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Reference;
+use App\Models\Usage;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,12 +13,14 @@ class HomeController extends Controller
     public function index()
     {
         $categories =  Category::all();
-        $references = Reference::with('category')->orderBy('created_at','DESC')->take(4)->get();
-        return view('index',compact('references'));
+        $references = Reference::with('category')->with('tagged')->orderBy('created_at','DESC')->take(4)->get();
+        $usages = Usage::orderBy('created_at','DESC')->take(3)->get();
+        return view('index',compact('references','categories','usages'));
     }
     public function usage()
     {
-        return view('usage');
+        $usages = Usage::all();
+        return view('usage',compact('usages'));
     }
     public function contact()
     {
@@ -27,14 +30,15 @@ class HomeController extends Controller
 
     public function allResources()
     {
-        $references = Reference::with('category')->get();
+        $references = Reference::with('category')->with('tagged')->orderBy('created_at','DESC')->get();
         $categories = Category::all();
         return view('resources',compact('references','categories'));
     }
 
     public function allCourses()
     {
-        return view('allcourses');
+        $courses = Course::all();
+        return view('allcourses',compact('courses'));
     }
 
     public function showResources(request $request,$slug)
@@ -66,5 +70,15 @@ class HomeController extends Controller
         }
 
 
+    }
+
+    public function policies()
+    {
+        return view('police de confidentialite');
+    }
+
+    public function mentions()
+    {
+        return view('mentions');
     }
 }

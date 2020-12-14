@@ -13,6 +13,7 @@ use App\Http\Controllers\ReferenceController;
 use App\Http\Controllers\student\StudentDashboardController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\teacher\TeacherDashboardController;
+use App\Http\Controllers\UsageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,21 +27,21 @@ use App\Http\Controllers\teacher\TeacherDashboardController;
 */
 
 
-// homepage without login needed, it's the homepage off the application
-Route::get('/',[HomeController::class,'index'])->name('home');
-Route::get('/resources',[HomeController::class,'allResources'])->name('ressources.all');
-Route::get('/ressource/{slug}',[HomeController::class,'showResources'])->name('ressource.show');
-Route::get('/cas d usage',[HomeController::class,'usage'])->name('usage');
+//  everybody can access this pages without account
+Route::get('/',[HomeController::class,'index'])->name('home');// home page
+Route::get('/resources',[HomeController::class,'allResources'])->name('ressources.all');// all ressources pages
+Route::get('/cas d usage',[HomeController::class,'usage'])->name('usage');//
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
-
+Route::get('/polices',[HomeController::class,'policies'])->name('police de confidentialite');
+Route::get('/mentions légales',[HomeController::class,'mentions'])->name('mentions');
 // student dashboard
-Route::middleware(['auth:sanctum','verified','student'])->get('student/dashboard',[StudentDashboardController::class,'dashboard'])->name('student.dashboard');
+// Route::middleware(['auth:sanctum','verified','student'])->get('student/dashboard',[StudentDashboardController::class,'dashboard'])->name('student.dashboard');
 
 // admin dashboard
 Route::middleware(['auth:sanctum','verified','admin'])->get('admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
 
 // teacher dashboard
-Route::middleware(['auth:sanctum','verified','teacher'])->get('teacher/dashboard',[TeacherDashboardController::class,'dashboard'])->name('teacher.dashboard');
+Route::middleware(['auth:sanctum','verified','admin'])->get('teacher/dashboard',[TeacherDashboardController::class,'dashboard'])->name('teacher.dashboard');
 
 
 
@@ -55,7 +56,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['super']], function(){
         'course' => CourseController::class,
         'category' => CategoryController::class,
         'tag'=>TagsController::class,
-        'reference'=>ReferenceController::class
+        'reference'=>ReferenceController::class,
+        'usage'=>UsageController::class
     ]);
 
 });
@@ -65,7 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['super']], function(){
 // student route only for student logged
 Route::group(['prefix' => 'student','middleware' => ['student']], function(){
 
-
+    Route::get('/dashboard',[StudentDashboardController::class,'dashboard'])->name('student.dashboard');
 
 });
 

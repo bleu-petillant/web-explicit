@@ -57,6 +57,8 @@
                                  <p class="category video-color ">vidéo</p>
                                  @elseif($reference->category_id == '3')
                                     <p class="category podcast-color ">podcast</p>
+                                    @else
+                                    <p class="category podcast-color ">articles</p>
                                  @endif
                             <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                             <p class="card-text">{{$reference->desc}}</p>
@@ -99,33 +101,24 @@
 <!-- Cas d'usage -->
 <section class="md:w4/4 lg:w-3/4 mx-auto">
     <h2 class="text-4xl font-bold mx-8 my-8">Cas d'usage </h2>
-    <div class="flex laptop-tablette-cas-usage">
-            <a href="" class="card cas-usage cas-usage1  bg-white shadow-lg hover:shadow-xl mx-8">
-                <img class=" card-image w-full h-50 object-cover  cas-usage-miniature" src="img/cas-usage/cas-1.jpg" alt="">
+     <div class="flex laptop-tablette-cas-usage">
+    @if ($usages->count() > 0)
+    @foreach ($usages as $usage)
+    <div class="card cas-usage cas-usage3 bg-white shadow-lg hover:shadow-xl mx-10">
+         <a href="{{route('usage')}}">
+                <img class="card-image w-full h-50 object-cover cas-usage-miniature" src="{{asset($usage->image)}}" alt="{{$usage->alt}}">
                 <div class="play-usage-button button-usage-1"><i class="fas fa-play"></i></div>
                 <div class="py-3 pl-2">
-                    <h3 class="card-title text-2xl font-bold">Recherche et formation <br> en STAPS</h3>
-                    <p class="card-text">Détails sur le cas</p>
+                    <h3 class="card-title text-2xl font-bold">{{$usage->title}}</h3>
+                    <p class="card-text">{{$usage->desc}}</p>
                 </div>
             </a>
-                
-            <a href="" class="card  cas-usage cas-usage2 bg-white shadow-lg hover:shadow-xl mx-8">   
-                <img class=" card-image w-full h-50 object-cover cas-usage-miniature" src="img/cas-usage/cas-3.jpg" alt="">
-                <div class="play-usage-button button-usage-2"><i class="fas fa-play"></i></div>
-                <div class="py-3 pl-2">
-                    <h3 class="card-title text-2xl font-bold">Recherche et formation <br> à la méditation</h3>
-                    <p class="card-text">Détails sur le cas</p>
-                </div>
-            </a>
-                
-            <a href="" class="card  cas-usage cas-usage3 bg-white shadow-lg hover:shadow-xl mx-8">
-                <img class=" card-image w-full h-50 object-cover cas-usage-miniature" src="img/cas-usage/cas-2.jpg" alt="">
-                <div class="play-usage-button button-usage-3"><i class="fas fa-play"></i></div>
-                <div class="py-3 pl-2">
-                    <h3 class="card-title text-2xl font-bold">Formation des pompiers <br> <br> </h3>
-                    <p class="card-text">Détails sur le cas</p>
-                </div>
-            </a>
+    </div>
+    @endforeach
+    @else
+     <h1>pas de cas d 'usage pour le moment</h1>
+    @endif
+   
     </div>
 
     <div class="mobile-cas-usage flex my-2">

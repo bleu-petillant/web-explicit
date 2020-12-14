@@ -10,7 +10,7 @@ class TeacherDashboardController extends Controller
 
     public function __construct()
     {
-       $this->middleware('teacher');
+       $this->middleware('admin');
     }
 
     public function dashboard()

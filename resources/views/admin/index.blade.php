@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 
 @section('admin.student')
+<style>
+  [x-cloak=""] { display: none; }
+</style>
    <div class="space-y-4">
        <div class="block jumbotron bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-center">
            <h1 class="text-teal-900 text-5xl">Liste des Super-Admins</h1>

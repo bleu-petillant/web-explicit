@@ -43,6 +43,8 @@ class Admintables extends LivewireDatatable
                 ->label('Email')
                 ->defaultSort('asc')
                 ->filterable(),
+                
+                Column::delete()
 
         ];
     }

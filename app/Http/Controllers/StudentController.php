@@ -19,7 +19,7 @@ class StudentController extends Controller
     use PasswordValidationRules;
     public function __construct()
     {
-        $this->middleware(['super','teacher']);
+        $this->middleware(['super']);
 
 
     }

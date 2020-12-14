@@ -2,27 +2,17 @@
 @section('usage')
 
 
-<section class="">
-        <h1>Cas d'usage</h1>
-</section>
-
-<section class="cas-1">
-    <img src="" alt="">
-    <h2>RECHERCHE ET FORMATION À LA MÉDITATION</h2>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro mollitia iure veniam dolores voluptates et amet ab error fuga incidunt, expedita suscipit temporibus maxime, asperiores ea. Laborum eos neque molestiae provident deserunt, harum fuga ducimus molestias aspernatur qui nulla saepe aliquid! Reprehenderit natus qui eaque reiciendis autem repudiandae at ex.</p>
-</section>
-
-<section class="cas-2">
-    <h2>RECHERCHE ET FORMATION EN STAPS</h2>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro mollitia iure veniam dolores voluptates et amet ab error fuga incidunt, expedita suscipit temporibus maxime, asperiores ea. Laborum eos neque molestiae provident deserunt, harum fuga ducimus molestias aspernatur qui nulla saepe aliquid! Reprehenderit natus qui eaque reiciendis autem repudiandae at ex.</p>
-    <img src="" alt="">
-</section>
-
-
-<section class="cas-3">
-    <img src="" alt="">
-    <h2>FORMATION DES POMPIERS</h2>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro mollitia iure veniam dolores voluptates et amet ab error fuga incidunt, expedita suscipit temporibus maxime, asperiores ea. Laborum eos neque molestiae provident deserunt, harum fuga ducimus molestias aspernatur qui nulla saepe aliquid! Reprehenderit natus qui eaque reiciendis autem repudiandae at ex.</p>
-</section>
+     @foreach ($usages as $usage)
+        <div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8  my-8">
+        <img class="pdf-card card-image w-full h-40 object-cover" src="{{asset($usage->image)}}" alt="{{$usage->alt}}">
+                <div class="mt-2 py-3 pl-2 pdf-card-content">
+                   <iframe src="{{$usage->link}}" frameborder="0"></iframe>
+                    <h3 class="card-title text-2xl font-bold">{{$usage->title}}</h3>
+                    <p class="card-text">{{$usage->desc}}</p>
+                    <p class="text-center mt-5 mb-5"><a href="{{$usage->link}}" class="pdf-button uppercase mx-auto tracking-wider">Lien</a></p>
+                    <span class=" text-blue-400">articles créer par {{$usage->teacher->name}} </span>
+                </div> 
+        </div>
+    @endforeach
 
 @endsection

@@ -1,0 +1,17 @@
+/**
+ * jquery.tag.css
+ * @license	GPL
+ * @author	zhujie
+ * @site	http://www.cnzhujie.cn
+ * */
+@CHARSET "UTF-8";
+
+.bootstrap-tagsinput .tag {
+  background: #2C93D9 !important;
+-webkit-border-radius:2px !important;
+-moz-border-radius:2px !important;
+border-radius:2px !important;
+color:#fff !important;
+  padding:5px !important;
+  font-size:12px !important;
+}

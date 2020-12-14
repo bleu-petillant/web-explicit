@@ -40,6 +40,7 @@ class TeacherTable extends LivewireDatatable
                 ->label('Email')
                 ->defaultSort('asc')
                 ->filterable(),
+                Column::delete(),
 
             Column::callback(['id', 'name'], function ($id, $name) {
                 if(Auth::user()->role_id == 1)

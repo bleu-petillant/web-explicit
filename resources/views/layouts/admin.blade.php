@@ -11,20 +11,24 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('admin/css/adminlte.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" />
-<link rel="stylesheet" href="{{asset('admin/css/selectize.bootstrap3.css')}}"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.9.2/tailwind.min.css" integrity="sha512-l7qZAq1JcXdHei6h2z8h8sMe3NbMrmowhOl+QkP3UhifPpCW2MC4M0i26Y8wYpbz1xD9t61MLT9L1N773dzlOA==" crossorigin="anonymous" />
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css'/>
+  <link rel="stylesheet" href="{{asset('admin/css/tag.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     @livewireStyles
     <!-- Scripts -->
-    <script src="http://demo.itsolutionstuff.com/plugin/jquery.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
+	
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
+    
 </head>
 <body class="hold-transition sidebar-mini">
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
+
+</head>
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -73,12 +77,6 @@
                     <i class="nav-icon fas fa-book"></i>liste des catégories
             </a>
           </li>
-            <li class="nav-item my-2 bg-orange-500">
-            <a href="{{route('tag.index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-tags"></i>liste des tags
-            </a>
-          </li>
-
             <li class="nav-item my-2 bg-fuchsia">
                 <a href="{{ route('course.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-laptop-code"></i>liste des cours
@@ -87,6 +85,11 @@
             <li class="nav-item my-2 bg-gradient-orange">
                 <a href="{{ route('reference.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-book-open"></i>liste des ressources
+                </a>
+            </li>
+            <li class="nav-item my-2 bg-gradient-orange">
+                <a href="{{ route('usage.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-file"></i>liste des cas d' usages
                 </a>
             </li>
             <li class="nav-item my-2 bg-gradient-purple mb-2">
@@ -184,14 +187,15 @@
         @yield('admin.category')
         @yield('admin.category.create')
         @yield('admin.category.edit')
-        @yield('admin.tag')
-        @yield('admin.tag.edit')
         @yield('admin.resources')
         @yield('admin.resources.create')
         @yield('admin.resources.edit')
         @yield('admin.teacher')
         @yield('admin.teacher.create')
         @yield('admin.teacher.edit')
+        @yield('admin.usage')
+        @yield('admin.usage.create')
+        @yield('admin.usage.edit')
         @yield('teacher.student')
         @yield('teacher.student.create')
         @yield('teacher.course')
@@ -224,7 +228,9 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
-    @stack('modals')
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.js"></script>
+
+@stack('modals')
 
     @livewireScripts
     <script>
@@ -234,22 +240,8 @@
         $(function () {
             window.scrollTo(0, 0);
             bsCustomFileInput.init();
-        });
-        $('#tags').selectize({
-        delimiter: ',',
-        persist: false,
-        valueField: 'tag',
-        labelField: 'tag',
-        searchField: 'tag',
-        options: tags,
-        create: function(input) {
-            return {
-                tag: input
-            }
-        }
+            
     });
-
-
     </script>
 </body>
 </html>

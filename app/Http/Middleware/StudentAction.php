@@ -22,7 +22,7 @@ class StudentAction
             $user = Auth::user();
             if ($user->role_id != 3) {
 
-               return redirect()->to('/404');
+               return redirect()->to('/permissions');
 
             }else
             {

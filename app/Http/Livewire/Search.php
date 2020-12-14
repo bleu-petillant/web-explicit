@@ -2,16 +2,22 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Course;
-use App\Models\Reference;
+use Livewire\Request;
 use Livewire\Component;
+use App\Models\Category;
+use App\Models\Reference;
+use Livewire\WithPagination;
 
 
 class Search extends Component
 {
+    use WithPagination;
     public $query = '';
-    public $references = [];
+    public $category_id = '';
+    public  $references = [];
     public $selectedIndex = 0;
+   
+
 
     public function incrementIndex()
     {
@@ -34,19 +40,27 @@ class Search extends Component
 
     public function updatedQuery()
     {
-        $search = '%'. $this->query .'%';
+        $search = '%'.$this->query.'%';
+        $category_id =  $this->category_id;
         if(strlen($this->query) > 2 ){
-            $this->references = Reference::where('slug','like',$search)
-            ->orWhere('title','like',$search)
-            ->orWhere('desc','like',$search)
-            ->get();
+            if(!empty($this->category_id)){
+                
+                $this->references = Reference::withAnyTag($search)
+                ->orWhere('title','like',$search)
+                     ->whereHas('category', function ($query) use ($category_id) {
+                    $query->where('category_id', $category_id);
+                })->get();
+            }else
+            {
+                $this->references = Reference::withAnyTag($search)->with('category')
+                ->orWhere('slug','like',$search)
+                ->orWhere('title','like',$search)
+                ->get();
+            }
         }
 
     }
-    public function showCourse()
-    {
-        
-    }
+
 
     public function resetIndex()
     {
@@ -54,7 +68,7 @@ class Search extends Component
     }
     public function render()
     {
-
-        return view('livewire.search');
+        $category = Category::all();
+        return view('livewire.search',compact('category'));
     }
 }

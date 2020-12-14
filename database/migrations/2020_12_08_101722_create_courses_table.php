@@ -21,7 +21,6 @@ class CreateCoursesTable extends Migration
             $table->string('image');
             $table->string('video');
             $table->string('alt')->nullable();
-            $table->foreignId('category_id')->constrained('categories');
             $table->foreignId('teacher_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->date('published_at')->nullable();
             $table->string('meta')->nullable();

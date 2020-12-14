@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\Reference;
 use App\Models\Resource;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -29,5 +30,6 @@ class DatabaseSeeder extends Seeder
         //Course::factory()->count(50)->create();
         //Resource::factory()->count(50)->create();
         User::factory()->count(100)->create();
+        Reference::factory()->count(25)->create();
     }
 }

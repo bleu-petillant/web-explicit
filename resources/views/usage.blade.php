@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('usage')
+
+
      @foreach ($usages as $usage)
         <div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8  my-8">
         <img class="pdf-card card-image w-full h-40 object-cover" src="{{asset($usage->image)}}" alt="{{$usage->alt}}">
@@ -12,4 +14,5 @@
                 </div> 
         </div>
     @endforeach
+
 @endsection

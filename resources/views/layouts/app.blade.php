@@ -55,6 +55,7 @@
                 @yield('contact')
                 @yield('mentions')
                 @yield('polices')
+                @yield('course')
 
             </main>
         </div>

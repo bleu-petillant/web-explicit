@@ -84,6 +84,26 @@
                         <option value="0">faux</option>
                     </select>
                 </div>
+
+                <div class="form-group">
+                        <label class="text-center" for="primary_ref">selectionez une ressources d'aide pour cette question</label>
+                        <select  name="primary_ref" id="primary_ref" class="custom-select custom-select-sm my-2">
+                            <option value=""selected style="display: none">selectionez une ressource</option>
+                        @foreach ($references as $ref)
+                            <option value="{{ $ref->id }}">{{ $ref->title }}</option>
+                        @endforeach
+                        </select>
+                </div> 
+                <div class="my-2"></div>
+                <div class="form-group">
+                        <label class="text-center" for="secondary_ref">selectionez une ressource d'aide pour cette question</label>
+                        <select  name="secondary_ref" id="secondary_ref" class="custom-select custom-select-sm my-2">
+                            <option value=""selected style="display: none">selectionez une resoource</option>
+                        @foreach ($references as $ref)
+                            <option value="{{ $ref->id }}">{{ $ref->title }}</option>
+                        @endforeach
+                        </select>
+                </div> 
                     <button class="btn btn-success my-3" type="submit"><span class="fas fa-plus pr-2"></span>publiez votre questions</button>
                 </form>
             </div>

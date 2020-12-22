@@ -94,8 +94,6 @@ class CourseController extends Controller
             'video'=>'video',
             'alt'=>$request->alt,
             'teacher_id'=>auth()->user()->id,
-            'primary_ressource' =>$request->primary_ressource,
-            'secondary_ressource' =>$request->secondary_ressource,
             'meta'=> $request->meta,
             'desc'=>$request->desc,
             'published_at'=> Carbon::now()

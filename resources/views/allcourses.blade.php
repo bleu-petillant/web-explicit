@@ -12,8 +12,7 @@
         <img class="pdf-card card-image w-full h-40 object-cover" src="{{asset($course->image)}}" alt="{{$course->alt}}">
                 <div class="mt-2 py-3 pl-2 pdf-card-content">
                         @foreach ($course->coursesvalidate as $validate)
-                        
-                        <span>formation valider</span>
+                        <span class="fas fa-check">formation valider</span>
                         @endforeach
                     <h3 class="card-title text-2xl font-bold">{{$course->title}}</h3>
                     <p class="card-text">{{$course->desc}}</p>

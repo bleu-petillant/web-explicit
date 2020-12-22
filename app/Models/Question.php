@@ -23,4 +23,8 @@ class Question extends Model
     {
         return  $this->belongsTo(Reponse::class,'id','correct');
     }
+    public function references()
+    {
+        return $this->hasMany(Reference::class);
+    }
 }

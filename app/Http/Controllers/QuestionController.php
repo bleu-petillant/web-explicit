@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Question;
+use App\Models\Reference;
 use App\Models\Reponse;
 use Illuminate\Http\Request;
 
@@ -31,11 +32,10 @@ class QuestionController extends Controller
     public function create()
     {
         $courses = Course::all();
-        
-
+        $references = Reference::all();
         $reponses = Reponse::all();
 
-        return view('admin.questions.create', compact(['reponses','courses']));
+        return view('admin.questions.create', compact(['reponses','courses','references']));
     }
 
     /**
@@ -55,6 +55,7 @@ class QuestionController extends Controller
         $question = Question::create([
             'content' => $request->content,
             'course_id' => $request->course,
+            'references'=>$request->ref,
 
         ]);
 

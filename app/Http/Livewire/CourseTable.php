@@ -30,8 +30,7 @@ class CourseTable extends LivewireDatatable
                 ->filterable(),
             Column::name('desc')
                 ->label('description'),
-            Column::name('primary_ressource')
-                ->label('première ressource'),
+
             
             
 

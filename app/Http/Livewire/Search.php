@@ -15,7 +15,6 @@ class Search extends Component
     public $query = '';
     public $category_id = '';
     public  $references = [];
-    public $ressources = [];
     public $selectedIndex = 0;
    
 
@@ -37,15 +36,6 @@ class Search extends Component
         }
 
         $this->selectedIndex --;
-    }
-
-    public function searchByCat()
-    {
-        $category_id =  $this->category_id;
-
-        $references = Reference::where('category_id' ,$category_id)
-        ->get();
-        return view('livewire.searchbycat',['references' => $references]);
     }
 
 

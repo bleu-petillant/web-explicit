@@ -15,6 +15,7 @@ class Search extends Component
     public $query = '';
     public $category_id = '';
     public  $references = [];
+    public $ressources = [];
     public $selectedIndex = 0;
    
 
@@ -38,15 +39,26 @@ class Search extends Component
         $this->selectedIndex --;
     }
 
+    public function searchByCat()
+    {
+        $category_id =  $this->category_id;
+
+        $references = Reference::where('category_id' ,$category_id)
+        ->get();
+        return view('livewire.searchbycat',['references' => $references]);
+    }
+
+
     public function updatedQuery()
     {
         $search = '%'.$this->query.'%';
         $category_id =  $this->category_id;
-        if(strlen($this->query) > 2 ){
+        if(strlen($this->query) > 1 ){
             if(!empty($this->category_id)){
                 
                 $this->references = Reference::withAnyTag($search)
                 ->orWhere('title','like',$search)
+                 ->orWhere('desc','like',$search)
                      ->whereHas('category', function ($query) use ($category_id) {
                     $query->where('category_id', $category_id);
                 })->get();
@@ -55,6 +67,7 @@ class Search extends Component
                 $this->references = Reference::withAnyTag($search)->with('category')
                 ->orWhere('slug','like',$search)
                 ->orWhere('title','like',$search)
+                ->orWhere('desc','like',$search)
                 ->get();
             }
         }
@@ -69,6 +82,7 @@ class Search extends Component
     public function render()
     {
         $category = Category::all();
-        return view('livewire.search',compact('category'));
+        $ressources = Reference::with('category')->with('tagged')->orderBy('created_at','DESC')->get();
+        return view('livewire.search',compact('category','ressources'));
     }
 }

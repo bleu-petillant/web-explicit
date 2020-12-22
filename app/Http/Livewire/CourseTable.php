@@ -30,6 +30,10 @@ class CourseTable extends LivewireDatatable
                 ->filterable(),
             Column::name('desc')
                 ->label('description'),
+            Column::name('primary_ressource')
+                ->label('première ressource'),
+            
+            
 
             Column::callback(['id', 'slug'], function ($id, $slug) {
                 if(Auth::user()->role_id == 1){

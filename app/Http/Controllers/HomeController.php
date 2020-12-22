@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\CourseUser;
 use App\Models\Reference;
 use App\Models\Usage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -37,25 +39,13 @@ class HomeController extends Controller
 
     public function allCourses()
     {
-        $courses = Course::all();
-        return view('allcourses',compact('courses'));
+        $id =auth()->user()->id;
+
+        $courses = Course::with(['references','students','coursesvalidate'])->get();
+  
+        return view('allcourses',compact(['courses']));
     }
 
-    public function showResources(request $request,$slug)
-    {
-       $references = Reference::with('category')->orderBy('created_at','DESC')->take(4)->get();
-       $categories = Category::all();
-        if($references)
-        {
-           
-            return view('resources',compact('reference'));
-        }else
-        {
-         
-            return redirect('/404');
-        }
-
-    }
 
     public function showCourse(request $request,$slug)
     {

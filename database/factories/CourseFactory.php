@@ -32,8 +32,10 @@ class CourseFactory extends Factory
             'desc' => $this->faker->text(),
             'slug' => Str::slug($this->faker->sentence()),
             'image'=> $this->faker->imageUrl($width = 200, $height = 200),
-            'category_id' => Category::factory(),
-            'user_id' => $this->faker->numberBetween($min = 4, $max = 20),
+            'alt'=>$this->faker->word(),
+            'video' =>'public/storage/course/video/dj_1608552768.mp4',
+            'meta'=>$this->faker->word(),
+            'teacher_id' => $this->faker->numberBetween($min = 4, $max = 20),
         ];
     }
 

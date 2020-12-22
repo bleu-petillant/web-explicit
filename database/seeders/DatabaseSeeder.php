@@ -26,10 +26,8 @@ class DatabaseSeeder extends Seeder
         AdminSeeder::class,
         CategoriesSeeder::class
     ]);
-       
-        //Course::factory()->count(50)->create();
-        //Resource::factory()->count(50)->create();
-        User::factory()->count(100)->create();
+       User::factory()->count(100)->create();
+        Course::factory()->count(20)->create();
         Reference::factory()->count(25)->create();
     }
 }

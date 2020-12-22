@@ -8,13 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     use HasFactory;
+    protected $guarded = ['created_at','updated_at'];
+
 
     public function reponses()
     {
-        return $this->belongsToMany(Reponse::class);
+        return $this->hasMany(Reponse::class);
     }
-    public function video()
+    public function course()
     {
-        return $this->belongsTo(Video::class);
+        return $this->belongsTo(Course::class);
+    }
+    public function reponsecorrect()
+    {
+        return  $this->belongsTo(Reponse::class,'id','correct');
     }
 }

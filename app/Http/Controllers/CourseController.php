@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Category;
+use App\Models\CourseUser;
 use App\Models\Reference;
-use Conner\Tagging\Model\Tag;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -83,7 +83,7 @@ class CourseController extends Controller
             'alt'=>'required',
             'meta'=>'required',
             'desc'=>'required',
-            'tags'=>'required'
+            'tags'=>'required',
         ]);
         $tags= strtolower($request->tags);
         $tags = explode(",", $request->tags);
@@ -94,6 +94,8 @@ class CourseController extends Controller
             'video'=>'video',
             'alt'=>$request->alt,
             'teacher_id'=>auth()->user()->id,
+            'primary_ressource' =>$request->primary_ressource,
+            'secondary_ressource' =>$request->secondary_ressource,
             'meta'=> $request->meta,
             'desc'=>$request->desc,
             'published_at'=> Carbon::now()
@@ -137,8 +139,11 @@ class CourseController extends Controller
 
             $file_movie->move('storage/course/video/',$fileMovieNameToStore);
             $course->video = 'storage/course/video/' .$fileMovieNameToStore;
-            $course->save();
+            
         }
+
+
+        $course->save();
 
         $request->session()->flash('success', 'votre cours as bien été publier');
         return redirect('admin/course');

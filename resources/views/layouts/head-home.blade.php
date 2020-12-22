@@ -12,7 +12,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/home.css') }}" rel="stylesheet">
         <link href="{{ asset('css/ressource.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/header.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.css' />
         <script src="{{ asset('js/app.js') }}"></script>
@@ -30,12 +30,13 @@
        
             @if (Route::has('login'))
                     @auth
+                    @livewire('navigation-dropdown')  
                     <a href="{{route('home')}}" class="text-sm text-gray-700 underline">Home</a>
                         <a href="{{route('ressources.all')}}" class="text-sm text-gray-700 underline">Ressources</a>
                         <a href="{{route('formations.all')}}" class="text-sm text-gray-700 underline">Formation Intéractive</a>
                         <a href="{{route('usage')}}" class="text-sm text-gray-700 underline">Cas  d' usage</a>
                         <a href="{{route('contact')}}" class="text-sm text-gray-700 underline">Contact</a>
-                    @livewire('navigation-dropdown')  
+                    
                     @else
                     <a href="{{route('home')}}" class="text-sm text-gray-700 underline">Home</a>
                         <a href="{{route('ressources.all')}}" class="text-sm text-gray-700 underline">Ressources</a>
@@ -53,6 +54,19 @@
     </body>
 
     <footer>
+        <div>
+            <div class="footer-logo">
+                <img src="" class="" alt="">
+            </div>
+            <div class="legal">
+                <a href="">mention légales</a>
+                <p>© 2020</p>
+            </div>
+            <div class="up">
+
+            </div>
+        </div>
+    
 
     </footer>
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>

@@ -43,7 +43,7 @@ class HomeController extends Controller
     {
         $id =auth()->user()->id;
 
-        $courses = Course::with(['references','students','coursesvalidate'])->get();
+        $courses = Course::with(['references','students','coursesvalidate', 'coursesinvalidate'])->get();
   
         return view('allcourses',compact(['courses']));
     }

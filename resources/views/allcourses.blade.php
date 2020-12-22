@@ -9,11 +9,17 @@
     @if ($courses->count() > 0)
     @foreach ($courses as $course)
         <div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
-        <img class="pdf-card card-image w-full h-40 object-cover" src="{{asset($course->image)}}" alt="{{$course->alt}}">
+        <!-- formation valider -->
+        @foreach ($course->coursesvalidate as $validate)
+            <img class="pdf-card card-image w-full h-40 object-cover" src="{{asset($course->image)}}" alt="{{$course->alt}}"> 
+        @endforeach
+        <!-- formation pas valider -->
+        @foreach ($course->coursesinvalidate as $invalidate)
+            <img class="pdf-card card-image w-full h-40 object-cover" src="{{asset($course->image)}}" alt="{{$course->alt}}">
+        @endforeach
+        
+        
                 <div class="mt-2 py-3 pl-2 pdf-card-content">
-                        @foreach ($course->coursesvalidate as $validate)
-                        <span class="fas fa-check">formation valider</span>
-                        @endforeach
                     <h3 class="card-title text-2xl font-bold">{{$course->title}}</h3>
                     <p class="card-text">{{$course->desc}}</p>
                 </div>

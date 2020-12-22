@@ -144,8 +144,8 @@
 		<li><a  href="javascript:void(0);" data-filter="*">Tout</a></li>
 		<li><a class="podcast-color" href="javascript:void(0);" data-filter="podcast">Podcast</a></li>
 		<li><a class="video-color" href="javascript:void(0);" data-filter="video">video</a></li>
-    <li><a class="pdf-color" href="javascript:void(0);" data-filter="pdf">pdf</a></li>
-    <li><a class="podcast-color" href="javascript:void(0);" data-filter="articles">autres</a></li>
+        <li><a class="pdf-color" href="javascript:void(0);" data-filter="pdf">pdf</a></li>
+        <li><a class="podcast-color" href="javascript:void(0);" data-filter="articles">autres</a></li>
     </ul>
     @if($references->count() > 0)
     

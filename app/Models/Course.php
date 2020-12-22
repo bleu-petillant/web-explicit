@@ -30,6 +30,11 @@ class Course extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function coursesinvalidate()
+    {
+        return $this->belongsToMany(User::class,'course_user')->wherePivot('validate','=',0)->wherePivot('user_id',auth()->user()->id);
+    }
+
     public function coursesvalidate()
     {
         return $this->belongsToMany(User::class,'course_user')->wherePivot('validate','=',1)->wherePivot('user_id',auth()->user()->id);

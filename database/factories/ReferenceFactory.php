@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Category;
+use App\Models\Question;
 use App\Models\Reference;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -34,6 +35,8 @@ class ReferenceFactory extends Factory
             'meta'=>$this->faker->word(),
             'alt'=>$this->faker->word(),
             'teacher_id' => $this->faker->numberBetween($min = 4, $max = 20),
+            'course_id' => $this->faker->numberBetween($min = 1, $max = 20),
+            'question_id' => 1,
         ];
     }
 }

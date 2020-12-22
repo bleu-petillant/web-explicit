@@ -2,23 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Tag;
-use App\Models\Course;
-use App\Models\Category;
-use App\Models\Resource;
-
-
+use App\Models\Usage;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CourseFactory extends Factory
+class usageFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Course::class;
+    protected $model = Usage::class;
 
     /**
      * Define the model's default state.
@@ -28,16 +23,14 @@ class CourseFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->sentence(),
+            'title' => $this->faker->sentence(2),
             'desc' => $this->faker->text(),
             'slug' => Str::slug($this->faker->sentence()),
-            'image'=> $this->faker->imageUrl($width = 200, $height = 200),
-            'alt'=>$this->faker->word(),
-            'video' =>'public/storage/course/video/dj_1608552768.mp4',
+            'image'=> 'https://picsum.photos/200/200?random=' .$this->faker->numberBetween($min = 1, $max = 75) ,
+            'link'=>'https://www.youtube.com/watch?v=7X8II6J-6mU',
             'meta'=>$this->faker->word(),
+            'alt'=>$this->faker->word(),
             'teacher_id' => $this->faker->numberBetween($min = 4, $max = 20),
         ];
     }
-
-
 }

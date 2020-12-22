@@ -79,7 +79,12 @@
           </li>
             <li class="nav-item my-2 bg-fuchsia">
                 <a href="{{ route('course.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-laptop-code"></i>liste des cours
+                    <i class="nav-icon fas fa-laptop-code"></i>liste des formations
+                </a>
+            </li>
+            <li class="nav-item my-2 bg-gradient-indigo">
+                <a href="{{ route('question.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-question"></i>liste des questions
                 </a>
             </li>
             <li class="nav-item my-2 bg-gradient-orange">
@@ -89,7 +94,7 @@
             </li>
             <li class="nav-item my-2 bg-gradient-orange">
                 <a href="{{ route('usage.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-file"></i>liste des cas d' usages
+                    <i class="nav-icon fas fa-briefcase"></i>liste des cas d' usages
                 </a>
             </li>
             <li class="nav-item my-2 bg-gradient-purple mb-2">
@@ -193,6 +198,9 @@
         @yield('admin.teacher')
         @yield('admin.teacher.create')
         @yield('admin.teacher.edit')
+        @yield('admin.questions')
+        @yield('admin.questions.create')
+        @yield('admin.questions.edit')
         @yield('admin.usage')
         @yield('admin.usage.create')
         @yield('admin.usage.edit')

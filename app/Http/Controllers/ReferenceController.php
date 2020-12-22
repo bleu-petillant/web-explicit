@@ -31,7 +31,7 @@ class ReferenceController extends Controller
 
         if(Auth::user()->role_id == 1)
         {
-
+            
             return view('admin.ressources.index',compact('reference','categories'));
 
         }
@@ -77,6 +77,8 @@ class ReferenceController extends Controller
             'pdf'=>'nullable|mimetypes:application/pdf',
             'link'=>'nullable|active_url',
             'tags' => 'required',
+            'course_id' =>'required',
+            'question_id' =>'required',
             'alt'=>'required',
             'meta'=>'required',
             'desc'=>'required',
@@ -93,6 +95,8 @@ class ReferenceController extends Controller
             'alt'=>$request->alt,
             'category_id' => $request->category,
             'teacher_id'=>auth()->user()->id,
+            'course_id' =>$request->course,
+            'question_id' =>$request->question,
             'meta'=> $request->meta,
             'desc'=>$request->desc,
             'published_at'=> Carbon::now()

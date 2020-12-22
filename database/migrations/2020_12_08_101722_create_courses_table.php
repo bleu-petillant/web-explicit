@@ -24,7 +24,6 @@ class CreateCoursesTable extends Migration
             $table->foreignId('teacher_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->date('published_at')->nullable();
             $table->string('meta')->nullable();
-            $table->unsignedTinyInteger('activated')->default(0);
             $table->timestamps();
         });
     }

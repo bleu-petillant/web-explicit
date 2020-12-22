@@ -1,22 +1,19 @@
 
-
     <div class="inline-block relative" x-data="{ open:true }">
     <input @click.away="{ open = false; @this.resetIndex(); }" @click="{ open = true }" type="text"
         class=" input focus:outline-none placeholder-cool-gray-500 " placeholder="Recherche" wire:model="query"
         wire:keydown.arrow-down.prevent="incrementIndex" wire:keydown.arrow-up.prevent="decrementIndex"
-         
     />
 
-    <select name="category_id" id="category_id" wire:model="category_id" @click="{ open = true }" >
+    <select name="category_id" id="category_id" wire:model="category_id" @click="{ open = true }"  >
      <option value="" selected>Toutes les catégories</option>
         @foreach ($category as $cat)
-        <option value="{{$cat->id}}" >{{$cat->name}} </option > 
+        <option  value="{{$cat->id}}" >{{$cat->name}} </option > 
         @endforeach
     </select>
-
-@if (strlen($query) > 2)
-     <section class="ressources-news contenu">
-    <div class="flex mx-auto py-2 news-ressource-cards">
+    <section class="ressources-news contenu">
+        <div class="flex mx-auto py-2 news-ressource-cards">
+@if (strlen($query) > 1)
     @if (count($references)  >  0)
      @foreach ($references as $reference)
      @if ($reference->category_id == '1')
@@ -74,16 +71,15 @@
         </a>
     </div>
      @endif
-
+    
     @endforeach
     
   </div>
     @else
     <span class="text-red-400">0 résultats pour "{{ $query }}"</span>
     @endif
-
 </div>
-
 @endif
+
 
 </div>

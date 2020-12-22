@@ -18,19 +18,33 @@ class Course extends Model
     {
         return $this->belongsTo('App\Models\Category');
     }
+
     public function students()
     {
         return $this->belongsToMany(User::class);
+       
     }
 
     public function teacher()
     {
         return $this->belongsTo(User::class);
     }
+
+    public function coursesvalidate()
+    {
+        return $this->belongsToMany(User::class,'course_user')->wherePivot('validate','=',1)->wherePivot('user_id',auth()->user()->id);
+    }
     
     public function references()
     {
-        return $this->belongsTo(Reference::class);
+        return $this->hasMany(Reference::class);
     }
+
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+
 
 }

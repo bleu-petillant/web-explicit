@@ -32,9 +32,18 @@
                     </select> --}}
                     <hr class="hr-light">
                      <div class="form-group">
-                        <label class="text-center" for="resources">selectionez une resource</label>
-                        <select class="custom-select custom-select-sm my-2" name="resources" id="resources">
-                            <option value=""selected style="display: none">selectionez une resource</option>
+                        <label class="text-center" for="primary_ressource">selectionez la première ressource</label>
+                        <select class="custom-select custom-select-sm my-2" name="primary_ressource" id="primary_ressource">
+                            <option value=""selected style="display: none">selectionez la resource</option>
+                        @foreach ($references as $reference)
+                            <option value="{{ $reference->id }}">{{ $reference->slug }}</option>
+                        @endforeach
+                        </select>
+                    </div> 
+                    <div class="form-group">
+                        <label class="text-center" for="secondary_ressource">selectionez la deuxième ressource</label>
+                        <select class="custom-select custom-select-sm my-2" name="secondary_ressource" id="secondary_ressource">
+                            <option value=""selected style="display: none">selectionez la resource</option>
                         @foreach ($references as $reference)
                             <option value="{{ $reference->id }}">{{ $reference->slug }}</option>
                         @endforeach
@@ -67,6 +76,7 @@
                     <hr class="hr-light">
                     <label for="desc">décrivez votre cours</label>
                     <textarea type="text" id="desc" name="desc" class="form-control my-5 editor" placeholder="décrivez votre cours ici....">{{ old('desc')}}</textarea>
+
                     <button class="btn btn-success my-3" type="submit"><span class="fas fa-plus pr-2"></span>publiez votre cours</button>
                 </form>
             </div>

@@ -31,6 +31,9 @@ class CourseTable extends LivewireDatatable
             Column::name('desc')
                 ->label('description'),
 
+            
+            
+
             Column::callback(['id', 'slug'], function ($id, $slug) {
                 if(Auth::user()->role_id == 1){
                     return view('admin.action.courseaction', ['id' => $id, 'slug' => $slug]);

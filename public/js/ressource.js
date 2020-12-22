@@ -32,16 +32,16 @@ $(document).ready(function(){
         slidesToScroll: 1,
         arrows: false,
         adaptiveHeight: true,
-        dots: true,
-      });
+        dots: false,
+    });
 
       var itemSelector = '.grid-item'; 
 
       var $container = $('#container').isotope({
         itemSelector: itemSelector,
         masonry: {
-          columnWidth: itemSelector,
-          isFitWidth: false
+          columnWidth: 100,
+          fitWidth: true
         }
       });
     
@@ -51,7 +51,7 @@ $(document).ready(function(){
         [720, 4]
       ];
     
-      var itemsPerPageDefault = 12;
+      var itemsPerPageDefault = 6;
       var itemsPerPage = defineItemsPerPage();
       let items = $('.grid-item').length;
       var currentNumberPages = 1;

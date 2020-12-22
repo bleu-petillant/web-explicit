@@ -9,6 +9,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ReferenceController;
 use App\Http\Controllers\student\StudentDashboardController;
 use App\Http\Controllers\TagsController;
@@ -57,7 +58,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['super']], function(){
         'category' => CategoryController::class,
         'tag'=>TagsController::class,
         'reference'=>ReferenceController::class,
-        'usage'=>UsageController::class
+        'usage'=>UsageController::class,
+        'question'=>QuestionController::class
     ]);
 
 });

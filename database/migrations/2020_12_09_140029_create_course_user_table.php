@@ -14,9 +14,9 @@ class CreateCourseUserTable extends Migration
     public function up()
     {
         Schema::create('course_user', function (Blueprint $table) {
-
-            $table->integer('course_id');
-            $table->integer('user_id');
+            $table->id();
+            $table->foreignId('course_id')->constrained('courses');
+            $table->foreignId('user_id')->constrained('users');
             $table->unsignedTinyInteger('activated')->default(0);
             $table->unsignedTinyInteger('validate')->default(0);
 

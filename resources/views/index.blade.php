@@ -42,6 +42,7 @@
   <!-- cartes des ressources -->
     <div class="my-20 w-3/4 mx-auto">
         <div class="flex mx-auto justify-center ressource-cards py-2">
+            @if($references->count() > 0)
             @foreach ($references as $reference)
              <div class="card bg-white shadow-lg w-1/5 hover:shadow-xl mx-8 ">
                 @if ($reference->category_id == '1')
@@ -66,6 +67,9 @@
                 </a>
             </div>
             @endforeach 
+            @else
+             <h4 class=" text-xl text-justify mt-10 px-4 w-3/4">désoler nous n' avons pas de ressources pour le moment</h4>
+            @endif
         </div>
         <div class="flex mx-auto justify-center">
             <div class="w-1/5 mx-8" ></div>

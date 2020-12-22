@@ -31,7 +31,7 @@ class ReferenceController extends Controller
 
         if(Auth::user()->role_id == 1)
         {
-
+            
             return view('admin.ressources.index',compact('reference','categories'));
 
         }

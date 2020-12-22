@@ -15,7 +15,7 @@ class Reference extends Model
     protected $date = ['published_at'];
     public function course()
     {
-        return $this->belongsTo(Course::class);
+        return $this->belongsTo(Course::class,'id');
     }
     
     public function category()

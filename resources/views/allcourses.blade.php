@@ -4,7 +4,6 @@
 <section >
     <div id="all-resource">
         <section class="ressources-news contenu">
-         <h2 class="font-bold text-5xl mt-4 mb-5 mx-8">Nouveautés</h2>
     <div class="flex mx-auto py-2 news-ressource-cards" wire:model="references">
     @if ($courses->count() > 0)
     @foreach ($courses as $course)
@@ -31,37 +30,37 @@
         @foreach ($course->references as $ref) 
         @if ($ref->category_id == 1)
         <a href="{{$ref->link}}">
-         <div class="pdf-card-content card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
-             <p class="category pdf-color ">pdf</p>
+        <div class="pdf-card-content card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
+            <p class="category pdf-color ">pdf</p>
             <p class= "text-center text-xl">{{$ref->title}} </p> <br>
-         </div>
-         </a>
+        </div>
+        </a>
         @elseif($ref->category_id == 2)
         <a href="{{$ref->link}}">
         <div class="video-card-content card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
-             <p class="category video-color ">vidéo</p>
+            <p class="category video-color ">vidéo</p>
                 <p class= "text-center text-xl">{{$ref->title}} </p> <br>
-         </div>
+        </div>
         </a>
         @elseif($ref->category_id == 3)
         <a href="{{$ref->link}}">
             <div class="podcast-card-content card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
-                 <p class="category podcast-color ">podcast</p>
+                <p class="category podcast-color ">podcast</p>
             <p class= "text-center text-xl">{{$ref->title}} </p> <br>
-         </div>
+        </div>
         </a>
         @elseif($ref->category_id == 4)
         <a href="{{$ref->link}}">
         <div class="pdf-card-content card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
-             <p class="category pdf-color ">articles</p>
+            <p class="category pdf-color ">articles</p>
             <p class= "text-center text-xl">{{$ref->title}} </p> <br>
-         </div>
+        </div>
         </a>
         @endif
         @endforeach
-         </div>
+        </div>
         {{-- fin du foreach pour les ressources --}}
-         
+        
     </div>
     @endforeach
     @else

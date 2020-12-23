@@ -15,8 +15,7 @@ class Search extends Component
     public $query = '';
     public $category_id = '';
     public  $references = [];
-    public $selectedIndex = 0;
-   
+    public $selectedIndex = 0; 
 
 
     public function incrementIndex()
@@ -45,11 +44,11 @@ class Search extends Component
         $category_id =  $this->category_id;
         if(strlen($this->query) > 1 ){
             if(!empty($this->category_id)){
-                
+            //    dd($this->query);
                 $this->references = Reference::withAnyTag($search)
                 ->orWhere('title','like',$search)
-                 ->orWhere('desc','like',$search)
-                     ->whereHas('category', function ($query) use ($category_id) {
+                ->orWhere('desc','like',$search)
+                    ->whereHas('category', function ($query) use ($category_id) {
                     $query->where('category_id', $category_id);
                 })->get();
             }else

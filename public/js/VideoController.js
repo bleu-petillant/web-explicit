@@ -1,30 +1,24 @@
-$(document).ready(function()
-{
-    buildObject();
-
-
-});
-
-
-
-
 
 class VideoController
 {
     constructor()
     {
+        $('#video_run')[0].play();
         let curr_question =  $('#currquestion').val();
         let total_question =  $('#totalquestion').val();
+        
         this.Init();
-        this.calulePercentage(curr_question,total_question);
+        //this.calulePercentage(curr_question,total_question);
     }
 
      Init()
     {
         
+        
         $('input:checkbox').attr('unchecked', 'unchecked');
         
        this.initVideoControll();
+       
       
 
     }
@@ -37,7 +31,7 @@ class VideoController
 
     initVideoControll()
     {
-        $('#video_run')[0].play();
+        //$('#video_run')[0].play();
         let reset = $('#reset');
         reset.on('click',function(e){
             e.preventDefault();
@@ -92,8 +86,50 @@ class CheckResponse
 }
 
 
-   function buildObject()
-   {
-       new VideoController();
-        new CheckResponse();
-   }
+class GetData
+{
+    constructor(data,total)
+    {
+        this.data = data;
+        this.total = total;
+        this.storeData(data,total);
+    }
+
+    storeData(data,total)
+    {
+
+        localStorage.clear();
+        localStorage.setItem('questions', JSON.stringify(data));
+        localStorage.setItem('total', total);
+        
+        this.getData();
+    }
+
+    getData()
+    {
+        let questions = JSON.parse(localStorage.getItem('questions'));
+        let total = localStorage.getItem('total');
+        let id = questions.id;
+        let content = questions.content;
+        let course_id = questions.course_id;
+        let question_position = questions.question_position;
+        let references1_cat = questions.references[0].category_id;
+        let references2_cat = questions.references[1].category_id;
+        let references1_title = questions.references[0].title;
+        let references1_desc = questions.references[0].desc;
+        let reponsecorrect = questions.reponses;
+
+        for (let i = 0; i < reponsecorrect.length; i++) {
+            
+            const element = reponsecorrect[i];
+            console.log(element);
+        }
+       
+        video.calulePercentage(question_position,total);
+        //console.log(questions);
+        
+    }
+
+}
+
+

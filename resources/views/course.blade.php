@@ -36,8 +36,8 @@
                 </form>
             </div>
             <div class="gap-4 flex justify-evenly my-10">
-                <div>
-                    <a href="#!" id="reset"><span class="fa-2x fas fa-redo"></span></a>
+                <div id="reset" class="hidden">
+                    <a href="#!"><span class="fa-2x fas fa-redo"></span></a>
                 </div>
                  <div id="valide" class="hidden">          
                         <button type="submit" id="checked" ><i class="fa-2x fas fa-chevron-circle-right"></i></button>
@@ -51,22 +51,16 @@
             <video controls width="800" id="video_run">
                 <source src="{{asset($questions->video)}}" type="video/mp4">
             </video>
-            <div class="text-center">
-                <p class="text-lg">{{$course->desc}} </p>
-                <p class="text-center text-xl">créer par mr {{$course->teacher->name}} </p>
-                <p>{{ \Carbon\Carbon::parse($course->published_at)->diffForHumans() }}</p>
-            </div>
         </div>
           {{--  end aside vidéo   --}}
     </div>
 </section>
-
 <script src="{{asset('js/VideoController.js')}}"></script>
 <script>
-    $(function () {
-
-
-    });
-
+let data = {!! json_encode($questions, JSON_HEX_TAG) !!};
+let total = {!! json_encode($total, JSON_HEX_TAG) !!};
+var getdata = new GetData(data,total);
 </script>
+
+
 @endsection

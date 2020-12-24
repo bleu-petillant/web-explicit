@@ -79,8 +79,8 @@
         </div>
     <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
         <div class="flex-shrink-0 flex items-center">
-            <img class="block lg:hidden h-8 w-auto" src="{{ asset('img/logo/logonoir.png') }}" alt="Workflow">
-            <img class="hidden lg:block h-8 w-auto" src="{{ asset('img/logo/logonoir.png') }}" alt="Workflow">
+            <img class="block lg:hidden w-1/12 w-auto" src="{{ asset('img/logo/logonoir.png') }}" alt="Workflow">
+            <img class="hidden lg:block w-1/12 w-auto" src="{{ asset('img/logo/logonoir.png') }}" alt="Workflow">
         </div>
     </div>
     <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">

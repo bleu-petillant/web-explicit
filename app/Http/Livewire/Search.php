@@ -72,7 +72,7 @@ class Search extends Component
     public function render()
     {
         $category = Category::all();
-        $ressources = Reference::with('category')->with('tagged')->orderBy('created_at','DESC')->get();
-        return view('livewire.search',compact('category','ressources'));
+        $references = Reference::with('category')->with('tagged')->orderBy('created_at','DESC')->get();
+        return view('livewire.search',compact('category','references'));
     }
 }

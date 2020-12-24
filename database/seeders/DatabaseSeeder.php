@@ -29,9 +29,9 @@ class DatabaseSeeder extends Seeder
         CategoriesSeeder::class
     ]);
        User::factory()->count(100)->create();
+       Reference::factory()->count(45)->create();
         Course::factory()->count(20)->create();
         Question::factory()->count(1)->create();
-        Reference::factory()->count(25)->create();
         Usage::factory()->count(5)->create();
         
     }

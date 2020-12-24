@@ -24,6 +24,8 @@ class QuestionFactory extends Factory
         return [
             'content' => $this->faker->sentence(1),
             'course_id' => 1,
+            'video' =>'public/storage/course/video/dj_1608552768.mp4',
+
         ];
     }
 }

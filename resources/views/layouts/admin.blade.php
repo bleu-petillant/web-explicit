@@ -245,6 +245,11 @@
         @if(Session::has('success'))
             toastr.success("{{ Session::get('success') }}");
         @endif
+        @if(Session::has('error'))
+            toastr.error("{{ Session::get('error') }}");
+        @endif
+
+        
         $(function () {
             window.scrollTo(0, 0);
             bsCustomFileInput.init();

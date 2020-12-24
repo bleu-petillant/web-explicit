@@ -35,6 +35,7 @@ Route::get('/cas d usage',[HomeController::class,'usage'])->name('usage');//
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::get('/polices',[HomeController::class,'policies'])->name('police de confidentialite');
 Route::get('/mentions légales',[HomeController::class,'mentions'])->name('mentions');
+
 // student dashboard
 // Route::middleware(['auth:sanctum','verified','student'])->get('student/dashboard',[StudentDashboardController::class,'dashboard'])->name('student.dashboard');
 
@@ -82,6 +83,7 @@ Route::get('/nos formations',[HomeController::class,'allCourses'])->name('format
 
 
 Route::get('/formation/{slug}',[HomeController::class,'showCourse'])->name('formation.show');
+Route::get('/formation/{slug}/episodes/{episodeNumber}', [HomeController::class,'episode'])->name('formation.episode');
 
 });
 

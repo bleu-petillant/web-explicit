@@ -33,7 +33,6 @@ class CourseFactory extends Factory
             'slug' => Str::slug($this->faker->sentence()),
             'image'=> $this->faker->imageUrl($width = 200, $height = 200),
             'alt'=>$this->faker->word(),
-            'video' =>'public/storage/course/video/dj_1608552768.mp4',
             'meta'=>$this->faker->word(),
             'teacher_id' => $this->faker->numberBetween($min = 4, $max = 20),
         ];

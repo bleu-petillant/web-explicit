@@ -33,7 +33,7 @@
                     <hr class="hr-light">
                      <div class="form-group">
                         <label class="text-center" for="primary_ressource">selectionez la première ressource</label>
-                        <select class="custom-select custom-select-sm my-2" name="primary_ressource" id="primary_ressource">
+                        <select class="custom-select custom-select-sm my-2" name="ref[]" id="primary_ressource">
                             <option value=""selected style="display: none">selectionez la resource</option>
                         @foreach ($references as $reference)
                             <option value="{{ $reference->id }}">{{ $reference->slug }}</option>
@@ -42,17 +42,13 @@
                     </div> 
                     <div class="form-group">
                         <label class="text-center" for="secondary_ressource">selectionez la deuxième ressource</label>
-                        <select class="custom-select custom-select-sm my-2" name="secondary_ressource" id="secondary_ressource">
+                        <select class="custom-select custom-select-sm my-2" name="ref[]" id="secondary_ressource">
                             <option value=""selected style="display: none">selectionez la resource</option>
                         @foreach ($references as $reference)
                             <option value="{{ $reference->id }}">{{ $reference->slug }}</option>
                         @endforeach
                         </select>
                     </div> 
-                        <div class="form-group my-5">
-                                <label for="tags">écrivez vos tags ici <strong class="text-red-800">(5 maximum)</strong>(mots clef court de quelques lettres qui seront associer à cette formation )</label>
-                                <input data-role="tagsinput" type="text" name="tags" id="tags" placeholder="psychologie,cerveau,humain,psy,cas,maladie etc......">
-                        </div>
                     <hr class="hr-light my-2">
                     <div class="custom-file">
                       <input type="file" class="custom-file-input my-2" name="image" id="image" lang="fr">
@@ -65,11 +61,6 @@
                     <label for="title">ajouter un titre</label>
                     <input type="text" id="title" name="title" value="{{ old('title')}}" class="form-control my-2" placeholder="titre du cours" required>
                     <hr class="hr-light my-2">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input my-2" name="video" id="video" lang="fr">
-                      <label class="custom-file-label" for="video">Sélectionner une video</label>
-                    </div>
-                    <hr class="hr-light">
                     <label for="meta">ajouter une meta description <small class="text-danger">(max 255 caractères)</small></label>
                     <input type="text" id="meta" name="meta" value="{{ old('title')}}" class="form-control my-2" placeholder="meta description" required>
 

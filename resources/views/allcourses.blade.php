@@ -4,8 +4,8 @@
 <section >
     <div id="all-resource">
         <section class="ressources-news contenu">
-         <h2 class="font-bold text-5xl mt-4 mb-5 mx-8">Nouveautés</h2>
-    <div class="flex mx-auto py-2 news-ressource-cards" wire:model="references">
+         <h2 class="font-bold text-5xl mt-4 mb-5 mx-8">Nos formations</h2>
+    <div class="flex mx-auto py-2 news-ressource-cards">
     @if ($courses->count() > 0)
     @foreach ($courses as $course)
         <div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
@@ -17,15 +17,13 @@
         @foreach ($course->coursesinvalidate as $invalidate)
             <img class="pdf-card card-image w-full h-40 object-cover" src="{{asset($course->image)}}" alt="{{$course->alt}}">
         @endforeach
-        
-        
                 <div class="mt-2 py-3 pl-2 pdf-card-content">
                     <h3 class="card-title text-2xl font-bold">{{$course->title}}</h3>
                     <p class="card-text">{{$course->desc}}</p>
                 </div>
                 <p class= "text-center text-xl">créer par  mr {{$course->teacher->name}} </p> <br>
                 <p>{{ \Carbon\Carbon::parse($course->published_at)->diffForHumans() }}</p> <br>
-                <p class="text-center mt-5 mb-5"><a href="{{route('formation.show',[$course->slug])}}" class="pdf-button uppercase mx-auto tracking-wider">Lien</a></p>
+                <p class="text-center mt-5 mb-5"><a href="{{route('formation.show', ['slug'=> $course->slug])}}" class="pdf-button uppercase mx-auto tracking-wider">Lien</a></p>
         <div class="flex">
         {{-- foreach pour les ressources de chaque cours avec les catégories --}}
         @foreach ($course->references as $ref) 

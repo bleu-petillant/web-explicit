@@ -25,6 +25,6 @@ class Question extends Model
     }
     public function references()
     {
-        return $this->hasMany(Reference::class);
+        return $this->belongsToMany(Reference::class,'question_reference','question_id','reference_id');
     }
 }

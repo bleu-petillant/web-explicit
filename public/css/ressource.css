@@ -11,6 +11,24 @@
   cursor: pointer;
 }
 
+.slick-next, .slick-prev{
+  color: #6d7aea;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.slick-next{
+  position: absolute;
+  top: 35%;
+  right: -5%;
+}
+
+.slick-prev{
+  position: absolute;
+  top: 35%;
+  left: -5%;
+}
+
 .podcast-button{
   color: #cc6699;
   padding: 5px 18px;
@@ -181,7 +199,7 @@
   display: inline-block;
   margin: 13px;
   overflow: hidden;
-  width: 27%;
+  width: 345px;
   height: 500px;
 }
 

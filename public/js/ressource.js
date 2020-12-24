@@ -31,6 +31,8 @@ $(document).ready(function(){
         slidesToShow: 3,
         slidesToScroll: 1,
         arrows: true,
+        nextArrow: '<i class="slick-next fa fa-chevron-right"></i>',
+        prevArrow: '<i class="slick-prev fa fa-chevron-left"></i>',
         adaptiveHeight: true,
         dots: false,
     });

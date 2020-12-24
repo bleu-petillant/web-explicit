@@ -17,7 +17,10 @@ class Search extends Component
     public  $references = [];
     public $selectedIndex = 0; 
 
-
+    public function mount(Reference $references)
+    {
+        $this->references = Reference::with('category')->with('tagged')->orderBy('created_at','DESC')->get();
+    }
     public function incrementIndex()
     {
         if($this->selectedIndex === count($this->references) -1){
@@ -59,6 +62,9 @@ class Search extends Component
                 ->orWhere('desc','like',$search)
                 ->get();
             }
+        }else
+        {
+            $this->references = Reference::with('category')->with('tagged')->orderBy('created_at','DESC')->get();
         }
 
     }
@@ -71,7 +77,7 @@ class Search extends Component
     public function render()
     {
         $category = Category::all();
-        $ressources = Reference::with('category')->with('tagged')->orderBy('created_at','DESC')->get();
-        return view('livewire.search',compact('category','ressources'));
+        $references = Reference::with('category')->with('tagged')->orderBy('created_at','DESC')->get();
+        return view('livewire.search',compact('category','references'));
     }
 }

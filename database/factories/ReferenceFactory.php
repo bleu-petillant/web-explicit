@@ -35,8 +35,7 @@ class ReferenceFactory extends Factory
             'meta'=>$this->faker->word(),
             'alt'=>$this->faker->word(),
             'teacher_id' => $this->faker->numberBetween($min = 4, $max = 20),
-            'course_id' => $this->faker->numberBetween($min = 1, $max = 20),
-            'question_id' => 1,
+
         ];
     }
 }

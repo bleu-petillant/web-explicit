@@ -43,31 +43,57 @@ class HomeController extends Controller
     {
         $id =auth()->user()->id;
 
-        $courses = Course::with(['references','students','coursesvalidate', 'coursesinvalidate'])->get();
+        $courses = Course::with(['students','coursesvalidate', 'coursesinvalidate','references'])->get();
   
         return view('allcourses',compact(['courses']));
     }
 
 
-    public function showCourse(request $request,$slug)
+    public function showCourse($slug)
     {
-        $course = Course::with('references','questions')->where('slug',$slug)->first();
-        $questions = Question::where('course_id',$course->id)->limit(5)->get();
+        $course = Course::with('questions')->where('slug',$slug)->first();
         
-        foreach ($questions as &$question) {
-            $question->reponses = Reponse::where('question_id', $question->id)->get();
-        }
-
-        $references = Reference::with('category')->where('id','=',$course->id)->get();
-        if($course)
+        $total = Question::where('course_id',$course->id)->count();
+        $questions = Question::with('reponses','references','reponsecorrect')
+        ->where('course_id',$course->id)
+        ->where('question_position',1)
+        ->first();
+     
+        if($course && $questions)
         {
-            return view('course',compact(['course','references']));
+            return view('course',['course' => $course,'questions' => $questions,'total'=>$total]);
         }else
         {
             return redirect('/404');
         }
 
 
+    }
+
+    public function episode($slug,$episodeNumber)
+    {
+        $course = Course::with('questions')->where('slug',$slug)->first();
+        if($episodeNumber == null){
+        $questions = Question::with('reponses','references','reponsecorrect')
+        ->where('course_id',$course->id)
+        ->where('question_position',1)
+        ->first();
+        }
+
+
+        $next_question = Question::with('reponses','references','reponsecorrect')
+        ->where('course_id',$course->id)
+        ->where('episode_number',$episodeNumber +1)
+        ->first();
+        
+
+        if($course && $questions && $next_question)
+        {
+            return view('course',['course' => $course,'questions' => $questions,'next_quetion' => $next_question]);
+        }elseif($next_question->count() < 1)
+        {
+            return redirect('/404');
+        }
     }
 
     public function policies()

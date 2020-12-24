@@ -14,10 +14,7 @@ class Course extends Model
 
     protected $date = ['published_at'];
 
-    public function category()
-    {
-        return $this->belongsTo('App\Models\Category');
-    }
+
 
     public function students()
     {
@@ -41,9 +38,8 @@ class Course extends Model
     
     public function references()
     {
-        return $this->hasMany(Reference::class);
+        return $this->belongsToMany(Reference::class,'course_reference','course_id','reference_id');
     }
-
 
     public function questions()
     {

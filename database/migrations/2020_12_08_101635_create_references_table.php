@@ -25,8 +25,6 @@ class CreateReferencesTable extends Migration
             $table->string('meta');
             $table->string('alt')->nullable();
             $table->foreignId('teacher_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('course_id')->constrained('courses')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('question_id')->constrained('questions')->onUpdate('cascade')->onDelete('cascade');
             $table->date('published_at')->nullable();
             $table->string('duration')->nullable()->default('10 min');
             $table->timestamps();

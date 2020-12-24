@@ -15,6 +15,7 @@ use App\Http\Controllers\student\StudentDashboardController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\teacher\TeacherDashboardController;
 use App\Http\Controllers\UsageController;
+use App\Http\Controllers\ValideQuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,6 +85,7 @@ Route::get('/nos formations',[HomeController::class,'allCourses'])->name('format
 
 Route::get('/formation/{slug}',[HomeController::class,'showCourse'])->name('formation.show');
 Route::get('/formation/{slug}/episodes/{episodeNumber}', [HomeController::class,'episode'])->name('formation.episode');
+Route::get('/checkreponse/{id}',[ValideQuestionController::class,'checkIfValide'])->name('checkreponse');
 
 });
 

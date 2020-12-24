@@ -85,7 +85,7 @@ Route::get('/nos formations',[HomeController::class,'allCourses'])->name('format
 
 Route::get('/formation/{slug}',[HomeController::class,'showCourse'])->name('formation.show');
 Route::get('/formation/{slug}/episodes/{episodeNumber}', [HomeController::class,'episode'])->name('formation.episode');
-Route::get('/checkreponse/{id}',[ValideQuestionController::class,'checkIfValide'])->name('checkreponse');
+Route::post('/checkreponse',[ValideQuestionController::class,'checkIfValide'])->name('checkreponse');
 
 });
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
+use App\Models\Reponse;
 use Illuminate\Http\Request;
 
 class ValideQuestionController extends Controller
@@ -12,11 +13,19 @@ class ValideQuestionController extends Controller
         
     }
 
-    public function checkIfValide(Request $request,$id)
+    public function checkIfValide(Request $request)
     {
-        $question = Question::with('reponses')->where('question_id',$id)->first();
-        $reponse_correct = $question->response_correct();
-        $question = json_encode($question);
-        return  $question;
+        $id = $request->question_id;
+        $reponse_done =  $request->r;
+        $reponses = Reponse::where('question_id',$id)->where('correct',1)->first();
+
+        if($reponse_done == 4)
+        {
+           $reponse = "correct";
+        }else{
+            $reponse = $reponse_done;
+        }
+        
+        return  $reponse;
     }
 }

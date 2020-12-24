@@ -16,15 +16,13 @@
         @foreach ($course->coursesinvalidate as $invalidate)
             <img class="pdf-card card-image w-full h-40 object-cover" src="{{asset($course->image)}}" alt="{{$course->alt}}">
         @endforeach
-        
-        
                 <div class="mt-2 py-3 pl-2 pdf-card-content">
                     <h3 class="card-title text-2xl font-bold">{{$course->title}}</h3>
                     <p class="card-text">{{$course->desc}}</p>
                 </div>
                 <p class= "text-center text-xl">créer par  mr {{$course->teacher->name}} </p> <br>
                 <p>{{ \Carbon\Carbon::parse($course->published_at)->diffForHumans() }}</p> <br>
-                <p class="text-center mt-5 mb-5"><a href="{{route('formation.show',[$course->slug])}}" class="pdf-button uppercase mx-auto tracking-wider">Lien</a></p>
+                <p class="text-center mt-5 mb-5"><a href="{{route('formation.show', ['slug'=> $course->slug])}}" class="pdf-button uppercase mx-auto tracking-wider">Lien</a></p>
         <div class="flex">
         {{-- foreach pour les ressources de chaque cours avec les catégories --}}
         @foreach ($course->references as $ref) 

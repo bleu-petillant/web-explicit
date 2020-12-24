@@ -79,19 +79,15 @@ class CourseController extends Controller
             'title'=>'required|unique:courses,title',
             'resources'=>'nullable',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
-            'video' => 'mimetypes:video/avi,video/mp4,video/webm,video/mkv,video/wmv,video/movie',
             'alt'=>'required',
             'meta'=>'required',
             'desc'=>'required',
-            'tags'=>'required',
         ]);
-        $tags= strtolower($request->tags);
-        $tags = explode(",", $request->tags);
+
         $course = Course::create([
             'title' => $request->title,
             'slug' => Str::slug($request->title,'-'),
             'image' => 'image',
-            'video'=>'video',
             'alt'=>$request->alt,
             'teacher_id'=>auth()->user()->id,
             'meta'=> $request->meta,
@@ -99,9 +95,123 @@ class CourseController extends Controller
             'published_at'=> Carbon::now()
         ]);
 
-        $course->tag($tags);
+ 
+        foreach (request('ref') as $ref) {
+            $course -> references() ->attach($ref);
+        }
+
+        //$course->references()->sync($ref_id);
 
 
+
+        if($request->hasFile('image'))
+        {
+
+            $file = $request->file('image');
+
+            // Get filename with extension
+            $filenameWithExt = $file->getClientOriginalName();
+ 
+            // Get file path
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+ 
+            // Remove unwanted characters
+            $filename = preg_replace("/[^A-Za-z0-9 ]/", '', $filename);
+            $filename = preg_replace("/\s+/", '-', $filename);
+
+            // Get the original image extension
+            $extension = $file->getClientOriginalExtension();
+            // Create unique file name
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            $file->move('storage/course/thumb/',$fileNameToStore);
+            $course->image = 'storage/course/thumb/' .$fileNameToStore;
+            
+        }
+
+
+        $course->save();
+
+        $request->session()->flash('success', 'votre cours as bien été publier');
+        return redirect('admin/course');
+    }
+
+
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Course  $course
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Course $course)
+    {
+    
+     
+        $references = Reference::all();
+        if(Auth::user()->role_id == 1)
+        {
+            return view('admin.course.edit',compact(['course','references']));
+        }else if(Auth::user()->role_id == 2)
+        {
+            return view('errors.permissions');
+        }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Course  $course
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Course $course)
+    {
+        $this->validate($request,
+        [
+            'title'=>'required',
+            'alt'=>'required',
+            'meta'=>'required',
+            'desc'=>'required',
+        ]);
+           
+            if($course->isClean('title'))
+            {
+                
+                $course->title  = $course->title;
+            }
+            if($course->isClean('desc'))
+            {
+                
+                $course->desc  = $course->desc;
+            }
+            if($course->isClean('meta'))
+            {
+                
+                $course->title  = $course->title;
+            }
+            if($course->isClean('alt'))
+            {
+                
+                $course->desc  = $course->desc;
+            }
+            if($course->isClean('ref'))
+            {
+                
+            }
+
+            foreach (request('ref') as $ref) {
+
+                $course -> references() ->attach($ref);
+            }
+
+
+            $course->title  = $request->title;
+            $course->slug  = Str::slug($course->title,'-');
+            $course->alt = $request->alt;
+            $course->teacher_id =auth()->user()->id;
+            $course->meta = $request->meta;
+            $course->desc =$request->desc;
+            $course->published_at = Carbon::now();
 
         if($request->hasFile('image') && $request->hasFile('video'))
         {
@@ -140,44 +250,11 @@ class CourseController extends Controller
             
         }
 
-
         $course->save();
 
-        $request->session()->flash('success', 'votre cours as bien été publier');
+        $request->session()->flash('success', 'cette formation as bien été modifier');
         return redirect('admin/course');
-    }
 
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Course  $course
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Course $course)
-    {
-        $categories = Category::all();
-        $tags = $course->tagged;
-        if(Auth::user()->role_id == 1)
-        {
-            return view('admin.course.edit',compact(['course','categories','tags']));
-        }else if(Auth::user()->role_id == 2)
-        {
-            return view('errors.permissions');
-        }
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Course  $course
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Course $course)
-    {
-        
     }
 
     /**

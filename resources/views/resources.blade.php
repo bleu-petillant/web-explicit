@@ -30,7 +30,7 @@
                         <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
                         <p class="card-text">{{$ref->desc}}</p>
                     </div>
-                    <p class="text-center mt-5 mb-5"><a href="{{asset($ref->pdf)}}" class=" pdf-button uppercase mx-auto tracking-wider">Lien</a></p>
+                    <p class="text-center mt-5 mb-5"><a href="{{asset($ref->pdf)}}" class=" pdf-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
                     </a>    
             </div>
             @elseif($ref->category_id == '2')
@@ -42,8 +42,8 @@
                         <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
                         <p class="card-text">{{$ref->desc}}</p>
                     </div>
-                    <p class="text-center mt-5 mb-5"><a href="{{asset($ref->link)}}" class=" video-button uppercase mx-auto tracking-wider">Lien</a></p>
-                </a>    
+                    <p class="text-center mt-5 mb-5"><a href="{{asset($ref->link)}}" class=" video-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
+                    </a>    
             </div>
             @elseif($ref->category_id == '3')
             <div class="grid-item podcast-card card bg-white shadow-lg hover:shadow-xl " data-filter="podcast">
@@ -54,8 +54,8 @@
                         <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
                         <p class="card-text">{{$ref->desc}}</p>
                     </div>
-                    <p class="text-center mt-5 mb-5"><a href="{{asset($ref->link)}}" class=" podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
-                </a>    
+                    <p class="text-center mt-5 mb-5"><a href="{{asset($ref->link)}}" class=" podcast-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
+                    </a>    
             </div>
             @elseif($ref->category_id == '4')
             <div class="grid-item podcast-card card bg-white shadow-lg hover:shadow-xl " data-filter="articles">
@@ -66,8 +66,8 @@
                         <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
                         <p class="card-text">{{$ref->desc}}</p>
                     </div>
-                    <p class="text-center mt-5 mb-5"><a href="{{asset($ref->link)}}" class=" podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
-                </a>    
+                    <p class="text-center mt-5 mb-5"><a href="{{asset($ref->link)}}" class=" podcast-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
+                    </a>    
             </div>
         @endif
     @endforeach

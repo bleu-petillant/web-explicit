@@ -7,7 +7,8 @@
                 <div class="flex" > 
                         <div class="search_field">    
                                 <i class="fas fa-search"></i>
-                                <input id="searchBar"  @click="{ open = true }" type="text"
+
+                                <input id="searchBar" @click="{ open = true }" type="text"
                                 class="input focus:outline-none placeholder-cool-gray-500 " placeholder="Recherche" wire:model="query"
                                 />
                         </div>

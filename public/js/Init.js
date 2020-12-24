@@ -1,13 +1,3 @@
-$(document).ready(function()
-{
-    buildObject();
-    
-
+$(document).ready(function () {
+    new VideoController();
 });
-
-   function buildObject()
-   {
-       video = new VideoController();
-        new CheckResponse();
-    
-   }

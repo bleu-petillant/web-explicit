@@ -15,10 +15,12 @@ class Search extends Component
     public $query = '';
     public $category_id = '';
     public  $references = [];
-    public $selectedIndex = 0;
-   
+    public $selectedIndex = 0; 
 
-
+    public function mount(Reference $references)
+    {
+        $this->references = Reference::with('category')->with('tagged')->orderBy('created_at','DESC')->get();
+    }
     public function incrementIndex()
     {
         if($this->selectedIndex === count($this->references) -1){
@@ -45,11 +47,11 @@ class Search extends Component
         $category_id =  $this->category_id;
         if(strlen($this->query) > 1 ){
             if(!empty($this->category_id)){
-                
+            //    dd($this->query);
                 $this->references = Reference::withAnyTag($search)
                 ->orWhere('title','like',$search)
-                 ->orWhere('desc','like',$search)
-                     ->whereHas('category', function ($query) use ($category_id) {
+                ->orWhere('desc','like',$search)
+                    ->whereHas('category', function ($query) use ($category_id) {
                     $query->where('category_id', $category_id);
                 })->get();
             }else
@@ -60,6 +62,9 @@ class Search extends Component
                 ->orWhere('desc','like',$search)
                 ->get();
             }
+        }else
+        {
+            $this->references = Reference::with('category')->with('tagged')->orderBy('created_at','DESC')->get();
         }
 
     }

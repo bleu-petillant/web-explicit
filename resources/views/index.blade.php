@@ -20,7 +20,6 @@
                 Pellentesque nisl dolor, varius et est non, aliquam aliquet ligula. Fusce a auctor sapien. Aenean fermentum,urna in volutpatull amcorper, ante dolorrhoncus dui, et tristique nunc risus et ex. In hachab itasse platead ictumst. Donec volutpat ullamcorper, ante dolor rhoncus dui, 
                 </p>             
     </div>
-   
 <img class="flex-initial present-image" src="img/present-image-laptop.png" alt=""> 
 
 </section>

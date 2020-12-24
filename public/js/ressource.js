@@ -30,7 +30,7 @@ $(document).ready(function(){
         infinite: true,
         slidesToShow: 3,
         slidesToScroll: 1,
-        arrows: false,
+        arrows: true,
         adaptiveHeight: true,
         dots: false,
     });
@@ -175,9 +175,6 @@ $(document).ready(function(){
         setPagination();
         goToPage(1);
       });
-
-
-
 
 
 

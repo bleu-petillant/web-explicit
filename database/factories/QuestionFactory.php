@@ -25,6 +25,7 @@ class QuestionFactory extends Factory
             'content' => $this->faker->sentence(1),
             'course_id' => 1,
             'video' =>'public/storage/course/video/dj_1608552768.mp4',
+            'indice'=>$this->faker->sentence(5),
 
         ];
     }

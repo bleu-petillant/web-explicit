@@ -20,6 +20,7 @@ class CreateQuestionsTable extends Migration
             $table->unsignedInteger('episode_number')->default(0);
             $table->unsignedInteger('question_position')->default(0);
             $table->string('video');
+            $table->string('indice')->nullable();
             $table->timestamps();
         });
     }

@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\User;
+use App\Models\Question;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Auth\MustVerifyEmail;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use App\Actions\Fortify\PasswordValidationRules;
+
 
 class AdminController extends Controller
 {
@@ -77,6 +80,7 @@ class AdminController extends Controller
             'password' => Hash::make($request['password']),
             'role_id' => $request['role_id'],
         ]);
+        $admin->students()->attach($admin);
         $request->session()->flash('success', 'l\'admin a été créée avec succès');
         return redirect()->to('admin/list');
 
@@ -85,5 +89,7 @@ class AdminController extends Controller
 
 
     }
+
+
 
 }

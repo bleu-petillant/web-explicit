@@ -23,6 +23,7 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
+
             'prenom' => $this->faker->firstName,
             'name' => $this->faker->lastName,
             'email' => $this->faker->unique()->safeEmail,
@@ -30,6 +31,7 @@ class UserFactory extends Factory
             'role_id'=>'3',
             'password' => bcrypt('123456'), // password
             'remember_token' => Str::random(10),
+
         ];
     }
 }

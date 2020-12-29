@@ -81,6 +81,7 @@ class TeacherController extends Controller
             'password' => Hash::make($request['password']),
             'role_id' => $request['role_id'],
         ]);
+        $teacher->students()->attach($teacher);
 
         $request->session()->flash('success', 'le professeur a été créée avec succès');
         return redirect()->to('admin/teacher');

@@ -7,8 +7,8 @@ use App\Models\Course;
 use App\Models\Category;
 use App\Models\Question;
 use App\Models\Reference;
-use App\Models\CourseUser;
 use App\Models\Reponse;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,59 +42,55 @@ class HomeController extends Controller
     public function allCourses()
     {
         $id =auth()->user()->id;
+        
 
-        $courses = Course::with(['students','coursesvalidate', 'coursesinvalidate','references'])->get();
-  
+        $courses = Course::with(['coursesvalidate', 'coursesinvalidate','references'])->get();
         return view('allcourses',compact(['courses']));
     }
 
-
+     
     public function showCourse($slug)
     {
-        $course = Course::with('questions')->where('slug',$slug)->first();
+       if($slug != null){
+
+            $course = Course::with('questions')->where('slug',$slug)->first();
+            $id = $course->id;
+            $user = Auth::user();
+            $user_id = $user->id;
+            $total = Question::where('course_id',$course->id)->count();
+            $validate = Course::find($id)->users()->first();
+
+
+            if($validate == null )
+            {
+                $course->users()->attach($course,['course_id'=>$id,'user_id'=>$user_id,'activated'=>0,'question_position' => 1 ,'validate'=>0]);
+                $validate = Course::find($id)->students()->first();
+                $position = $validate->pivot->question_position;
+            }else{
+                $position = $validate->pivot->question_position;
+            }
+
+
+    
+               
+         
+                $nextslug = Course::where('id', '>', $course->id)->orderBy('id','desc')->first();
+                $total = Question::where('course_id',$course->id)->count();
+                $questions = Question::with('reponses','references','reponsecorrect')
+                ->where('course_id',$course->id)
+                ->where('question_position',$position)
+                ->first();
+                if($course && $questions)
+                {
+                    return view('course',['course' => $course,'questions' => $questions,'total'=>$total,'nextslug'=>$nextslug,'position'=>$position]);
+                }
+            
         
-        $total = Question::where('course_id',$course->id)->count();
-        $questions = Question::with('reponses','references','reponsecorrect')
-        ->where('course_id',$course->id)
-        ->where('question_position',1)
-        ->first();
-     
-        if($course && $questions)
-        {
-            return view('course',['course' => $course,'questions' => $questions,'total'=>$total]);
-        }else
-        {
-            return redirect('/404');
-        }
-
-
+    }else{
+        return redirect('/nos formations');
     }
-
-    public function episode($slug,$episodeNumber)
-    {
-        $course = Course::with('questions')->where('slug',$slug)->first();
-        if($episodeNumber == null){
-        $questions = Question::with('reponses','references','reponsecorrect')
-        ->where('course_id',$course->id)
-        ->where('question_position',1)
-        ->first();
-        }
-
-
-        $next_question = Question::with('reponses','references','reponsecorrect')
-        ->where('course_id',$course->id)
-        ->where('episode_number',$episodeNumber +1)
-        ->first();
-        
-
-        if($course && $questions && $next_question)
-        {
-            return view('course',['course' => $course,'questions' => $questions,'next_quetion' => $next_question]);
-        }elseif($next_question->count() < 1)
-        {
-            return redirect('/404');
-        }
-    }
+    
+}
 
     public function policies()
     {

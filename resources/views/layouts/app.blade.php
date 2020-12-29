@@ -19,6 +19,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/formation.css') }}">
          <script src="https://kit.fontawesome.com/804c3fbc70.js" ></script>
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
@@ -39,7 +40,6 @@
                         <a href="{{route('formations.all')}}" class="text-sm text-gray-700 underline">Formation Intéractive</a>
                         <a href="{{route('usage')}}" class="text-sm text-gray-700 underline">Cas  d' usage</a>
                         <a href="{{route('contact')}}" class="text-sm text-gray-700 underline">Contact</a>
-                       
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     {{ $header ?? '' }}
                 </div>

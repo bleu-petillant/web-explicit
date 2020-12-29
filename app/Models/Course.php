@@ -28,8 +28,14 @@ class Course extends Model
 
     public function coursesinvalidate()
     {
-        return $this->belongsToMany(User::class,'course_user')->wherePivot('validate','=',0)->wherePivot('user_id',auth()->user()->id);
+        return $this->belongsToMany(User::class,'course_user')->wherePivot('validate','!=',1)->wherePivot('user_id',auth()->user()->id);
     }
+
+    public function coursesnull()
+    {
+        return $this->belongsToMany(User::class,'course_user')->wherePivot('validate','=',null)->wherePivot('user_id',auth()->user()->id);
+    }
+
 
     public function coursesvalidate()
     {

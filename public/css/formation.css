@@ -1,0 +1,81 @@
+/*ALL course*/
+
+#formation_title{
+    background-color: #6d7aea;
+    display: flex;
+    
+}
+
+.link-formation{
+    cursor: pointer;
+}
+
+.selected-choice{
+    font-weight: bold;
+    padding-left: 5px;
+
+}
+
+
+.selected-choice::before{
+    content: "";
+    position: absolute;
+    height: 2rem;
+    margin-left: -10px;
+    width: 7px;
+    background-color: rgba(109, 122, 234, 1);
+
+}
+
+.category-course-ref{
+    margin-left: 10px;
+}
+
+.grille{
+    max-width: 1260px;
+    width: 80%;
+    height: auto;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 420px);
+}
+
+.grille-item{
+    width: 400px;
+    margin: 10px;
+}
+
+.course-image{
+    filter: grayscale(1);
+}
+
+.formation-card{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+
+
+.overlay-undone{
+    background-color:  rgba(109, 122, 234, 0.68);
+    z-index: 6;
+    width: 400px;
+}
+
+.overlay-validate{
+    background-color: rgba(117, 208, 86, 0.68) ;
+    z-index: 6;
+    width: 400px;
+}
+
+.overlay-unvalidate{
+    background-color: rgba(239, 226, 46, 0.68) ;
+    z-index: 6;
+    width: 400px;
+}
+
+.text-reference-formation{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+/*Unique Course*/

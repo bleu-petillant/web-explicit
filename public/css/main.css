@@ -1,7 +1,9 @@
 
 
 /* footer */
-
+body{
+    overflow-x: hidden;
+}
 
 footer{
     background-color: #6d7aea;

@@ -10,9 +10,7 @@
         <div class="w-1/4">
             <p class="text-white">Pellentesque nisl dolor, varius et est non,<br> aliquam aliquet ligula. Fusce a auctor <br> sapien.
             Ante dolor rhoncus dui, et tristique nunc <br> risus et ex.</p>
-        </div>
-        
-        
+        </div>        
     </div> 
 </section>
 

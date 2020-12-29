@@ -15,16 +15,16 @@ class Course extends Model
     protected $date = ['published_at'];
 
 
-
-    public function students()
-    {
-        return $this->belongsToMany(User::class);
-    }
-
     public function teacher()
     {
         return $this->belongsTo(User::class);
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class,'course_user','course_id', 'user_id')->withPivot('activated','question_position','validate');
+    }
+
 
     public function coursesinvalidate()
     {
@@ -41,7 +41,17 @@ class Course extends Model
     {
         return $this->belongsToMany(User::class,'course_user')->wherePivot('validate','=',1)->wherePivot('user_id',auth()->user()->id);
     }
+    public function activated()
+    {
+        return $this->belongsToMany(User::class,'course_user')->wherePivot('activated',1)->wherePivot('user_id',auth()->user()->id);
+    }
+
+    public function unactivated()
+    {
+        return $this->belongsToMany(User::class,'course_user')->wherePivot('activated',0)->wherePivot('user_id',auth()->user()->id);
+    }
     
+
     public function references()
     {
         return $this->belongsToMany(Reference::class,'course_reference','course_id','reference_id');
@@ -51,6 +61,8 @@ class Course extends Model
     {
         return $this->hasMany(Question::class);
     }
+
+
 
 
 }

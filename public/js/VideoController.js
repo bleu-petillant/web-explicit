@@ -6,6 +6,7 @@ class VideoController
         let videoplayer = $('#video_run')[0];
         
         this.Init();
+        
         videoplayer.play();
         this.initVideoControll();
         
@@ -14,9 +15,17 @@ class VideoController
      Init()
     {
     
-        $('input:checkbox').attr('unchecked', 'unchecked');
-        
+        $( ".form-checkbox" ).prop( "checked", false );
+        $('#reset').hide();
+         $('#valide').hide();
 
+    }
+
+    Reset(){
+  
+        $('#reset').show();
+        $('#valide').hide();
+        $( ".form-checkbox" ).prop( "checked", false );
     }
 
 
@@ -24,6 +33,7 @@ class VideoController
     {
         
         let reset = $('#reset');
+        $('#reset').hide();
         reset.on('click',function(e){
             e.preventDefault();
             $('#video_run')[0].load();

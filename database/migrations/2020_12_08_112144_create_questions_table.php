@@ -17,7 +17,6 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->string('content');
             $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->unsignedInteger('episode_number')->default(0);
             $table->unsignedInteger('question_position')->default(0);
             $table->string('video');
             $table->string('indice')->nullable();

@@ -34,9 +34,6 @@
                         <label for="position">numèro de la question</label>
                         <select name="position" id="position"  class="custom-select custom-select-sm my-2">
                             <option value=""selected style="display: none">selectionez le numèro de la question</option>
-                        @for ($i = 1; $i <  11; $i++)
-                                <option value="<?php echo $i;?>"><?php echo $i;?></option>
-                        @endfor
                         </select>
                     </div>
                     <div class="custom-file">
@@ -117,10 +114,56 @@
                         @endforeach
                         </select>
                 </div> 
+
+                <div class="form-group">
+                    <label for="indice" class="control-label">indices pour aider les éléves :</label>
+                    <textarea type="text" id="indice" name="indice" class="form-control" placeholder="écrivez votre indice"></textarea>
+                </div>
                     <button class="btn btn-success my-3" type="submit"><span class="fas fa-plus pr-2"></span>publiez votre questions</button>
                 </form>
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            let courseSelect = $('#course');
+            let positionSelect = $('#position');
+            let posArray = [];
+      
+            courseSelect.on('change', function () {
+                let course_id = $(this).val();
+                $.ajaxSetup({
+                    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+                }),
+                $.ajax({
+                url: '/get_question_position',
+                type: "POST",
+                data:{
+                    course_id:course_id,
+                 },
+                    success: function (response) {
+                        if(response)
+                        {
+                             positionSelect.html("");
+                             posArray = [];
+              
+                           
+                            for (let i = 0; i  < response.length;  i++) {
+                                let pos = response[i].question_position;
+                                 posArray.push(pos);
+                               positionSelect.append(' <option value="'+question_possible+'">'+question_possible+'</option>');
+                               
+                                
+                            }
+                           console.log(posArray);
 
+                        }else
+                        {
+                            'error server'
+                        }
+                }
+            });
+        });
+    });
+    </script>
 @endsection

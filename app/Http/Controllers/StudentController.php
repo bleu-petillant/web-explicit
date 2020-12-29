@@ -89,6 +89,7 @@ class StudentController extends Controller
             'password' => Hash::make($request['password']),
             'role_id' => $request['role_id'],
         ]);
+        $student->students()->attach($student);
         $request->session()->flash('success', 'l\'étudient a été créée avec succès');
         return redirect()->to('admin/student');
 

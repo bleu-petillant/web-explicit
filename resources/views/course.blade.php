@@ -25,7 +25,9 @@
                         @csrf
                     </div>
                     <input type="hidden" name="question_id" id="question_id">
-                    <input type="hidden" name="position" id="position">
+                    <input type="hidden" name="position" id="position" value="{{$position}}">
+                    <input type="hidden" name="course_id" id="course_id">
+                    <input type="hidden" id="slug" name="slug" value="{{$course->slug}}">
                 </form>
             </div>
             <div class="gap-4 flex justify-evenly my-10">
@@ -35,13 +37,14 @@
                  <div id="valide" class="hidden">          
                         <button type="submit" id="check" ><i class="fa-2x fas fa-chevron-circle-right"></i></button>
                 </div>
+
             </div>
            </div>
         <div>
 
             {{--  start aside vidéo   --}}
         <div class="container">
-            <video controls width="800" id="video_run">
+            <video controls playsinline autoplay width="800" id="video_run">
                 <source src="{{asset($questions->video)}}" type="video/mp4">
             </video>
         </div>
@@ -49,14 +52,15 @@
     </div>
 </section>
 <script src="{{asset('js/GetData.js')}}"></script>
-<script src="{{asset('js/Init.js')}}"></script>
-<script src="{{asset('js/VideoController.js')}}"></script>
 <script src="{{asset('js/CheckReponse.js')}}"></script>
+<script src="{{asset('js/VideoController.js')}}"></script>
 <script>
 let data = {!! json_encode($questions, JSON_HEX_TAG) !!};
 let total = {!! json_encode($total, JSON_HEX_TAG) !!};
+
 var getdata = new GetData(data,total);
 var reponse = new CheckResponse();
+var  video = new VideoController();
 
 </script>
 

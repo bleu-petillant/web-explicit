@@ -32,7 +32,7 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        $courses = Course::all();
+        $courses = Course::with('questions','users')->get();
         $references = Reference::all();
         $reponses = Reponse::all();
     
@@ -55,6 +55,7 @@ class QuestionController extends Controller
             'content'=>'required',
             'course'=>'required',
             'video' => 'mimetypes:video/avi,video/mp4,video/webm,video/mkv,video/wmv,video/movie',
+            'indice'=>'required',
             'question_position'=>'integer|'
         ]);
         $count = question::where('question_position' ,$pos)->
@@ -71,6 +72,7 @@ class QuestionController extends Controller
                  'content' => $request->content,
                 'course_id' => $request->course,
                  'video'=>'video',
+                 'indice'=>$request->indice,
                  'question_position'=>$request->position,
              ]);
 

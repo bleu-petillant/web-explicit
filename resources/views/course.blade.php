@@ -30,6 +30,9 @@
                     <input type="hidden" id="slug" name="slug" value="{{$course->slug}}">
                 </form>
             </div>
+            <div id="indice"></div>
+            <div id="ressources" class="flex"></div>
+            <div id="nextcourse"></div>
             <div class="gap-4 flex justify-evenly my-10">
                 <div id="reset" class="hidden">
                     <a href="#!"><span class="fa-2x fas fa-redo"></span></a>

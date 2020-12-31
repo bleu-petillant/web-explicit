@@ -17,7 +17,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories =  Category::all();
-        $references = Reference::with('category')->with('tagged')->orderBy('created_at','DESC')->take(4)->get();
+        $references = Reference::with('category')->with('tagged')->where('private',0)->orderBy('created_at','DESC')->take(4)->get();
         $usages = Usage::orderBy('created_at','DESC')->take(3)->get();
         return view('index',compact('references','categories','usages'));
     }
@@ -34,7 +34,8 @@ class HomeController extends Controller
 
     public function allResources()
     {
-        $references = Reference::with('category')->with('tagged')->orderBy('created_at','DESC')->get();
+        $references = Reference::with('category')->with('tagged')->where('private',0)->orderBy('created_at','DESC')->get();
+        
         $categories = Category::all();
         return view('resources',compact('references','categories'));
     }
@@ -43,7 +44,11 @@ class HomeController extends Controller
     {
         $id =auth()->user()->id;
         
-        $courses = Course::with(['coursesvalidate', 'coursesinvalidate','references'])->get();
+        $courses = Course::with(['coursesvalidate', 'coursesinvalidate','references','coursesnull','users'])->orderBy('created_at','DESC')->get();
+
+
+
+
         return view('allcourses',compact(['courses']));
     }
 
@@ -63,7 +68,7 @@ class HomeController extends Controller
             if($validate == null )
             {
                 $course->users()->attach($course,['course_id'=>$id,'user_id'=>$user_id,'activated'=>0,'question_position' => 1 ,'validate'=>0]);
-                $validate = Course::find($id)->students()->first();
+                $validate = Course::find($id)->users()->first();
                 $position = $validate->pivot->question_position;
             }else{
                 $position = $validate->pivot->question_position;

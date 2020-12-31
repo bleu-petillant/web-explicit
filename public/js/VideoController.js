@@ -26,6 +26,7 @@ class VideoController
         $('#reset').show();
         $('#valide').hide();
         $( ".form-checkbox" ).prop( "checked", false );
+        $('#reponse').show();
     }
 
 

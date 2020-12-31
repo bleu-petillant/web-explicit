@@ -39,7 +39,15 @@ class QuestionTable extends LivewireDatatable
                 ->label('Formation')
                 ->filterable(),
 
+                Column::callback(['id'], function ($id) {
+                if(Auth::user()->role_id == 1){
+                    return view('admin.action.questionaction', ['id' => $id]);
+                }else
+                {
+                    return view('teacher.action.questionaction', ['id' => $id]);
+                }
 
+            }),
 
 
         ];

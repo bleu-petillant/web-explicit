@@ -19,7 +19,7 @@ class Search extends Component
 
     public function mount(Reference $references)
     {
-        $this->references = Reference::with('category')->with('tagged')->orderBy('created_at','DESC')->get();
+        $this->references = Reference::with('category')->with('tagged')->where('private',0)->orderBy('created_at','DESC')->get();
     }
     public function incrementIndex()
     {
@@ -48,7 +48,7 @@ class Search extends Component
         if(strlen($this->query) > 1 ){
             if(!empty($this->category_id)){
             //    dd($this->query);
-                $this->references = Reference::withAnyTag($search)
+                $this->references = Reference::where('private',0)->withAnyTag($search)
                 ->orWhere('title','like',$search)
                 ->orWhere('desc','like',$search)
                     ->whereHas('category', function ($query) use ($category_id) {
@@ -56,7 +56,7 @@ class Search extends Component
                 })->get();
             }else
             {
-                $this->references = Reference::withAnyTag($search)->with('category')
+                $this->references = Reference::where('private',0)->withAnyTag($search)->with('category')
                 ->orWhere('slug','like',$search)
                 ->orWhere('title','like',$search)
                 ->orWhere('desc','like',$search)
@@ -64,7 +64,7 @@ class Search extends Component
             }
         }else
         {
-            $this->references = Reference::with('category')->with('tagged')->orderBy('created_at','DESC')->get();
+            $this->references = Reference::with('category')->with('tagged')->where('private',0)->orderBy('created_at','DESC')->get();
         }
 
     }
@@ -77,7 +77,7 @@ class Search extends Component
     public function render()
     {
         $category = Category::all();
-        $references = Reference::with('category')->with('tagged')->orderBy('created_at','DESC')->get();
+        $references = Reference::with('category')->with('tagged')->where('private',0)->orderBy('created_at','DESC')->get();
         return view('livewire.search',compact('category','references'));
     }
 }

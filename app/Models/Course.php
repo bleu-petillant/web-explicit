@@ -22,18 +22,17 @@ class Course extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class,'course_user','course_id', 'user_id')->withPivot('activated','question_position','validate');
+        return $this->belongsToMany(User::class,'course_user','course_id', 'user_id')->wherePivot('user_id',auth()->user()->id)->withPivot('activated','question_position','validate');
     }
-
 
     public function coursesinvalidate()
     {
-        return $this->belongsToMany(User::class,'course_user')->wherePivot('validate','!=',1)->wherePivot('user_id',auth()->user()->id);
+        return $this->belongsToMany(User::class,'course_user')->wherePivot('validate','=',0)->wherePivot('user_id',auth()->user()->id);
     }
 
     public function coursesnull()
     {
-        return $this->belongsToMany(User::class,'course_user')->wherePivot('validate','=',null)->wherePivot('user_id',auth()->user()->id);
+        return $this->belongsToMany(User::class,'course_user','course_id', 'user_id')->wherePivot('user_id',auth()->user()->id)->withPivot('activated','question_position','validate');
     }
 
 

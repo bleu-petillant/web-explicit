@@ -13,9 +13,6 @@
         </div>        
     </div> 
 </section>
-
-
-<section id="formation_grid" class="p-5">
     <div class="flex mx-auto w-2/4 p-2" >
         <div class="w-1/2 mx-auto">
             <p id="courses_choice" class="link-formation text-center selected-choice text-2xl">Vidéo interactive</p>
@@ -23,42 +20,42 @@
         <div class="w-1/2">
             <p cid="ressource_choice" class="link-formation text-center text-2xl">Ressource</p>
         </div>
-        
-        
     </div>
-    
+<section id="formation_grid" class="p-5">
+
     <div class="grille mx-auto py-2 " wire:model="references">
         @if ($courses->count() > 0)
             @foreach ($courses as $course)
             
             <div class="formation-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 grille-item">
+
                 <a href="{{route('formation',[$course->slug])}}" >
-                
+
                 <div class="w-full">
                     <div class="overlay-undone card-image w-full h-52 absolute"> </div>
-                    <img class="course-image card-image w-full h-52 object-cover" src="img/cas-usage/cas-2.jpg" alt="{{$course->alt}}">  
+                    <img class="course-image card-image w-full h-52 object-cover" src="{{ asset($course->image)}}" alt="{{$course->alt}}">  
+
                 </div>
-                <!-- formation valider -->
                 @foreach ($course->coursesvalidate as $validate)
+                <!-- formation valider -->
                 <div class="w-full">
                     <div class="overlay-validate card-image w-full h-52 absolute"> </div>
-                    <img class="course-image card-image w-full h-52 object-cover" src="img/cas-usage/cas-2.jpg" alt="{{$course->alt}}">  
+                    <img class="course-image card-image w-full h-52 object-cover" src="{{ asset($course->image)}}" alt="{{$course->alt}}">  
                 </div>
                 @endforeach
-                <!-- formation pas valider -->
-                @foreach ($course->coursesinvalidate as $invalidate)
-                <div class="w-full">
-                    <div class="overlay-unvalidate card-image w-full h-52 absolute"> </div>
-                    <img class="course-image card-image w-full h-52 object-cover" src="img/cas-usage/cas-2.jpg" alt="{{$course->alt}}">  
-                </div>
-                @endforeach
-                
+
                     <div class="mt-2 py-3 pl-2 ">
                         <h3 class="card-title text-2xl font-bold">{{$course->title}}</h3>
                         <p class="card-text">{{$course->desc}}</p>
                         <p class="card-text">{{$course->id}}</p>
                     </div>
+
                 </a>
+
+                    <p class= "text-center text-xl">créer par  mr {{$course->teacher->name}} </p> <br>
+                <p>{{ \Carbon\Carbon::parse($course->published_at)->diffForHumans() }}</p> <br>
+                <p class="text-center mt-5 mb-5"><a href="{{route('formation',[$course->slug])}}" class="pdf-button uppercase mx-auto tracking-wider">Lien</a></p>
+
                 <div class="flex p-4">
                 <!-- foreach pour les ressources de chaque cours avec les catégories  -->
                 @foreach ($course->references as $ref) 
@@ -103,5 +100,9 @@
     <p>pas de formation pour le moment</p>
     @endif
     </div>
+</section>
+
+<section id="ressources_grid" class="p-5">
+
 </section>
 @endsection

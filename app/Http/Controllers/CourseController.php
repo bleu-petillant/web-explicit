@@ -132,7 +132,7 @@ class CourseController extends Controller
         $course->save();
 
         $request->session()->flash('success', 'votre cours as bien été publier');
-        return redirect('admin/course');
+        return redirect()->route('question.create');
     }
 
 

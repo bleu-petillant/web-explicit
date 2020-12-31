@@ -95,6 +95,7 @@ class ReferenceController extends Controller
             'teacher_id'=>auth()->user()->id,
             'meta'=> $request->meta,
             'desc'=>$request->desc,
+            'private'=>$request->private,
             'published_at'=> Carbon::now()
         ]);
             $ressources->tag($tags);
@@ -222,6 +223,7 @@ class ReferenceController extends Controller
             $reference->teacher_id =auth()->user()->id;
             $reference->meta = $request->meta;
             $reference->desc =$request->desc;
+            $reference->private = $request->private;
             $reference->published_at = Carbon::now();
             $reference->retag($tags);
 

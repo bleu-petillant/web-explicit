@@ -24,6 +24,7 @@ class CreateReferencesTable extends Migration
             $table->string('image');
             $table->string('meta');
             $table->string('alt')->nullable();
+            $table->boolean('private')->default(false);
             $table->foreignId('teacher_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->date('published_at')->nullable();
             $table->string('duration')->nullable()->default('10 min');

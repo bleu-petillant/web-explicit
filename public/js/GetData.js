@@ -78,7 +78,7 @@ class GetData
             let reponses_name = reponses[i].reponse;
 
             // we spawn  the answers in span and input
-            $('#reponses').append('<span>'+reponses_name+'<input type="checkbox" name="reponses_id[]" class="form-checkbox" value="'+reponse_id+'"></span> ');
+            $('#reponses').append('<div class="reponse-checkbox"><input type="checkbox" name="reponses_id[]" class="checkbox-quizz" value="'+reponse_id+'"><label>'+reponses_name+'</label></div>');
             // spawn the question
             $('#question_id').val(question_id);
             //$('#position').val(pos);
@@ -88,7 +88,7 @@ class GetData
 
     NextQuestions(validate)
     {
-       
+
 
         if(validate){
         

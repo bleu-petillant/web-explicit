@@ -2,8 +2,8 @@
 @section('course')
 <section>
     <div class="container">
-        <div class="flex">
-            <div class="pt-1 container mx-auto">
+        <div class="flex ">
+            <div class="pt-1 container mx-auto pt-5">
                 <div class="mb-2">
                     <div class="flex justify-end">
                         <span id="numberquestion"
@@ -11,7 +11,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-indigo-200">
+                <div class="pourcent-bar overflow-hidden h-2 mb-4 text-xs flex rounded bg-indigo-200">
                     <div id="percent"
                         class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-500">
                     </div>
@@ -19,7 +19,7 @@
                 <div class="mx-auto">
                     <h4 class="text-center font-bold text-lg" id="question"></h4>
                 </div>
-            <div class="mx-auto container px-10">
+            <div class="mx-auto container px-10 question-container">
                 <form action="" method="post">
                     <div class="flex flex-col" id="reponses">
                         @csrf
@@ -34,12 +34,12 @@
                 <div id="reset" class="hidden">
                     <a href="#!"><span class="fa-2x fas fa-redo"></span></a>
                 </div>
-                 <div id="valide" class="hidden">          
+                <div id="valide" class="hidden">          
                         <button type="submit" id="check" ><i class="fa-2x fas fa-chevron-circle-right"></i></button>
                 </div>
 
             </div>
-           </div>
+            </div>
         <div>
 
             {{--  start aside vidéo   --}}

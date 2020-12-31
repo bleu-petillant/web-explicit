@@ -9,18 +9,17 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/home.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/ressource.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/header.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.css' />
         <link rel="stylesheet" type="text/css" href="{{asset("vendor/cookie-consent/css/cookie-consent.css")}}">
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/formation.css') }}">
-         <script src="https://kit.fontawesome.com/804c3fbc70.js" ></script>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/ressource.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/header.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/formation.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/usage.css') }}" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/804c3fbc70.js" ></script>
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
         <script src="{{ asset('js/app.js') }}"></script>
@@ -30,7 +29,7 @@
     </head>
 
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen ">
             @livewire('navigation-dropdown')
 
             <!-- Page Heading -->

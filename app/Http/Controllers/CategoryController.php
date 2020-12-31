@@ -65,7 +65,6 @@ class CategoryController extends Controller
 
         Category::create([
             'name' => $request->name,
-            'slug' => Str::slug($request->name,'-'),
             'desc' => $request->desc
         ]);
 
@@ -109,11 +108,10 @@ class CategoryController extends Controller
 
 
             $name = $request->input('name');
-            $slug = Str::slug($name,'-');
             $description = $request->input('desc');
 
             $category->name = $name;
-            $category->slug = $slug;
+
             if($category->isClean('desc'))
             {
                 $description = $category->description;

@@ -129,41 +129,47 @@
             let courseSelect = $('#course');
             let positionSelect = $('#position');
             let posArray = [];
-      
-            courseSelect.on('change', function () {
-                let course_id = $(this).val();
-                $.ajaxSetup({
-                    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
-                }),
-                $.ajax({
-                url: '/get_question_position',
-                type: "POST",
-                data:{
-                    course_id:course_id,
-                 },
-                    success: function (response) {
-                        if(response)
-                        {
-                             positionSelect.html("");
-                             posArray = [];
-              
-                           
-                            for (let i = 0; i  < response.length;  i++) {
-                                let pos = response[i].question_position;
-                                 posArray.push(pos);
-                               positionSelect.append(' <option value="'+question_possible+'">'+question_possible+'</option>');
+            for (let i = 1; i  < 11;  i++) {
+                    //let pos = response[i].question_position;
+                    //posArray.push(pos);
+                positionSelect.append(' <option value="'+i+'">'+i+'</option>');
                                
                                 
-                            }
-                           console.log(posArray);
+            }
+        //     courseSelect.on('change', function () {
+        //         let course_id = $(this).val();
+        //         $.ajaxSetup({
+        //             headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+        //         }),
+        //         $.ajax({
+        //         url: '/get_question_position',
+        //         type: "POST",
+        //         data:{
+        //             course_id:course_id,
+        //          },
+        //             success: function (response) {
+        //                 if(response)
+        //                 {
+        //                      positionSelect.html("");
+        //                      posArray = [];
+              
+                           
+        //                     for (let i = 1; i  < 11;  i++) {
+        //                         //let pos = response[i].question_position;
+        //                         //posArray.push(pos);
+        //                        positionSelect.append(' <option value="'+question_possible+'">'+question_possible+'</option>');
+                               
+                                
+        //                     }
+        //                    //console.log(posArray);
 
-                        }else
-                        {
-                            'error server'
-                        }
-                }
-            });
-        });
+        //                 }else
+        //                 {
+        //                     'error server'
+        //                 }
+        //         }
+        //     });
+        // });
     });
     </script>
 @endsection

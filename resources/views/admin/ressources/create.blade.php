@@ -64,11 +64,25 @@
                     <div class=" my-4"></div>
                     <label for="desc">décrivez votre ressources: </label>
                     <input type="text" id="desc" name="desc" class="form-control my-2" value="{{ old('desc')}}" placeholder="décrivez votre ressources">
-
+                    <div>
+                        <label for="private">ressource privée ?</label>
+                        <input type="checkbox" name="private" id="private" class="form-checkbox" value="1">
+                    </div>
                      <div class=" my-4"></div>
                     <button class="btn btn-info  my-4" type="submit"><span class="fas fa-plus pr-2"></span>créez cette ressource</button>
                 </form>
             </div>
         </div>
     </div>
+<script>
+    $(function () {
+        $("input[type=checkbox]").change(function(){
+            if($(this).is(':checked')){
+                $(this).val(1);
+            }else{
+                $(this).val(0);
+            }
+        });
+    });
+</script>
 @endsection

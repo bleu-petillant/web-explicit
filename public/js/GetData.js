@@ -5,7 +5,7 @@ class GetData
         // we clean the localstorage at the start off the windows loading
         this.data = data;
         this.total = total;
-
+        $('#indice').html("");
         // store the data
         this.storeData(data,total);
     }
@@ -42,7 +42,7 @@ class GetData
         let indice = questions.indice;
         // we calculate  the percentage off the course progress 
         this.calulePercentageQuestion(question_pos,total);
-
+ 
         // we store all the answers off this questions in array
         let reponses = [];
         for (let i = 0; i < reponsecorrect.length; i++) {
@@ -107,4 +107,6 @@ class GetData
         }
 
     }
+
+
 }

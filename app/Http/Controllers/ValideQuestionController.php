@@ -27,23 +27,16 @@ class ValideQuestionController extends Controller
         $currentQ = $request->position;
         
 
-        $course = Course::where('id',$course_id)->first();
+        $course = Course::where('id',$course_id)->with('references')->first();
         $user = auth()->user();
-        $validate = $course->with('coursesvalidate')->first();
-        $unvalidate = $course->with('coursesinvalidate')->first();
         $Course_user = $course->users()->first();
-
+        $indice = Question::where('id',$id)->first();
         $CurrQ = $Course_user->pivot->question_position;
         $CourseActivate = $Course_user->pivot->activated;
         $CourseValidate = $Course_user->pivot->validate;
     
-
         
-        $nextCourse = Course::with('references')->where('id',$course_id +1)->first();
-
-        if($nextCourse == null){
-            $nextCourse =  Course::with('references')->where('id','!=',$course_id)->first();
-        }
+        
 
         $totalQ = Question::where('course_id',$course_id)->count();
         $start = 1;
@@ -81,60 +74,58 @@ class ValideQuestionController extends Controller
         {
             if($total_bonne_reponse === $reponsescount)
             {
-
                  // si  l'étudient arrive au bout et fini la formation et que c'est pas valider
                 if($CurrQ == $totalQ && $CourseValidate == 0)
                 {
                
                     $course->users()->updateExistingPivot($user,['activated'=>0,'question_position'=>$start,'validate'=>1],true);
-                 
+                    $nextCourse = Course::with('references')->where('id',$course_id +1)->first();
                     if($nextCourse){
                           
-                        
-                        return Response::json($nextCourse);
+                        return response()->json(['status'=>'next',$course,$nextCourse]);
 
                     }
                     else{
                       
                        $nextCourse = Course::with('references')->where('id','!=',$course_id)->first();
-                        return Response::json($nextCourse);
+                        return response()->json(['status'=>'other',$course,$nextCourse]);
                     }
                    
                 }else if($CurrQ == $totalQ && $CourseValidate == 1)
                 {
   
                    $course->users()->updateExistingPivot($user,['activated'=>0,'question_position' => $start],true);
-
+                    $nextCourse = Course::with('references')->where('id',$course_id +1)->first();
                     if($nextCourse){
 
-                        return Response::json($nextCourse);
+                       return response()->json(['status'=>'next',$course,$nextCourse]);
 
                     }
                     else{
                       
                        $nextCourse = Course::with('references')->where('id','!=',$course_id)->first();
-                       return Response::json($nextCourse);
+                        return response()->json(['status'=>'other',$course,$nextCourse]);
                     }
                    
                 }else if($CurrQ <  $totalQ )
                 {
                     $course->users()->updateExistingPivot($user,['activated'=>1,'question_position' => $nextQ],true);
-                    return'correct';
+                    return response()->json(['status'=>'correct',$course]);
                 }
                 
 
             }else{
-                return 'erreur';
+                 return response()->json(['status'=>'error',$course,$indice]);
                 // envoie les references
             }
             
         }else if($reponsescount < $collection)
         {
-            return 'erreur';
+            return response()->json(['status'=>'error',$course,$indice]);
             // envoie les references
         }else
         {
-            return 'erreur';
+            return response()->json(['status'=>'error',$course,$indice]);
         }
                 
 
@@ -142,22 +133,5 @@ class ValideQuestionController extends Controller
     abort(404);
 }
     
-
-    public function GetData(Request $request)
-    {
-        if ($request->ajax()) {
-            $course_id = $request->course_id;
-            $question_pos = Question::where('course_id',$course_id)->where('question_position','')->get();
-    
-            if($question_pos)
-            {
-                return Response::json($question_pos);
-            }else{
-                return 'pas de question pour ce cours';
-            }
-            
-        }
-        abort(404);
-    }
 }
 

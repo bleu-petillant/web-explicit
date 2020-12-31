@@ -79,3 +79,37 @@
     margin-right: 10px;
 }
 /*Unique Course*/
+
+
+.pourcent-bar{
+    width: 90%;
+    margin: 0 auto 3% auto;
+}
+
+#numberquestion{
+    margin-right: 5%;
+}
+
+.question-container .reponse-checkbox{
+    cursor: pointer;
+    width: 192px;
+    margin: 14px auto;
+    padding: 5px 0px;
+    text-align: center;
+    border: 2px solid #9fa6b2;
+    border-radius: 18px;
+    padding-left: 7px;
+}
+
+.reponse-checkbox label{
+    margin-left: -9px;
+}
+
+.question-container .reponse-checkbox:hover{
+background-color: #9fa6b2;
+}
+
+.question-container input[type="checkbox"]{
+    /* visibility: hidden; */
+
+}

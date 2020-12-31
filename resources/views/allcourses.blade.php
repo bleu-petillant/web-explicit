@@ -26,10 +26,15 @@
     <div class="grille mx-auto py-2 " wire:model="references">
         @if ($courses->count() > 0)
             @foreach ($courses as $course)
+            
             <div class="formation-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 grille-item">
+
+                <a href="{{route('formation',[$course->slug])}}" >
+
                 <div class="w-full">
                     <div class="overlay-undone card-image w-full h-52 absolute"> </div>
                     <img class="course-image card-image w-full h-52 object-cover" src="{{ asset($course->image)}}" alt="{{$course->alt}}">  
+
                 </div>
                 @foreach ($course->coursesvalidate as $validate)
                 <!-- formation valider -->
@@ -38,14 +43,19 @@
                     <img class="course-image card-image w-full h-52 object-cover" src="{{ asset($course->image)}}" alt="{{$course->alt}}">  
                 </div>
                 @endforeach
+
                     <div class="mt-2 py-3 pl-2 ">
                         <h3 class="card-title text-2xl font-bold">{{$course->title}}</h3>
                         <p class="card-text">{{$course->desc}}</p>
                         <p class="card-text">{{$course->id}}</p>
                     </div>
+
+                </a>
+
                     <p class= "text-center text-xl">créer par  mr {{$course->teacher->name}} </p> <br>
                 <p>{{ \Carbon\Carbon::parse($course->published_at)->diffForHumans() }}</p> <br>
                 <p class="text-center mt-5 mb-5"><a href="{{route('formation',[$course->slug])}}" class="pdf-button uppercase mx-auto tracking-wider">Lien</a></p>
+
                 <div class="flex p-4">
                 <!-- foreach pour les ressources de chaque cours avec les catégories  -->
                 @foreach ($course->references as $ref) 

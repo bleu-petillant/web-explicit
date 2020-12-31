@@ -31,7 +31,7 @@
                         </select>
                     </div> 
                     <div>
-                        <label for="position">numèro de la question</label>
+                        <label for="position">numéro de la question</label>
                         <select name="position" id="position"  class="custom-select custom-select-sm my-2">
                             <option value=""selected style="display: none">selectionez le numèro de la question</option>
                         </select>
@@ -132,8 +132,7 @@
             for (let i = 1; i  < 11;  i++) {
                     //let pos = response[i].question_position;
                     //posArray.push(pos);
-                positionSelect.append(' <option value="'+i+'">'+i+'</option>');
-                               
+                positionSelect.append(' <option value="'+i+'">'+i+'</option>');                  
                                 
             }
         //     courseSelect.on('change', function () {

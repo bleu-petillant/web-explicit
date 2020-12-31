@@ -52,10 +52,10 @@ class HomeController extends Controller
         return view('allcourses',compact(['courses']));
     }
 
-     
+
     public function showCourse($slug)
     {
-       if($slug != null){
+        if($slug != null){
 
             $course = Course::with('questions')->where('slug',$slug)->first();
             $id = $course->id;
@@ -74,10 +74,6 @@ class HomeController extends Controller
                 $position = $validate->pivot->question_position;
             }
 
-
-    
-               
-         
                 $nextslug = Course::where('id', '>', $course->id)->orderBy('id','desc')->first();
                 $total = Question::where('course_id',$course->id)->count();
                 $questions = Question::with('reponses','references','reponsecorrect')

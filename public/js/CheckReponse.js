@@ -3,6 +3,7 @@ class CheckResponse
     constructor()
     {
        // function for check and validate the answers by send ajax request to the controller
+
        this.validate  = false;
         this.showindice = false;
         this.showressource = false;
@@ -35,9 +36,9 @@ class CheckResponse
         $("input[type=checkbox]").change(function(){
             if($(this).is(':checked')){
                 // store the values of checkbos checked
-               let reponse = $(this).val();
-               reponses.push(reponse);
-               $('#reset').hide();
+                let reponse = $(this).val();
+                reponses.push(reponse);
+                $('#reset').hide();
 
             }else{
                 // delete the items store i array if checkbox is uncheck
@@ -46,19 +47,21 @@ class CheckResponse
 
             }
             // show or hide the button validation if  one  at least checkbox is checked
-            valide.toggle( $(".form-checkbox:checked").length > 0 );
+            valide.toggle( $(".checkbox-quizz:checked").length > 0 );
         });
 
          // validation button
         $('#check').on('click',function(e){
-             
+
              // get the value of question_id
+
              let question_id = $('#question_id').val();
              let question_pos = $('#position').val();
              let course_id = $('#course_id').val();
 
               $('#indice').hide();
              $.ajaxSetup({
+
                  // make the header special laravel for ajax request don't delete this part !
                 headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
             });
@@ -72,11 +75,12 @@ class CheckResponse
                         course_id:course_id,
                         position:question_pos,
 
-                 },
+                },
                 success:function(response){
                     if(response ) {
                         if(response.status == 'correct'){
                             this.validate = true;
+
                             // réponse correct on affiche le bouton question suivante ainsi que les ressources d'aides
                             reponse.showRessources(response[0]);
                              getdata.NextQuestions(this.validate);
@@ -111,14 +115,14 @@ class CheckResponse
                         }
                         
                         
-                     }else{
+                    }else{
                          // erreur 500
-                         console.log('erreur de code aucune donnes reçu');
-                     }
-                 },
+                        console.log('erreur de code aucune donnes reçu');
+                    }
+                },
             });
             
-  
+
         })
     }
 

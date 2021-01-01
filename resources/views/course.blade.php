@@ -3,7 +3,7 @@
 <section>
     <div class="container">
         <div class="flex ">
-            <div class="pt-1 container mx-auto pt-5">
+            <div class="pt-1 container mx-auto">
                 <div class="mb-2">
                     <div class="flex justify-end">
                         <span id="numberquestion"

@@ -44,12 +44,16 @@ class HomeController extends Controller
     {
         $id =auth()->user()->id;
         
-        $courses = Course::with(['coursesvalidate', 'coursesinvalidate','references','coursesnull','users'])->orderBy('created_at','DESC')->get();
+        $courses = Course::with(['references','users'])->whereHas('users', function($q) use ($id){
+            $q->where('user_id', $id);
+        })->orderBy('created_at','DESC')->get();
+
+        $courses_null = Course::with(['references'])->whereDoesntHave('users', function($q) use ($id){
+            $q->where('user_id', $id);
+        })->orderBy('created_at','DESC')->get();
 
 
-
-
-        return view('allcourses',compact(['courses']));
+        return view('allcourses',compact(['courses','courses_null']));
     }
 
 

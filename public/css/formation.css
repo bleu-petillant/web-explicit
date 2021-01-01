@@ -68,8 +68,8 @@
     width: 400px;
 }
 
-.overlay-unvalidate{
-    background-color: rgba(239, 226, 46, 0.68) ;
+.overlay-activate{
+    background-color: rgba(239, 139, 46, 0.68) ;
     z-index: 6;
     width: 400px;
 }
@@ -110,6 +110,6 @@ background-color: #9fa6b2;
 }
 
 .question-container input[type="checkbox"]{
-    /* visibility: hidden; */
+
 
 }

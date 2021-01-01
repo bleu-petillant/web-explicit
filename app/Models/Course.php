@@ -25,24 +25,24 @@ class Course extends Model
         return $this->belongsToMany(User::class,'course_user','course_id', 'user_id')->wherePivot('user_id',auth()->user()->id)->withPivot('activated','question_position','validate');
     }
 
-    public function coursesinvalidate()
+    public function usersnull()
     {
-        return $this->belongsToMany(User::class,'course_user')->wherePivot('validate','=',0)->wherePivot('user_id',auth()->user()->id);
+         return $this->belongsToMany(User::class,'course_user')->withPivot('activated','question_position','validate');
     }
 
-    public function coursesnull()
+    public function coursesactive()
     {
-        return $this->belongsToMany(User::class,'course_user','course_id', 'user_id')->wherePivot('user_id',auth()->user()->id)->withPivot('activated','question_position','validate');
+        return $this->belongsToMany(User::class,'course_user','course_id', 'user_id')->wherePivot('user_id',auth()->user()->id)->wherePivot('activated','=',1);
     }
 
 
     public function coursesvalidate()
     {
-        return $this->belongsToMany(User::class,'course_user')->wherePivot('validate','=',1)->wherePivot('user_id',auth()->user()->id);
+        return $this->belongsToMany(User::class,'course_user')->wherePivot('validate','=',1)->wherePivot('activated','=',1)->wherePivot('user_id',auth()->user()->id);
     }
     public function activated()
     {
-        return $this->belongsToMany(User::class,'course_user')->wherePivot('activated',1)->wherePivot('user_id',auth()->user()->id);
+        return $this->belongsToMany(User::class,'course_user')->wherePivot('activated','=',1)->wherePivot('validate','=',0)->wherePivot('user_id',auth()->user()->id);
     }
 
     public function unactivated()

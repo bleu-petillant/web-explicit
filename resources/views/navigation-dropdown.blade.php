@@ -21,10 +21,6 @@
             <x-jet-responsive-nav-link href="{{ route('teacher.dashboard') }}" :active="request()->routeIs('teacher.dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
-                    @else
-            <x-jet-responsive-nav-link href="{{ route('student.dashboard') }}" :active="request()->routeIs('student.dashboard')">
-                {{ __('Dashboard') }}
-            </x-jet-responsive-nav-link>
             @endif
                 </div>
             </div>
@@ -68,14 +64,6 @@
                             {{ __('Profile') }}
                         </x-jet-dropdown-link>
                         @endif
-
-                            <x-jet-dropdown-link href="{{ route('formations.all') }}">
-                            {{ __('les cours') }}
-                        </x-jet-dropdown-link>
-                        <x-jet-dropdown-link href="{{ route('ressources.all') }}">
-                            {{ __('les resources') }}
-                        </x-jet-dropdown-link>
-
                         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                             <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
                                 {{ __('API Tokens') }}

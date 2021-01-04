@@ -221,6 +221,7 @@
                 @yield('mentions')
                 @yield('polices')
                 @yield('course')
+                @yield('allressourcesprivate')
         @livewireScripts
     </body>
 

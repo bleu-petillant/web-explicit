@@ -83,7 +83,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['super']], function(){
 Route::group(['middleware' => ['auth:sanctum','verified']], function () {
 
 Route::get('/nos formations',[HomeController::class,'allCourses'])->name('formations.all');
-
+Route::get('/nos formations/ressources',[HomeController::class,'ResourcesPrivate'])->name('ressources.private');// page all ressources
 Route::get('/formation/{slug}',[HomeController::class,'showCourse'])->name('formation');
 
 Route::post('/checkreponse',[ValideQuestionController::class,'checkTheAnswers'])->name('checkreponse');

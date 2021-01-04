@@ -18,7 +18,7 @@
             <p id="courses_choice" class="link-formation text-center selected-choice text-2xl">Vidéo interactive</p>
         </div>
         <div class="w-1/2">
-            <a href="{{ route('ressourecs.private') }}" id="ressource_choice" class="link-formation text-center text-2xl">Ressource</a>
+            <a href="{{ route('ressources.private') }}" id="ressource_choice" class="link-formation text-center text-2xl">Ressource</a>
         </div>
     </div>
 <section id="formation_grid" class="p-5">

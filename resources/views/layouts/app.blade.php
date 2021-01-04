@@ -83,6 +83,8 @@
                 @endif
                 @if ( request()->routeIs('formations.all'))
                     <a href="{{route('formations.all')}}" class="current-page  px-3 py-2 rounded-md text-lg font-medium">Formation Intéractive</a>
+                @elseif ( request()->routeIs('ressources.private'))
+                    <a href="{{route('formations.all')}}" class="current-page  px-3 py-2 rounded-md text-lg font-medium">Formation Intéractive</a>
                 @else
                     <a href="{{route('formations.all')}}" class="text-gray px-3 py-2 rounded-md text-lg font-medium">Formation Intéractive</a>
                 @endif

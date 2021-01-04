@@ -4,7 +4,7 @@ class CheckResponse
     {
        // function for check and validate the answers by send ajax request to the controller
 
-       this.validate  = false;
+        this.validate  = false;
         this.showindice = false;
         this.showressource = false;
         this.shownextCourse = false;
@@ -39,6 +39,7 @@ class CheckResponse
                 let reponse = $(this).val();
                 reponses.push(reponse);
                 $('#reset').hide();
+                $(this).css('backgroud-color', '#6d7aea');
 
             }else{
                 // delete the items store i array if checkbox is uncheck
@@ -55,12 +56,12 @@ class CheckResponse
 
              // get the value of question_id
 
-             let question_id = $('#question_id').val();
-             let question_pos = $('#position').val();
-             let course_id = $('#course_id').val();
+            let question_id = $('#question_id').val();
+            let question_pos = $('#position').val();
+            let course_id = $('#course_id').val();
 
-              $('#indice').hide();
-             $.ajaxSetup({
+            $('#indice').hide();
+            $.ajaxSetup({
 
                  // make the header special laravel for ajax request don't delete this part !
                 headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
@@ -79,38 +80,41 @@ class CheckResponse
                 success:function(response){
                     if(response ) {
                         if(response.status == 'correct'){
-                            this.validate = true;
 
+                            this.validate = true;
+                            $.each($("input[type=checkbox]:checked"), function(){
+                                $( '.checkbox-quizz > .span-reponse').addClass(" .reponse-true ");
+                                console.log('.span-reponse');
+                            });
                             // réponse correct on affiche le bouton question suivante ainsi que les ressources d'aides
                             reponse.showRessources(response[0]);
-                             getdata.NextQuestions(this.validate);
-   
+                            getdata.NextQuestions(this.validate); 
                             
                         }else if(response.status == 'error'){
-
-             
+                            
                             this.validate = false;
-                           
-                           reponse.showIndice(response[0],response[1]);
-                   
-                           reponses = [];
-                           
+                            if($('input[type=checkbox]').is(':checked')){
+                                $(this, '.span-reponse').addClass(" .reponse-false ");
+                            }
+                            reponse.showIndice(response[0],response[1]);
+                            
+                            reponses = [];
+                            
                         }else if(response.status == 'next')
                         {
                             // prochaine formation
                             this.validate = true;
                             valide.hide();
-             
+                            
                             reponse.showNextCourse(response[0],response[1]);
-                   
-
+                            
                         }else if(response.status == 'other')
                         {
                             //autres formation
                             this.validate = true;
                             valide.hide();
-  
-                           
+                            
+                            
                             reponse.showNextCourse(response[0],response[1]);
                         }
                         
@@ -133,11 +137,12 @@ class CheckResponse
         let ref = ressource.references;
         $( ".form-checkbox" ).prop( "checked", false );
         $('#reponses').addClass('hidden');
+        $('#reponses_form').hide();
         // on vide le html de l'indice
         
         this.indiceContainer.show();
         // on instancie un nouvel indice avec la valeur indice dedans
-        this.indiceContainer.append('<div><p>'+indice.indice+'</p></div>');
+        this.indiceContainer.append('<div class="indice"><p class="font-bold mb-2">Indice</p><p>'+indice.indice+'</p></div>');
         this.ressourceContainer.show();
         // on instancie les ressources associer
         for (let i = 0; i < ref.length; i++) {
@@ -149,31 +154,29 @@ class CheckResponse
 
             if(cat == 1)
             {
-                this.ressourceContainer.append('<a class="mr-2" href="'+pdf+'"target="__blank"><div class="pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">pdf</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.ressourceContainer.append('<a class="mr-2" href="'+pdf+'"target="__blank"><div class="pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">pdf</p><p class= "text-reference-formation  text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation  text-base ">'+desc+'</p><br></div></a>');
             }else if(cat == 2)
             {
-                 this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="video-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref video-color ">vidéo</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="video-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref video-color ">vidéo</p><p class= "text-reference-formation  text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation  text-base ">'+desc+'</p><br></div></a>');
             }else if(cat == 3)
             {
-                 this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref podcast-color ">podcast</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref podcast-color ">podcast</p><p class= "text-reference-formation text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-base">'+desc+'</p><br></div></a>');
             }else
             {
-                this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">article</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">article</p><p class= "text-reference-formation text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-base ">'+desc+'</p><br></div></a>');
             }
         }
         this.resetQuestion();
-
         
-      
     }
 
     showIndice(ressource,indice)
     {
-        $.each($("input[type=checkbox]:checked"), function(){
-            // pour chaque checkbox  et reponse fausse change la classe des checkbox pour les passer en rouge
-             $( this ).prop( "checked", false ).addClass('bg-red-600');
+        // $.each($("input[type=checkbox]:checked"), function(){
+        //     // pour chaque checkbox  et reponse fausse change la classe des checkbox pour les passer en rouge
+        //     $( this ).prop( "checked", false ).addClass('bg-red-600');
             
-        });
+        // });
         let seconds = 3000;
         // au bout de 3 seconde , on montre l'indice, tu peux changer le timer avec la variable seconds
         setTimeout(() => {
@@ -184,10 +187,6 @@ class CheckResponse
 
     showRessources(ressource)
     {
-        $.each($("input[type=checkbox]:checked"), function(){
-            $( this ).prop( "checked", false ).addClass('bg-green-600');
-            //$(this).addClass('bg-green-600');
-        });
         let ref = ressource.references;
 
         this.ressourceContainer.show();
@@ -204,10 +203,10 @@ class CheckResponse
                 this.ressourceContainer.append('<a class="mr-2" href="'+pdf+'"target="__blank"><div class="pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">pdf</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
             }else if(cat == 2)
             {
-                 this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="video-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref video-color ">vidéo</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="video-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref video-color ">vidéo</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
             }else if(cat == 3)
             {
-                 this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref podcast-color ">podcast</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref podcast-color ">podcast</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
             }else
             {
                 this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">article</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
@@ -241,10 +240,10 @@ class CheckResponse
                 this.nextcourseContainer.append('<a class="mr-2" href="'+pdf+'"target="__blank"><div class="pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">pdf</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
             }else if(cat == 2)
             {
-                 this.nextcourseContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="video-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref video-color ">vidéo</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.nextcourseContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="video-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref video-color ">vidéo</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
             }else if(cat == 3)
             {
-                 this.nextcourseContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref podcast-color ">podcast</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.nextcourseContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref podcast-color ">podcast</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
             }else
             {
                 this.nextcourseContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">article</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
@@ -257,10 +256,8 @@ class CheckResponse
                 let url = "/formation/"+nextslug+"";
                 localStorage.clear();
                 window.location.href = url;
-            });
+        });
 
-
-      
     }
 
     resetQuestion()

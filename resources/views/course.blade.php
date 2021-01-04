@@ -1,26 +1,28 @@
 @extends('layouts.app')
 @section('course')
 <section>
-    <div class="container">
-        <div class="flex ">
-            <div class="pt-1 container mx-auto pt-5">
-                <div class="mb-2">
-                    <div class="flex justify-end">
-                        <span id="numberquestion"
-                            class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-indigo-200 ">
-                        </span>
-                    </div>
+    <div class="flex ">
+        <div class="pt-1 container left-quizz-container mx-auto pt-5">
+            <div class="mb-2">
+                <div class="flex justify-end">
+                    <span id="numberquestion"
+                        class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-indigo-200 ">
+                    </span>
                 </div>
-                <div class="pourcent-bar overflow-hidden h-2 mb-4 text-xs flex rounded bg-indigo-200">
-                    <div id="percent"
-                        class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-500">
-                    </div>
+            </div>
+
+            <div class="pourcent-bar overflow-hidden h-2 mb-4 text-xs flex rounded bg-indigo-200">
+                <div id="percent"
+                    class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-500">
                 </div>
-                <div class="mx-auto">
-                    <h4 class="text-center font-bold text-lg" id="question"></h4>
-                </div>
+            </div>
+
+            <div class="">
+                <h4 class="font-bold mx-auto text-lg question-content" id="question"></h4>
+            </div>
+
             <div class="mx-auto container px-10 question-container">
-                <form action="" method="post">
+                <form action="" method="post" id="reponses_form">
                     <div class="flex flex-col" id="reponses">
                         @csrf
                     </div>
@@ -30,30 +32,32 @@
                     <input type="hidden" id="slug" name="slug" value="{{$course->slug}}">
                 </form>
             </div>
+
             <div id="indice"></div>
-            <div id="ressources" class="flex"></div>
+            <div id="ressources" class="flex ressource-course-container  mx-auto">
+                <p>Avant de retenter ta chance, voici ce que tu dois connaitre : </p>
+            </div>
             <div id="nextcourse"></div>
-            <div class="gap-4 flex justify-evenly my-10">
-                <div id="reset" class="hidden">
-                    <a href="#!"><span class="fa-2x fas fa-redo"></span></a>
-                </div>
-                <div id="valide" class="hidden">          
-                        <button type="submit" id="check" ><i class="fa-2x fas fa-chevron-circle-right"></i></button>
-                </div>
-
+            <div class="gap-4 flex justify-evenly mt-10">
+            <div id="reset" class="hidden">
+                <a href="#!"><span class="fa-2x fas fa-redo"></span></a>
+            </div>
+            <div id="valide" class="hidden">          
+                    <button type="submit" id="check" >valider cette réponse</button>
             </div>
             </div>
-        <div>
+        </div>
 
-            {{--  start aside vidéo   --}}
-        <div class="container">
-            <video controls playsinline autoplay width="800" id="video_run">
+        {{--  start aside vidéo   --}}
+        <div class="right-quizz-container">
+            <video controls playsinline autoplay id="video_run" class="w-full">
                 <source src="{{asset($questions->video)}}" type="video/mp4">
             </video>
         </div>
-          {{--  end aside vidéo   --}}
+        {{--  end aside vidéo   --}}
     </div>
 </section>
+
 <script src="{{asset('js/GetData.js')}}"></script>
 <script src="{{asset('js/CheckReponse.js')}}"></script>
 <script src="{{asset('js/VideoController.js')}}"></script>

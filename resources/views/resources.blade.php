@@ -1,4 +1,4 @@
-@extends('layouts.head-home')
+@extends('layouts.app')
 @section('resources')
 
 
@@ -66,7 +66,7 @@
                         <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
                         <p class="card-text">{{$ref->desc}}</p>
                     </div>
-                    <p class="text-center mt-5 mb-5"><a href="{{asset($ref->link)}}" class=" podcast-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
+                    <p class="text-center mt-5 mb-5"><a href="{{asset($ref->link)}}" class="podcast-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
                     </a>    
             </div>
         @endif

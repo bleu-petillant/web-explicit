@@ -56,7 +56,7 @@ class GetData
 
       // we display the question and there answers
         this.displayQuestionReponse(content,reponses,course_id);
-   
+        
         
     }
     calulePercentageQuestion(curr,total)
@@ -72,13 +72,13 @@ class GetData
     {
         $('#question').text(question);
         for (let i = 0; i < reponses.length; i++) {
-         
+        
             let reponse_id = reponses[i].id;
             let question_id = reponses[i].question_id;
             let reponses_name = reponses[i].reponse;
 
             // we spawn  the answers in span and input
-            $('#reponses').append('<div class="reponse-checkbox"><input type="checkbox" name="reponses_id[]" class="checkbox-quizz" value="'+reponse_id+'"><label>'+reponses_name+'</label></div>');
+            $('#reponses').append('<div class="reponse-checkbox"><label><input type="checkbox" name="reponses_id[]" class="checkbox-quizz" value="'+reponse_id+'"> <span class="span-reponse">'+reponses_name+'</span></label></div>');
             // spawn the question
             $('#question_id').val(question_id);
             //$('#position').val(pos);
@@ -93,7 +93,6 @@ class GetData
         if(validate){
         
             $('#valide').html('').append('<a href="" id="next" ><i class="fa-2x fas fa-check"></i></a>').on('click',function(e){
-
                 e.preventDefault();
                 let slug = $('#slug').val();
                 let url = "/formation/"+slug+"";

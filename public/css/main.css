@@ -1,4 +1,8 @@
+/* nav */
 
+.current-page{
+    color: #6d7aea;
+}
 
 /* footer */
 body{
@@ -7,10 +11,18 @@ body{
 
 footer{
     background-color: #6d7aea;
+    position: absolute;
+    width: 100vw;
+}
+
+.footer-img-logo{
+    width: 177px;
 }
 
 .legal{
-
+    width: 100%;
+    text-align: right;
+    margin: 10px;
 }
 
 #top{
@@ -19,6 +31,7 @@ footer{
     border: white 2px solid ;
     margin-top: 10px;
     margin-right: 2%;
+    margin-bottom: 10px;
 }
 
 .main-color-text{

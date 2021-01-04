@@ -78,8 +78,19 @@
     margin-left: 10px;
     margin-right: 10px;
 }
-/*Unique Course*/
+/*-------------------------------------Unique Course*/
 
+.left-quizz-container{
+    width: 45vw;
+}
+
+.right-quizz-container{
+    width: 88vw;
+    height: 90vh;
+    background-color: black;
+}
+
+/* container */
 
 .pourcent-bar{
     width: 90%;
@@ -90,26 +101,103 @@
     margin-right: 5%;
 }
 
+.question-content{
+    width: 90%;
+}
+/* reponse */
+
+#reponses{
+    margin-top: 12%;
+}
+
+/* reponse check*/
 .question-container .reponse-checkbox{
     cursor: pointer;
-    width: 192px;
     margin: 14px auto;
-    padding: 5px 0px;
-    text-align: center;
-    border: 2px solid #9fa6b2;
-    border-radius: 18px;
     padding-left: 7px;
 }
 
 .reponse-checkbox label{
     margin-left: -9px;
-}
-
-.question-container .reponse-checkbox:hover{
-background-color: #9fa6b2;
+    cursor: pointer;
 }
 
 .question-container input[type="checkbox"]{
-    /* visibility: hidden; */
+    opacity: 0;
+}
 
+
+.question-container label span:hover{
+    background-color: #969fec;
+    color: white;
+}
+
+.question-container label span {
+    position: relative;
+    display: inline-block;
+    padding: 5px 30px;
+    text-align: center;
+    border: 2px solid #6d7aea;
+    border-radius: 18px;
+    transition: 0.5;
+    user-select: none;
+}
+
+.question-container label input[type="checkbox"]:checked ~ span {
+    background-color: #6d7aea;
+    border: 2px solid #6d7aea;
+    color: white;
+}
+
+/* reponse true */
+
+.question-container label span .reponse-true {
+    position: relative;
+    display: inline-block;
+    padding: 5px 30px;
+    text-align: center;
+    background-color: #b7eacc;
+    border: 2px solid #b7eacc;
+    color: black;
+    border-radius: 18px;
+    transition: 0.5;
+    user-select: none;
+}
+
+/* reponse false */
+
+.question-container label span .reponse-false {
+    position: relative;
+    display: inline-block;
+    padding: 5px 30px;
+    text-align: center;
+    background-color: #c45858;
+    border: 2px solid #c45858;
+    color: white;
+    border-radius: 18px;
+    transition: 0.5;
+    user-select: none;
+}
+
+/* indice */
+
+.indice{
+    width: 70%;
+    padding: 20px;
+    border: #ababab solid 2px;
+    border-radius: 9px;
+    margin: 12% auto;
+}
+
+
+/* Ressources */
+
+.ressource-course-container{
+    width: 90%;
+}
+
+/* video */
+
+#video_run{
+    margin-top: 5%;
 }

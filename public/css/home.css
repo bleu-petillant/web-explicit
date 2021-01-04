@@ -100,24 +100,24 @@ margin-top: -14px;
 }
 
 .pdf-color{
- color: #66cc99;
+    color: #66cc99;
 }
 
 .podcast-color{
     color: #cc6699;
-   }
+}
 
 .video-color{
     color: #58b1c6;
-   }
+}
 
 
-   .ressource-home-button{
-       color: #6d7aea;
-       border:  solid #6d7aea 2px;
-       border-radius: 7px;
-       padding: 7px 50px;
-   }
+.ressource-home-button{
+    color: #6d7aea;
+    border:  solid #6d7aea 2px;
+    border-radius: 7px;
+    padding: 7px 50px;
+}
 
 
 /* Formation interactives */
@@ -169,14 +169,13 @@ margin-top: -14px;
     background-color: white;
     color: #6d7aea;
     display: inline-block;
-    /* position: relative; */
     position: absolute;
+    z-index: 30;
     border-radius: 60px;
     padding: 0.3em 0.6em;
     margin-top: -7%;
     margin-left: 9%;
     font-size: 1.5rem;
-    visibility: hidden;
 }
 
 .mobile-cas-usage{
@@ -271,12 +270,5 @@ margin-top: -14px;
         display: none;
     }
 
-    .laptop-tablette-cas-usage{
-        display: none;
-    }
-
-    .mobile-cas-usage{
-        display: block!important;
-    }
 
 }

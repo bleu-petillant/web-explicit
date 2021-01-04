@@ -14,10 +14,10 @@
 </section>
     <div class="flex mx-auto my-3 w-2/4 p-2" >
         <div class="w-1/2 mx-auto">
-            <p id="courses_choice" class="link-formation text-center selected-choice text-2xl">Vidéo interactive</p>
+            <a href="{{route('formations.all')}}" id="courses_choice" class="link-formation text-center  text-2xl">Vidéo interactive</a>
         </div>
         <div class="w-1/2">
-            <a href="{{ route('ressourecs.private') }}" id="ressource_choice" class="link-formation text-center text-2xl">Ressource</a>
+            <a href="{{ route('ressources.private') }}" id="ressource_choice" class="link-formation selected-choice text-center text-2xl">Ressource</a>
         </div>
     </div>
 <section id="formation_grid" class="p-5">

@@ -28,20 +28,19 @@
                     <div class="mt-4">
                         <p class="text-center font-bold">modifiez votre image si besoin:</p>
                     </div>
-                    <div class="d-flex justify-content-center align-content-center my-8">
-                        <div class="col-6 my-4">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="image" id="image" lang="fr">
-                                <label class="custom-file-label" for="image">Sélectionner une nouvelle image si besoin</label>
-                            </div>
-                        </div>
-                        <div class="col-4 my-4">
-                            <div style="max-width: 200px;max-height:200px;overflow:hidden">
-                                <span class=" text-red-600 text-center">image acuelle</span>
-                                <img src="{{ asset($usage->image) }}" class="img-fluid">
-                            </div>
-                        </div>
+
+                    <div class="my-8">
+                        <div class="custom-file" id="file">
+                            <input type="file" class="custom-file-input my-2" name="image" id="image" lang="fr" onchange="return fileValidation() ">
+                            <label class="custom-file-label"  for="image">Sélectionner une nouvelle image si besoin</label>
+                            <div id="alert"></div>
+                         </div>
+                    <div id="imagePreview" class="col-lg-2">
+                        <img src="{{asset($usage->image)}}" alt="">
+                    </div> 
                     </div>
+                    <div class="my-2"></div>
+
                      <div class="my-4">
                       <label for="alt" class="label"> modifiez la description de l'image (ALT)</label>
                       <input type="text" id="alt" name="alt" value="{{ $usage->alt }}" class="form-control my-2" placeholder="{{ $usage->alt }}">
@@ -63,5 +62,49 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function () {
+                $('#image').val("");
+                $('#alert').html("");
+            });
+         function fileValidation() { 
+            var fileInput =  document.getElementById('image'); 
+              
+            var filePath = fileInput.value; 
+          var alert = document.getElementById('alert');
+            // Allowing file type 
+            var allowedExtensions =  
+                    /(\.jpg|\.jpeg|\.png|\.gif)$/i; 
+              
+            if (!allowedExtensions.exec(filePath)) { 
+                
+                alert.innerHTML = "";
+                alert.innerHTML = '<span class="text-danger font-bold">ceci n"est pas une image valide seul les images extensions (gif, png, jpeg et jpg) sont autoriser merci !</span>';
+                fileInput.value = ''; 
+                 document.getElementById( 'imagePreview').innerHTML ="";
+                return false; 
+            }  
+            else  
+            { 
+                document.getElementById( 'imagePreview').innerHTML ="";
+               alert.innerHTML = "";
+                // Image preview 
+                if (fileInput.files && fileInput.files[0]) { 
+                    var reader = new FileReader(); 
+                    reader.onload = function(e) { 
+                        document.getElementById( 
+                            'imagePreview').innerHTML =  
+                            '<img src="' + e.target.result 
+                            + '"/>'; 
+                    }; 
+                      
+                    reader.readAsDataURL(fileInput.files[0]); 
+                } 
+            } 
+
+                
+        }
+    </script>
 
 @endsection

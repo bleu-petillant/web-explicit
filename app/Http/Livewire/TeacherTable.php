@@ -24,8 +24,7 @@ class TeacherTable extends LivewireDatatable
             Column::name('id')
                  ->label('#')
                  ->defaultSort('asc')
-                 ->filterable()
-                 ,
+                 ->filterable(),
 
             Column::name('prenom')
                 ->label('Prenom')
@@ -40,15 +39,12 @@ class TeacherTable extends LivewireDatatable
                 ->label('Email')
                 ->defaultSort('asc')
                 ->filterable(),
-                Column::delete(),
+              
 
             Column::callback(['id', 'name'], function ($id, $name) {
                 if(Auth::user()->role_id == 1)
                 {
                     return view('admin.action.teacheraction', ['id' => $id, 'name' => $name]);
-                }else
-                {
-                    return null;
                 }
 
 

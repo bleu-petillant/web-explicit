@@ -6,7 +6,11 @@ use App\Models\Course;
 use App\Models\Reponse;
 use App\Models\Question;
 use App\Models\Reference;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Console\Input\Input;
 
 class QuestionController extends Controller
@@ -33,11 +37,12 @@ class QuestionController extends Controller
     public function create()
     {
         $courses = Course::with('questions','users')->get();
+        $questions =Question::all();
         $references = Reference::all();
         $reponses = Reponse::all();
     
 
-        return view('admin.questions.create', compact(['reponses','courses','references']));
+        return view('admin.questions.create', compact(['reponses','courses','references','questions']));
     }
 
     /**
@@ -48,32 +53,43 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        $pos = $request->input('position');
-        $course = $request->input('course_id');
+        //$pos = $request->input('position');
+        $id = $request->input('course');
+        $last_question_pos = question::where('course_id',$id)->latest('question_position')->first();
+        if($last_question_pos != null){
+            if($last_question_pos->count() > 0){
+                $positions = $last_question_pos->question_position;
+               
+               
+            }else{
+
+                $positions  = 0;
+        
+            }
+        }else{
+
+            $positions  = 0;
+  
+        }
+
+        
+      $newpos = $positions +1;
         $this->validate($request,
         [
-            'content'=>'required',
+            'content'=>'bail|required|unique:questions,content',
             'course'=>'required',
-            'video' => 'mimetypes:video/avi,video/mp4,video/webm,video/mkv,video/wmv,video/movie',
+            'video' => 'mimetypes:video/mp4',
             'indice'=>'required',
-            'question_position'=>'integer|'
         ]);
-        $count = question::where('question_position' ,$pos)->
-            count();
-         
-            if($count  > 0)
-            {
-                $request->session()->flash('error', 'cette question existe dèjà à cette position, essayer de changer la position');
-                return redirect()->back();
-            }else
-            {
-      
-                $question = Question::create([
+
+
+           
+            $question = Question::create([
                  'content' => $request->content,
                 'course_id' => $request->course,
                  'video'=>'video',
                  'indice'=>$request->indice,
-                 'question_position'=>$request->position,
+                 'question_position'=>$newpos,
              ]);
 
             foreach (request('ref') as $ref) {
@@ -125,20 +141,10 @@ class QuestionController extends Controller
         $request->session()->flash('success', 'votre question as bien été publier');
 
         return redirect()->to('admin/question');
-            }
+           
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Question  $question
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Question $question)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -148,7 +154,21 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        $question_id = $question->id;
+        $ref_question = question::where('id',$question_id)->with('references')->first();
+        $ref = $ref_question->references()->get();
+        $first = $ref[0];
+        $second = $ref[1];
+        $reponses = Reponse::where('question_id',$question_id)->get();
+        $references = Reference::all();
+        if(Auth::user()->role_id == 1)
+        {
+            
+            return view('admin.questions.edit',compact(['question','references','first','second','reponses']));
+        }else if(Auth::user()->role_id == 2)
+        {
+            return view('errors.permissions');
+        }
     }
 
     /**
@@ -160,7 +180,83 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+
+         $this->validate($request,
+        [
+                'content' =>'required' ,
+                'video'=>'video',
+                'indice'=>'required',
+        
+
+        ]);
+           
+            if($question->isClean('content'))
+            {
+                
+                $question->content  = $question->content;
+            }
+            if($question->isClean('indice'))
+            {
+                
+                $question->indice  = $question->indice;
+            }
+            if($question->isClean('question_position'))
+            {
+                
+                $question->question_position  = $request->position;
+            }
+            $question->content  = $request->content;
+            $question->indice  = $request->indice;
+             $question->question_position  = $request->position;
+            $ref =  $request->ref;
+            $question ->references()->sync($ref,['question_id'=>$question->id,'reference_id'=>$ref],true);
+
+            foreach ($request->reponse as $key => $value) {
+         
+                $status = $request->input('correct') == $key ? 0 : 1;
+                DB::table('reponses')->updateOrInsert([
+                    'question_id' => $question->id,
+                    'reponse'      => $request->reponse[$key],
+                    'correct'     => $request->correct[$key]
+                ]);
+            
+            }
+
+        if($request->hasFile('video'))
+        {
+
+            $file_movie = $request->file('video');
+
+            // Get filename with extension
+            $filename_movWithExt = $file_movie->getClientOriginalName();
+
+            // Get file path
+            $filename_movie = pathinfo($filename_movWithExt, PATHINFO_FILENAME);
+
+            // Remove unwanted characters
+
+            $filename_movie = preg_replace("/[^A-Za-z0-9 ]/", '', $filename_movie);
+            $filename_movie = preg_replace("/\s+/", '-', $filename_movie);
+
+            // Get the original image extension
+            $extension_mov = $file_movie->getClientOriginalExtension();
+
+            // Create unique file name
+            $fileMovieNameToStore = $filename_movie.'_'.time().'.'.$extension_mov;
+
+
+            $file_movie->move('storage/course/video/',$fileMovieNameToStore);
+            $question->video = 'storage/course/video/' .$fileMovieNameToStore;
+            
+        }
+
+
+
+            $question->save();
+
+            $request->session()->flash('success', 'votre question as bien été modifier');
+            return redirect('admin/question');
+
     }
 
     /**

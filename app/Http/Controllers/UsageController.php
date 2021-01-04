@@ -45,7 +45,7 @@ class UsageController extends Controller
     {
         $this->validate($request,
         [
-            'title'=>'required|unique:courses,title',
+            'title'=>'required|unique:usages,title',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
             'link'=>'nullable|active_url',
             'alt'=>'required',

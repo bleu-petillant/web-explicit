@@ -28,8 +28,7 @@ class Studenttables extends LivewireDatatable
             Column::name('id')
                  ->label('#')
                  ->defaultSort('asc')
-                 ->filterable()
-                 ,
+                 ->filterable(),
 
             Column::name('prenom')
                 ->label('Prenom')
@@ -44,15 +43,13 @@ class Studenttables extends LivewireDatatable
                 ->label('Email')
                 ->defaultSort('asc')
                 ->filterable(),
-                Column::delete(),
+
+         
 
             Column::callback(['id', 'name'], function ($id, $name) {
                 if(Auth::user()->role_id == 1)
                 {
                     return view('admin.action.studentaction', ['id' => $id, 'name' => $name]);
-                }else
-                {
-                    return view('teacher.action.studentaction', ['id' => $id, 'name' => $name]);
                 }
 
             }),

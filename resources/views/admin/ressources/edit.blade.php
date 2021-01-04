@@ -66,18 +66,19 @@
                     </div>
                     <div class="d-flex justify-content-center align-content-center my-8">
                         <div class="col-6 my-4">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="image" id="image" lang="fr">
-                                <label class="custom-file-label" for="image">Sélectionner une nouvelle image si besoin</label>
+                            <div class="custom-file" id="file">
+                                <input type="file" class="custom-file-input" name="image" id="image" lang="fr"  onchange="return fileValidation() ">
+                                <label class="custom-file-label" for="image">Sélectionner une nouvelle image</label>
+                                <div id="alert"></div>
                             </div>
                         </div>
-                        <div class="col-4 my-4">
-                            <div style="max-width: 200px;max-height:200px;overflow:hidden">
-                                <img src="{{ asset($reference->image) }}" class="img-fluid">
-                                <span class=" text-red-600 text-center">image acuelle</span>
-                            </div>
+                        <div class="col-6 flex">
+                            <div id="imagePreview" class="col-lg-2">
+                                 <img src="{{ asset($reference->image) }}" class="img-fluid" alt="">
+                            </div> 
                         </div>
-                    </div>
+                     </div>
+          
 
                     <div class="my-4"></div>
                     <label for="title">modifiez le titre</label>
@@ -92,11 +93,77 @@
                     </div>
                     <div class="my-4">
                     <label for="desc">modifiez la description de votre ressource</label>
-                    <input id="desc" name="desc" class="form-control my-2 " value="{{ $reference->desc }}" placeholder="{{ $reference->desc }}" ></input>
+                    <textarea id="desc" name="desc" class="form-control my-2 " >{{ $reference->desc }}</textarea>
+                    <div>
+                        <label for="private">ressource privée ?</label>
+                        <input type="checkbox" name="private" id="private" class="form-checkbox" value="{{ $reference->private }}" @if($reference->private == 1) checked @endif>
+                    </div>
+                     <label for="duration">ajouter une durée de lecture pour votre ressource <small class="text-danger">(uniquement en chiffres, en minutes et sans le mot minutes !)</small></label>
+                         <input type="text" id="duration" name="duration" value="{{ old('duration')}}" class="form-control my-2" placeholder="ex: 3, 5, 10, 20 etc....." required>
                         <button class="btn btn-success " type="submit"><span class="fas fa-pen pr-2"></span>modifier la ressource</button>
                     </form>
             </div>
         </div>
     </div>
 
+<script>
+    $(function () {
+        let private= $("input[type=checkbox]").val();
+        if(private == 1)
+        {
+             $("input[type=checkbox]:checked");
+        }
+        $("input[type=checkbox]").change(function(){
+            if($(this).is(':checked')){
+                $(this).val(1);
+            }else{
+                $(this).val(0);
+            }
+        });
+    });
+
+
+        $(document).ready(function () {
+                $('#image').val("");
+                $('#alert').html("");
+            });
+         function fileValidation() { 
+            var fileInput =  document.getElementById('image'); 
+              
+            var filePath = fileInput.value; 
+          var alert = document.getElementById('alert');
+            // Allowing file type 
+            var allowedExtensions =  
+                    /(\.jpg|\.jpeg|\.png|\.gif)$/i; 
+              
+            if (!allowedExtensions.exec(filePath)) { 
+                
+                alert.innerHTML = "";
+                alert.innerHTML = '<span class="text-danger font-bold">ceci n"est pas une image valide seul les images extensions (gif, png, jpeg et jpg) sont autoriser merci !</span>';
+                fileInput.value = ''; 
+                 document.getElementById( 'imagePreview').innerHTML ="";
+                return false; 
+            }  
+            else  
+            { 
+               alert.innerHTML = "";
+               document.getElementById( 'imagePreview').innerHTML ="";
+                // Image preview 
+                if (fileInput.files && fileInput.files[0]) { 
+                    var reader = new FileReader(); 
+                    reader.onload = function(e) { 
+                        document.getElementById( 
+                            'imagePreview').innerHTML =  
+                            '<img src="' + e.target.result 
+                            + '"/>'; 
+                    }; 
+                      
+                    reader.readAsDataURL(fileInput.files[0]); 
+                } 
+            } 
+
+                
+        }
+
+</script>
 @endsection

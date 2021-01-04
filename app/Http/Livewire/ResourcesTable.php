@@ -25,8 +25,7 @@ class ResourcesTable extends LivewireDatatable
             Column::name('id')
                  ->label('#')
                  ->defaultSort('asc')
-                 ->filterable()
-                 ,
+                 ->filterable(),
 
             Column::name('title')
                 ->label('Titre')
@@ -44,6 +43,15 @@ class ResourcesTable extends LivewireDatatable
                 Column::name('tagged.tag_name')
                 ->label('Tags associés'),
 
+                Column::name('private',1)
+                ->label(' privé 1 = oui'),
+
+
+            Column::callback(['image'], function ($image) {
+
+                return view('admin.action.columunimage', ['image'=>$image]);
+               
+            }),
 
             Column::callback(['id', 'slug'], function ($id, $slug) {
                 if(Auth::user()->role_id == 1){
@@ -51,6 +59,7 @@ class ResourcesTable extends LivewireDatatable
                 }
 
             }),
+           
 
         ];
     }

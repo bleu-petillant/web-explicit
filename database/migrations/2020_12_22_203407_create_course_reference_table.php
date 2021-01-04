@@ -15,8 +15,8 @@ class CreateCourseReferenceTable extends Migration
     {
         Schema::create('course_reference', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('course_id')->constrained('courses');
-            $table->foreignId('reference_id')->constrained('references');
+            $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete('cascade')->cascadeOnUpdate('cascade');
+            $table->foreignId('reference_id')->constrained('references')->cascadeOnDelete('cascade')->cascadeOnUpdate('cascade');
             $table->timestamps();
         });
     }

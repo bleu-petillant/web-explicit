@@ -148,6 +148,11 @@
                     <i class="nav-icon fas fa-book-open"></i>liste des ressources
                 </a>
             </li>
+            <li class="nav-item my-2 bg-gradient-orange">
+                <a href="{{ route('usage.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-briefcase"></i>liste des cas d' usages
+                </a>
+            </li>
             <li class="nav-item my-2 bg-gradient-purple mb-2">
                 <a href="{{ route('home') }}" class="nav-link" target="_blank">
                     <i class="nav-icon fas fa-home"></i>aller sur le site web

@@ -93,10 +93,6 @@
         
     </div>
     @endforeach
-
-
-    @else
-    <p>pas de formation pour le moment</p>
     @endif
 
     @if ($courses_null->count() > 0)
@@ -157,6 +153,8 @@
         
     </div>
        @endforeach
+           @else
+    <p>pas de formation pour le moment</p>
     @endif
     </div>
 </section>

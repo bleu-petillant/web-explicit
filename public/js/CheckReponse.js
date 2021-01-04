@@ -129,7 +129,7 @@ class CheckResponse
         let ref = ressource.references;
         $( ".form-checkbox" ).prop( "checked", false );
         $('#reponses').addClass('hidden');
-        $('#reponses_form').hide();
+    
         // on vide le html de l'indice
         
         this.indiceContainer.show();
@@ -167,13 +167,14 @@ class CheckResponse
         $.each($(".checked "), function(){
 
             // pour chaque checkbox  et reponse fausse change la classe des checkbox pour les passer en rouge
-            $(this).next('.span-reponse').addClass('reponse-false');
+            $(this).next('.span-reponse').toggleClass('span-reponse').addClass('reponse-false');
             
             
         });
-        let seconds = 3000;
-        // au bout de 3 seconde , on montre l'indice, tu peux changer le timer avec la variable seconds
+        let seconds = 2000;
+        // au bout de 2 seconde , on montre l'indice, tu peux changer le timer avec la variable seconds
         setTimeout(() => {
+            $('#reponses_form').hide();
             this.showTheIndice(ressource,indice);
         }, seconds);
 
@@ -184,7 +185,7 @@ class CheckResponse
         $.each($(".checked "), function(){
 
             // pour chaque checkbox  et reponse fausse change la classe des checkbox pour les passer en rouge
-            $(this).next('.span-reponse').addClass('reponse-true');
+            $(this).next('.span-reponse').toggleClass('span-reponse').addClass('reponse-true');
             
             
         });

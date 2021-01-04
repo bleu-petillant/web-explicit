@@ -33,8 +33,29 @@ $(document).ready(function(){
         arrows: true,
         nextArrow: '<i class="slick-next fa fa-chevron-right"></i>',
         prevArrow: '<i class="slick-prev fa fa-chevron-left"></i>',
-        adaptiveHeight: true,
+        adaptiveHeight: false,
         dots: false,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              infinite: true,
+              dots: false
+            }
+          },
+          {
+            breakpoint: 850,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+          // You can unslick at a given breakpoint now by adding:
+          // settings: "unslick"
+          // instead of a settings object
+        ]
     });
 
       var itemSelector = '.grid-item'; 

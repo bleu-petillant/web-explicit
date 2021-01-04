@@ -76,17 +76,17 @@
                                         <p class="text-center mt-5 mb-5"><a href="{{$reference->link}}" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
                                     </a>
                                 </div>
-                            @else
-                                <div class="articles-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
+                            @elseif($reference->category_id == '4')
+                                <div class="podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
                                     <a href="" >
-                                        <img class="articles-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
+                                        <img class="podcast-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
                                         <div class="mt-2 py-3 pl-2 podcast-card-content">
-                                            <p class="category articles-color ">articles</p>
+                                            <p class="category podcast-color">articles</p>
 
                                             <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                             <p class="card-text">{{$reference->desc}}</p>
                                         </div>
-                                        <p class="text-center mt-5 mb-5"><a href="{{$reference->link}}" class="articles-button uppercase mx-auto tracking-wider">Lien</a></p>
+                                        <p class="text-center mt-5 mb-5"><a href="{{$reference->link}}" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
                                     </a>
                                 </div>
                             @endif
@@ -142,21 +142,21 @@
                                 <p class="text-center mt-5 mb-5"><a href="{{$reference->link}}" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
                             </a>
                         </div>
-                    @else
-                        <div class="articles-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
+                    @elseif($reference->category_id == '4')
+                        <div class="podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
                             <a href="" >
-                                <img class="articles-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
+                                <img class="podcast-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
                                 <div class="mt-2 py-3 pl-2 podcast-card-content">
-                                    <p class="category articles-color ">articles</p>
+                                    <p class="category podcast-color ">articles</p>
 
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p>
                                 </div>
-                                <p class="text-center mt-5 mb-5"><a href="{{$reference->link}}" class="articles-button uppercase mx-auto tracking-wider">Lien</a></p>
+                                <p class="text-center mt-5 mb-5"><a href="{{$reference->link}}" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
                             </a>
                         </div>
                     @endif
-
+                    
                     @endforeach
                     @else
                 @endif

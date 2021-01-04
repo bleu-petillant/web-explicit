@@ -226,3 +226,61 @@
 .pager:active{
   color: #6d7aea;
 }
+
+@media screen and (max-width: 1320px) {
+
+  /* barre de recherche*/
+  .wrapper .search_box{
+    width: 44vw;
+  }
+
+  .wrapper .search_box .dropdown{
+    width: 23vw;
+  }
+
+}
+
+@media screen and (max-width: 1024px) {
+
+  /* barre de recherche*/
+  .wrapper .search_box{
+    width: 64vw;
+  }
+
+  .wrapper .search_box .search_field{
+    width: 31vw;
+  }
+  
+
+  .wrapper .search_box .dropdown{
+    width: 31vw;
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+
+  /* barre de recherche*/
+  .wrapper .search_box{
+    width: 64vw;
+  }
+
+  .wrapper .search_box .search_field{
+    width: 31vw;
+  }
+  
+
+  .wrapper .search_box .dropdown{
+    width: 31vw;
+  }
+
+  
+
+}
+
+@media screen and (max-width: 640px) {
+
+  /* barre de recherche*/
+
+
+}

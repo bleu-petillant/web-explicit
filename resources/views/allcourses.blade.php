@@ -13,7 +13,7 @@
         </div>        
     </div> 
 </section>
-    <div class="flex mx-auto w-2/4 p-2" >
+    <div class="flex mx-auto my-3 w-2/4 p-2" >
         <div class="w-1/2 mx-auto">
             <p id="courses_choice" class="link-formation text-center selected-choice text-2xl">Vidéo interactive</p>
         </div>
@@ -28,6 +28,7 @@
             @foreach ($courses as $course)
             <div class="formation-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 grille-item">
                 <a href="{{route('formation',[$course->slug])}}" >
+
                 @foreach ($course->users as $user)
                     @if ($user->pivot->validate == 1)
                     <div class="w-full">
@@ -45,17 +46,14 @@
                         <img class="course-image card-image w-full h-52 object-cover" src="{{ asset($course->image)}}" alt="{{$course->alt}}">  
                     </div>
                     @endif
+
                 @endforeach
                     <div class="mt-2 py-3 pl-2 ">
                         <h3 class="card-title text-2xl font-bold">{{$course->title}}</h3>
                         <p class="card-text">{{$course->desc}}</p>
-                        <p class="card-text">{{$course->id}}</p>
                     </div>
                 </a>
 
-                    <p class= "text-center text-xl">créer par  mr {{$course->teacher->name}} </p> <br>
-                <p>{{ \Carbon\Carbon::parse($course->published_at)->diffForHumans() }}</p> <br>
-                <p class="text-center mt-5 mb-5"><a href="{{route('formation',[$course->slug])}}" class="pdf-button uppercase mx-auto tracking-wider">Lien</a></p>
 
                 <div class="flex p-4">
                 <!-- foreach pour les ressources de chaque cours avec les catégories  -->

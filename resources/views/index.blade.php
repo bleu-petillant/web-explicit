@@ -54,12 +54,12 @@
                             @if ($reference->category_id == '1')
                                 <p class="category pdf-color ">pdf</p>
                             @elseif($reference->category_id == '2')
-                                 <p class="category video-color ">vidéo</p>
-                                 @elseif($reference->category_id == '3')
+                                <p class="category video-color ">vidéo</p>
+                                @elseif($reference->category_id == '3')
                                     <p class="category podcast-color ">podcast</p>
                                     @else
                                     <p class="category podcast-color ">articles</p>
-                                 @endif
+                                @endif
                             <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                             <p class="card-text">{{$reference->desc}}</p>
                         </div>
@@ -67,7 +67,7 @@
             </div>
             @endforeach 
             @else
-             <h4 class=" text-xl text-justify mt-10 px-4 w-3/4">désoler nous n' avons pas de ressources pour le moment</h4>
+                <h4 class=" text-xl text-justify mt-10 px-4 w-3/4">désoler nous n' avons pas de ressources pour le moment</h4>
             @endif
         </div>
         <div class="flex mx-auto justify-center">
@@ -75,7 +75,7 @@
             <div class="w-1/5 mx-8"></div>
             <div class="w-1/5 mx-8"></div>
             <div class="w-1/5 mx-8 mb-5 ">
-            <a href="{{route('ressources.all')}}" class=" bg-white text-lg ressource-home-button uppercase relative float-right  "> les ressources</a>
+            <p class="text-right"> <a href="{{route('ressources.all')}}" class=" bg-white text-lg ressource-home-button uppercase relative float-right  "> les ressources</a></p>
             </div>
         </div>
     </div>
@@ -102,29 +102,36 @@
 </section>
 
 <!-- Cas d'usage -->
-<section class="md:w4/4 lg:w-3/4 mx-auto">
+<section class="md:w4/4 lg:w-3/4 mb-10  mx-auto">
     <h2 class="text-4xl font-bold mx-8 my-8">Cas d'usage </h2>
-     <div class="flex laptop-tablette-cas-usage">
-    @if ($usages->count() > 0)
-    @foreach ($usages as $usage)
-    <div class="card cas-usage cas-usage3 bg-white shadow-lg hover:shadow-xl mx-10">
-         <a href="{{route('usage')}}">
-                <img class="card-image w-full h-50 object-cover cas-usage-miniature" src="{{asset($usage->image)}}" alt="{{$usage->alt}}">
-                <div class="play-usage-button button-usage-1"><i class="fas fa-play"></i></div>
-                <div class="py-3 pl-2">
-                    <h3 class="card-title text-2xl font-bold">{{$usage->title}}</h3>
-                    <p class="card-text">{{$usage->desc}}</p>
-                </div>
-            </a>
-    </div>
-    @endforeach
-    @else
-     <h1>pas de cas d 'usage pour le moment</h1>
-    @endif
-   
-    </div>
+    <div class="flex home-cas-usage">
+        @if ($usages->count() > 0)
+        @foreach ($usages as $usage)
+        <div class="card cas-usage cas-usage3 bg-white w-1/3 shadow-lg hover:shadow-xl mx-10">
+            <a href="{{route('usage')}}">
+                    <img class="card-image w-full h-48 object-cover cas-usage-miniature" src="{{asset($usage->image)}}" alt="{{$usage->alt}}">
+                    <div class="play-usage-button button-usage-1"><i class="fas fa-play"></i></div>
+                    <div class="py-3 pl-2">
+                        <h3 class="card-title text-2xl font-bold">{{$usage->title}}</h3>
+                        <p class="card-text">détail sur le cas</p>
+                    </div>
+                </a>
+        </div>
+        @endforeach
+        @else
+        <h1>pas de cas d 'usage pour le moment</h1>
+        @endif
 
-    <div class="mobile-cas-usage flex my-2">
+    </div>
+    <div class="flex mx-auto justify-center">
+            <div class="w-1/3  my-5 mx-8" ></div>
+            <div class="w-1/3 my-5  mx-8"></div>
+            <div class="w-1/3  my-5 mx-8 mb-5 ">
+            <p class="text-right"><a class="bg-white text-lg ressource-home-button uppercase relative mx-8 mt-2 mb-8 md:mx-auto" href="{{route('usage')}}"> les cas d'usages</a></p>
+            </div>
+        </div>
+
+    <!-- <div class="mobile-cas-usage flex my-2">
 
         <div class="card cas-usage cas-usage3 bg-white shadow-lg hover:shadow-xl mx-10">
             <img class=" card-image w-full h-50 object-cover  cas-usage-miniature" src="img/cas-usage/cas-1.jpg" alt="">
@@ -152,9 +159,11 @@
             </div>
         </div>
 
-    </div>
+    </div> -->
 
-<a class="bg-white text-lg ressource-home-button uppercase relative float-right  mx-8 mt-2 mb-8 md:mx-auto" href="{{route('usage')}}"> les cas d'usage</a>
+    
+
+ 
 
 </section>
 

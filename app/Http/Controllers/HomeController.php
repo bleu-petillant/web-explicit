@@ -56,6 +56,14 @@ class HomeController extends Controller
         return view('allcourses',compact(['courses','courses_null']));
     }
 
+    public function ResourcesPrivate()
+    {
+        $references = Reference::with('category')->with('tagged')->where('private',1)->orderBy('created_at','DESC')->get();
+        $categories = Category::all();
+        return view('ressources-private',compact('references','categories'));
+
+    }
+
 
     public function showCourse($slug)
     {

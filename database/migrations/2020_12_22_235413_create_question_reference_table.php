@@ -15,8 +15,8 @@ class CreateQuestionReferenceTable extends Migration
     {
         Schema::create('question_reference', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('question_id')->constrained('questions');
-            $table->foreignId('reference_id')->constrained('references');
+            $table->foreignId('question_id')->constrained('questions')->cascadeOnDelete('cascade')->cascadeOnUpdate('cascade');
+            $table->foreignId('reference_id')->constrained('references')->cascadeOnDelete('cascade')->cascadeOnUpdate('cascade');
             $table->timestamps();
         });
     }

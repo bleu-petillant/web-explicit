@@ -30,7 +30,7 @@ class ReferenceFactory extends Factory
             'slug' => Str::slug($this->faker->sentence()),
             'image'=> 'https://picsum.photos/200/200?random=' .$this->faker->numberBetween($min = 1, $max = 75) ,
             'category_id' =>$this->faker->numberBetween($min = 1, $max = 4),
-            'link'=>'https://www.youtube.com/watch?v=7X8II6J-6mU',
+            'link'=>'https://www.youtube.com/embed/_RDtBJPOsV8',
             'pdf'=>'pdf',
             'meta'=>$this->faker->word(),
             'alt'=>$this->faker->word(),

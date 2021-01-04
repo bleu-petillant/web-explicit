@@ -50,28 +50,74 @@
                         </select>
                     </div> 
                     <hr class="hr-light my-2">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input my-2" name="image" id="image" lang="fr">
-                      <label class="custom-file-label" for="image">Sélectionner une image</label>
-
-                      <label for="alt" class="label"> ajouter une description pour l'image (ALT)</label>
-                      <input type="text" id="alt" name="alt" value="{{ old('alt')}}" class="form-control my-2" placeholder="description de l'image" required>
+                    <div class="custom-file" id="file">
+                      <input type="file" class="custom-file-input my-2" name="image" id="image" lang="fr" onchange="return fileValidation() ">
+                      <label class="custom-file-label"  for="image">Sélectionner une image</label>
+                        <div id="alert"></div>
                     </div>
-
+                    <div id="imagePreview" class="col-lg-2"></div> 
+                    <div class="my-2"></div>
+                    <label for="alt" class="label"> ajouter une description pour l'image (ALT)</label>
+                      <input type="text" id="alt" name="alt" value="{{ old('alt')}}" class="form-control my-2" placeholder="description de l'image" required>
+                       <div class="my-2"></div>
                     <label for="title">ajouter un titre</label>
                     <input type="text" id="title" name="title" value="{{ old('title')}}" class="form-control my-2" placeholder="titre du cours" required>
-                    <hr class="hr-light my-2">
+               <div class="my-2"></div>
                     <label for="meta">ajouter une meta description <small class="text-danger">(max 255 caractères)</small></label>
                     <input type="text" id="meta" name="meta" value="{{ old('title')}}" class="form-control my-2" placeholder="meta description" required>
 
                     <hr class="hr-light">
                     <label for="desc">décrivez votre cours</label>
                     <textarea type="text" id="desc" name="desc" class="form-control my-5 editor" placeholder="décrivez votre cours ici....">{{ old('desc')}}</textarea>
-
+                    @if($references->count() > 1)
                     <button class="btn btn-success my-3" type="submit"><span class="fas fa-plus pr-2"></span>publiez votre cours</button>
+                    @else
+                    <h3>pas assez de ressources pour créer votre premiere formation, veuillez créer des ressources en premier</h3>
+                    @endif
                 </form>
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+                $('#image').val("");
+                $('#alert').html("");
+            });
+         function fileValidation() { 
+            var fileInput =  document.getElementById('image'); 
+              
+            var filePath = fileInput.value; 
+          var alert = document.getElementById('alert');
+            // Allowing file type 
+            var allowedExtensions =  
+                    /(\.jpg|\.jpeg|\.png|\.gif)$/i; 
+              
+            if (!allowedExtensions.exec(filePath)) { 
+                
+                alert.innerHTML = "";
+                alert.innerHTML = '<span class="text-danger font-bold">ceci n"est pas une image valide seul les images extensions (gif, png, jpeg et jpg) sont autoriser merci !</span>';
+                fileInput.value = ''; 
+                 document.getElementById( 'imagePreview').innerHTML ="";
+                return false; 
+            }  
+            else  
+            { 
+               alert.innerHTML = "";
+                // Image preview 
+                if (fileInput.files && fileInput.files[0]) { 
+                    var reader = new FileReader(); 
+                    reader.onload = function(e) { 
+                        document.getElementById( 
+                            'imagePreview').innerHTML =  
+                            '<img src="' + e.target.result 
+                            + '"/>'; 
+                    }; 
+                      
+                    reader.readAsDataURL(fileInput.files[0]); 
+                } 
+            } 
 
+                
+        }
+    </script>
 @endsection

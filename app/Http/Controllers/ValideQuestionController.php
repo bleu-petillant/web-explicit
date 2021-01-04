@@ -132,6 +132,23 @@ class ValideQuestionController extends Controller
     }
     abort(404);
 }
+
+    public function GetData(Request $request)
+    {
+        if ($request->ajax())
+        {
+            $course_id = $request->course_id;
+            $question_position = Question::where('course_id',$course_id)->get();
+            $question_total = Question::where('course_id',$course_id)->count();
+            if($question_position->count() > 0)
+            {
+                return response()->json(['status'=>'success',$question_position]);
+            }else{
+                return response()->json(['status'=>'error',$question_position]);
+            }
+            
+        }
+    }
     
 }
 

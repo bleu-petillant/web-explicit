@@ -145,12 +145,17 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-    
-     
+        $course_id = $course->id;
+        $ref_course = Course::where('id',$course_id)->with('references')->first();
+        $ref = $ref_course->references()->get();
+        $first = $ref[0];
+        $second = $ref[1];
+   
         $references = Reference::all();
         if(Auth::user()->role_id == 1)
         {
-            return view('admin.course.edit',compact(['course','references']));
+            
+            return view('admin.course.edit',compact(['course','references','first','second']));
         }else if(Auth::user()->role_id == 2)
         {
             return view('errors.permissions');
@@ -194,15 +199,9 @@ class CourseController extends Controller
                 
                 $course->desc  = $course->desc;
             }
-            if($course->isClean('ref'))
-            {
-                
-            }
+            $ref =  $request->ref;
+            $course ->references()->sync($ref,['course_id'=>$course->id,'reference_id'=>$ref],true);
 
-            foreach (request('ref') as $ref) {
-
-                $course -> references() ->attach($ref);
-            }
 
 
             $course->title  = $request->title;
@@ -213,40 +212,31 @@ class CourseController extends Controller
             $course->desc =$request->desc;
             $course->published_at = Carbon::now();
 
-        if($request->hasFile('image') && $request->hasFile('video'))
+        if($request->hasFile('image'))
         {
 
             $file = $request->file('image');
-            $file_movie = $request->file('video');
-
+     
             // Get filename with extension
             $filenameWithExt = $file->getClientOriginalName();
-            $filename_movWithExt = $file_movie->getClientOriginalName();
 
             // Get file path
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            $filename_movie = pathinfo($filename_movWithExt, PATHINFO_FILENAME);
+
 
             // Remove unwanted characters
             $filename = preg_replace("/[^A-Za-z0-9 ]/", '', $filename);
             $filename = preg_replace("/\s+/", '-', $filename);
 
-            $filename_movie = preg_replace("/[^A-Za-z0-9 ]/", '', $filename_movie);
-            $filename_movie = preg_replace("/\s+/", '-', $filename_movie);
-
             // Get the original image extension
             $extension = $file->getClientOriginalExtension();
-            $extension_mov = $file_movie->getClientOriginalExtension();
-
+           
             // Create unique file name
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
-            $fileMovieNameToStore = $filename_movie.'_'.time().'.'.$extension_mov;
 
             $file->move('storage/course/thumb/',$fileNameToStore);
             $course->image = 'storage/course/thumb/' .$fileNameToStore;
 
-            $file_movie->move('storage/course/video/',$fileMovieNameToStore);
-            $course->video = 'storage/course/video/' .$fileMovieNameToStore;
             
         }
 

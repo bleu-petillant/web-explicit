@@ -27,7 +27,7 @@
                      <div class="form-group">
                         <label class="text-center" for="primary_ressource">modifiez la première ressource</label>
                         <select class="custom-select custom-select-sm my-2" name="ref[]" id="primary_ressource">
-                            <option value=""selected style="display: none">selectionez la resource</option>
+                            <option value="{{ $first->id}}"selected>{{ $first->slug}}</option>
                         @foreach ($references as $reference)
                             <option value="{{ $reference->id }}">{{ $reference->slug }}</option>
                         @endforeach
@@ -36,7 +36,7 @@
                     <div class="form-group">
                         <label class="text-center" for="secondary_ressource">modifiez la deuxième ressource</label>
                         <select class="custom-select custom-select-sm my-2" name="ref[]" id="secondary_ressource">
-                            <option value=""selected style="display: none">selectionez la resource</option>
+                            <option value="{{ $second->id}}"selected>{{ $second->slug}}</option>
                         @foreach ($references as $reference)
                             <option value="{{ $reference->id }}">{{ $reference->slug }}</option>
                         @endforeach
@@ -47,15 +47,17 @@
 
                     <div class="d-flex justify-content-around align-content-center">
                         <div class="col-6">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="image" id="image" lang="fr">
+                            <div class="custom-file" id="file">
+                                <input type="file" class="custom-file-input" name="image" id="image" lang="fr"  onchange="return fileValidation() ">
                                 <label class="custom-file-label" for="image">Sélectionner une nouvelle image</label>
+                                <div id="alert"></div>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-6 flex">
                             <div style="max-width: 150px;max-height:150px;overflow:hidden">
                                 <img src="{{ asset($course->image) }}" class="img-fluid" alt="">
                             </div>
+                            <div id="imagePreview" class="col-lg-2"></div> 
                         </div>
                     </div>
 
@@ -64,7 +66,7 @@
                     <input type="text" id="alt" name="alt" value="{{ $course->alt}}" class="form-control my-2" placeholder="description de l'image">
                     <div class="my-2"></div>
 
-                    <label for="title">modifiez le titre</label>
+                    <label for="title">modifiez le titre de la formation</label>
                     <input type="text" id="title" name="title" value="{{ $course->title }}" class="form-control my-2" placeholder="">
 
                     <label for="meta">modifiez votre meta description <small class="text-danger">(max 255 caractères)</small></label>
@@ -72,13 +74,54 @@
 
 
                     <hr class="hr-light">
-                    <label for="content">modifiez votre article</label>
-                    <textarea type="text" id="desc" name="desc" class="form-control my-2 editor" placeholder="">{{ $course->desc }}"</textarea>
+                    <label for="content">modifiez la description de cette formation</label>
+                    <textarea type="text" id="desc" name="desc" class="form-control my-2 editor" placeholder="{{ $course->desc }}">{{ $course->desc }}</textarea>
 
                         <button class="btn btn-success btn-block" type="submit"><span class="fas fa-pen pr-2"></span>modifier la formation</button>
                     </form>
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+                $('#image').val("");
+                $('#alert').html("");
+            });
+         function fileValidation() { 
+            var fileInput =  document.getElementById('image'); 
+              
+            var filePath = fileInput.value; 
+          var alert = document.getElementById('alert');
+            // Allowing file type 
+            var allowedExtensions =  
+                    /(\.jpg|\.jpeg|\.png|\.gif)$/i; 
+              
+            if (!allowedExtensions.exec(filePath)) { 
+                
+                alert.innerHTML = "";
+                alert.innerHTML = '<span class="text-danger font-bold">ceci n"est pas une image valide seul les images extensions (gif, png, jpeg et jpg) sont autoriser merci !</span>';
+                fileInput.value = ''; 
+                 document.getElementById( 'imagePreview').innerHTML ="";
+                return false; 
+            }  
+            else  
+            { 
+               alert.innerHTML = "";
+                // Image preview 
+                if (fileInput.files && fileInput.files[0]) { 
+                    var reader = new FileReader(); 
+                    reader.onload = function(e) { 
+                        document.getElementById( 
+                            'imagePreview').innerHTML =  
+                            '<img src="' + e.target.result 
+                            + '"/>'; 
+                    }; 
+                      
+                    reader.readAsDataURL(fileInput.files[0]); 
+                } 
+            } 
 
+                
+        }
+    </script>
 @endsection

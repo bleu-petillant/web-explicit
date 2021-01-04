@@ -16,7 +16,7 @@ class CreateCourseUserTable extends Migration
         Schema::create('course_user', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('course_id')->nullable();                   
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete('cascade')->cascadeOnUpdate('cascade');
             $table->unsignedTinyInteger('activated')->default(0);
             $table->unsignedInteger('question_position')->default(1);
             $table->unsignedTinyInteger('validate')->default(0);

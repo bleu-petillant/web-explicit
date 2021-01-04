@@ -79,11 +79,15 @@ class ReferenceController extends Controller
             'tags' => 'required',
             'alt'=>'required',
             'meta'=>'required',
+            'duration,'=>'required',
             'desc'=>'required',
         ]);
         $tags= strtolower($request->tags);
         $tags = explode(",", $request->tags);
-        
+        $private = $request->private;
+        if($private == null){
+            $private = 0;
+        }
         $ressources = Reference::create([
             'title' => $request->title,
             'slug' => Str::slug($request->title,'-'),
@@ -95,7 +99,8 @@ class ReferenceController extends Controller
             'teacher_id'=>auth()->user()->id,
             'meta'=> $request->meta,
             'desc'=>$request->desc,
-            'private'=>$request->private,
+            'private'=>$private,
+            'duration'=>$request->duration,
             'published_at'=> Carbon::now()
         ]);
             $ressources->tag($tags);
@@ -201,6 +206,7 @@ class ReferenceController extends Controller
             'alt'=>'required',
             'meta'=>'required',
             'desc'=>'required',
+            
         ]);
            
             if($reference->isClean('title'))
@@ -213,6 +219,28 @@ class ReferenceController extends Controller
                 
                 $reference->desc  = $reference->desc;
             }
+            if($reference->isClean('meta'))
+            {
+                
+                $reference->meta  = $reference->meta;
+            }
+            if($reference->isClean('alt'))
+            {
+                
+                $reference->alt  = $reference->alt;
+            }
+            if($reference->isClean('private'))
+            {
+                
+                $reference->private  = $reference->private;
+            }
+            if($reference->isClean('duration'))
+            {
+                
+                $reference->duration  = $reference->duration;
+            }
+
+
             $tags= $request->tags;
 
             $reference->title  = $request->title;
@@ -223,7 +251,13 @@ class ReferenceController extends Controller
             $reference->teacher_id =auth()->user()->id;
             $reference->meta = $request->meta;
             $reference->desc =$request->desc;
-            $reference->private = $request->private;
+            $reference->duration =$request->duration;
+            if($request->private == null){
+                $reference->private = 0;
+            }else{
+                 $reference->private = $request->private;
+            }
+           
             $reference->published_at = Carbon::now();
             $reference->retag($tags);
 

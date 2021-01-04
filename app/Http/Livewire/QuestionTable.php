@@ -27,27 +27,29 @@ class QuestionTable extends LivewireDatatable
                  ->label('#')
                  ->defaultSort('asc')
                  ->filterable(),
-
-            Column::name('content')
-                ->label('Questions')
-                ->filterable(),
-
-            Column::name('reponses.reponse')
-                ->label('Reponse  ')
-                ->filterable(),
-             Column::name('course.title')
+            Column::name('course.title')
                 ->label('Formation')
                 ->filterable(),
+            Column::name('question_position')
+                ->label('Question N° ')
+                ->filterable(),
+            Column::name('content')
+                ->label('Questions'),
+               
+            Column::name('reponses.reponse')
+                ->label('Reponse possible'),
+             
+            Column::name('indice')
+                ->label('indice'),
+            
 
                 Column::callback(['id'], function ($id) {
                 if(Auth::user()->role_id == 1){
                     return view('admin.action.questionaction', ['id' => $id]);
-                }else
-                {
-                    return view('teacher.action.questionaction', ['id' => $id]);
                 }
 
             }),
+           
 
 
         ];

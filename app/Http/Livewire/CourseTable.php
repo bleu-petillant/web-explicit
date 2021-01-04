@@ -26,13 +26,17 @@ class CourseTable extends LivewireDatatable
                 ->filterable(),
 
             Column::name('slug')
-                ->label('Slug')
-                ->filterable(),
+                ->label('Slug'),
+          
             Column::name('desc')
                 ->label('description'),
 
             
-            
+            Column::callback(['image'], function ($image) {
+                
+                return view('admin.action.columunimage', ['image'=>$image]);
+               
+            }),
 
             Column::callback(['id', 'slug'], function ($id, $slug) {
                 if(Auth::user()->role_id == 1){

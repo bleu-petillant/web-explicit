@@ -35,6 +35,7 @@ class CheckResponse
 
         $("input[type=checkbox]").change(function(){
             if($(this).is(':checked')){
+                $(this).addClass("checked");
                 // store the values of checkbos checked
                 let reponse = $(this).val();
                 reponses.push(reponse);
@@ -45,6 +46,7 @@ class CheckResponse
                 // delete the items store i array if checkbox is uncheck
                 var x = reponses.indexOf($(this).val());
                 reponses.splice(x,1);
+                $(this).removeClass("checked");
 
             }
             // show or hide the button validation if  one  at least checkbox is checked
@@ -82,20 +84,12 @@ class CheckResponse
                         if(response.status == 'correct'){
 
                             this.validate = true;
-                            $.each($("input[type=checkbox]:checked"), function(){
-                                $( '.checkbox-quizz > .span-reponse').addClass(" .reponse-true ");
-                                console.log('.span-reponse');
-                            });
-                            // réponse correct on affiche le bouton question suivante ainsi que les ressources d'aides
                             reponse.showRessources(response[0]);
                             getdata.NextQuestions(this.validate); 
                             
                         }else if(response.status == 'error'){
                             
                             this.validate = false;
-                            if($('input[type=checkbox]').is(':checked')){
-                                $(this, '.span-reponse').addClass(" .reponse-false ");
-                            }
                             reponse.showIndice(response[0],response[1]);
                             
                             reponses = [];
@@ -105,7 +99,6 @@ class CheckResponse
                             // prochaine formation
                             this.validate = true;
                             valide.hide();
-                            
                             reponse.showNextCourse(response[0],response[1]);
                             
                         }else if(response.status == 'other')
@@ -113,7 +106,6 @@ class CheckResponse
                             //autres formation
                             this.validate = true;
                             valide.hide();
-                            
                             
                             reponse.showNextCourse(response[0],response[1]);
                         }
@@ -172,11 +164,13 @@ class CheckResponse
 
     showIndice(ressource,indice)
     {
-        // $.each($("input[type=checkbox]:checked"), function(){
-        //     // pour chaque checkbox  et reponse fausse change la classe des checkbox pour les passer en rouge
-        //     $( this ).prop( "checked", false ).addClass('bg-red-600');
+        $.each($(".checked "), function(){
+
+            // pour chaque checkbox  et reponse fausse change la classe des checkbox pour les passer en rouge
+            $(this).next('.span-reponse').addClass('reponse-false');
             
-        // });
+            
+        });
         let seconds = 3000;
         // au bout de 3 seconde , on montre l'indice, tu peux changer le timer avec la variable seconds
         setTimeout(() => {
@@ -187,6 +181,13 @@ class CheckResponse
 
     showRessources(ressource)
     {
+        $.each($(".checked "), function(){
+
+            // pour chaque checkbox  et reponse fausse change la classe des checkbox pour les passer en rouge
+            $(this).next('.span-reponse').addClass('reponse-true');
+            
+            
+        });
         let ref = ressource.references;
 
         this.ressourceContainer.show();

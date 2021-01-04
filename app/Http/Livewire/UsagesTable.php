@@ -24,8 +24,7 @@ class UsagesTable extends LivewireDatatable
             Column::name('id')
                  ->label('#')
                  ->defaultSort('asc')
-                 ->filterable()
-                 ,
+                 ->filterable(),
 
             Column::name('title')
                 ->label('Titre')
@@ -35,9 +34,7 @@ class UsagesTable extends LivewireDatatable
                 ->label('Description'),
 
                 Column::name('link')
-                ->label('Lien vers la vidéo'),
-
-
+                ->label('Lien de la vidéo'),
 
             Column::callback(['id', 'slug'], function ($id, $slug) {
                 if(Auth::user()->role_id == 1){
@@ -46,11 +43,11 @@ class UsagesTable extends LivewireDatatable
 
             }),
             Column::callback(['image'], function ($image) {
-                if(Auth::user()->role_id == 1){
-                    return view('admin.action.columunimage', ['image'=>$image]);
-                }
 
+                return view('admin.action.columunimage', ['image'=>$image]);
+               
             }),
+          
 
         ];
     }

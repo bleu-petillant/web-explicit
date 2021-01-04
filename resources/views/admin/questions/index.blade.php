@@ -18,8 +18,7 @@
             </div>
           <div class="card-body">
            <livewire:question-table 
-            {{-- include="id ,tagged.tag_name|Tags, title,desc,category.name|Catégories,slug"  --}}
-            searchable="content"/>
+            searchable="content,course.title"/>
           </div>
 
         </div>

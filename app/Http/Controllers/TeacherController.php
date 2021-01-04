@@ -67,8 +67,8 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         Validator::make($request->all(), [
-            'prenom' => ['required', 'string', 'max:255'],
-            'name' => ['required', 'string', 'max:255'],
+            'prenom' => ['required', 'string', 'max:70'],
+            'name' => ['required', 'string', 'max:70'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'role_id' => ['required','exists:App\Models\Role,id']
@@ -81,7 +81,7 @@ class TeacherController extends Controller
             'password' => Hash::make($request['password']),
             'role_id' => $request['role_id'],
         ]);
-        $teacher->students()->attach($teacher);
+
 
         $request->session()->flash('success', 'le professeur a été créée avec succès');
         return redirect()->to('admin/teacher');
@@ -123,8 +123,8 @@ class TeacherController extends Controller
     {
         $teacher = User::find($id);
         Validator::make($request->all(), [
-            'prenom' => ['sometimes', 'string', 'max:255'],
-            'name' => ['sometimes', 'string', 'max:255'],
+            'prenom' => ['sometimes', 'string', 'max:70'],
+            'name' => ['sometimes', 'string', 'max:70'],
             'email' => ['sometimes', 'email', 'max:255', Rule::unique('users')->ignore($teacher->id)],
             'photo' => ['nullable', 'image', 'max:1024'],
         ])->validate();

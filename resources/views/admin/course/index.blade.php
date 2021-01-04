@@ -17,7 +17,7 @@
                 <a href="{{route('course.create')}}" class="btn btn-success btn-md px-3 my-0 mr-0 white-text"><i class="fas fa-plus pr-2"></i>créer un nouveau cours</a>
             </div>
           <div class="card-body">
-            <livewire:course-table searchable="course"/>
+            <livewire:course-table searchable="title"/>
           </div>
         </div>
       </div>

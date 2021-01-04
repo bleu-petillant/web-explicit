@@ -37,37 +37,36 @@
                                 <input data-role="tagsinput" type="text" name="tags" id="tags" placeholder="psychologie,cerveau,humain,psy,cas,maladie etc......">
                             </div>
                      <div class=" my-4"></div>
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input my-4" name="image" id="image" lang="fr">
-                      <label class="custom-file-label" for="image">Sélectionner une image</label>
+                    <div class="custom-file" id="file">
+                      <input type="file" class="custom-file-input my-2" name="image" id="image" lang="fr" onchange="return fileValidation() ">
+                      <label class="custom-file-label"  for="image">Sélectionner une image</label>
+                        <div id="alert"></div>
+                    </div>
+                    <div id="imagePreview" class="col-lg-2"></div> 
                         
                       <label for="alt" class="label"> ajouter une description pour l'image (ALT)</label>
                       <input type="text" id="alt" name="alt" class="form-control my-4" value="{{ old('alt')}}" placeholder="description de l'image" required>
                     </div>
 
-                      <div class=" my-6"></div>
-                      <p class=" text-center my-4">si cette ressource est un PDF:</p>
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input my-2" name="pdf" id="pdf" lang="fr">
-                      <label class="custom-file-label" for="pdf">Sélectionner votre PDF </label>
+                      <div class=" my-6" id="file-type">
+
                     </div>
-                    
-                     <div class=" my-4"></div>
-                     <p class=" text-center my-4">si cette ressource est un lien vers un autre site web:</p>
-                    <label for="link">ajouter votre lien externe ici:<small class="text-danger">(exemples: https://www.monlien.fr) </small></label>
-                    <input type="url" id="link" name="link" value="{{ old('link')}}" class="form-control my-2" placeholder="https://www.votrelien.com">
 
                     <div class=" my-4"></div>
                     <label for="meta">ajouter une meta description pour mieux referencer votre ressource <small class="text-danger">(max 255 caractères)</small></label>
                     <input type="text" id="meta" name="meta" value="{{ old('meta')}}" class="form-control my-2" placeholder="meta description" required>
            
                     <div class=" my-4"></div>
-                    <label for="desc">décrivez votre ressources: </label>
-                    <input type="text" id="desc" name="desc" class="form-control my-2" value="{{ old('desc')}}" placeholder="décrivez votre ressources">
-                    <div>
+                        <label for="desc">décrivez votre ressources: </label>
+                        <textarea type="text" id="desc" name="desc" class="form-control my-2"  placeholder="décrivez votre ressources"></textarea>
+                         <div class=" my-4"></div>
+
+                        <label for="duration">ajouter une durée de lecture pour votre ressource <small class="text-danger">(uniquement en chiffres, en minutes et sans le mot minutes !)</small></label>
+                         <input type="text" id="duration" name="duration" value="{{ old('duration')}}" class="form-control my-2" placeholder="ex: 3, 5, 10, 20 etc....." required>
+
                         <label for="private">ressource privée ?</label>
-                        <input type="checkbox" name="private" id="private" class="form-checkbox" value="1">
-                    </div>
+                        <input type="checkbox" name="private" id="private" class="form-checkbox" value="0">
+                  
                      <div class=" my-4"></div>
                     <button class="btn btn-info  my-4" type="submit"><span class="fas fa-plus pr-2"></span>créez cette ressource</button>
                 </form>
@@ -83,6 +82,62 @@
                 $(this).val(0);
             }
         });
+
+        $("select[id=category]").change(function(){
+            if($(this).val() == 1){
+                $('#file-type').html("").append('<p class=" text-center my-4">cette ressource est un PDF</p><div class="custom-file"><input type="file" class="custom-file-input my-2" name="pdf" id="pdf" lang="fr"><label class="custom-file-label" for="pdf">Sélectionner votre PDF </label></div>');
+            }else if($(this).val() == 2){
+                $('#file-type').html("").append('<p class=" text-center my-4">cette ressource est une vidéo</p><label for="link">ajouter votre lien vidéo externe ici:<small class="text-danger">(exemples: https://www.youtube.....) </small></label><input type="url" id="link" name="link" value="{{ old('link')}}" class="form-control my-2" placeholder="https://www.youtube.com/embed....">');
+            }else if($(this).val() == 3){
+                $('#file-type').html("").append('<p class=" text-center my-4">cette ressource est un podcast</p><label for="link">ajouter votre lien podcast externe ici:<small class="text-danger">(exemples: https://www.spotify.....) </small></label><input type="url" id="link" name="link" value="{{ old('link')}}" class="form-control my-2" placeholder="https://www.spotify.com/audio....">');
+            }else{
+                 $('#file-type').html("").append('<p class=" text-center my-4">cette ressource est un article</p><label for="link">ajouter votre lien vers cette article:<small class="text-danger">(exemples: https://www.article.....) </small></label><input type="url" id="link" name="link" value="{{ old('link')}}" class="form-control my-2" placeholder="https://www.article.com/....">');
+            }
+
+        });
     });
+
+
+        $(document).ready(function () {
+                $('#image').val("");
+                $('#alert').html("");
+            });
+         function fileValidation() { 
+            var fileInput =  document.getElementById('image'); 
+              
+            var filePath = fileInput.value; 
+          var alert = document.getElementById('alert');
+            // Allowing file type 
+            var allowedExtensions =  
+                    /(\.jpg|\.jpeg|\.png|\.gif)$/i; 
+              
+            if (!allowedExtensions.exec(filePath)) { 
+                
+                alert.innerHTML = "";
+                alert.innerHTML = '<span class="text-danger font-bold">ceci n"est pas une image valide seul les images extensions (gif, png, jpeg et jpg) sont autoriser merci !</span>';
+                fileInput.value = ''; 
+                 document.getElementById( 'imagePreview').innerHTML ="";
+                return false; 
+            }  
+            else  
+            { 
+               alert.innerHTML = "";
+                // Image preview 
+                if (fileInput.files && fileInput.files[0]) { 
+                    var reader = new FileReader(); 
+                    reader.onload = function(e) { 
+                        document.getElementById( 
+                            'imagePreview').innerHTML =  
+                            '<img src="' + e.target.result 
+                            + '"/>'; 
+                    }; 
+                      
+                    reader.readAsDataURL(fileInput.files[0]); 
+                } 
+            } 
+
+                
+        }
+
 </script>
 @endsection

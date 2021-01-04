@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('course')
 <section>
+
     <div class="flex ">
         <div class="pt-1 container left-quizz-container mx-auto pt-5">
             <div class="mb-2">
@@ -8,6 +9,7 @@
                     <span id="numberquestion"
                         class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-indigo-200 ">
                     </span>
+
                 </div>
             </div>
 

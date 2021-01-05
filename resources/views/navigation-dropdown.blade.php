@@ -13,15 +13,15 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px  sm:flex">
-            @if (auth()->user()->role_id == 1)
-            <x-jet-responsive-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
-                {{ __('Dashboard') }}
-            </x-jet-responsive-nav-link>
-                    @elseif(auth()->user()->role_id == 2)
-            <x-jet-responsive-nav-link href="{{ route('teacher.dashboard') }}" :active="request()->routeIs('teacher.dashboard')">
-                {{ __('Dashboard') }}
-            </x-jet-responsive-nav-link>
-            @endif
+                @if (auth()->user()->role_id == 1)
+                    <x-jet-responsive-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
+                        {{ __('Dashboard') }}
+                    </x-jet-responsive-nav-link>
+                            @elseif(auth()->user()->role_id == 2)
+                    <x-jet-responsive-nav-link href="{{ route('teacher.dashboard') }}" :active="request()->routeIs('teacher.dashboard')">
+                        {{ __('Dashboard') }}
+                    </x-jet-responsive-nav-link>
+                @endif
                 </div>
             </div>
 
@@ -123,7 +123,7 @@
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                    </svg> 
                 </button>
             </div>
         </div>

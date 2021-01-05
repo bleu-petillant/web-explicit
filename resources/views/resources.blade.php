@@ -82,12 +82,12 @@
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 <script>
 $(".default_option").click(function(){
-  $(".dropdown ul").addClass("active");
+    $(".dropdown ul").addClass("active");
 });
 $(".dropdown ul li").click(function(){
-  var text = $(this).text();
-  $(".default_option").text(text);
-  $(".dropdown ul").removeClass("active");
+    var text = $(this).text();
+    $(".default_option").text(text);
+    $(".dropdown ul").removeClass("active");
 });
 </script>
 @endsection

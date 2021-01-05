@@ -17,7 +17,7 @@ class CreateQuestionReferenceTable extends Migration
             $table->id();
             $table->foreignId('question_id')->constrained('questions')->cascadeOnDelete('cascade')->cascadeOnUpdate('cascade');
             $table->foreignId('reference_id')->constrained('references')->cascadeOnDelete('cascade')->cascadeOnUpdate('cascade');
-            $table->timestamps();
+
         });
     }
 

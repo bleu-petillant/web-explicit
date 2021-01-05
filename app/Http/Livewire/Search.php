@@ -45,9 +45,16 @@ class Search extends Component
     {
         $search = '%'.$this->query.'%';
         $category_id =  $this->category_id;
+        if(!empty($this->category_id) && strlen($this->query) == 0){
+          
+                $this->references = Reference::where('private',0)
+                    ->whereHas('category', function ($query) use ($category_id) {
+                    $query->where('category_id', $category_id);
+                })->get();
+        }
         if(strlen($this->query) > 1 ){
             if(!empty($this->category_id)){
-            //    dd($this->query);
+          
                 $this->references = Reference::where('private',0)->withAnyTag($search)
                 ->orWhere('title','like',$search)
                 ->orWhere('desc','like',$search)
@@ -77,7 +84,7 @@ class Search extends Component
     public function render()
     {
         $category = Category::all();
-        $references = Reference::with('category')->with('tagged')->where('private',0)->orderBy('created_at','DESC')->get();
+        $references = Reference::with('category')->with('tagged')->where('private',0)->orderBy('published_at','DESC')->get();
         return view('livewire.search',compact('category','references'));
     }
 }

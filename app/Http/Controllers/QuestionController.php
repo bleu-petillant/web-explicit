@@ -16,6 +16,10 @@ use Symfony\Component\Console\Input\Input;
 class QuestionController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware(['super']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -79,7 +83,7 @@ class QuestionController extends Controller
             'content'=>'bail|required|unique:questions,content',
             'course'=>'required',
             'video' => 'mimetypes:video/mp4',
-            'indice'=>'required',
+            'indice'=>'required|max:255',
         ]);
 
 
@@ -265,8 +269,28 @@ class QuestionController extends Controller
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Question $question)
+    public function destroy($id)
     {
-        //
+        $question = Question::with('references','reponses')->where('id',$id)->first();
+         if($question)
+         {
+            $reponses = Reponse::where('question_id',$id)->get();
+            if($reponses){
+                foreach ($reponses as $r ) {
+
+                    $r->delete();
+                }
+            }
+            if(file_exists(public_path($question->video)))
+            {
+                unlink(public_path($question->video));
+            }
+            $question ->references()->detach();
+            $question->delete();
+            return view('admin.course.index');
+    
+        }
     }
+    
+    
 }

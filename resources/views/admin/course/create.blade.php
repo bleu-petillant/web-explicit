@@ -33,7 +33,7 @@
                     <hr class="hr-light">
                      <div class="form-group">
                         <label class="text-center" for="primary_ressource">selectionez la première ressource</label>
-                        <select class="custom-select custom-select-sm my-2" name="ref[]" id="primary_ressource">
+                        <select class="custom-select custom-select-sm my-2" name="ref[]" id="primary_ressource" required>
                             <option value=""selected style="display: none">selectionez la resource</option>
                         @foreach ($references as $reference)
                             <option value="{{ $reference->id }}">{{ $reference->slug }}</option>
@@ -42,7 +42,7 @@
                     </div> 
                     <div class="form-group">
                         <label class="text-center" for="secondary_ressource">selectionez la deuxième ressource</label>
-                        <select class="custom-select custom-select-sm my-2" name="ref[]" id="secondary_ressource">
+                        <select class="custom-select custom-select-sm my-2" name="ref[]" id="secondary_ressource" required>
                             <option value=""selected style="display: none">selectionez la resource</option>
                         @foreach ($references as $reference)
                             <option value="{{ $reference->id }}">{{ $reference->slug }}</option>
@@ -51,7 +51,7 @@
                     </div> 
                     <hr class="hr-light my-2">
                     <div class="custom-file" id="file">
-                      <input type="file" class="custom-file-input my-2" name="image" id="image" lang="fr" onchange="return fileValidation() ">
+                      <input type="file" class="custom-file-input my-2" name="image" id="image" lang="fr" onchange="return fileValidation() " required>
                       <label class="custom-file-label"  for="image">Sélectionner une image</label>
                         <div id="alert"></div>
                     </div>
@@ -67,8 +67,8 @@
                     <input type="text" id="meta" name="meta" value="{{ old('title')}}" class="form-control my-2" placeholder="meta description" required>
 
                     <hr class="hr-light">
-                    <label for="desc">décrivez votre cours</label>
-                    <textarea type="text" id="desc" name="desc" class="form-control my-5 editor" placeholder="décrivez votre cours ici....">{{ old('desc')}}</textarea>
+                    <label for="desc">décrivez votre cours (max caracter 255 !)</label>
+                    <textarea type="text" id="desc" name="desc" class="form-control my-5 editor" placeholder="décrivez votre cours ici...." required>{{ old('desc')}}</textarea>
                     @if($references->count() > 1)
                     <button class="btn btn-success my-3" type="submit"><span class="fas fa-plus pr-2"></span>publiez votre cours</button>
                     @else

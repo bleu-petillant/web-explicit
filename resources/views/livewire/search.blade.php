@@ -12,8 +12,6 @@
                                 />
                         </div>
 
-
-
                     <select name="category_id" id="category_id" wire:model="category_id" class="dropdown" @click="{ open = true }"  >
                         <div  class="default_option">
                             <option value="" selected>Toutes les catégories</option>
@@ -21,10 +19,7 @@
                             <option  value="{{$cat->id}}" >{{$cat->name}} </option > 
                             @endforeach
                         </div>
-                        
                     </select>
-
-                    
 
                 </div>           
             </div>
@@ -98,6 +93,7 @@
             @else
                 <span class="text-red-400">0 résultats pour "{{ $query }}"</span>
             @endif
+
 
         @else
         

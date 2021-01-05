@@ -24,7 +24,7 @@
                      <div class="form-group">
                          @if($courses->count() > 0)
                         <label class="text-center" for="course">selectionez une formation</label>
-                        <select  name="course" id="course" class="custom-select custom-select-sm my-2">
+                        <select  name="course" id="course" class="custom-select custom-select-sm my-2" required  autofocus>
                             <option value=""selected style="display: none">selectionez la formation</option>
                         @foreach ($courses as $course)
                             <option value="{{ $course->id }}">{{ $course->title }}</option>
@@ -36,7 +36,7 @@
                     </div> 
                     <div class="my-2"></div>
                     <div class="custom-file" id="file">
-                      <input type="file" class="custom-file-input my-2" name="video" id="video" lang="fr" onchange="return fileValidation() ">
+                      <input type="file" class="custom-file-input my-2" name="video" id="video" lang="fr" onchange="return fileValidation() " required>
                       <label class="custom-file-label" for="video">Sélectionner la video</label>
                       <div id="alert"></div>
                     </div>
@@ -44,11 +44,11 @@
                      </div> 
                      <div class="form-group">
                     <label for="content" class="control-label">votre question:</label>
-                    <input type="text" id="content" name="content" class="form-control" placeholder="écrivez votre question">
+                    <input type="text" id="content" name="content" class="form-control" placeholder="écrivez votre question" min="5" max="255" required>
                 </div>
                 <div class="form-group">
                     <label for="reponse1" class="control-label">reponse possible 1</label>
-                    <input type="text" id="reponse1" name="reponse[]" class="form-control" placeholder="réponse 1....">
+                    <input type="text" id="reponse1" name="reponse[]" class="form-control" placeholder="réponse 1...." required min="1" max="255">
                     <div class="my-2"></div>
                     <select name="correct[]" id="correct" class="form-select">
                          <option value=""selected style="display: none">réponse correct ?</option>
@@ -58,9 +58,9 @@
                 </div>
                 <div class="form-group">
                     <label for="reponse2" class="control-label">reponse possible 2</label>
-                    <input type="text" id="reponse2" name="reponse[]" class="form-control" placeholder="réponse 2....">
+                    <input type="text" id="reponse2" name="reponse[]" class="form-control" placeholder="réponse 2...." required min="1" max="255">
                     <div class="my-2"></div>
-                    <select name="correct[]" id="correct" class="form-select">
+                    <select name="correct[]" id="correct" class="form-select" required>
                          <option value=""selected style="display: none">réponse correct ?</option>
                         <option value="1">vraie</option>
                         <option value="0">faux</option>
@@ -68,9 +68,9 @@
                 </div>
                 <div class="form-group">
                     <label for="reponse3" class="control-label">reponse possible 3</label>
-                    <input type="text" id="reponse3" name="reponse[]" class="form-control" placeholder="réponse 3....">
+                    <input type="text" id="reponse3" name="reponse[]" class="form-control" placeholder="réponse 3...." required min="1" max="255">
                      <div class="my-2"></div>
-                    <select name="correct[]" id="correct" class="form-select">
+                    <select name="correct[]" id="correct" class="form-select" required>
                          <option value=""selected style="display: none">réponse correct ?</option>
                         <option value="1">vraie</option>
                         <option value="0">faux</option>
@@ -78,9 +78,9 @@
                 </div>
                  <div class="form-group">
                     <label for="reponse4" class="control-label">reponse possible 4</label>
-                    <input type="text" id="reponse4" name="reponse[]" class="form-control" placeholder="réponse 4....">
+                    <input type="text" id="reponse4" name="reponse[]" class="form-control" placeholder="réponse 4...." required min="1" max="255">
                 <div class="my-2"></div>
-                    <select name="correct[]" id="correct" class="form-select">
+                    <select name="correct[]" id="correct" class="form-select" required>
                          <option value=""selected style="display: none">réponse correct ?</option>
                         <option value="1">vraie</option>
                         <option value="0">faux</option>
@@ -88,9 +88,9 @@
                 </div>
                 <div class="form-group">
                     <label for="reponse5" class="control-label">reponse possible 5</label>
-                    <input type="text" id="reponse5" name="reponse[]" class="form-control" placeholder="réponse 5....">
+                    <input type="text" id="reponse5" name="reponse[]" class="form-control" placeholder="réponse 5...." required min="1" max="255">
                 <div class="my-2"></div>
-                    <select name="correct[]" id="correct" class="form-select">
+                    <select name="correct[]" id="correct" class="form-select" required>
                          <option value=""selected style="display: none">réponse correct ?</option>
                         <option value="1">vraie</option>
                         <option value="0">faux</option>
@@ -118,8 +118,8 @@
                 </div> 
 
                 <div class="form-group">
-                    <label for="indice" class="control-label">indices pour aider les éléves :</label>
-                    <textarea type="text" id="indice" name="indice" class="form-control" placeholder="écrivez votre indice"></textarea>
+                    <label for="indice" class="control-label">indices pour aider les éléves : (max caractere 255 !)</label>
+                    <textarea type="text" id="indice" name="indice" class="form-control" placeholder="écrivez votre indice" required maxlength="255"></textarea>
                 </div>
                     <button class="btn btn-success my-3" type="submit"><span class="fas fa-plus pr-2"></span>publiez votre questions</button>
                 </form>
@@ -129,78 +129,12 @@
     <script>
         $(document).ready(function () {
             let courseSelect = $('#course');
-            let positionSelect = $('#position');
             $('#video').val("");
             $('#alert').html("");
-            let posArray = [];
-             for (let i = 1; i  < 11;  i++) {
-
-            positionSelect.append(' <option value="'+i+'">'+i+'</option>');                  
-                                
-         }
-
-        //      courseSelect.on('change', function () {
-        //          let course_id = $(this).val();
-        //          $.ajaxSetup({
-        //              headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
-        //          }),
-        //          $.ajax({
-        //          url: '/get_question_position',
-        //          type: "POST",
-        //          data:{
-        //              course_id:course_id,
-        //           },
-        //              success: function (response) {
-                         
-        //                  if(response.status == 'success')
-        //                  {
-                            
-        //                      positionSelect.html("");
-        //                      posArray = [];
-        //                      for (let i = 0; i < response.length; i++) {
-        //                          console.log(response[i]);
-        //                         let pos = response[i].question_position;
-        //                         posArray.push(pos);
-                                 
-        //                      }
-                            
-                             
-        //                     console.log(posArray);
-        //                      let lastPos = posArray.length -1;
-                            
-        //                      if(posArray.length < 2){
-        //                          lastPos = 2;
-        //                      }
-                            
-                    
-        //                     if(pos.length > 0)
-        //                     {
-        //                         for (let i = lastPos; i  < 11;  i++) {
-
-        //                             positionSelect.append(' <option value="'+i+'">'+i+'</option>');                  
-                                
-        //                         }
-
-        //                     }else{
-
-        //                         for (let i = 1; i  < 11;  i++) {
-
-        //                             positionSelect.append(' <option value="'+i+'">'+i+'</option>');                  
-                                
-        //                         }
-        //                     }
-
-        //                  }else
-        //                  {
- 
-        //                  }
-        //          }
-        //      });
-        //  });
 
     });
 
-         function fileValidation() { 
+        function fileValidation() { 
             var fileInput =  document.getElementById('video'); 
               
             var filePath = fileInput.value; 

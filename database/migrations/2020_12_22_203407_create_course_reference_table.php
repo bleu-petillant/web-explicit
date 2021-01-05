@@ -17,7 +17,7 @@ class CreateCourseReferenceTable extends Migration
             $table->id();
             $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete('cascade')->cascadeOnUpdate('cascade');
             $table->foreignId('reference_id')->constrained('references')->cascadeOnDelete('cascade')->cascadeOnUpdate('cascade');
-            $table->timestamps();
+
         });
     }
 

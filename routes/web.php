@@ -79,21 +79,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['super']], function(){
 
 
 
-// route for resources only for all auth logged
+// route for resources only for  auth logged
 Route::group(['middleware' => ['auth:sanctum','verified']], function () {
 
 Route::get('/nos formations',[HomeController::class,'allCourses'])->name('formations.all');
 Route::get('/nos formations/ressources',[HomeController::class,'ResourcesPrivate'])->name('ressources.private');// page all ressources
 Route::get('/formation/{slug}',[HomeController::class,'showCourse'])->name('formation');
-
 Route::post('/checkreponse',[ValideQuestionController::class,'checkTheAnswers'])->name('checkreponse');
-Route::post('/get_question_position',[ValideQuestionController::class,'GetData'])->name('getdata');
 
 });
 
 
 
-// error route , 404 and middleware forbidden. you can personalize the 404 page in view/404
+// error route , 404 and middleware forbidden. you can personalize the 404 page in view/404 or permissions
 Route::get('/permissions', function(){
     return view('errors.permissions');
 })->name('permissions');

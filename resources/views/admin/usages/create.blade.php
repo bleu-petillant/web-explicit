@@ -25,7 +25,7 @@
 
                      <div class=" my-4"></div>
                      <div class="custom-file" id="file">
-                      <input type="file" class="custom-file-input my-2" name="image" id="image" lang="fr" onchange="return fileValidation() ">
+                      <input type="file" class="custom-file-input my-2" name="image" id="image" lang="fr" onchange="return fileValidation() " required>
                       <label class="custom-file-label"  for="image">Sélectionner une image</label>
                         <div id="alert"></div>
                     </div>
@@ -47,7 +47,7 @@
            
                     <div class=" my-4"></div>
                     <label for="desc">articles sur votre cas d'usage: </label>
-                    <textarea type="text" id="desc" name="desc" class="form-control my-2"  placeholder="décrivez votre cas d'usage"></textarea>
+                    <textarea type="text" id="desc" name="desc" class="form-control my-2"  placeholder="décrivez votre cas d'usage" required></textarea>
 
                      <div class=" my-4"></div>
                     <button class="btn btn-info  my-4" type="submit"><span class="fas fa-plus pr-2"></span>créez ce cas d' usage</button>

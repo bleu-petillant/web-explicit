@@ -24,7 +24,7 @@ class ValideQuestionController extends Controller
         $id = $request->question_id;
         $reponse_done =  $request->r;
         $course_id = $request->course_id;
-        $currentQ = $request->position;
+
         
 
         $course = Course::where('id',$course_id)->with('references')->first();
@@ -32,7 +32,7 @@ class ValideQuestionController extends Controller
         $Course_user = $course->users()->first();
         $indice = Question::where('id',$id)->first();
         $CurrQ = $Course_user->pivot->question_position;
-        $CourseActivate = $Course_user->pivot->activated;
+
         $CourseValidate = $Course_user->pivot->validate;
     
         
@@ -133,22 +133,7 @@ class ValideQuestionController extends Controller
     abort(404);
 }
 
-    public function GetData(Request $request)
-    {
-        if ($request->ajax())
-        {
-            $course_id = $request->course_id;
-            $question_position = Question::where('course_id',$course_id)->get();
-            $question_total = Question::where('course_id',$course_id)->count();
-            if($question_position->count() > 0)
-            {
-                return response()->json(['status'=>'success',$question_position]);
-            }else{
-                return response()->json(['status'=>'error',$question_position]);
-            }
-            
-        }
-    }
+
     
 }
 

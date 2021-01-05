@@ -25,7 +25,7 @@
 
                     <div class=" my-4"></div>
                     <label for="category">selectionez une catégorie pour votre ressource</label>
-                    <select name="category" id="category" class="custom-select custom-select-sm my-2">
+                    <select name="category" id="category" class="custom-select custom-select-sm my-2" required>
                         <option value=""selected style="display: none">selectionez une catégorie</option>
                         @foreach ($categories as $cat)
                     <option value="{{ $cat->id }}">{{ $cat->name }}</option>
@@ -34,18 +34,18 @@
                      <div class=" my-4"></div>
                     		<div class="form-group">
                                 <label for="tags">écrivez vos tags ici <strong class="text-red-800">(5 maximum)</strong>(mots clef court de quelques lettres qui seront associer à cette resources )</label>
-                                <input data-role="tagsinput" type="text" name="tags" id="tags" placeholder="psychologie,cerveau,humain,psy,cas,maladie etc......">
+                                <input data-role="tagsinput" type="text" name="tags" id="tags" placeholder="psychologie,cerveau,humain,psy,cas,maladie etc......" required>
                             </div>
                      <div class=" my-4"></div>
                     <div class="custom-file" id="file">
-                      <input type="file" class="custom-file-input my-2" name="image" id="image" lang="fr" onchange="return fileValidation() ">
+                      <input type="file" class="custom-file-input my-2" name="image" id="image" lang="fr" onchange="return fileValidation() " required>
                       <label class="custom-file-label"  for="image">Sélectionner une image</label>
                         <div id="alert"></div>
                     </div>
                     <div id="imagePreview" class="col-lg-2"></div> 
                         
                       <label for="alt" class="label"> ajouter une description pour l'image (ALT)</label>
-                      <input type="text" id="alt" name="alt" class="form-control my-4" value="{{ old('alt')}}" placeholder="description de l'image" required>
+                      <input type="text" id="alt" name="alt" class="form-control my-4" value="{{ old('alt')}}" placeholder="description de l'image">
                     </div>
 
                       <div class=" my-6" id="file-type">
@@ -57,8 +57,8 @@
                     <input type="text" id="meta" name="meta" value="{{ old('meta')}}" class="form-control my-2" placeholder="meta description" required>
            
                     <div class=" my-4"></div>
-                        <label for="desc">décrivez votre ressources: </label>
-                        <textarea type="text" id="desc" name="desc" class="form-control my-2"  placeholder="décrivez votre ressources"></textarea>
+                        <label for="desc">décrivez votre ressources: <small class="text-danger">(max 255 caractères)</small></label>
+                        <textarea type="text" id="desc" name="desc" class="form-control my-2"  placeholder="décrivez votre ressources" required></textarea>
                          <div class=" my-4"></div>
 
                         <label for="duration">ajouter une durée de lecture pour votre ressource <small class="text-danger">(uniquement en chiffres, en minutes et sans le mot minutes !)</small></label>

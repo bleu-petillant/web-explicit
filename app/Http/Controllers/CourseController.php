@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Course;
+use App\Models\Reponse;
 use App\Models\Category;
-use App\Models\CourseUser;
+use App\Models\Question;
 use App\Models\Reference;
+use App\Models\CourseUser;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -255,18 +258,39 @@ class CourseController extends Controller
      */
     public function destroy( $id)
     {
-        $course = Course::find($id);
+        $course = Course::with('references','users')->find($id);
+        $questions = Question::with('references','reponses')->where('course_id',$id)->get();
+
+       if($questions){
+            foreach ($questions as $q ) {
+                $reponses = Reponse::where('question_id',$q->id)->get();
+                 if($reponses){
+                    foreach ($reponses as $r ) {
+
+                        $r->delete();
+                    }
+                }
+                $q ->references()->detach();
+                $q->delete();
+
+                if(file_exists(public_path($q->video)))
+                {
+                    unlink(public_path($q->video));
+                    Storage::delete($q->video);
+                }
+                
+            }
+       }
+
         if($course)
         {
             if(file_exists(public_path($course->image)))
             {
                 unlink(public_path($course->image));
             }
-            if(file_exists(public_path($course->video)))
-            {
-                unlink(public_path($course->video));
-            }
 
+            $course->users()->detach();
+            $course->references()->detach();
             $course->delete();
             return view('admin.course.index');
         }

@@ -10,7 +10,6 @@
     
 </div>
 
-
     <section class="search-bar">
         <h1 class="text-center text-white text-6xl font-bold"> Ressources</h1>
         <div class="wrapper">

@@ -227,20 +227,24 @@ class CheckResponse
     {
         let next_ref = nextcourse.references;
         let nextslug = nextcourse.slug;
+        let next_course_object =nextcourse;
+        let img = next_course_object.image;
+        console.log(next_course_object);
         this.showRessources(course);
-        
-
         this.nextcourseContainer.show();
         // div 
-        this.nextcourseContainer.append('<a href="'+nextslug+'" id="next_course_link" ><i class="fas fa-angle-double-right"></i></i></a>')
+        this.nextcourseContainer.append(
+            '<a href="'+nextslug+'" id="next_course_link" ><i class="fas fa-angle-double-right"></i></i></a>'+
+            '<div></div>'
+            );
         // on instancie les ressources associer
-        for (let i = 0; i < ref.length; i++) {
+        for (let i = 0; i < next_ref.length; i++) {
             let title = next_ref[i].title;
             let cat = next_ref[i].category_id;
             let desc = next_ref[i].desc;
             let link = next_ref[i].link;
             let pdf = next_ref[i].pdf;
-
+      
             if(cat == 1)
             {
                 this.nextcourseContainer.append('<a class="mr-2" href="'+pdf+'"target="__blank"><div class="all-pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">pdf</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');

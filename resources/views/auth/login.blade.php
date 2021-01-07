@@ -1,7 +1,10 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <a href="{{route('home')}}">
+                <img class="block lg:hidden w-1/6 mx-auto logo-course-explicit" src="{{ asset('img/logo/logonoir.png') }}" alt="Workflow" >
+                <img class="hidden lg:block w-1/6 mx-auto logo-course-explicit" src="{{ asset('img/logo/logonoir.png') }}" alt="Workflow" >
+            </a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />

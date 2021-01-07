@@ -64,6 +64,7 @@
 .formation-card{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    height: 523px;
 }
 
 
@@ -146,6 +147,61 @@
     margin-left: 10px;
     margin-right: 10px;
 }
+
+
+/* ressource private */
+
+.private-podcast-button {
+    color: #cc6699;
+    padding: 5px 18px;
+    width: 27%;
+    border: 2px solid #cc6699;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 21px;
+    right: 0;
+    left: 0;
+}
+
+.private-video-button{
+    color: #58b1c6;
+    padding: 5px 18px;
+    width: 27%;
+    border: 2px solid #58b1c6;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 21px;
+    right: 0;
+    left: 0;
+}
+
+.private-pdf-button{
+    color: #66cc99;
+    padding: 5px 18px;
+    width: 27%;
+    border: 2px solid #66cc99;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 21px;
+    right: 0;
+    left: 0;
+}
+
+.podcast-card:hover .private-podcast-button {
+    background-color: #cc6699;
+    color: white;
+}
+
+.pdf-card:hover .private-pdf-button {
+    background-color: #66cc99;
+    color: white;
+}
+
+.video-card:hover .private-video-button {
+    background-color: #58b1c6;
+    color: white;
+}
+
 /*-------------------------------------Unique Course*/
 
 .formation-left{
@@ -163,9 +219,8 @@
 }
 
 .right-quizz-container{
-    position: absolute;
-    right: 0;
-    top: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /* container */
@@ -284,7 +339,40 @@
     margin: 12% auto;
 }
 
+/* Next-formation */
 
+#nextcourse{
+    background-color: white;
+    width: 500px;
+    height: 422px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+#ressource_course_next{
+    width: 63%;
+    margin: 8px auto 0px auto;
+}
+
+
+.next-formation-ressource{
+    width: 150px;
+}
+
+.formation-next-image{
+    width: 300px;
+    height: 175px;
+    background-color:  #6d7aea;
+    margin: 0 auto;
+}
+
+.next-formation-overlay{
+    background-color: #6d7aea;
+}
 /* Ressources */
 
 .ressource-course-container{

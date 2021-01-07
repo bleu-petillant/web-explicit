@@ -9,6 +9,8 @@
 
 .card{
   cursor: pointer;
+  border-top-left-radius: 10px!important;
+  border-top-right-radius: 10px!important;
 }
 
 .card-ressource{
@@ -95,9 +97,26 @@
   
 }
 
-.all-pdf-card-content{
-  border-left: 3px solid #66cc99;
+.pdf-card-content a:hover{
+  color: black;
+  text-decoration: none!important;
 }
+
+
+.video-card-content a:hover{
+  color: black;
+  text-decoration: none!important;
+}
+
+.podcast-card-content a:hover{
+  color: black;
+  text-decoration: none!important;
+}
+
+.text-reference-formation{
+  color: black!important;
+}
+
 
 .video-card-content{
   border-left: 3px solid #58b1c6;

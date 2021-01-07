@@ -26,7 +26,7 @@
 
         @foreach ($references as $ref)
             @if ($ref->category_id == '1')
-            <div class="formation-card card-ressource card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 grille-item">
+            <div class="formation-card card-ressource pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 grille-item">
                 <a href="{{$ref->link}}" >
                 <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
                 <div class>
@@ -36,11 +36,11 @@
                         <p class="card-text">{{$ref->desc}}</p>
                     </div>
                 </a>
-                <p class="text-center mt-5 mb-5"><a href="{{asset($ref->pdf)}}" class=" pdf-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
+                <p class="text-center mt-5 mb-5"><a href="{{asset($ref->pdf)}}" class=" private-pdf-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
                 </div>
             </div>
             @elseif ($ref->category_id == '2')
-            <div class="formation-card card-ressource card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 grille-item">
+            <div class="formation-card card-ressource video-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 grille-item">
                 <a href="{{$ref->link}}" >
                 <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
                     <div class="mt-2 py-3 pl-2 all-video-card-content">
@@ -49,10 +49,10 @@
                         <p class="card-text">{{$ref->desc}}</p>
                     </div>
                 </a>
-                <p class="text-center mt-5 mb-5"><a href="{{asset($ref->pdf)}}" class=" video-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
+                <p class="text-center mt-5 mb-5"><a href="{{asset($ref->pdf)}}" class=" private-video-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
             </div>
             @elseif ($ref->category_id == '3')
-            <div class="formation-card card-ressource card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 grille-item">
+            <div class="formation-card card-ressource podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 grille-item">
                 <a href="{{$ref->link}}" >
                 <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
                     <div class="mt-2 py-3 pl-2 all-podcast-card-content">
@@ -61,10 +61,10 @@
                         <p class="card-text">{{$ref->desc}}</p>
                     </div>
                 </a>
-                <p class="text-center mt-5 mb-5"><a href="{{asset($ref->pdf)}}" class=" podcast-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
+                <p class="text-center mt-5 mb-5"><a href="{{asset($ref->pdf)}}" class=" private-podcast-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
             </div>
             @elseif ($ref->category_id == '4')
-            <div class="formation-card card-ressource card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 grille-item">
+            <div class="formation-card card-ressource podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 grille-item">
                 <a href="{{$ref->link}}" >
                 <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
                     <div class="mt-2 py-3 pl-2 all-podcast-card-content">
@@ -73,7 +73,7 @@
                         <p class="card-text">{{$ref->desc}}</p>
                     </div>
                 </a>
-                <p class="text-center mt-5 mb-5"><a href="{{asset($ref->pdf)}}" class=" podcast-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
+                <p class="text-center mt-5 mb-5"><a href="{{asset($ref->pdf)}}" class=" private-podcast-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
             </div>
 
             @else

@@ -2,23 +2,23 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>website manager</title>
-  <!-- Font Awesome Icons -->
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css'/>
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('admin/css/adminlte.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>website manager</title>
+    <!-- Font Awesome Icons -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css'/>
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('admin/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.9.2/tailwind.min.css" integrity="sha512-l7qZAq1JcXdHei6h2z8h8sMe3NbMrmowhOl+QkP3UhifPpCW2MC4M0i26Y8wYpbz1xD9t61MLT9L1N773dzlOA==" crossorigin="anonymous" />
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css'/>
-  <link rel="stylesheet" href="{{asset('admin/css/tag.css')}}">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css'/>
+    <link rel="stylesheet" href="{{asset('admin/css/tag.css')}}">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     @livewireStyles
     <!-- Scripts -->
 	
@@ -31,143 +31,144 @@
 
 </head>
 <div class="wrapper">
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+<!-- Navbar -->
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
 
     <!-- Left navbar links -->
     <ul class="navbar-nav">
-      <li class="nav-item">
+    <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      {{--  @livewire('navigation-dropdown')  --}}
+    </li>
+    {{--  @livewire('navigation-dropdown')  --}}
     </ul>
-  </nav>
-  <!-- /.navbar -->
+</nav>
+<!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar  elevation-4" style="background-color: #6d7aea;">
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+    <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         @auth
         <div class="image">
-        {{-- <img src="{{asset(Auth::user()->image)}}" class="img-circle elevation-2" alt="User Image"> --}}
+                <a href="{{ route('home') }}">
+                    <img class="block w-1/12 w-auto" src="{{ asset('img/logo/logoblanc.png') }}" alt="Workflow">
+                </a>
+                <p class="d-block raleway text-center text-white underline">{{ Auth::user()->name }}</p>
         </div>
-        <div class="info">
-        <a href="#" class="d-block raleway">{{ Auth::user()->name }}</a>
-        </div>
-      </div>
+    </div>
 
-      <!-- Sidebar Menu -->
-      @if(auth()->user()->role_id == 1)
-      <nav class="mt-2">
+    <!-- Sidebar Menu -->
+    @if(auth()->user()->role_id == 1)
+    <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item my-2 bg-gradient-maroon">
-            <a href="{{route('student.index')}}" class="nav-link">
-                <i class="nav-icon fas fa-user-graduate"></i>liste des étudients
-            </a>
-          </li>
-            <li class="nav-item my-2 bg-gradient-indigo">
-            <a href="{{route('teacher.index')}}" class="nav-link">
-                <i class="nav-icon fas fa-school"></i>liste des professeurs
-            </a>
+            <li class="nav-item my-2 bg-white hover:bg-black hover:text-white ">
+                <a href="{{route('student.index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-user-graduate"></i>Liste des étudiants
+                </a>
             </li>
-            <li class="nav-item my-2 bg-blue">
-            <a href="{{route('category.index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-book"></i>liste des catégories
-            </a>
-          </li>
-            <li class="nav-item my-2 bg-fuchsia">
+            <li class="nav-item my-2 bg-white">
+                <a href="{{route('teacher.index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-school"></i>Liste des professeurs
+                </a>
+            </li>
+            <li class="nav-item my-2 bg-white">
+                <a href="{{route('category.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>Liste des catégories
+                </a>
+            </li>
+            <li class="nav-item my-2 bg-white">
                 <a href="{{ route('course.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-laptop-code"></i>liste des formations
+                    <i class="nav-icon fas fa-laptop-code"></i>Liste des formations
                 </a>
             </li>
-            <li class="nav-item my-2 bg-gradient-indigo">
+            <li class="nav-item my-2 bg-white">
                 <a href="{{ route('question.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-question"></i>liste des questions
+                    <i class="nav-icon fas fa-question"></i>Liste des questions
                 </a>
             </li>
-            <li class="nav-item my-2 bg-gradient-orange">
+            <li class="nav-item my-2 bg-white">
                 <a href="{{ route('reference.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-book-open"></i>liste des ressources
+                    <i class="nav-icon fas fa-book-open"></i>Liste des ressources
                 </a>
             </li>
-            <li class="nav-item my-2 bg-gradient-orange">
+            <li class="nav-item my-2 bg-white">
                 <a href="{{ route('usage.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-briefcase"></i>liste des cas d' usages
+                    <i class="nav-icon fas fa-briefcase"></i>Liste des cas d'usages
                 </a>
             </li>
-            <li class="nav-item my-2 bg-gradient-purple mb-2">
+            <li class="nav-item my-2 bg-white">
                 <a href="{{ route('home') }}" class="nav-link" target="_blank">
-                    <i class="nav-icon fas fa-home"></i>aller sur le site web
+                    <i class="nav-icon fas fa-home"></i>Aller sur le site web
                 </a>
             </li>
-            <div class="divide-y divide-fuchsia-300">
-                <li class="nav-item my-2 bg-gradient-maroon mt-5">
+            <div class="divide-y ">
+                <li class="nav-item my-2 bg-white mt-5">
                     <a class="nav-link" href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
-                        <i class="nav-icon fas fa-cog px-2"></i>gestion du profil
+                        <i class="nav-icon fas fa-cog px-2"></i>Gestion du profil
                     </a>
                 </li>
-                <li class="nav-item my-2 bg-pink-700">
+                <li class="nav-item my-2 bg-white">
                     <a class="nav-link" href="{{ route('admin.list') }}" :active="request()->routeIs('admin.list')">
-                        <i class="nav-icon fas fa-key px-2"></i>gestion des Admins
+                        <i class="nav-icon fas fa-key px-2"></i>Gestion des Admins
                     </a>
                 </li>
-        <li class="nav-item my-2 bg-gradient-dark mt-2">
-            <form method="POST" action="{{ route('logout') }}">
-                 @csrf
-                <a class="nav-link" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                        this.closest('form').submit();">
-                    <i class="nav-icon fas fa-sign-out-alt px-2"></i>{{ __('Logout') }}
-                </a>
-            </form>
+            <li class="nav-item my-2 bg-gradient-dark mt-2">
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a class="nav-link text-white" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                        <i class="nav-icon fas fa-sign-out-alt px-2"></i>{{ __('Logout') }}
+                    </a>
+                </form>
             </li>
+        
         </div>
         @elseif(auth()->user()->role_id == 2)
         <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item my-2 bg-gradient-maroon">
+            <li class="nav-item my-2 bg-white">
             <a href="{{route('student.index')}}" class="nav-link">
-                <i class="nav-icon fas fa-user-graduate"></i>liste des étudients
+                <i class="nav-icon fas fa-user-graduate"></i>Liste des étudiants
             </a>
-          </li>
-            <li class="nav-item my-2 bg-gradient-indigo">
+            </li>
+            <li class="nav-item my-2 bg-white">
             <a href="{{route('teacher.index')}}" class="nav-link">
-                <i class="nav-icon fas fa-school"></i>liste des professeurs
+                <i class="nav-icon fas fa-school"></i>Liste des professeurs
             </a>
             </li>
-            <li class="nav-item my-2 bg-fuchsia">
+            <li class="nav-item my-2 bg-white">
                 <a href="{{ route('course.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-laptop-code"></i>liste des cours
+                    <i class="nav-icon fas fa-laptop-code"></i>Liste des cours
                 </a>
             </li>
-            <li class="nav-item my-2 bg-gradient-orange">
+            <li class="nav-item my-2 bg-white">
                 <a href="{{ route('reference.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-book-open"></i>liste des ressources
+                    <i class="nav-icon fas fa-book-open"></i>Liste des ressources
                 </a>
             </li>
-            <li class="nav-item my-2 bg-gradient-orange">
+            <li class="nav-item my-2 bg-white">
                 <a href="{{ route('usage.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-briefcase"></i>liste des cas d' usages
+                    <i class="nav-icon fas fa-briefcase"></i>Liste des cas d'usages
                 </a>
             </li>
-            <li class="nav-item my-2 bg-gradient-purple mb-2">
+            <li class="nav-item my-2 bg-white mb-2">
                 <a href="{{ route('home') }}" class="nav-link" target="_blank">
-                    <i class="nav-icon fas fa-home"></i>aller sur le site web
+                    <i class="nav-icon fas fa-home"></i>Aller sur le site web
                 </a>
             </li>
-            <div class="divide-y divide-fuchsia-300">
-                <li class="nav-item my-2 bg-gradient-maroon mt-5">
+            <div class="divide-y ">
+                <li class="nav-item my-2 bg-white mt-5">
                     <a class="nav-link" href="{{ route('teacher.dashboard') }}" :active="request()->routeIs('teacher.dashboard')">
-                        <i class="nav-icon fas fa-cog px-2"></i>gestion du profil
+                        <i class="nav-icon fas fa-cog px-2"></i>Gestion du profil
                     </a>
                 </li>
         <li class="nav-item my-2 bg-gradient-dark mt-2">
             <form method="POST" action="{{ route('logout') }}">
-                 @csrf
-                <a class="nav-link" href="{{ route('logout') }}"
+                @csrf
+                <a class="nav-link text-white" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                         this.closest('form').submit();">
                     <i class="nav-icon fas fa-sign-out-alt px-2"></i>{{ __('Logout') }}
@@ -178,13 +179,13 @@
         @endif
         @endauth
         </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
+    </nav>
+    <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
-  </aside>
-  <div class="elegant-color content-wrapper">
-      {{ $slot ?? '' }}
+</aside>
+    <div class="elegant-color content-wrapper">
+        {{ $slot ?? '' }}
         @yield('admin.dashboard')
         @yield('admin.create')
         @yield('admin.student')
@@ -193,7 +194,7 @@
         @yield('admin.student.show')
         @yield('admin.course')
         @yield('admin.course.create')
-         @yield('scripts')
+        @yield('scripts')
         @yield('admin.course.edit')
         @yield('admin.category')
         @yield('admin.category.create')
@@ -217,16 +218,16 @@
         @yield('teacher.resource')
         @yield('teacher.teacher')
     </div>
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+</aside>
+<!-- /.control-sidebar -->
 
-  <!-- Main Footer -->
-  <footer class="main-footer elegant-color">
+<!-- Main Footer -->
+<footer class="main-footer elegant-color">
 
-  </footer>
+</footer>
 </div>
 
 <!-- ./wrapper -->
@@ -242,7 +243,7 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.js"></script>
 
 @stack('modals')
 

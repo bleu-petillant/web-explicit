@@ -36,33 +36,32 @@
             <p class=" text-xl text-justify mt-10 px-4 w-3/4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus recusandae ipsam aliquam commodi officia voluptates quis reiciendis fugit eligendi tempora?</p>
         </div>
     </div>
-   
     
-  <!-- cartes des ressources -->
-    <div class="my-20 w-3/4 mx-auto">
+<!-- cartes des ressources -->
+    <div class="my-20 w-3/4 mx-auto relative">
         <div class="flex mx-auto justify-center ressource-cards py-2">
             @if($references->count() > 0)
             @foreach ($references as $reference)
-             <div class="card bg-white shadow-lg w-1/5 hover:shadow-xl mx-8 ">
+            <div class="card-ressource-home bg-white shadow-lg w-1/5 hover:shadow-xl mx-8 ">
                 @if ($reference->category_id == '1')
-             <a href="{{ $reference->pdf }}" target="_blank" >
+                <a href="{{ $reference->pdf }}" target="_blank" >
                 @else
                 <a href="{{ $reference->link }}" target="_blank" >
                 @endif
-                <img class=" card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
-                        <div class="py-3 pl-2">
-                            @if ($reference->category_id == '1')
-                                <p class="category pdf-color ">pdf</p>
-                            @elseif($reference->category_id == '2')
-                                <p class="category video-color ">vidéo</p>
-                                @elseif($reference->category_id == '3')
-                                    <p class="category podcast-color ">podcast</p>
-                                    @else
-                                    <p class="category podcast-color ">articles</p>
-                                @endif
-                            <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
-                            <p class="card-text">{{$reference->desc}}</p>
-                        </div>
+                    <img class=" card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
+                    <div class="py-3 pl-2">
+                        @if ($reference->category_id == '1')
+                            <p class="category pdf-color ">pdf</p>
+                        @elseif($reference->category_id == '2')
+                            <p class="category video-color ">vidéo</p>
+                            @elseif($reference->category_id == '3')
+                                <p class="category podcast-color ">podcast</p>
+                                @else
+                                <p class="category podcast-color ">articles</p>
+                            @endif
+                        <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
+                        <p class="card-text">{{$reference->desc}}</p>
+                    </div>
                 </a>
             </div>
             @endforeach 
@@ -71,10 +70,10 @@
             @endif
         </div>
         <div class="flex mx-auto justify-center">
-            <div class="w-1/5 mx-8" ></div>
+            <!-- <div class="w-1/5 mx-8" ></div>
             <div class="w-1/5 mx-8"></div>
-            <div class="w-1/5 mx-8"></div>
-            <div class="w-1/5 mx-8 mb-5 ">
+            <div class="w-1/5 mx-8"></div> -->
+            <div class="w-1/5 mx-8 mb-5 absolute right-0">
             <p class="text-right"> <a href="{{route('ressources.all')}}" class=" bg-white text-lg ressource-home-button uppercase relative float-right  "> les ressources</a></p>
             </div>
         </div>
@@ -92,7 +91,7 @@
             <div class="formation-home-text pt-10 pr-20 pb-10 pl-20">
                 <div class="border-l-4 border-white">
                     <h2 class="leading-tight text-white ressource-home-title uppercase font-bold text-4xl ml-4" >formation <br> interactive</h2>
-                    <p class=" text-white text-xl text-justify px-4 pt-3 w-3/4 font-light mb-4">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>                   
+                    <p class=" text-white text-xl text-justify px-4 pt-3 w-3/4 font-light mb-4">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy  nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>                   
                 </div>
             <p class="text-center"><a class="justify-center text-lg bg-white uppercase my-1 py-2 px-10 rounded" href="{{route('formations.all')}}">Commencer</a></p>
             </div>
@@ -109,8 +108,12 @@
         @foreach ($usages as $usage)
         <div class="card cas-usage cas-usage3 bg-white w-1/3 shadow-lg hover:shadow-xl mx-10">
             <a href="{{route('usage')}}">
-                    <img class="card-image w-full h-48 object-cover cas-usage-miniature" src="{{asset($usage->image)}}" alt="{{$usage->alt}}">
-                    <div class="play-usage-button button-usage-1"><i class="fas fa-play"></i></div>
+                    <div class="image-usage-div">
+                        <img class="card-image w-full h-48 object-cover cas-usage-miniature" src="{{asset($usage->image)}}" alt="{{$usage->alt}}">
+                        <!-- <i class="play-usage-button button-usage-1 fas fa-play"></i> -->
+                        <div class="round"><i class="play-usage-button button-usage-1 fas fa-play"></i></div>
+                    </div>
+
                     <div class="py-3 pl-2">
                         <h3 class="card-title text-2xl font-bold">{{$usage->title}}</h3>
                         <p class="card-text">détail sur le cas</p>
@@ -131,39 +134,7 @@
             </div>
         </div>
 
-    <!-- <div class="mobile-cas-usage flex my-2">
-
-        <div class="card cas-usage cas-usage3 bg-white shadow-lg hover:shadow-xl mx-10">
-            <img class=" card-image w-full h-50 object-cover  cas-usage-miniature" src="img/cas-usage/cas-1.jpg" alt="">
-            <div class="play-usage-button button-usage-1"><i class="fas fa-play"></i></div>
-                <div class="py-3 pl-2">
-                    <h3 class="card-title text-2xl font-bold">Recherche et formation <br> en STAPS</h3>
-                    <p class="card-text">Détails sur la ressource</p>
-                </div>
-        </div>
-
-        <div class="card cas-usage cas-usage3 bg-white shadow-lg hover:shadow-xl mx-10">
-            <img class=" card-image w-full h-50 object-cover cas-usage-miniature" src="img/cas-usage/cas-3.jpg" alt="">
-            <div class="play-usage-button button-usage-2"><i class="fas fa-play"></i></div>
-                <div class="py-3 pl-2">
-                    <h3 class="card-title text-2xl font-bold">Recherche et formation <br> à la méditation</h3>
-                    <p class="card-text">Détails sur la ressource</p>
-                </div>
-        </div>
-
-        <div class="card cas-usage cas-usage3 bg-white shadow-lg hover:shadow-xl mx-10">
-            <img class=" card-image w-full h-50 object-cover cas-usage-miniature" src="img/cas-usage/cas-2.jpg" alt="">
-            <div class="py-3 pl-2">
-                <h3 class="card-title text-2xl font-bold">Formation des pompiers <br> <br> </h3>
-                <p class="card-text">Détails sur la ressource</p>
-            </div>
-        </div>
-
-    </div> -->
-
     
-
- 
 
 </section>
 

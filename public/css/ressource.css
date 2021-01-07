@@ -11,6 +11,47 @@
   cursor: pointer;
 }
 
+.card-ressource{
+  height: 436px!important;
+}
+
+
+
+.grid-item:hover .card-content::before {
+  -moz-transform: skew(0deg, 0deg) ;
+  -webkit-transform: skew(0deg, 0deg) ;
+  -o-transform: skew(0deg, 0deg) ;
+  -ms-transform: skew(0deg, 0deg) ;
+  transform: skew(0deg, 0deg) ;
+}
+
+.card-content{
+  position: relative;
+}
+
+.card-content::before{
+  content: "";
+  display: block;
+  border-left: #fff 2px solid;
+  width: 100%;
+  height: 100px;
+  background: white;
+  position: absolute;
+  left: 0;
+  top: -16px;
+  outline: 1px solid transparent;
+  border: 1px solid white;
+  -moz-transform: skew(0deg, -5deg);
+  -webkit-transform: skew(0deg, -5deg);
+  -o-transform: skew(0deg, -5deg);
+  -ms-transform: skew(0deg, -5deg);
+  transform: skew(0deg, -5deg);
+  -moz-transition: -moz-transform .3s cubic-bezier(0.7, 0.7, 0.21, 1);
+  -o-transition: -o-transform .3s cubic-bezier(0.7, 0.7, 0.21, 1);
+  -webkit-transition: -webkit-transform .3s cubic-bezier(0.7, 0.7, 0.21, 1);
+  transition: transform .3s cubic-bezier(0.7, 0.7, 0.21, 1);
+}
+
 .slick-next, .slick-prev{
   color: #6d7aea;
   font-size: 40px;
@@ -32,6 +73,7 @@
 .podcast-button{
   color: #cc6699;
   padding: 5px 18px;
+  width: 27%;
   border: 2px solid #cc6699;
   border-radius: 5px;
 }
@@ -39,25 +81,55 @@
 .video-button{
   color: #58b1c6;
   padding: 5px 18px;
+  width: 27%;
   border: 2px solid #58b1c6;
   border-radius: 5px;
 }
 
+.all-video-card-content{
+  border-left: 3px solid #58b1c6;
+}
+
+.all-podcast-card-content{
+  border-left: 3px solid #cc6699;
+  
+}
+
+.all-pdf-card-content{
+  border-left: 3px solid #66cc99;
+}
+
 .video-card-content{
   border-left: 3px solid #58b1c6;
+  position: absolute;
+  z-index: 3;
 }
 
 .podcast-card-content{
   border-left: 3px solid #cc6699;
+  position: absolute;
+  z-index: 3;
 }
+
 
 .pdf-card-content{
   border-left: 3px solid #66cc99;
+  position: absolute;
+  z-index: 3;
+}
+
+.card-button{
+  position: absolute;
+  border-radius: 5px;
+  bottom: 15px;
+  right: 0;
+  left: 0;
 }
 
 .pdf-button{
   color: #66cc99;
   padding: 5px 18px;
+  width: 27%;
   border: 2px solid #66cc99;
   border-radius: 5px;
 }
@@ -195,8 +267,11 @@
   margin-bottom: 0!important;
 }
 
+.slick-ressource-page{
+  height: 436px!important;
+}
+
 .grid-item {
-  display: inline-block;
   margin: 13px;
   overflow: hidden;
   width: 345px;
@@ -253,6 +328,8 @@
   .wrapper .search_box .dropdown{
     width: 31vw;
   }
+
+  
 
 }
 

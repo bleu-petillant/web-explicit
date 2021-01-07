@@ -89,14 +89,26 @@ margin-top: -14px;
     margin: 8% 4%;
 }
 
+.card-ressource-home{
+    height: 393px!important;
+}
+
 .card-image{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
+.card-text{
+    padding: 0 13px 0 0;
+}
+
 .category{
     font-weight: 400;
     text-transform: uppercase;
+}
+
+.ressource-cards {
+    height: 416px;
 }
 
 .pdf-color{
@@ -151,31 +163,32 @@ margin-top: -14px;
     opacity: 0.7;
 }
 
-.cas-usage1:hover .button-usage-1{
-    visibility: visible;
+
+.image-usage-div{
+    position: relative;
 }
-
-.cas-usage2:hover .button-usage-2{
-    visibility: visible;
-}
-
-
-.cas-usage3:hover .button-usage-3{
-    visibility: visible;
-}
-
 
 .play-usage-button{
-    background-color: white;
     color: #6d7aea;
-    display: inline-block;
+    margin: auto;
     position: absolute;
     z-index: 30;
     border-radius: 60px;
-    padding: 0.3em 0.6em;
-    margin-top: -7%;
-    margin-left: 9%;
     font-size: 1.5rem;
+    text-align: center;
+    margin: 11px 11px 11px 13px;
+}
+
+
+.round{
+    width: 45px;
+    height: 45px;
+    z-index: 30;
+    background-color:white;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    border-radius: 50%;
 }
 
 .mobile-cas-usage{
@@ -184,6 +197,11 @@ margin-top: -14px;
 
 .slick-slide {
     margin-bottom: 2%;
+}
+
+.slick-track{
+    margin-top: 2px;
+    margin-bottom: 38px;
 }
 
 

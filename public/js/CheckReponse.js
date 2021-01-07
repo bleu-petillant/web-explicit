@@ -1,3 +1,4 @@
+
 class CheckResponse
 {
     constructor()
@@ -125,10 +126,12 @@ class CheckResponse
 
     showTheIndice(ressource,indice)
     {
-
         let ref = ressource.references;
         $( ".form-checkbox" ).prop( "checked", false );
         $('#reponses').addClass('hidden');
+        $('#check').hide();
+        $('#reset').show();
+        
     
         // on vide le html de l'indice
         
@@ -158,7 +161,7 @@ class CheckResponse
                 this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">article</p><p class= "text-reference-formation text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-base ">'+desc+'</p><br></div></a>');
             }
         }
-        this.resetQuestion();
+        
         
     }
 
@@ -171,11 +174,12 @@ class CheckResponse
             
             
         });
-        let seconds = 2000;
+        let seconds = 500;
         // au bout de 2 seconde , on montre l'indice, tu peux changer le timer avec la variable seconds
         setTimeout(() => {
             $('#reponses_form').hide();
             this.showTheIndice(ressource,indice);
+            getdata.resetQuestion();
         }, seconds);
 
     }
@@ -202,16 +206,16 @@ class CheckResponse
 
             if(cat == 1)
             {
-                this.ressourceContainer.append('<a class="mr-2" href="'+pdf+'"target="__blank"><div class="pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">pdf</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.ressourceContainer.append('<a class="mr-2" href="'+pdf+'"target="__blank"><div class="all-pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">pdf</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
             }else if(cat == 2)
             {
-                this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="video-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref video-color ">vidéo</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="all-video-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref video-color ">vidéo</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
             }else if(cat == 3)
             {
-                this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref podcast-color ">podcast</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="all-podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref podcast-color ">podcast</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
             }else
             {
-                this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">article</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="all-podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">article</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
             }
         }
 
@@ -228,7 +232,7 @@ class CheckResponse
 
         this.nextcourseContainer.show();
         // div 
-        this.nextcourseContainer.append('<a href="'+nextslug+'" id="next_course_link" ><i class="fa-2x fas fa-check"></i></a>')
+        this.nextcourseContainer.append('<a href="'+nextslug+'" id="next_course_link" ><i class="fas fa-angle-double-right"></i></i></a>')
         // on instancie les ressources associer
         for (let i = 0; i < ref.length; i++) {
             let title = next_ref[i].title;
@@ -239,16 +243,16 @@ class CheckResponse
 
             if(cat == 1)
             {
-                this.nextcourseContainer.append('<a class="mr-2" href="'+pdf+'"target="__blank"><div class="pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">pdf</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.nextcourseContainer.append('<a class="mr-2" href="'+pdf+'"target="__blank"><div class="all-pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">pdf</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
             }else if(cat == 2)
             {
-                this.nextcourseContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="video-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref video-color ">vidéo</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.nextcourseContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="all-video-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref video-color ">vidéo</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
             }else if(cat == 3)
             {
-                this.nextcourseContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref podcast-color ">podcast</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.nextcourseContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="all-podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref podcast-color ">podcast</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
             }else
             {
-                this.nextcourseContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">article</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.nextcourseContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="all-podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">article</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
             }
         }
 
@@ -262,11 +266,5 @@ class CheckResponse
 
     }
 
-    resetQuestion()
-    {
-        $('#reset').show();
-        $('#valide').hide();
-        $( ".form-checkbox" ).prop( "checked", false );
-        $('#reponses').show();
-    }
+    
 }

@@ -1,10 +1,22 @@
 /*ALL course*/
+.grid-title-2{
+    grid-template-columns: 5fr 2fr;
+}
 
 #formation_title{
     background-color: #6d7aea;
     display: flex;
     
 }
+
+.logo-course-explicit{
+    width: 230px;
+    position: absolute;
+    top: 0;
+    left: 34px;
+}
+
+
 
 .link-formation{
     cursor: pointer;
@@ -37,11 +49,11 @@
     height: auto;
     margin: 30px auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 420px);
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .grille-item{
-    width: 400px;
+    width: 94%;
     margin: 10px;
 }
 
@@ -55,23 +67,79 @@
 }
 
 
+.overlay-validate{
+    background-color: rgba(91, 189, 131, 0.68) ;
+    z-index: 6;
+    position: absolute;
+    width: 100%;
+}
+
+.overlay-touch{
+    background-color: rgba(135, 135, 135, 0.68);
+    z-index: 6;
+    position: absolute;
+    width: 100%;
+}
+
 
 .overlay-undone{
     background-color:  rgba(109, 122, 234, 0.68);
     z-index: 6;
-    width: 400px;
+    position: absolute;
+    width: 100%;
+}
+.task-button{
+    color: gray;
+    margin: auto;
+    position: absolute;
+    z-index: 30;
+    border-radius: 60px;
+    font-size: 1.8rem;
+    text-align: center;
+    margin: 17px 16px 17px 16px;
 }
 
-.overlay-validate{
-    background-color: rgba(117, 208, 86, 0.68) ;
-    z-index: 6;
-    width: 400px;
+.play-button{
+    color: #6d7aea;
+    margin: auto;
+    position: absolute;
+    z-index: 30;
+    border-radius: 60px;
+    font-size: 1.8rem;
+    text-align: center;
+    margin: 17px 11px 17px 20px;
 }
+
+
+.round-formation{
+    width: 60px;
+    height: 60px;
+    z-index: 30;
+    background-color:white;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    border-radius: 50%;
+}
+
+
+.validate-button{
+    color: rgba(91, 189, 131, 1);
+    margin: auto;
+    position: absolute;
+    z-index: 30;
+    border-radius: 60px;
+    font-size: 1.8rem;
+    text-align: center;
+    margin: 17px 16px 17px 16px;
+}
+
 
 .overlay-activate{
-    background-color: rgba(239, 139, 46, 0.68) ;
+    background-color: rgba(121, 121, 121, 0.68) ;
     z-index: 6;
-    width: 400px;
+    position: absolute;
+    width: 100%;
 }
 
 .text-reference-formation{
@@ -80,14 +148,24 @@
 }
 /*-------------------------------------Unique Course*/
 
+.formation-left{
+
+}
+
+.formation-right{
+    background-color: black;
+    height: 100vh;
+}
+
 .left-quizz-container{
     width: 45vw;
+    position: absolute;
 }
 
 .right-quizz-container{
-    width: 88vw;
-    height: 90vh;
-    background-color: black;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 /* container */
@@ -95,6 +173,14 @@
 .pourcent-bar{
     width: 90%;
     margin: 0 auto 3% auto;
+}
+
+.pourcent-bar-back{
+    background-color: #c9c9c9;
+}
+
+.current-number-pourcent{
+    color: #b0b0b0;
 }
 
 #numberquestion{
@@ -169,6 +255,10 @@
     user-select: none;
 }
 
+#valide{
+    margin-top: -50px;
+}
+
 /* reponse false */
 
 .question-container label span.reponse-false {
@@ -204,5 +294,53 @@
 /* video */
 
 #video_run{
-    margin-top: 5%;
+    margin-top: 8rem;
+    outline: none;
 }
+
+
+
+
+    @media screen and (max-width: 1320px) {
+    
+
+    }
+
+    @media screen and (max-width: 1024px) {
+    
+    
+    
+    }
+
+    
+    @media screen and (max-width: 992px) {
+
+
+        .formation-right {
+            height: unset;
+        }
+
+        .right-quizz-container {
+            position: unset;
+        }
+
+        #video_run {
+            margin-top: 2rem;
+            outline: none;
+        }
+    
+    }
+
+    @media screen and (max-width: 767px) {
+    
+    
+    
+    }
+
+    @media screen and (max-width: 640px) {
+
+        .grille {
+            grid-template-columns: 1fr  ;
+        }
+    
+    }

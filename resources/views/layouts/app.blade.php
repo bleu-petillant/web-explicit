@@ -321,7 +321,7 @@
                 @yield('contact')
                 @yield('mentions')
                 @yield('polices')
-                <!-- @yield('course') -->
+
                 @yield('allressourcesprivate')
 
         <footer class="pt-8 pb-3">

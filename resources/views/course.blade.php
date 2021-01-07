@@ -71,17 +71,13 @@
 <script src="{{asset('js/GetData.js')}}"></script>
 <script src="{{asset('js/CheckReponse.js')}}"></script>
 <script src="{{asset('js/VideoController.js')}}"></script>
+
 <script>
-        
     let data = {!! json_encode($questions, JSON_HEX_TAG) !!};
     let total = {!! json_encode($total, JSON_HEX_TAG) !!};
-
     var getdata = new GetData(data,total);
     var reponse = new CheckResponse();
     var  video = new VideoController();
-
-
-
 </script>
 
 

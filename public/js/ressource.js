@@ -1,30 +1,6 @@
 $(document).ready(function(){
 
-    // $('.ressource-cards').slick({
-    //     infinite: true,
-    //     slidesToShow: 4,
-    //     slidesToScroll: 4,
-    //     arrows: false,
-    //     adaptiveHeight: true,
-    //     responsive: [
-    //         {
-    //           breakpoint: 1024,
-    //           settings: {
-    //             slidesToShow: 2,
-    //             slidesToScroll: 2,
-    //             infinite: true,
-    //           }
-    //         },
-    //         {
-    //             breakpoint: 640,
-    //             settings: {
-    //               slidesToShow: 1,
-    //               slidesToScroll: 1,
-    //               infinite: true,
-    //             }
-    //           },
-    //     ]
-    // });
+  
 
     $('.news-ressource-cards').slick({
         infinite: true,
@@ -56,7 +32,17 @@ $(document).ready(function(){
           // settings: "unslick"
           // instead of a settings object
         ]
+      
     });
+
+    let seconds = 2000;
+    // au bout de 2 seconde , on montre l'indice, tu peux changer le timer avec la variable seconds
+    setTimeout(() => {
+        $('#loading').toggleClass('hidden');
+        $("body").toggleClass("")
+    }, seconds);
+
+    
 
       var itemSelector = '.grid-item'; 
 

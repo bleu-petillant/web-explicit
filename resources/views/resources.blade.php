@@ -1,5 +1,15 @@
 @extends('layouts.app')
 @section('resources')
+
+<div id="loading" class="h-screen w-screen absolute z-40 bg-white top-0 ">
+    <div class="relative">
+        <div class="absolute z-40 top-O bot-0 left-0 right-0">
+            <img class="block lg:hidden w-1/12 w-auto" src="{{ asset('img/logo/logonoir.png') }}" alt="Workflow">
+        </div>
+    </div>
+    
+</div>
+
     <section class="search-bar">
         <h1 class="text-center text-white text-6xl font-bold"> Ressources</h1>
         <div class="wrapper">
@@ -90,9 +100,6 @@
             </div> 
         </section>
 
-{{-- <livewire:search />   --}}
-
-
 
 <section class="all-ressources contenu">
 
@@ -112,54 +119,70 @@
         @foreach ($references as $ref)
             @if ($ref->category_id == '1')
                 <div class=" grid-item pdf-card card bg-white shadow-lg hover:shadow-xl " data-filter="pdf">
-                    <a href="">   
-                    <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
-                    <div class="mt-2 py-3 pl-2 pdf-card-content">
-                        <p class="category pdf-color ">Pdf</p>
-                        <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
-                        <p class="card-text">{{$ref->desc}}</p>
-                    </div>
-                    <p class="text-center mt-5 mb-5"><a href="{{asset($ref->pdf)}}" class=" pdf-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
-                    </a>    
-            </div>
+                    <a href="{{asset($ref->pdf)}}" class="card-link">   
+                        <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
+                        <div class="card-content">
+                            <div class="mt-2 py-3 pl-2 pdf-card-content ">
+                                <p class="category pdf-color ">Pdf</p>
+                                <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
+                                <p class="card-text">{{$ref->desc}}</p>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="card-button">
+                        <p class="text-center mt-5 mb-5 pdf-button uppercase mx-auto tracking-wider"><a href="">Lien</a></p>   
+                    </div>      
+                </div>
             @elseif($ref->category_id == '2')
-            <div class=" grid-item video-card card bg-white shadow-lg hover:shadow-xl " data-filter="video">
-                <a href="">   
-                    <img class="card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
-                    <div class="mt-2 py-3 pl-2 video-card-content">
-                        <p class="category video-color ">vidéos</p>
-                        <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
-                        <p class="card-text">{{$ref->desc}}</p>
-                    </div>
-                    <p class="text-center mt-5 mb-5"><a href="{{asset($ref->link)}}" class=" video-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
-                    </a>    
-            </div>
+                <div class=" grid-item video-card card bg-white shadow-lg hover:shadow-xl " data-filter="video">
+                    <a href="{{asset($ref->video)}}" class="card-link">   
+                        <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
+                        <div class="card-content">
+                            <div class="mt-2 py-3 pl-2 video-card-content ">
+                                <p class="category video-color ">Video</p>
+                                <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
+                                <p class="card-text">{{$ref->desc}}</p>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="card-button">
+                        <p class="text-center mt-5 mb-5 video-button uppercase mx-auto tracking-wider"><a href="">Lien</a></p>   
+                    </div>      
+                </div>
             @elseif($ref->category_id == '3')
-            <div class="grid-item podcast-card card bg-white shadow-lg hover:shadow-xl " data-filter="podcast">
-                <a href="">   
-                    <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
-                    <div class="mt-2 py-3 pl-2 podcast-card-content">
-                        <p class="category podcast-color ">Podcast</p>
-                        <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
-                        <p class="card-text">{{$ref->desc}}</p>
-                    </div>
-                    <p class="text-center mt-5 mb-5"><a href="{{asset($ref->link)}}" class=" podcast-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
-                    </a>    
-            </div>
+                <div class=" grid-item podcast-card card bg-white shadow-lg hover:shadow-xl " data-filter="podcast">
+                    <a href="{{asset($ref->podcast)}}" class="card-link">   
+                        <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
+                        <div class="card-content">
+                            <div class="mt-2 py-3 pl-2 podcast-card-content ">
+                                <p class="category podcast-color ">Podcast</p>
+                                <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
+                                <p class="card-text">{{$ref->desc}}</p>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="card-button">
+                        <p class="text-center mt-5 mb-5 podcast-button uppercase mx-auto tracking-wider"><a href="">Lien</a></p>   
+                    </div>      
+                </div>
             @elseif($ref->category_id == '4')
-            <div class="grid-item podcast-card card bg-white shadow-lg hover:shadow-xl " data-filter="articles">
-                <a href="">   
-                    <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
-                    <div class="mt-2 py-3 pl-2 podcast-card-content">
-                        <p class="category podcast-color ">articles</p>
-                        <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
-                        <p class="card-text">{{$ref->desc}}</p>
-                    </div>
-                    <p class="text-center mt-5 mb-5"><a href="{{asset($ref->link)}}" class="podcast-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
-                    </a>    
-            </div>
+                <div class=" grid-item podcast-card card bg-white shadow-lg hover:shadow-xl " data-filter="articles">
+                    <a href="{{asset($ref->link)}}" class="card-link">   
+                        <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
+                        <div class="card-content">
+                            <div class="mt-2 py-3 pl-2 podcast-card-content ">
+                                <p class="category podcast-color ">Podcast</p>
+                                <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
+                                <p class="card-text">{{$ref->desc}}</p>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="card-button">
+                        <p class="text-center mt-5 mb-5 podcast-button uppercase mx-auto tracking-wider"><a href="">Lien</a></p>   
+                    </div>      
+                </div>
         @endif
-    @endforeach
+        @endforeach
     </div>
     @else
     <h4>pas de ressources actuellement dans la base de donnée</h4>

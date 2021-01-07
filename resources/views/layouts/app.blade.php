@@ -17,25 +17,31 @@
         <link href="{{ asset('css/ressource.css') }}" rel="stylesheet">
         <link href="{{ asset('css/formation.css') }}" rel="stylesheet">
         <link href="{{ asset('css/usage.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/contact.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.css' />
-        <script src="{{ asset('js/app.js') }}"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" />
+        
         
         @livewireStyles
         <!-- Scripts -->
         <script src="https://kit.fontawesome.com/804c3fbc70.js" ></script>
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+        <script src="{{ asset('js/ressource.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/home.js') }}"></script>
-        <script src="{{ asset('js/ressource.js') }}"></script>
+        
     </head>
 
     <body class="font-sans antialiased">
+    
     @if (Route::has('login'))
         @auth
-        @livewire('navigation-dropdown')
+        
 
 <nav class="">
     <div class="h-16 px-2 sm:px-6 lg:px-8">
@@ -315,27 +321,25 @@
                 @yield('contact')
                 @yield('mentions')
                 @yield('polices')
-                @yield('course')
+                <!-- @yield('course') -->
                 @yield('allressourcesprivate')
-        @livewireScripts
-    </body>
 
-    <footer class="pt-8 pb-3">
-        <div class="flex">
-            <div class="footer-logo pl-8">
-                <img src="{{ asset('img/logo/logoblanc.png') }}" class="footer-img-logo" alt="">
+        <footer class="pt-8 pb-3">
+            <div class="flex">
+                <div class="footer-logo pl-8">
+                    <img src="{{ asset('img/logo/logoblanc.png') }}" class="footer-img-logo" alt="">
+                </div>
+                <div class="legal ">
+                    <a class="text-white font-bold" href="">Mention légales</a>
+                    <p class="text-white">© 2020</p>
+                </div>
+                <a href="#" id="top">
+                    <i class="fas fa-chevron-up white-text fa-2x"></i>
+                </a>
             </div>
-            <div class="legal ">
-                <a class="text-white font-bold" href="">Mention légales</a>
-                <p class="text-white">© 2020</p>
-            </div>
-            <a href="#" id="top">
-                <i class="fas fa-chevron-up white-text fa-2x"></i>
-            </a>
-        </div>
-    
+        
 
-    </footer>
+        </footer>
 
 
             <!-- Page Content -->
@@ -345,7 +349,8 @@
 
         @livewireScripts
         <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
         <script src="{{asset('vendor/cookie-consent/js/cookie-consent.js')}}"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+
     </body>
 </html>

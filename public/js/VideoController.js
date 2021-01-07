@@ -9,25 +9,18 @@ class VideoController
         
         videoplayer.play();
         this.initVideoControll();
-        
     }
 
-     Init()
+    Init()
     {
     
         $( ".form-checkbox" ).prop( "checked", false );
         $('#reset').hide();
-         $('#valide').hide();
-
-    }
-
-    Reset(){
-  
-        $('#reset').show();
         $('#valide').hide();
-        $( ".form-checkbox" ).prop( "checked", false );
-        $('#reponse').show();
+
     }
+
+
 
 
     initVideoControll()
@@ -38,6 +31,7 @@ class VideoController
         reset.on('click',function(e){
             e.preventDefault();
             $('#video_run')[0].load();
+            getdata.resetQuestion();
             $('#video_run')[0].play();
         });
     }

@@ -35,16 +35,20 @@
                         @foreach ($references as $reference)
 
                             @if ($reference->category_id == '1')
-                                <div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
-                                    <a href="" >
-                                        <img class="pdf-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
-                                        <div class="mt-2 py-3 pl-2 pdf-card-content">
-                                            <p class="category pdf-color ">pdf</p>
-                                            <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
-                                            <p class="card-text">{{$reference->desc}}</p>
+                                <div class=" grid-item pdf-card card bg-white shadow-lg hover:shadow-xl " data-filter="pdf">
+                                    <a href="{{asset($reference->pdf)}}" class="card-link">   
+                                        <img class=" card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
+                                        <div class="card-content">
+                                            <div class="mt-2 py-3 pl-2 pdf-card-content ">
+                                                <p class="category pdf-color ">Pddaf</p>
+                                                <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
+                                                <p class="card-text">{{$reference->desc}}</p>
+                                            </div>
                                         </div>
-                                        <p class="text-center mt-5 mb-5"><a href="{{$reference->pdf}}" class="pdf-button uppercase mx-auto tracking-wider">Lien</a></p>
                                     </a>
+                                    <div class="card-button">
+                                        <p class="text-center mt-5 mb-5 pdf-button uppercase mx-auto tracking-wider"><a href="">Lien</a></p>   
+                                    </div>      
                                 </div>
                             @elseif($reference->category_id == '2')
                                 <div class="video-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
@@ -98,14 +102,16 @@
         @else
         
             <div class="flex mx-auto py-2 news-ressource-cards" wire:model="references">
+
                 @if (count($references)  >  0)
                     @foreach ($references as $reference)
+
                     
                     @if ($reference->category_id == '1')
-                        <div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
+                        <div class="pdf-card card-ressource bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
                             <a href="" >
                                 <img class="pdf-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
-                                <div class="mt-2 py-3 pl-2 pdf-card-content">
+                                <div class="mt-2 py-3 pl-2 all-pdf-card-content">
                                     <p class="category pdf-color ">pdf</p>
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p>
@@ -114,10 +120,10 @@
                             </a>
                         </div>
                     @elseif($reference->category_id == '2')
-                        <div class="video-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
+                        <div class="video-card card-ressource bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
                             <a href="" >
                                 <img class="video-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
-                                <div class="mt-2 py-3 pl-2 video-card-content">
+                                <div class="mt-2 py-3 pl-2 all-video-card-content">
                                     <p class="category video-color ">video</p>
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p>
@@ -126,10 +132,10 @@
                             </a>
                         </div>
                     @elseif($reference->category_id == '3')
-                        <div class="podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
+                        <div class="podcast-card card-ressource bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
                             <a href="" >
                                 <img class="podcast-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
-                                <div class="mt-2 py-3 pl-2 podcast-card-content">
+                                <div class="mt-2 py-3 pl-2 all-podcast-card-content">
                                     <p class="category podcast-color ">podcast</p>
 
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
@@ -139,10 +145,10 @@
                             </a>
                         </div>
                     @elseif($reference->category_id == '4')
-                        <div class="podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
+                        <div class="podcast-card card-ressource bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
                             <a href="" >
                                 <img class="podcast-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
-                                <div class="mt-2 py-3 pl-2 podcast-card-content">
+                                <div class="mt-2 py-3 pl-2 all-podcast-card-content">
                                     <p class="category podcast-color ">articles</p>
 
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
@@ -164,7 +170,7 @@
             <div class=" shadow md:flex bg-white rounded-xl p-8 md:p-0 mx-8">
                     <img class="w-32 h-32 md:w-48 md:h-auto  rounded-l-lg " src="img/ressource/explicitation-book.jpg" alt="" width="384" height="512">
 
-                    <div class=" podcast-card-content p-6 ">
+                    <div class=" all-podcast-card-content p-6 ">
                         <p class="category podcast-color ">Livre</p>
                         <h3 class="card-title text-2xl font-bold">Titre de livre, Nom de l'auteur.</h3>
                         <p class=" mb-3 text-lg ">
@@ -173,7 +179,7 @@
                         </p>
                         <a href="" class=" flex-none podcast-button uppercase mx-auto tracking-wider">Lien</a>
                     </div>
-               
+
             </div>
         </div>
             

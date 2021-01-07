@@ -4,6 +4,20 @@
     color: #6d7aea;
 }
 
+
+/* body */
+
+a{
+    text-decoration: none;
+    color: black; 
+}
+
+a:hover{
+    color: black;
+    text-decoration: underline;
+
+}
+
 /* footer */
 body{
     overflow-x: hidden;

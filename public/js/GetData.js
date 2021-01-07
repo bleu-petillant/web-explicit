@@ -8,6 +8,9 @@ class GetData
         $('#indice').html("");
         // store the data
         this.storeData(data,total);
+
+        
+
     }
 
     storeData(data,total)
@@ -17,7 +20,6 @@ class GetData
         localStorage.setItem('questions', JSON.stringify(data));
         // get the total question  off the  course
         localStorage.setItem('total', total);
-  
         this.getData();
     }
 
@@ -40,9 +42,9 @@ class GetData
         let reponsecorrect = questions.reponses;
         let videolink = questions.video;
         let indice = questions.indice;
+        
         // we calculate  the percentage off the course progress 
         this.calulePercentageQuestion(question_pos,total);
- 
         // we store all the answers off this questions in array
         let reponses = [];
         for (let i = 0; i < reponsecorrect.length; i++) {
@@ -61,7 +63,7 @@ class GetData
     }
     calulePercentageQuestion(curr,total)
     {
-        $('#numberquestion').text(curr + '/' + total);
+        $('#numberquestion').html('<span class="text-blue-600">' + curr + '</span>' + '/' + '<span>'+ total + '</span>');
         let percent_total = curr / total * 100;
         let percent = $('#percent');
         percent.css("width", percent_total + "%");
@@ -71,6 +73,7 @@ class GetData
     displayQuestionReponse(question,reponses,course_id)
     {
         $('#question').text(question);
+        $('#reponses').html("");
         for (let i = 0; i < reponses.length; i++) {
         
             let reponse_id = reponses[i].id;
@@ -78,6 +81,7 @@ class GetData
             let reponses_name = reponses[i].reponse;
 
             // we spawn  the answers in span and input
+            
             $('#reponses').append('<div class="reponse-checkbox"><label><input type="checkbox" name="reponses_id[]" class="checkbox-quizz" value="'+reponse_id+'"> <span class="span-reponse">'+reponses_name+'</span></label></div>');
             // spawn the question
             $('#question_id').val(question_id);
@@ -85,6 +89,46 @@ class GetData
             $('#course_id').val(course_id)
         }  
     }
+
+    resetQuestion()
+    {
+        let questions = JSON.parse(localStorage.getItem('questions'));
+        let content = questions.content;
+        let course_id = questions.course_id;
+        let reponses = [];
+        let reponsecorrect = questions.reponses;
+        let videoplayer = $('#video_run')[0];
+        let reset = $('#reset');
+
+        for (let i = 0; i < reponsecorrect.length; i++) {
+            
+            let r = reponsecorrect[i];
+
+            // we push the questions in the array reponses
+            reponses.push(r);
+
+        }
+
+        $('#resetbutton').on("click", function(e){
+            e.preventDefault();
+            // console.log("click");
+            // $('#valide').hide();
+            // $('#indice').hide();
+            // $('#ressources').hide();
+            // $('#video_run')[0].load();
+            // $('#video_run')[0].play();
+            // $('#reponses_form').show();
+            // $('#reponses').show();
+            // getdata.displayQuestionReponse(content,reponses,course_id);
+            // reset.hide();
+            location.reload(true);
+        });
+
+        $( ".form-checkbox" ).prop( "checked", false );
+
+    }
+
+
 
     NextQuestions(validate)
     {
@@ -96,7 +140,6 @@ class GetData
                 e.preventDefault();
                 let slug = $('#slug').val();
                 let url = "/formation/"+slug+"";
-                localStorage.clear();
                 window.location.href = url;
             });
 
@@ -106,6 +149,6 @@ class GetData
         }
 
     }
-
+    
 
 }

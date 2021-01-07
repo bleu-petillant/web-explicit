@@ -233,13 +233,14 @@ class CheckResponse
         console.log(next_course_object);
         this.showRessources(course);
         this.nextcourseContainer.show();
+        const base_url = window.location.origin;
         $('#video_run').hide();
         // div 
         this.nextcourseContainer.append(
             
             '<h3 class="text-center mt-4"> Autre formation</h3>'+
             '<p class="text-center">'+title+'</p>'+
-            '<a href="'+nextslug+'" id="next_course_link" ><div class="relative formation-next-image"><div class="round-formation"><i class="play-button button-usage-1 fas fa-play" aria-hidden="true"></i></div><div class="w-full  absolute"></div></div></a>'+
+            '<a href="'+nextslug+'" id="next_course_link" ><div class="relative formation-next-image"><div class="round-formation"><i class="play-button button-usage-1 fas fa-play" aria-hidden="true"></i></div><div class="w-full  absolute"><img src="'+base_url+'/'+img+'"></div></div></a>'+
             '<p class="mt-4 text-center"> Référence nécessaire pour cette formation</p>'+
             '<div id="ressource_course_next" class="flex"> </div>'
             );

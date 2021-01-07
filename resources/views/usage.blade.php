@@ -11,23 +11,30 @@
 
     @foreach ($usages as $usage)
         @if ($usage->id%2 == 1)
-            <div class="flex my-16">
-                <div class="w-7/12">
-                    <iframe class="w-full h-full" src="{{$usage->link}}" frameborder="0"></iframe>
+            <div class="row flex-lg-row my-5">
+                <div class="col-lg-7 ">
+                    <iframe class="w-full usage-video" src="{{$usage->link}}" frameborder="0"></iframe>
                 </div>
-                <div class="ressources-text-usage w-5/12">
-                    <h2 class="ressource-home-title uppercase font-bold text-4xl ml-4 pr-4 w-3/4" >{{$usage->title}}</h2>
-                    <p class=" text-xl text-justify px-4 w-3/4">{{$usage->desc}}</p>
+                <div class="col-lg-5 my-5">
+                    <div>
+                        <h2 class="ressource-home-title uppercase font-bold text-4xl ml-4 pr-4 w-3/4" >{{$usage->title}}</h2>
+                        <p class=" text-xl text-justify px-4 w-3/4">{{$usage->desc}}</p>
+                    </div>
+                    
                 </div>
             </div>
         @else
-            <div class="flex my-16"> 
-                <div class="ressources-text-usage w-5/12">
-                    <h2 class="ressource-home-title uppercase  font-bold text-4xl ml-4 pr-4 w-3/4" >{{$usage->title}}</h2>
-                    <p class=" text-xl text-justify px-4 w-3/4">{{$usage->desc}}</p>
+            <div class="row flex-lg-row  flex-column-reverse my-5"> 
+                <div class="col-lg-5 my-5">
+                    <div>
+                        <h2 class="ressource-home-title uppercase  font-bold text-4xl ml-4 pr-4 w-3/4" >{{$usage->title}}</h2>
+                        <p class=" text-xl text-justify px-4 w-3/4">{{$usage->desc}}</p>
+                    </div>
+                    
+                    <p>2</p>
                 </div>
-                <div class="w-7/12">
-                    <iframe class="w-full h-full" src="{{$usage->link}}" frameborder="0"></iframe>
+                <div class="col-lg-7 ">
+                    <iframe class="w-full usage-video" src="{{$usage->link}}" frameborder="0"></iframe>
                 </div>
             </div>
         @endif

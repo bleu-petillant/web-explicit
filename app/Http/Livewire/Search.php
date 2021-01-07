@@ -19,7 +19,7 @@ class Search extends Component
 
     public function mount(Reference $references)
     {
-        $this->references = Reference::with('category')->with('tagged')->where('private',0)->orderBy('created_at','DESC')->get();
+        $this->references = Reference::with('category')->with('tagged')->where('private',0)->orderBy('created_at','DESC')->take(4)->get();
     }
     public function incrementIndex()
     {

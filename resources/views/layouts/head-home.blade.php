@@ -15,6 +15,7 @@
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.css' />
+        
         <script src="{{ asset('js/app.js') }}"></script>
         <title>Explicit (version dev)</title>
         @livewireStyles

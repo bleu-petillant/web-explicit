@@ -17,6 +17,7 @@ use App\Http\Controllers\TagsController;
 use App\Http\Controllers\teacher\TeacherDashboardController;
 use App\Http\Controllers\UsageController;
 use App\Http\Controllers\ValideQuestionController;
+use App\Http\Controllers\SearchEngineController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,8 @@ Route::get('/contact',[ContactController::class,'contact'])->name('contact');//p
 Route::get('/polices',[HomeController::class,'policies'])->name('police de confidentialite');
 Route::get('/mentions légales',[HomeController::class,'mentions'])->name('mentions');
 Route::post('/message',[ContactController::class,'send'])->name('message');
+Route::post('/search/cat',[SearchEngineController::class,'searchByCat']);
+Route::post('/search/query',[SearchEngineController::class,'searchByQuery']);
 
 
 // admin dashboard

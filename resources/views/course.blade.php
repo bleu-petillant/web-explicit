@@ -4,7 +4,7 @@
         
 
     <div class="row flex-column-reverse flex-lg-row">
-        <div class="col-lg-4 pt-1 container left-quizz-container mx-auto pt-5">
+        <div class="col-lg-4 container left-quizz-container mx-auto ">
             <a href="{{route('home')}}">
                 <img class="block lg:hidden w-auto logo-course-explicit" src="{{ asset('img/logo/logonoir.png') }}" alt="Workflow" >
                 <img class="hidden lg:block w-auto logo-course-explicit" src="{{ asset('img/logo/logonoir.png') }}" alt="Workflow" >
@@ -45,7 +45,6 @@
             <div id="ressources" class="flex ressource-course-container  mx-auto">
                 <p>Avant de retenter ta chance, voici ce que tu dois connaitre : </p>
             </div>
-            <div id="nextcourse"></div>
             <div class="gap-4 flex justify-evenly mt-10">
             <div id="reset"  class="hidden">
                 <button type="submit" id="resetbutton" ><i class="fa-2x fas fa-redo"></i></button> 
@@ -58,7 +57,11 @@
 
         {{--  start aside vidéo   --}}
         <div class="col-lg-8 formation-right">
-            <div class="right-quizz-container">
+            <div class="right-quizz-container relative">
+                <div id="nextcourse">
+                    <h3 class="">Autre formation</h3>
+
+                </div>
                 <video controls playsinline autoplay id="video_run" class="w-full">
                     <source src="{{asset($questions->video)}}" type="video/mp4">
                 </video>

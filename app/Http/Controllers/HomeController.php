@@ -35,7 +35,7 @@ class HomeController extends Controller
     public function allResources()
     {
         $references = Reference::with('category')->with('tagged')->where('private',0)->orderBy('created_at','DESC')->get();
-        
+
         $categories = Category::all();
         return view('resources',compact('references','categories'));
     }

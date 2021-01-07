@@ -19,9 +19,7 @@
         <link href="{{ asset('css/usage.css') }}" rel="stylesheet">
         <link href="{{ asset('css/contact.css') }}" rel="stylesheet">
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.css' />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" />
         <script src="{{ asset('js/app.js') }}"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
         
@@ -31,8 +29,6 @@
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
         <script src="{{ asset('js/app.js') }}"></script>
-        <script src="{{ asset('js/home.js') }}"></script>
-        <script src="{{ asset('js/ressource.js') }}"></script>
     </head>
 
     <body class="font-sans antialiased">
@@ -44,10 +40,7 @@
         @stack('modals')
 
         @livewireScripts
-        <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
         <script src="{{asset('vendor/cookie-consent/js/cookie-consent.js')}}"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
     </body>

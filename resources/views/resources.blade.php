@@ -35,10 +35,10 @@
             </div>
         </div> 
     </section>
-        <section class="ressource-news contenu">
+    <section class="ressource-news contenu">
         <h2 id="result" class="font-bold text-5xl mt-4 mb-5 mx-8">Nouveautés</h2>
         <span id="noresult"></span>
- <div class="flex mx-auto py-2 news-ressource-cards">
+            <div class="flex mx-auto py-2 news-ressource-cards">
                 @if (count($references)  >  0)
                     @foreach ($references as $reference)
                     
@@ -46,7 +46,7 @@
                         <div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
                             <a href="" >
                                 <img class="pdf-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
-                                <div class="mt-2 py-3 pl-2 pdf-card-content">
+                                <div class="mt-2 py-3 pl-2 all-pdf-card-content">
                                     <p class="category pdf-color ">pdf</p>
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p>
@@ -58,7 +58,7 @@
                         <div class="video-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
                             <a href="" >
                                 <img class="video-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
-                                <div class="mt-2 py-3 pl-2 video-card-content">
+                                <div class="mt-2 py-3 pl-2 all-video-card-content">
                                     <p class="category video-color ">video</p>
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p>
@@ -70,7 +70,7 @@
                         <div class="podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
                             <a href="" >
                                 <img class="podcast-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
-                                <div class="mt-2 py-3 pl-2 podcast-card-content">
+                                <div class="mt-2 py-3 pl-2 all-podcast-card-content">
                                     <p class="category podcast-color ">podcast</p>
 
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
@@ -83,7 +83,7 @@
                         <div class="podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 ">
                             <a href="" >
                                 <img class="podcast-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
-                                <div class="mt-2 py-3 pl-2 podcast-card-content">
+                                <div class="mt-2 py-3 pl-2 all-podcast-card-content">
                                     <p class="category podcast-color ">articles</p>
 
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
@@ -98,7 +98,27 @@
                     @else
                 @endif
             </div> 
-        </section>
+
+            <div class=" py-2">
+
+            <div class=" shadow md:flex bg-white rounded-xl p-8 md:p-0 mx-8">
+                    <img class="w-32 h-32 md:w-48 md:h-auto  rounded-l-lg " src="img/ressource/explicitation-book.jpg" alt="" width="384" height="512">
+
+                    <div class=" all-podcast-card-content p-6 ">
+                        <p class="category podcast-color ">Livre</p>
+                        <h3 class="card-title text-2xl font-bold">Titre de livre, Nom de l'auteur.</h3>
+                        <p class=" mb-3 text-lg ">
+                        Vestibulum ultricies, justo nec lacinia auctor, tellus massa efficitur metus, nec <br>
+                        tempor lectus augue eu nibh. Quisque eget nulla magna. 
+                        </p>
+                        <a href="" class=" flex-none podcast-button uppercase mx-auto tracking-wider">Lien</a>
+                    </div>
+
+            </div>
+        </div>
+    </section>
+
+
 
 
 <section class="all-ressources contenu">

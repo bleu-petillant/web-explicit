@@ -65,36 +65,36 @@
                 </a>
 
 
-                <div class="flex p-4">
+                <div class="flex p-4 absolute bottom-0">
                 <!-- foreach pour les ressources de chaque cours avec les catégories  -->
                 @foreach ($course->references as $ref) 
                     @if ($ref->category_id == 1)
                     <a class="mr-2" href="{{$ref->link}}">
-                    <div class="all-pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto ">
-                        <p class="category category-course-ref pdf-color ">pdf</p>
-                        <p class= "text-reference-formation text-center text-base font-semibold">{{$ref->title}} </p> <br>
-                    </div>
+                        <div class="all-pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto ">
+                            <p class="category category-course-ref pdf-color ">pdf</p>
+                            <p class= "text-reference-formation text-base font-semibold">{{$ref->title}} </p> <br>
+                        </div>
                     </a>
                     @elseif($ref->category_id == 2)
                     <a class="mr-2" href="{{$ref->link}}">
-                    <div class="all-video-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto ">
-                        <p class="category category-course-ref video-color ">vidéo</p>
-                            <p class= "text-reference-formation text-center text-base font-semibold">{{$ref->title}} </p> <br>
-                    </div>
+                        <div class="all-video-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto ">
+                            <p class="category category-course-ref video-color ">vidéo</p>
+                            <p class= "text-reference-formation text-base font-semibold">{{$ref->title}} </p> <br>
+                        </div>
                     </a>
                     @elseif($ref->category_id == 3)
                     <a class="mr-2" href="{{$ref->link}}">
                         <div class="all-podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto ">
                             <p class="category category-course-ref podcast-color ">podcast</p>
-                        <p class= "text-reference-formation text-center text-base font-semibold">{{$ref->title}} </p> <br>
-                    </div>
+                            <p class= "text-reference-formation  text-base font-semibold">{{$ref->title}} </p> <br>
+                        </div>
                     </a>
                     @elseif($ref->category_id == 4)
                     <a class="mr-2" href="{{$ref->link}}">
-                    <div class="all-podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto ">
-                        <p class="category category-course-ref pdf-color ">articles</p>
-                        <p class= "text-reference-formation text-center text-base font-semibold">{{$ref->title}} </p> <br>
-                    </div>
+                        <div class="all-podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto ">
+                            <p class="category category-course-ref pdf-color ">articles</p>
+                            <p class= "text-reference-formation text-base font-semibold">{{$ref->title}} </p> <br>
+                        </div>
                     </a>
                     @endif
                 @endforeach
@@ -120,36 +120,36 @@
                     </div>
                 </a>
 
-                <div class="flex p-4">
+                <div class="flex p-4 absolute bottom-0">
                 <!-- foreach pour les ressources de chaque cours avec les catégories  -->
                 @foreach ($null->references as $ref) 
                     @if ($ref->category_id == 1)
                     <a class="mr-2" href="{{$ref->link}}">
-                    <div class="all-pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto ">
-                        <p class="category category-course-ref pdf-color ">pdf</p>
-                        <p class= "text-reference-formation text-center text-base font-semibold">{{$ref->title}} </p> <br>
-                    </div>
+                        <div class="all-pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto ">
+                            <p class="category category-course-ref pdf-color ">pdf</p>
+                            <p class= "text-reference-formation text-base font-semibold">{{$ref->title}} </p> <br>
+                        </div>
                     </a>
                     @elseif($ref->category_id == 2)
-                    <a class="mr-2" href="{{$ref->link}}">
-                    <div class="all-video-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto ">
-                        <p class="category category-course-ref video-color ">vidéo</p>
-                            <p class= "text-reference-formation text-center text-base font-semibold">{{$ref->title}} </p> <br>
-                    </div>
-                    </a>
+                        <a class="mr-2" href="{{$ref->link}}">
+                            <div class="all-video-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto ">
+                                <p class="category category-course-ref video-color ">vidéo</p>
+                                <p class= "text-reference-formation text-base font-semibold">{{$ref->title}} </p> <br>
+                            </div>
+                        </a>
                     @elseif($ref->category_id == 3)
                     <a class="mr-2" href="{{$ref->link}}">
                         <div class="all-podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto ">
                             <p class="category category-course-ref podcast-color ">podcast</p>
-                        <p class= "text-reference-formation text-center text-base font-semibold">{{$ref->title}} </p> <br>
-                    </div>
+                            <p class= "text-reference-formation text-base font-semibold">{{$ref->title}} </p> <br>
+                        </div>
                     </a>
                     @elseif($ref->category_id == 4)
                     <a class="mr-2" href="{{$ref->link}}">
-                    <div class="all-podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto ">
-                        <p class="category category-course-ref pdf-color ">articles</p>
-                        <p class= "text-reference-formation text-center text-base font-semibold">{{$ref->title}} </p> <br>
-                    </div>
+                        <div class="all-podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto ">
+                            <p class="category category-course-ref pdf-color ">articles</p>
+                            <p class= "text-reference-formation text-base font-semibold">{{$ref->title}} </p> <br>
+                        </div>
                     </a>
                     @endif
                 @endforeach
@@ -157,8 +157,8 @@
         <!-- -- fin du foreach pour les ressources -- -->
         
     </div>
-       @endforeach
-           @else
+        @endforeach
+        @else
     <p>pas de formation pour le moment</p>
     @endif
     </div>

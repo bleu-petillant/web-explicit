@@ -206,16 +206,16 @@ class CheckResponse
 
             if(cat == 1)
             {
-                this.ressourceContainer.append('<a class="mr-2" href="'+pdf+'"target="__blank"><div class="all-pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">pdf</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.ressourceContainer.append('<a class="mr-2" href="'+pdf+'"target="__blank"><div class="all-pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">pdf</p><p class= "text-reference-formation text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-base">'+desc+'</p><br></div></a>');
             }else if(cat == 2)
             {
-                this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="all-video-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref video-color ">vidéo</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="all-video-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref video-color ">vidéo</p><p class= "text-reference-formation text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-base">'+desc+'</p><br></div></a>');
             }else if(cat == 3)
             {
-                this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="all-podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref podcast-color ">podcast</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="all-podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref podcast-color ">podcast</p><p class= "text-reference-formation text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-base">'+desc+'</p><br></div></a>');
             }else
             {
-                this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="all-podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">article</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                this.ressourceContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="all-podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">article</p><p class= "text-reference-formation text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-base">'+desc+'</p><br></div></a>');
             }
         }
 
@@ -229,14 +229,21 @@ class CheckResponse
         let nextslug = nextcourse.slug;
         let next_course_object =nextcourse;
         let img = next_course_object.image;
+        let title = next_course_object.title;
         console.log(next_course_object);
         this.showRessources(course);
         this.nextcourseContainer.show();
+        $('#video_run').hide();
         // div 
         this.nextcourseContainer.append(
-            '<a href="'+nextslug+'" id="next_course_link" ><i class="fas fa-angle-double-right"></i></i></a>'+
-            '<div></div>'
+            
+            '<h3 class="text-center mt-4"> Autre formation</h3>'+
+            '<p class="text-center">'+title+'</p>'+
+            '<a href="'+nextslug+'" id="next_course_link" ><div class="relative formation-next-image"><div class="round-formation"><i class="play-button button-usage-1 fas fa-play" aria-hidden="true"></i></div><div class="w-full  absolute"></div></div></a>'+
+            '<p class="mt-4 text-center"> Référence nécessaire pour cette formation</p>'+
+            '<div id="ressource_course_next" class="flex"> </div>'
             );
+        console.log("formation suivante")
         // on instancie les ressources associer
         for (let i = 0; i < next_ref.length; i++) {
             let title = next_ref[i].title;
@@ -244,19 +251,19 @@ class CheckResponse
             let desc = next_ref[i].desc;
             let link = next_ref[i].link;
             let pdf = next_ref[i].pdf;
-      
+
             if(cat == 1)
             {
-                this.nextcourseContainer.append('<a class="mr-2" href="'+pdf+'"target="__blank"><div class="all-pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">pdf</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                $('#ressource_course_next').append('<a class="mr-2" href="'+pdf+'"target="__blank"><div class="next-formation-ressource all-pdf-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">pdf</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br></div></a>');
             }else if(cat == 2)
             {
-                this.nextcourseContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="all-video-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref video-color ">vidéo</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                $('#ressource_course_next').append('<a class="mr-2" href="'+link+'" target="__blank"><div class="next-formation-ressource all-video-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref video-color ">vidéo</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br></div></a>');
             }else if(cat == 3)
             {
-                this.nextcourseContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="all-podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref podcast-color ">podcast</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                $('#ressource_course_next').append('<a class="mr-2" href="'+link+'" target="__blank"><div class="next-formation-ressource all-podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref podcast-color ">podcast</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br></div></a>');
             }else
             {
-                this.nextcourseContainer.append('<a class="mr-2" href="'+link+'" target="__blank"><div class="all-podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">article</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br><p class= "text-reference-formation text-center text-base font-semibold">'+desc+'</p><br></div></a>');
+                $('#ressource_course_next').append('<a class="mr-2" href="'+link+'" target="__blank"><div class="next-formation-ressource all-podcast-card-content card bg-white w-full shadow-lg hover:shadow-xl mx-auto "><p class="category category-course-ref pdf-color ">article</p><p class= "text-reference-formation text-center text-base font-semibold">'+title+'</p><br></div></a>');
             }
         }
 

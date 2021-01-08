@@ -103,7 +103,7 @@ class SearchEngine {
         $('#noresult').text("pas de résultats pour cette recherche");
         this.reset = false;
     }
-
+//display
     displayRefByCat(data)
     {
         

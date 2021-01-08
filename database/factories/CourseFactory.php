@@ -27,11 +27,13 @@ class CourseFactory extends Factory
      */
     public function definition()
     {
+            $title = $this->faker->sentence();
+            $slug = Str::slug($title, '-');
         return [
-            'title' => $this->faker->sentence(),
+            'title' => $title,
             'desc' => $this->faker->text(),
-            'slug' => Str::slug($this->faker->sentence()),
-            'image'=> $this->faker->imageUrl($width = 200, $height = 200),
+            'slug' => $slug,
+            'image'=>  'https://picsum.photos/200/200?random=' .$this->faker->numberBetween($min = 1, $max = 75) ,
             'alt'=>$this->faker->word(),
             'meta'=>$this->faker->word(),
             'teacher_id' => $this->faker->numberBetween($min = 4, $max = 20),

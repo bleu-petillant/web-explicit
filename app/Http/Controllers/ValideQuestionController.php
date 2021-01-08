@@ -28,15 +28,15 @@ class ValideQuestionController extends Controller
         
 
         $course = Course::where('id',$course_id)->with('references')->first();
+        $Ncourse = Course::where('id','!=',$course_id)->with('references','coursesUnvalidate')->first();
         $user = auth()->user();
         $Course_user = $course->users()->first();
+
         $indice = Question::where('id',$id)->first();
         $CurrQ = $Course_user->pivot->question_position;
 
         $CourseValidate = $Course_user->pivot->validate;
-    
-        
-        
+
 
         $totalQ = Question::where('course_id',$course_id)->count();
         $start = 1;
@@ -87,8 +87,8 @@ class ValideQuestionController extends Controller
                     }
                     else{
                       
-                       $nextCourse = Course::with('references')->where('id','!=',$course_id)->first();
-                        return response()->json(['status'=>'other',$course,$nextCourse]);
+
+                        return response()->json(['status'=>'other',$course,$Ncourse]);
                     }
                    
                 }else if($CurrQ == $totalQ && $CourseValidate == 1)
@@ -103,8 +103,7 @@ class ValideQuestionController extends Controller
                     }
                     else{
                       
-                       $nextCourse = Course::with('references')->where('id','!=',$course_id)->first();
-                        return response()->json(['status'=>'other',$course,$nextCourse]);
+                        return response()->json(['status'=>'other',$course,$Ncourse]);
                     }
                    
                 }else if($CurrQ <  $totalQ )

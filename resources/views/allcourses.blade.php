@@ -112,7 +112,7 @@
                     <div class="w-full relative">
                         <div class="round-formation"><i class="play-button button-usage-1 fas fa-play"></i></div>
                         <div class="overlay-undone card-image w-full h-52 absolute"> </div>
-                        <img class="course-image card-image w-full h-52 object-cover" src="{{ asset($course->image)}}" alt="{{$course->alt}}">  
+                        <img class="course-image card-image w-full h-52 object-cover" src="{{ asset($null->image)}}" alt="{{$null->alt}}">  
                     </div>
                     <div class="mt-2 py-3 pl-2 ">
                         <h3 class="card-title text-2xl font-bold">{{$null->title}}</h3>

@@ -244,7 +244,7 @@ class CheckResponse
             '<p class="mt-4 text-center"> Référence nécessaire pour cette formation</p>'+
             '<div id="ressource_course_next" class="flex"> </div>'
             );
-        console.log("formation suivante")
+       
         // on instancie les ressources associer
         for (let i = 0; i < next_ref.length; i++) {
             let title = next_ref[i].title;

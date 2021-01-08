@@ -2,14 +2,15 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
-use App\Models\Course;
-use App\Models\Question;
-use App\Models\Reference;
-use App\Models\Resource;
-use App\Models\Usage;
 use App\Models\User;
+use App\Models\Usage;
+use App\Models\Course;
+use App\Models\Category;
+use App\Models\Question;
+use App\Models\Resource;
+use App\Models\Reference;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,11 +29,17 @@ class DatabaseSeeder extends Seeder
         AdminSeeder::class,
         CategoriesSeeder::class
     ]);
-       User::factory()->count(100)->create();
-       Reference::factory()->count(45)->create();
-        Course::factory()->count(20)->create();
-        Question::factory()->count(1)->create();
-        Usage::factory()->count(5)->create();
+       $user = User::factory()->count(100)->create();
+       Reference::factory()->count(45)->state(new Sequence(
+                    ['private' => 0],
+                    ['private' => 1],
+                ))->create();
+
+      $course = Course::factory()->count(35)->create();
+
+
+        //Question::factory()->count(1)->create();
+  
         
     }
 }

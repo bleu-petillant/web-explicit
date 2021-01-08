@@ -21,11 +21,12 @@ class usageFactory extends Factory
      * @return array
      */
     public function definition()
-    {
+    {    $title = $this->faker->sentence(2);
+         $slug = Str::slug($title, '-');
         return [
-            'title' => $this->faker->sentence(2),
+            'title' => $title,
             'desc' => $this->faker->text(),
-            'slug' => Str::slug($this->faker->sentence()),
+            'slug' => $slug,
             'image'=> 'https://picsum.photos/200/200?random=' .$this->faker->numberBetween($min = 1, $max = 75) ,
             'link'=>'https://www.youtube.com/embed/_RDtBJPOsV8',
             'meta'=>$this->faker->word(),

@@ -40,6 +40,10 @@ class Course extends Model
     {
         return $this->belongsToMany(User::class,'course_user')->wherePivot('validate','=',1)->wherePivot('activated','=',1)->wherePivot('user_id',auth()->user()->id);
     }
+    public function coursesUnvalidate()
+    {
+        return $this->belongsToMany(User::class,'course_user')->wherePivot('validate','=',0)->wherePivot('user_id',auth()->user()->id);
+    }
     public function activated()
     {
         return $this->belongsToMany(User::class,'course_user')->wherePivot('activated','=',1)->wherePivot('validate','=',0)->wherePivot('user_id',auth()->user()->id);

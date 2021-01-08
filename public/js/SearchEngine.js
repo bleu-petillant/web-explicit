@@ -124,7 +124,7 @@ class SearchEngine {
                 container_ref.append(
                     '<div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
                                 '<img class="pdf-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
-                                '<div class="mt-2 py-3 pl-2 pdf-card-content">'+
+                                '<div class="mt-2 py-3 pl-2 all-pdf-card-content">'+
                                     '<p class="category pdf-color ">pdf</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
@@ -139,7 +139,7 @@ class SearchEngine {
                 container_ref.append(
                     '<div class="video-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
                                 '<img class="video-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
-                                '<div class="mt-2 py-3 pl-2 video-card-content">'+
+                                '<div class="mt-2 py-3 pl-2 all-video-card-content">'+
                                     '<p class="category video-color ">video</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
@@ -154,7 +154,7 @@ class SearchEngine {
                 container_ref.append(
                     '<div class="podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
                                 '<img class="podcast-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
-                                '<div class="mt-2 py-3 pl-2 podcast-card-content">'+
+                                '<div class="mt-2 py-3 pl-2 all-podcast-card-content">'+
                                     '<p class="category podcsat-color ">podcast</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
@@ -169,7 +169,7 @@ class SearchEngine {
                 container_ref.append(
                     '<div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
                                 '<img class="pdf-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
-                                '<div class="mt-2 py-3 pl-2 pdf-card-content">'+
+                                '<div class="mt-2 py-3 pl-2 all-pdf-card-content">'+
                                     '<p class="category pdf-color ">articles</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
@@ -209,7 +209,7 @@ class SearchEngine {
                  container_ref.append(
                      '<div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
                                  '<img class="pdf-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
-                                 '<div class="mt-2 py-3 pl-2 pdf-card-content">'+
+                                 '<div class="mt-2 py-3 pl-2 all-pdf-card-content">'+
                                      '<p class="category pdf-color ">pdf</p>'+
                                      '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                      '<p class="card-text">'+desc+'</p>'+
@@ -224,7 +224,7 @@ class SearchEngine {
                  container_ref.append(
                      '<div class="video-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
                                  '<img class="video-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
-                                 '<div class="mt-2 py-3 pl-2 video-card-content">'+
+                                 '<div class="mt-2 py-3 pl-2 all-video-card-content">'+
                                      '<p class="category video-color ">video</p>'+
                                      '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                      '<p class="card-text">'+desc+'</p>'+
@@ -239,7 +239,7 @@ class SearchEngine {
                  container_ref.append(
                      '<div class="podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
                                  '<img class="podcast-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
-                                 '<div class="mt-2 py-3 pl-2 podcast-card-content">'+
+                                 '<div class="mt-2 py-3 pl-2 all-podcast-card-content">'+
                                      '<p class="category podcsat-color ">podcast</p>'+
                                      '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                      '<p class="card-text">'+desc+'</p>'+
@@ -254,7 +254,7 @@ class SearchEngine {
                  container_ref.append(
                      '<div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
                                  '<img class="pdf-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
-                                 '<div class="mt-2 py-3 pl-2 pdf-card-content">'+
+                                 '<div class="mt-2 py-3 pl-2 all-pdf-card-content">'+
                                      '<p class="category pdf-color ">articles</p>'+
                                      '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                      '<p class="card-text">'+desc+'</p>'+

@@ -235,6 +235,8 @@ class CheckResponse
         this.nextcourseContainer.show();
         const base_url = window.location.origin;
         $('#video_run').hide();
+        $('#right_course_side').removeClass('right-quizz-container');
+        $('#right_course_side').addClass('right-quizz-container2');
         // div 
         this.nextcourseContainer.append(
             

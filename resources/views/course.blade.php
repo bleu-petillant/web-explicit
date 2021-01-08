@@ -5,7 +5,7 @@
 
     <div class="row flex-column-reverse flex-lg-row">
         <div class="col-lg-4 container left-quizz-container mx-auto ">
-            <a href="{{route('home')}}">
+            <a href="{{route('formations.all')}}">
                 <img class="block lg:hidden w-auto logo-course-explicit" src="{{ asset('img/logo/logonoir.png') }}" alt="Workflow" >
                 <img class="hidden lg:block w-auto logo-course-explicit" src="{{ asset('img/logo/logonoir.png') }}" alt="Workflow" >
             </a>
@@ -57,7 +57,7 @@
 
         {{--  start aside vidéo   --}}
         <div class="col-lg-8 formation-right">
-            <div class="right-quizz-container relative">
+            <div id="right_course_side" class="right-quizz-container relative">
                 <div id="nextcourse">
                     <h3 class="">Autre formation</h3>
 

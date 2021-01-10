@@ -70,11 +70,8 @@
             @endif
         </div>
         <div class="flex mx-auto justify-center">
-            <!-- <div class="w-1/5 mx-8" ></div>
-            <div class="w-1/5 mx-8"></div>
-            <div class="w-1/5 mx-8"></div> -->
-            <div class="w-1/5 mx-8 mb-5 absolute right-0">
-            <p class="text-right"> <a href="{{route('ressources.all')}}" class=" bg-white text-lg ressource-home-button uppercase relative float-right  "> les ressources</a></p>
+            <div class=" mx-8 mb-5 ressource-home-button-div right-0">
+                <p class="text-right"> <a href="{{route('ressources.all')}}" class=" bg-white text-lg ressource-home-button uppercase relative float-right  "> les ressources</a></p>
             </div>
         </div>
     </div>
@@ -101,7 +98,7 @@
 </section>
 
 <!-- Cas d'usage -->
-<section class="md:w4/4 lg:w-3/4 mb-10  mx-auto">
+<section class="md:w-4/4 lg:w-3/4 mb-10  mx-auto">
     <h2 class="text-4xl font-bold mx-8 my-8">Cas d'usage </h2>
     <div class="flex home-cas-usage">
         @if ($usages->count() > 0)
@@ -124,15 +121,15 @@
         @else
         <h1>pas de cas d 'usage pour le moment</h1>
         @endif
-
     </div>
-    <div class="flex mx-auto justify-center">
-            <div class="w-1/3  my-5 mx-8" ></div>
-            <div class="w-1/3 my-5  mx-8"></div>
-            <div class="w-1/3  my-5 mx-8 mb-5 ">
-            <p class="text-right"><a class="bg-white text-lg ressource-home-button uppercase relative mx-8 mt-2 mb-8 md:mx-auto" href="{{route('usage')}}"> les cas d'usages</a></p>
+        <div class="flex mx-auto justify-center">
+            <div class=" mx-8 mb-5 right-0">
+                <p class="text-right"> <a href="{{route('usage')}}" class=" bg-white text-lg ressource-home-button uppercase relative float-right  "> Les cas d'usage</a></p>
             </div>
         </div>
+    
+    
+
 
     
 

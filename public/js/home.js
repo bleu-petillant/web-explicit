@@ -4,9 +4,19 @@ $(document).ready(function(){
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 4,
-        arrows: false,
+        arrows: true,
+        nextArrow: '<i class="slick-next fa fa-chevron-right"></i>',
+        prevArrow: '<i class="slick-prev fa fa-chevron-left"></i>',
         adaptiveHeight: true,
         responsive: [
+          {
+            breakpoint: 1440,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              infinite: true,
+            }
+          },
             {
               breakpoint: 1024,
               settings: {
@@ -30,7 +40,9 @@ $(document).ready(function(){
         infinite: true,
         slidesToShow: 3,
         slidesToScroll: 3,
-        arrows: false,
+        arrows: true,
+        nextArrow: '<i class="slick-next fa fa-chevron-right"></i>',
+        prevArrow: '<i class="slick-prev fa fa-chevron-left"></i>',
         adaptiveHeight: true,
         responsive: [
           {

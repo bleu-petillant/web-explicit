@@ -89,8 +89,8 @@ margin-top: -14px;
     margin: 8% 4%;
 }
 
-.card-ressource-home{
-    height: 393px!important;
+.card-ressource-home {
+    height: 447px!important;
 }
 
 .card-image{
@@ -108,7 +108,7 @@ margin-top: -14px;
 }
 
 .ressource-cards {
-    height: 416px;
+    /* height: 416px; */
 }
 
 .pdf-color{
@@ -129,6 +129,10 @@ margin-top: -14px;
     border:  solid #6d7aea 2px;
     border-radius: 7px;
     padding: 7px 50px;
+}
+
+.ressource-home-button-div{
+    position: absolute;
 }
 
 
@@ -210,12 +214,16 @@ margin-top: -14px;
 
 /* ------------------------------------- Responsive */
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1214px) {
     
     .presentation-home-text{
         border-left: #6d7aea 5px solid;
         height: 100%;
         margin-left: 4vw;
+    }
+
+    .card-ressource-home {
+        height: 500px!important;
     }
     
 }
@@ -224,6 +232,10 @@ margin-top: -14px;
 
     .present-image{
         display: none;
+    }
+
+    .card-ressource-home {
+        height: 515px!important;
     }
 
     .presentation-home-text{
@@ -271,7 +283,20 @@ margin-top: -14px;
         border-left: none;
         height: 100%;
     }
+    .formation-home-text {
+        width: 100%;
+        background-color: #6d7aea;
+        margin: 0;
+        position: relative;
+        z-index: 1;
+        padding-left: 0;
+        padding-top: 24%;
+        margin-top: -24%;
+    }
 
+    .ressource-home-button-div{
+        position: unset;
+    }
     
 
 }
@@ -287,6 +312,8 @@ margin-top: -14px;
     .main-title::before{
         display: none;
     }
+
+    
 
 
 }

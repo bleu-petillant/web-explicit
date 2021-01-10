@@ -38,11 +38,8 @@
         
     </head>
 
-    <body class="font-sans antialiased">
-    
-    @if (Route::has('login'))
-        @auth
-        
+    <body>
+
     <nav>
         <input type="checkbox" id="check">
         <label for="check" class="checkbtn">
@@ -75,16 +72,17 @@
             <li class="li-navigation"><a class="current-page" href="{{route('contact')}}">Contact</a></li>
         @endif
             <!-- <li  class="li-navigation"><a href="{{route('login')}}"><i class="connexion-icon text-xl fas fa-user"></i></a></li> -->
-            <li class="li-navigation-dropdown">
-                
-                    <button class="  text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-haspopup="true">
+            <li class="ml-3 relative">
+                <div>
+                    <button class=" flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-haspopup="true">
                         <span class="sr-only">Open user menu</span>
+        
                     </button>
-                        <div class="sm:flex sm:items-center sm:ml-6">
+                        <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <x-jet-dropdown align="right" width="48">
                                 <x-slot name="trigger">
                                         <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out py-2">
-                                            <div class="auth-nav-name">{{ Auth::user()->name }}</div>
+                                            <div>{{ Auth::user()->name }}</div>
                                             <div class="ml-1">
                                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -173,78 +171,31 @@
                                 </x-slot>
                             </x-jet-dropdown>
                         </div>
+                </div>
+
             </div>
+
         </li>
         </ul>
     </nav>
 
-        @else
-
-        <nav>
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class=" burger-menu fas fa-bars"></i>
-        </label>
-        <label class="logo-navigation"><a href="{{route('home')}}">
-            <img class=" logo-img-explicit w-auto" src="{{ asset('img/logo/logonoir.png') }}" alt="Workflow">
-        </a></label>
-        <ul class="ul-navigation">
-        @if ( request()->routeIs('ressources.all'))
-            <li class="li-navigation"><a class="current-page" href="{{route('ressources.all')}}">Ressources</a></li>
-        @else
-            <li class="li-navigation"><a class="text-gray" href="{{route('ressources.all')}}">Ressources</a></li>
-        @endif
-        @if ( request()->routeIs('formations.all'))
-            <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formation Intéractive</a></li>
-        @elseif ( request()->routeIs('ressources.private'))
-            <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formation Intéractive</a></li>
-        @else
-            <li class="li-navigation"><a class="text-gray" href="{{route('formations.all')}}">Formation Intéractive</a></li>
-        @endif
-        @if ( request()->routeIs('usage'))
-            <li class="li-navigation"><a class="current-page" href="{{route('usage')}}">Cas d'usage</a></li>
-        @else
-            <li class="li-navigation"><a class="text-gray" href="{{route('usage')}}">Cas d'usage</a></li>
-        @endif
-        @if ( request()->routeIs('contact'))
-            <li class="li-navigation"><a class="text-gray" href="{{route('contact')}}">Contact</a></li>
-        @else
-            <li class="li-navigation"><a class="current-page" href="{{route('contact')}}">Contact</a></li>
-        @endif
-            <li  class="li-navigation"><a href="{{route('login')}}"><i class="connexion-icon text-xl fas fa-user"></i></a></li>
-        </ul>
-    </nav>
-                        
-            @endif
-        @endif
-
-        {{ $slot ?? '' }}
-        @yield('resources')
-        @yield('home')
-        @yield('allcourse')
-        @yield('usage')
-        @yield('contact')
-        @yield('mentions')
-        @yield('polices')
-
-        @yield('allressourcesprivate')
-
-        <footer class="pt-8 pb-3">
-            <div class="flex">
-                <div class="footer-logo pl-8">
-                    <img src="{{ asset('img/logo/logoblanc.png') }}" class="footer-img-logo" alt="">
-                </div>
-                <div class="legal ">
-                    <a class="text-white font-bold" href="">Mention légales</a>
-                    <p class="text-white">© 2020</p>
-                </div>
-                <a href="#" id="top">
-                    <i class="fas fa-chevron-up white-text fa-2x"></i>
-                </a>
+    @yield('home')
+    
+    
+    <footer class="pt-8 pb-3">
+        <div class="flex">
+            <div class="footer-logo pl-8">
+                <img src="{{ asset('img/logo/logoblanc.png') }}" class="footer-img-logo" alt="">
             </div>
-        
-
-        </footer>
+            <div class="legal ">
+                <a class="text-white font-bold" href="">Mention légales</a>
+                <p class="text-white">© 2020</p>
+            </div>
+            <a href="#" id="top">
+                <i class="fas fa-chevron-up white-text fa-2x"></i>
+            </a>
+        </div>
+    </footer>
 
 
             <!-- Page Content -->
@@ -259,3 +210,5 @@
 
     </body>
 </html>
+
+

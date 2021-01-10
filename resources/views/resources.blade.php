@@ -121,9 +121,9 @@
 
 
 
-<section class="all-ressources contenu">
+<section class="all-ressources contenu-all-ressource">
 
-<h2 class="font-bold text-5xl mt-4 mb-5 mx-8 text-right">Toute nos ressources</h2>
+<h2 class="font-bold text-5xl mt-4 mb-5 mx-8 tittle-all-ressource">Toute nos ressources</h2>
 
 <div class="mx-8">
     <ul class="filters flex justify-around">

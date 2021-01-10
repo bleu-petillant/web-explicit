@@ -7,6 +7,11 @@
   width: 70%;
 }
 
+.contenu-all-ressource{
+  margin: 0 auto;
+  width: 70%;
+}
+
 .card{
   cursor: pointer;
   border-top-left-radius: 10px!important;
@@ -282,6 +287,10 @@
   margin: auto;
 }
 
+.tittle-all-ressource{
+  text-align: right;
+}
+
 .slick-slide{
   margin-bottom: 0!important;
 }
@@ -348,6 +357,17 @@
     width: 31vw;
   }
 
+  .contenu-all-ressource{
+    margin: 0 auto;
+    width: 90%;
+
+  }
+
+  .tittle-all-ressource{
+    text-align: center;
+  }
+  
+
   
 
 }
@@ -375,6 +395,10 @@
 @media screen and (max-width: 640px) {
 
   /* barre de recherche*/
+
+  .isotope{
+    width: 376px!important;
+  }
 
 
 }

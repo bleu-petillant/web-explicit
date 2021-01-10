@@ -30,6 +30,7 @@ class ValideQuestionController extends Controller
         // get the actual course;
         $course = Course::where('id',$course_id)->with('references')->first();
 
+
         // try to get next course if exist;
         $Ncourse = Course::where('id','>',$course_id)->with('references')->first();
 
@@ -49,6 +50,7 @@ class ValideQuestionController extends Controller
 
         // get all the courses where is validate by the student;
         $CourseValidate = $Course_user->pivot->validate;
+
 
         // get the total questions in this course;
         $totalQ = Question::where('course_id',$course_id)->count();

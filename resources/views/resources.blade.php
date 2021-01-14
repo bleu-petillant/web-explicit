@@ -35,6 +35,8 @@
             </div>
         </div> 
     </section>
+
+    
     <section class="ressource-news contenu">
         <h2 id="result" class="font-bold  sm:text-2xl md:text-5xl mt-4 mb-5 mx-8">Nouveautés</h2>
         <span id="noresult"></span>

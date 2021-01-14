@@ -228,7 +228,7 @@
                         
             @endif
         @endif
-
+@include('cookieConsent::index')
         {{ $slot ?? '' }}
         @yield('resources')
         @yield('home')
@@ -246,8 +246,8 @@
                     <img src="{{ asset('img/logo/logo_blanc.svg') }}" class="footer-img-logo" alt="">
                 </div>
                 <div class="legal ">
-                    <a class="text-white font-bold" href="">Mention légaloss</a>
-                    <p class="text-white">© 2020</p>
+                    <a class="text-white font-bold" href="{{route('mentions')}}">Mention légales</a>
+                    <p class="text-white">© {{ \Carbon\Carbon::now()->year }} </p>
                 </div>
                 <a href="#" id="top">
                     <i class="fas fa-chevron-up white-text fa-2x"></i>
@@ -267,6 +267,6 @@
         <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
         <!-- <script src="{{asset('vendor/cookie-consent/js/cookie-consent.js')}}"></script> -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
-
+        
     </body>
 </html>

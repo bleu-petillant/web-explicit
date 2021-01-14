@@ -58,7 +58,7 @@
                     <div id="imagePreview" class="col-lg-2"></div> 
                     
                     <label for="alt" class="label"> Ajouter une description pour l'image <small class="text-danger">(max 255 caractères)</small></label>
-                    <input type="text" id="desc3" name="alt" value="{{ old('alt')}}" class="form-control my-2" placeholder="description de l'image" required maxlength="255"> 
+                    <input type="text" id="alt" name="alt" value="{{ old('alt')}}" class="form-control my-2" placeholder="description de l'image" required maxlength="255"> 
                     <span id="compt_descr3" class="text-right">0 mots | 255 caractère(s) restant(s)</span>
 
                        
@@ -71,8 +71,8 @@
                     <span id="compt_descr1" class="text-right">0 mots | 255 caractère(s) restant(s)</span>
                         
                     <hr class="hr-light">
-                    <label for="desc2">Décrivez votre cours <small class="text-danger">(max 255 caractères)</small></label>
-                    <textarea type="text" id="desc2" name="desc2" class="form-control editor" placeholder="décrivez votre cours ici...." required maxlength="255">{{ old('desc')}}</textarea>
+                    <label for="desc">Décrivez votre cours <small class="text-danger">(max 255 caractères)</small></label>
+                    <textarea type="text" id="desc" name="desc" class="form-control editor" placeholder="décrivez votre cours ici...." required maxlength="255">{{ old('desc')}}</textarea>
                     <span id="compt_descr2" class="text-right">0 mots | 255 caractère(s) restant(s)</span>
                     <br>
                     @if($references->count() > 1)
@@ -91,7 +91,7 @@
                 $('#image').val("");
                 $('#alert').html("");
 
-                $('#desc3').keyup(function() {
+                $('#alt').keyup(function() {
                     
                     var nombreCaractere0 = $(this).val().length;
                     var nombreCaractere0 = 255 - nombreCaractere0;
@@ -123,7 +123,7 @@
                 });  
 
                 
-                $('#desc2').keyup(function() {
+                $('#desc').keyup(function() {
                     
                     var nombreCaractere2 = $(this).val().length;
                     var nombreCaractere2 = 255 - nombreCaractere2;

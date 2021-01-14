@@ -65,7 +65,7 @@
 .formation-card{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    height: 523px;
+    height: 586px;
 }
 
 
@@ -431,6 +431,15 @@
         #video_run {
             margin-top: 2rem;
             outline: none;
+        }
+    
+    }
+
+    @media screen and (max-width: 908px) {
+    
+    
+      .formation-card{
+          height: 675px;
         }
     
     }

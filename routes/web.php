@@ -35,6 +35,7 @@ use App\Http\Controllers\SearchEngineController;
 Route::get('/',[HomeController::class,'index'])->name('home');// home page
 Route::get('/resources',[HomeController::class,'allResources'])->name('ressources.all');// page all ressources
 Route::get('/cas d usage',[HomeController::class,'usage'])->name('usage');//page cas d 'usage
+Route::get('/test',[HomeController::class,'test'])->name('test');//page cas d 'usage
 Route::get('/contact',[ContactController::class,'contact'])->name('contact');//page contact
 Route::get('/polices',[HomeController::class,'policies'])->name('police de confidentialite');
 Route::get('/mentions légales',[HomeController::class,'mentions'])->name('mentions');

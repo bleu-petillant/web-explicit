@@ -13,7 +13,7 @@ $(document).ready(function(){
         dots: false,
         responsive: [
           {
-            breakpoint: 1024,
+            breakpoint: 1226,
             settings: {
               slidesToShow: 2,
               slidesToScroll: 2,
@@ -35,8 +35,8 @@ $(document).ready(function(){
       
     });
 
-    let seconds = 2000;
-    // au bout de 2 seconde , on montre l'indice, tu peux changer le timer avec la variable seconds
+    let seconds = 1000;
+    
     setTimeout(() => {
         $('#loading').toggleClass('hidden');
         $("body").toggleClass("")

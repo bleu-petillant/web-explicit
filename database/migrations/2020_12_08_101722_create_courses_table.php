@@ -22,7 +22,7 @@ class CreateCoursesTable extends Migration
             $table->string('alt')->nullable();
             $table->foreignId('teacher_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->date('published_at')->nullable();
-            $table->string('meta')->nullable();
+            $table->text('meta')->nullable();
             $table->timestamps();
         });
     }

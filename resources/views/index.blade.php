@@ -4,7 +4,7 @@
 <!-- image avec titre -->
 <section class="first-image-home h-screen">
     <h1 class="main-title w-4/5 text-white text-4xl leading-tight sm:mx-10 md:mx-10 lg:mx-10 font-bold pl-4 object-left-bottom absolute bottom-20 left-3 sm:text-6xl">
-        Découvrir et apprendre les méthodes d'explicitation
+        Découvrir et apprendre les méthodes d'explicitation 
     </h1>
     <div class="bottom-arrow"></div>
 </section>
@@ -85,10 +85,10 @@
             <div>
                 <img class="formation-home-img" src="img/formation_home.png" alt="">
             </div>
-            <div class="formation-home-text pt-10 pr-20 pb-10 pl-20">
+            <div class="formation-home-text pt-7 pr-20 pb-7 pl-20">
                 <div class="border-l-4 border-white">
                     <h2 class="leading-tight text-white ressource-home-title uppercase font-bold text-4xl ml-4" >formation <br> interactive</h2>
-                    <p class=" text-white text-xl text-justify px-4 pt-3 w-3/4 font-light mb-4">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy  nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>                   
+                    <p class=" text-white text-xl text-justify px-4 pt-1 w-3/4 font-light mb-4">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy  nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>                   
                 </div>
             <p class="text-center"><a class="justify-center text-lg bg-white uppercase my-1 py-2 px-10 rounded" href="{{route('formations.all')}}">Commencer</a></p>
             </div>

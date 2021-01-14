@@ -35,6 +35,7 @@
         <script src="{{ asset('js/ressource.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/home.js') }}"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
         
     </head>
 
@@ -45,11 +46,14 @@
         
     <nav>
         <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
+        <label id="" for="check" class="checkbtn burger-menu-open">
             <i class=" burger-menu fas fa-bars"></i>
         </label>
+        <label id=" " for="check" class=" checkbtn burger-menu-close">
+            <i class=" burger-menu fas fa-times"></i>
+        </label>
         <label class="logo-navigation"><a href="{{route('home')}}">
-            <img class=" logo-img-explicit w-auto" src="{{ asset('img/logo/logonoir.png') }}" alt="Workflow">
+            <img class=" logo-img-explicit w-auto" src="{{ asset('img/logo/logo_couleur.svg') }}" alt="Workflow">
         </a></label>
         <ul class="ul-navigation">
         @if ( request()->routeIs('ressources.all'))
@@ -58,11 +62,11 @@
             <li class="li-navigation"><a class="text-gray" href="{{route('ressources.all')}}">Ressources</a></li>
         @endif
         @if ( request()->routeIs('formations.all'))
-            <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formation Intéractive</a></li>
+            <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formation interactive</a></li>
         @elseif ( request()->routeIs('ressources.private'))
-            <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formation Intéractive</a></li>
+            <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formation interactive</a></li>
         @else
-            <li class="li-navigation"><a class="text-gray" href="{{route('formations.all')}}">Formation Intéractive</a></li>
+            <li class="li-navigation"><a class="text-gray" href="{{route('formations.all')}}">Formation interactive</a></li>
         @endif
         @if ( request()->routeIs('usage'))
             <li class="li-navigation"><a class="current-page" href="{{route('usage')}}">Cas d'usage</a></li>
@@ -180,13 +184,16 @@
 
         @else
 
-        <nav>
+    <nav>
         <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
+        <label id="" for="check" class="checkbtn burger-menu-open">
             <i class=" burger-menu fas fa-bars"></i>
         </label>
+        <label id="" for="check" class=" checkbtn burger-menu-close ">
+            <i class=" burger-menu fas fa-times"></i>
+        </label>
         <label class="logo-navigation"><a href="{{route('home')}}">
-            <img class=" logo-img-explicit w-auto" src="{{ asset('img/logo/logonoir.png') }}" alt="Workflow">
+            <img class=" logo-img-explicit w-auto" src="{{ asset('img/logo/logo_couleur.svg') }}" alt="Workflow">
         </a></label>
         <ul class="ul-navigation">
         @if ( request()->routeIs('ressources.all'))
@@ -195,11 +202,11 @@
             <li class="li-navigation"><a class="text-gray" href="{{route('ressources.all')}}">Ressources</a></li>
         @endif
         @if ( request()->routeIs('formations.all'))
-            <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formation Intéractive</a></li>
+            <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formation interactive</a></li>
         @elseif ( request()->routeIs('ressources.private'))
-            <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formation Intéractive</a></li>
+            <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formation interactive</a></li>
         @else
-            <li class="li-navigation"><a class="text-gray" href="{{route('formations.all')}}">Formation Intéractive</a></li>
+            <li class="li-navigation"><a class="text-gray" href="{{route('formations.all')}}">Formation interactive</a></li>
         @endif
         @if ( request()->routeIs('usage'))
             <li class="li-navigation"><a class="current-page" href="{{route('usage')}}">Cas d'usage</a></li>
@@ -229,13 +236,13 @@
 
         @yield('allressourcesprivate')
 
-        <footer class="pt-8 pb-3">
+        <footer class="pt-8 pb-3 w-screen">
             <div class="flex">
                 <div class="footer-logo pl-8">
-                    <img src="{{ asset('img/logo/logoblanc.png') }}" class="footer-img-logo" alt="">
+                    <img src="{{ asset('img/logo/logo_blanc.svg') }}" class="footer-img-logo" alt="">
                 </div>
                 <div class="legal ">
-                    <a class="text-white font-bold" href="">Mention légales</a>
+                    <a class="text-white font-bold" href="">Mention légaloss</a>
                     <p class="text-white">© 2020</p>
                 </div>
                 <a href="#" id="top">
@@ -254,7 +261,7 @@
 
         @livewireScripts
         <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
-        <script src="{{asset('vendor/cookie-consent/js/cookie-consent.js')}}"></script>
+        <!-- <script src="{{asset('vendor/cookie-consent/js/cookie-consent.js')}}"></script> -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
 
     </body>

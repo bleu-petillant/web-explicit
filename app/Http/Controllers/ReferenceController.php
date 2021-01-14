@@ -79,7 +79,7 @@ class ReferenceController extends Controller
             'tags' => 'required',
             'alt'=>'required',
             'meta'=>'required',
-            'duration,'=>'required',
+            
             'desc'=>'required',
         ]);
         $tags= strtolower($request->tags);

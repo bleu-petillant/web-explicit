@@ -12,6 +12,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('admin/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.9.2/tailwind.min.css" integrity="sha512-l7qZAq1JcXdHei6h2z8h8sMe3NbMrmowhOl+QkP3UhifPpCW2MC4M0i26Y8wYpbz1xD9t61MLT9L1N773dzlOA==" crossorigin="anonymous" />
@@ -53,7 +54,7 @@
         @auth
         <div class="image">
                 <a href="{{ route('home') }}">
-                    <img class="block w-1/12 w-auto" src="{{ asset('img/logo/logoblanc.png') }}" alt="Workflow">
+                    <img class="block w-1/4 admin-logo" src="{{ asset('img/logo/logo_blanc.svg') }}" alt="Workflow">
                 </a>
                 <p class="d-block raleway text-center text-white underline">{{ Auth::user()->name }}</p>
         </div>

@@ -5,7 +5,7 @@
 <section id="contact_title" class="p-5">
     <div class="grid grid-title-2 w-3/4 mx-auto">
         <div class="">
-            <h1 class="text-white text-6xl font-bold uppercase leading-none">Contact</h1>
+            <h1 class="text-white sm:text-3xl md:text-6xl font-bold uppercase leading-none">Contact</h1>
         </div>
         <div class="">
             <p class="text-white my-4">Une question ? Une recommandation ?</p>
@@ -14,7 +14,7 @@
 </section>
 
 
-<section class="row flex-column-reverse flex-lg-row py-24">
+<section class="row flex-column-reverse flex-lg-row py-24" >
     <div class=" col-lg-5 ">
         <img src="img/contact.png" class="w-full"  alt="">
     </div>

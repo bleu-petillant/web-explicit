@@ -6,11 +6,12 @@
 #formation_title{
     background-color: #6d7aea;
     display: flex;
+    width: 100%;
     
 }
 
 .logo-course-explicit{
-    width: 230px;
+    width: 170px;
     position: absolute;
     top: 0;
     left: 34px;
@@ -154,7 +155,7 @@
 .private-podcast-button {
     color: #cc6699;
     padding: 5px 18px;
-    width: 27%;
+    width: 37%;
     border: 2px solid #cc6699;
     border-radius: 5px;
     position: absolute;
@@ -166,7 +167,7 @@
 .private-video-button{
     color: #58b1c6;
     padding: 5px 18px;
-    width: 27%;
+    width: 37%;
     border: 2px solid #58b1c6;
     border-radius: 5px;
     position: absolute;
@@ -178,7 +179,7 @@
 .private-pdf-button{
     color: #66cc99;
     padding: 5px 18px;
-    width: 27%;
+    width: 37%;
     border: 2px solid #66cc99;
     border-radius: 5px;
     position: absolute;
@@ -204,9 +205,6 @@
 
 /*-------------------------------------Unique Course*/
 
-.formation-left{
-
-}
 
 .formation-right{
     background-color: black;
@@ -409,6 +407,19 @@
     @media screen and (max-width: 992px) {
 
 
+     /* all formation interactives pages*/
+
+        .grid-title-2 {
+            grid-template-columns: 5fr ; 
+        }
+
+        .grille {
+            grid-template-columns: 1fr 1fr ;
+        }
+
+     /*video quizz*/
+
+
         .formation-right {
             height: unset;
         }
@@ -427,13 +438,25 @@
     @media screen and (max-width: 767px) {
     
     
+        #formation_title{
+            padding: 2rem!important;
+        }
     
     }
 
     @media screen and (max-width: 640px) {
 
+        #formation_grid{
+            padding: 0!important;
+        }
+
         .grille {
             grid-template-columns: 1fr  ;
         }
+
+        .card-ressource {
+            height: 565px!important;
+        }
+
     
     }

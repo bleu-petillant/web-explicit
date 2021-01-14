@@ -3,10 +3,10 @@
 @section('allcourse')
 
 
-<section id="formation_title" class="p-5">
-    <div class="grid grid-title-2 w-3/4 mx-auto">
+<section id="formation_title" class=" md:p-5">
+    <div class="grid grid-title-2  md:w-3/4 mx-auto">
         <div class="">
-            <h1 class="text-white text-6xl font-bold uppercase leading-none">Formation<br>interactive</h1>
+            <h1 class="text-white sm:text-3xl md:text-6xl font-bold uppercase leading-none">Formation<br>interactive</h1>
         </div>
         <div class="">
             <p class="text-white">Pellentesque nisl dolor, varius et est non,<br> aliquam aliquet ligula. Fusce a auctor <br> sapien.
@@ -14,7 +14,7 @@
         </div>        
     </div> 
 </section>
-    <div class="flex mx-auto my-3 w-2/4 p-2" >
+    <div class="flex mx-auto my-3 sm:w-full md:w-2/4 p-2" >
         <div class="w-1/2 mx-auto">
             <a href="{{route('formations.all')}}"><p id="courses_choice" class="link-formation text-center selected-choice text-2xl" >Vidéo interactive</p></a>
         </div>
@@ -22,7 +22,7 @@
             <a href="{{ route('ressources.private') }}" id="ressource_choice"><p class="link-formation text-center text-2xl">Ressource</p> </a>
         </div>
     </div>
-<section id="formation_grid" class="p-5">
+<section id="formation_grid" class="sm:p-0 md:p-5">
 
     <div class="grille mx-auto py-2 " wire:model="references">
         @if ($courses->count() > 0)

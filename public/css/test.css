@@ -15,12 +15,14 @@ nav{
     color: #6d7aea;
 }
 
+
+
 label.logo-navigation {
     color: black;
     position: absolute;
     font-size: 35px;
     line-height: 80px;
-    padding: 0px 34px;
+    padding: 0px 2.5rem;
     font-weight: bold;
 }
 nav .ul-navigation{
@@ -59,10 +61,60 @@ nav a:hover{
     line-height: 80px;
     margin-right: 40px;
     cursor: pointer;
-    display: none;
+    
 }
+
+#burger-menu-close{
+    display: none;
+    font-size: 30px;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
 #check{
     display: none;
+}
+
+.burger-menu-open{
+    display: none;
+}
+
+.burger-menu-close{
+    display: none;
+}
+
+
+/* grid test */
+
+.wrapper-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 20rem);
+    justify-content: center;
+    gap: 48px;
+}
+
+.grid-item-test{
+    height: 500px;
+    width: 345px;
+    background-color: #fff;
+    margin: 13px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+@media (min-width: 930px){
+
+    .burger-menu-open{
+        display: none;
+    }
+    
+    .burger-menu-close{
+        display: none;
+    }
+    
+
 }
 
 @media (max-width: 930px){
@@ -82,10 +134,11 @@ nav a:hover{
     .auth-nav-name {
         color: #fff;
     }
-        
-    .checkbtn{
-    display: block;
+    
+    .burger-menu-open{
+        display: block;
     }
+   
     .ul-navigation{
     position: absolute;
     z-index: 999;

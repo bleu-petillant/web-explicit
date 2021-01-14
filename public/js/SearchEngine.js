@@ -103,7 +103,7 @@ class SearchEngine {
         $('#noresult').text("pas de résultats pour cette recherche");
         this.reset = false;
     }
-//display
+        //display
     displayRefByCat(data)
     {
         
@@ -271,6 +271,7 @@ class SearchEngine {
         }
         this.reset = false;
         this.resetSlickSlider();
+    }
 
 
      displayRefByQuery(data)
@@ -403,7 +404,8 @@ class SearchEngine {
     }
 
         resetSlickSlider()
-    {
+        {
+
         let container_ref = $('.news-ressource-cards');
         // container du slider , remove les classe et reinitialize
         container_ref.removeClass('slick-initialized  slick-slider');
@@ -441,4 +443,3 @@ class SearchEngine {
                 
 
 }
-            

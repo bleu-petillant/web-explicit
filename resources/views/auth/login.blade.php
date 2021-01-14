@@ -2,8 +2,8 @@
     <x-jet-authentication-card>
         <x-slot name="logo">
             <a href="{{route('home')}}">
-                <img class="block lg:hidden w-1/6 mx-auto logo-course-explicit" src="{{ asset('img/logo/logonoir.png') }}" alt="Workflow" >
-                <img class="hidden lg:block w-1/6 mx-auto logo-course-explicit" src="{{ asset('img/logo/logonoir.png') }}" alt="Workflow" >
+                <img class="block lg:hidden w-1/2 mx-auto logo-course-explicit" src="{{ asset('img/logo/logo_couleur.svg') }}" alt="Workflow" >
+                <img class="hidden lg:block w-1/2 mx-auto logo-course-explicit" src="{{ asset('img/logo/logo_couleur.svg') }}" alt="Workflow" >
             </a>
         </x-slot>
 

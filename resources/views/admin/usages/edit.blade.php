@@ -22,11 +22,11 @@
                         @method('PATCH')
                         @csrf
 
-                        <label for="link">modifiez votre lien externe<small class="text-danger">(exemples: https://www.youtube.fr) </small></label>
+                        <label for="link">Modifiez votre lien externe<small class="text-danger">(exemples: https://www.youtube.fr) </small></label>
                         <input type="url" id="link" name="link" value="{{ $usage->link }}" class="form-control my-2" placeholder="{{ $usage->link }}">
                  
                     <div class="mt-4">
-                        <p class="text-center font-bold">modifiez votre image si besoin:</p>
+                        <p class="text-center font-bold">Modifiez votre image si besoin:</p>
                     </div>
 
                     <div class="my-8">
@@ -42,20 +42,22 @@
                     <div class="my-2"></div>
 
                      <div class="my-4">
-                      <label for="alt" class="label"> modifiez la description de l'image (ALT)</label>
-                      <input type="text" id="alt" name="alt" value="{{ $usage->alt }}" class="form-control my-2" placeholder="{{ $usage->alt }}">
+                      <label for="alt" class="label"> Modifiez la description de l'image <small class="text-danger">(max 255 caractères)</small></label>
+                      <input type="text" id="imgDesc" name="alt" value="{{ $usage->alt }}" class="form-control my-2" placeholder="{{ $usage->alt }}"  maxlength="255">
+                      <span id="compt_descr0" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
                     </div>
 
                     <div class="my-4"></div>
-                    <label for="title">modifiez le titre</label>
+                    <label for="title">Modifiez le titre</label>
                     <input type="text" id="title" name="title" value="{{ $usage->title }}" class="form-control my-2" placeholder="">
                     <div class="my-2"></div>
-                    <label for="meta">modifiez la meta description (mini déscription pour les moteurs de recherches)<small class="text-danger">(max 255 caractères)</small></label>
+                    <label for="meta">Modifiez la meta description (mini déscription pour les moteurs de recherches)<small class="text-danger">(max 255 caractères)</small></label>
                     <input type="text" id="meta" name="meta" value="{{ $usage->meta }}" class="form-control my-2" placeholder="meta description">
+                    <span id="compt_descr1" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
 
 
                     <div class="my-4">
-                    <label for="desc">modifiez la description de votre cas d'usage</label>
+                    <label for="desc">Modifiez la description de votre cas d'usage</label>
                     <input id="desc" name="desc" class="form-control my-2 " value="{{ $usage->desc }}" placeholder="{{ $usage->desc }}" >
                         <button class="btn btn-success " type="submit"><span class="fas fa-pen pr-2"></span>modifier ce cas d'usage</button>
                     </form>
@@ -67,6 +69,38 @@
         $(document).ready(function () {
                 $('#image').val("");
                 $('#alert').html("");
+
+                $('#imgDesc').keyup(function() {
+                    
+                    var nombreCaractere0 = $(this).val().length;
+                    var nombreCaractere0 = 255 - nombreCaractere0;
+                    
+                    var nombreMots0 = jQuery.trim($(this).val()).split(' ').length;
+                    if($(this).val() === '') {
+                        nombreMots = 0;
+                    }
+                    
+                    var msg0 = ' ' + nombreMots0 + ' mot(s) | ' + nombreCaractere0 + ' Caractere(s) restant';
+                    $('#compt_descr0').text(msg0);
+
+                })  
+
+                $('#meta').keyup(function() {
+                    
+                    var nombreCaractere1 = $(this).val().length;
+                    var nombreCaractere1 = 255 - nombreCaractere1;
+                    
+                    var nombreMots1 = jQuery.trim($(this).val()).split(' ').length;
+                    if($(this).val() === '') {
+                        nombreMots = 0;
+                    }
+                    
+                    var msg1 = ' ' + nombreMots1 + ' mot(s) | ' + nombreCaractere1 + ' Caractere(s) restant';
+                    $('#compt_descr1').text(msg1);
+
+                })  
+
+                
             });
          function fileValidation() { 
             var fileInput =  document.getElementById('image'); 

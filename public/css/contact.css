@@ -1,5 +1,6 @@
 #contact_title{
     background-color: #6d7aea;
+    width: 100vw;
 }
 
 .form-contact{
@@ -53,3 +54,21 @@ margin: 0 auto;
     font-weight: bold;
     width: 37%;
 }
+
+
+@media screen and (max-width: 640px) {
+
+    .form-contact {
+        width: 78%;
+         margin: 0;
+    }
+
+
+    .contact-submit {
+
+         padding: 10px 0px;
+    }
+ 
+  
+  }
+

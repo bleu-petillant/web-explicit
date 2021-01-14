@@ -30,15 +30,24 @@ class DatabaseSeeder extends Seeder
         CategoriesSeeder::class
     ]);
        $user = User::factory()->count(100)->create();
-       Reference::factory()->count(45)->state(new Sequence(
+      $reference = Reference::factory()->count(70)->state(new Sequence(
                     ['private' => 0],
                     ['private' => 1],
                 ))->create();
 
       $course = Course::factory()->count(35)->create();
 
+      $course->each(function (Course $r) use ($reference) {
+        $r->references()->attach(
+            [
+              'reference_id' => Reference::all()->random()->id,
+              'course_id'=> Course::all()->random()->id
+            ]
+        );
+    });
+    $usage = Usage::factory()->count(6)->create();
 
-        //Question::factory()->count(1)->create();
+
   
         
     }

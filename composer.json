@@ -23,6 +23,7 @@
         "mediconesystems/livewire-datatables": "^0.4.3",
         "rappasoft/laravel-livewire-tables": "^0.3.2",
         "rtconner/laravel-tagging": "^4.1",
+        "spatie/laravel-cookie-consent": "^2.12",
         "statikbe/laravel-cookie-consent": "^1.2"
     },
     "require-dev": {

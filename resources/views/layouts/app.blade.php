@@ -265,7 +265,6 @@
 
         @livewireScripts
         <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
-        <!-- <script src="{{asset('vendor/cookie-consent/js/cookie-consent.js')}}"></script> -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
         
     </body>

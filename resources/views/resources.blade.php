@@ -36,7 +36,7 @@
         </div> 
     </section>
 
-    
+
     <section class="ressource-news contenu">
         <h2 id="result" class="font-bold  sm:text-2xl md:text-5xl mt-4 mb-5 mx-8">Nouveautés</h2>
         <span id="noresult"></span>
@@ -155,10 +155,8 @@
                                 <p class="card-text">{{$ref->desc}}</p>
                             </div>
                         </div>
+                        <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->pdf}}" class="pdf-button uppercase mx-auto tracking-wider">Lien</a></p>
                     </a>
-                    <div class="card-button">
-                        <p class="text-center"><a class="text-center my-4 pdf-button uppercase mx-auto tracking-wider" href="">Lien</a></p>   
-                    </div>  
                 </div>
             @elseif($ref->category_id == '2')
                 <div class=" grid-item-test shadow-lg" data-filter="video">
@@ -171,10 +169,8 @@
                                 <p class="card-text">{{$ref->desc}}</p>
                             </div>
                         </div>
-                    </a>
-                    <div class="card-button">
-                        <p class="text-center"><a class="text-center my-4 video-button uppercase mx-auto tracking-wider" href="">Lien</a></p>   
-                    </div>      
+                        <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" class="video-button uppercase mx-auto tracking-wider">Lien</a></p>
+                    </a>   
                 </div>
             @elseif($ref->category_id == '3')
                 <div class=" grid-item-test shadow-lg"  data-filter="podcast">
@@ -187,10 +183,8 @@
                                 <p class="card-text">{{$ref->desc}}</p>
                             </div>
                         </div>
-                    </a>
-                    <div class="card-button">
-                        <p class="text-center"><a class="text-center my-4 podcast-button uppercase mx-auto tracking-wider" href="">Lien</a></p>   
-                    </div>    
+                        <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
+                    </a>  
                 </div>
             @elseif($ref->category_id == '4')
                 <div class=" grid-item-test shadow-lg" data-filter="articles">
@@ -203,10 +197,8 @@
                                 <p class="card-text">{{$ref->desc}}</p>
                             </div>
                         </div>
+                        <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
                     </a>
-                    <div class="card-button">
-                        <p class="text-center" ><a class="text-center my-4 podcast-button uppercase mx-auto tracking-wider" href="">Lien</a></p>   
-                    </div>      
                 </div>
             @endif
         @endforeach

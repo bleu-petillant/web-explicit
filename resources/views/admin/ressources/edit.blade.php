@@ -80,25 +80,32 @@
                      </div>
           
 
-                    <div class="my-4"></div>
-                    <label for="title">modifiez le titre</label>
+                    
+                    <label for="title">Modifiez le titre</label>
                     <input type="text" id="title" name="title" value="{{ $reference->title }}" class="form-control my-2" placeholder="">
-                    <div class="my-2"></div>
-                    <label for="meta">modifiez la meta description (mini déscription pour les moteurs de recherches)<small class="text-danger">(max 255 caractères)</small></label>
-                    <input type="text" id="meta" name="meta" value="{{ $reference->meta }}" class="form-control my-2" placeholder="meta description">
+                    
 
-                     <div class="my-4">
-                      <label for="alt" class="label"> modifiez la description de l'image (ALT)</label>
-                      <input type="text" id="alt" name="alt" value="{{ $reference->alt }}" class="form-control my-2" placeholder="{{ $reference->alt }}">
-                    </div>
-                    <div class="my-4">
-                    <label for="desc">modifiez la description de votre ressource</label>
-                    <textarea id="desc" name="desc" class="form-control my-2 " >{{ $reference->desc }}</textarea>
+                    <label for="meta">Modifiez la meta description <small class="text-danger">(max 255 caractères)</small></label>
+                    <input type="text" id="meta" name="meta" value="{{ $reference->meta }}" class="form-control my-2" placeholder="meta description" maxlength="255"> 
+                    <span id="compt_descr1" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
+                    <br>
+
+                     
+                    <label for="alt" class="label">Modifiez la description de l'image <small class="text-danger">(max 255 caractères)</small></label>
+                    <input type="text" id="imgDesc" name="alt" value="{{ $reference->alt }}" class="form-control my-2" placeholder="{{ $reference->alt }}" maxlength="255">
+                    <span id="compt_descr0" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
+                    <br>
+                    
+                    <label for="desc2">Modifiez la description de votre ressource</label>
+                    <textarea id="desc" name="desc" class="form-control my-2 " maxlength="255" >{{ $reference->desc }}</textarea>
+                    <span id="compt_descr2" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
+                    <br>
+
                     <div>
-                        <label for="private">ressource privée ?</label>
+                        <label for="private">Ressource privée ?</label>
                         <input type="checkbox" name="private" id="private" class="form-checkbox" value="{{ $reference->private }}" @if($reference->private == 1) checked @endif>
                     </div>
-                     <label for="duration">ajouter une durée de lecture pour votre ressource <small class="text-danger">(uniquement en chiffres, en minutes et sans le mot minutes !)</small></label>
+                     <label for="duration">Ajouter une durée de lecture pour votre ressource <small class="text-danger">(uniquement en chiffres, en minutes et sans le mot minutes !)</small></label>
                          <input type="text" id="duration" name="duration" value="{{ old('duration')}}" class="form-control my-2" placeholder="ex: 3, 5, 10, 20 etc....." required>
                         <button class="btn btn-success " type="submit"><span class="fas fa-pen pr-2"></span>modifier la ressource</button>
                     </form>
@@ -126,6 +133,54 @@
         $(document).ready(function () {
                 $('#image').val("");
                 $('#alert').html("");
+
+                $('#imgDesc').keyup(function() {
+                    
+                    var nombreCaractere0 = $(this).val().length;
+                    var nombreCaractere0 = 255 - nombreCaractere0;
+                    
+                    var nombreMots0 = jQuery.trim($(this).val()).split(' ').length;
+                    if($(this).val() === '') {
+                        nombreMots = 0;
+                    }
+                    
+                    var msg0 = ' ' + nombreMots0 + ' mot(s) | ' + nombreCaractere0 + ' Caractere(s) restant';
+                    $('#compt_descr0').text(msg0);
+
+                })  
+
+                $('#meta').keyup(function() {
+                    
+                    var nombreCaractere1 = $(this).val().length;
+                    var nombreCaractere1 = 255 - nombreCaractere1;
+                    
+                    var nombreMots1 = jQuery.trim($(this).val()).split(' ').length;
+                    if($(this).val() === '') {
+                        nombreMots = 0;
+                    }
+                    
+                    var msg1 = ' ' + nombreMots1 + ' mot(s) | ' + nombreCaractere1 + ' Caractere(s) restant';
+                    $('#compt_descr1').text(msg1);
+
+                })  
+
+                $('#desc').keyup(function() {
+                    
+                    var nombreCaractere2 = $(this).val().length;
+                    var nombreCaractere2 = 255 - nombreCaractere2;
+                    
+                    var nombreMots2 = jQuery.trim($(this).val()).split(' ').length;
+                    if($(this).val() === '') {
+                        nombreMots2 = 0;
+                    }
+                    
+                    var msg2 = ' ' + nombreMots2 + ' mot(s) | ' + nombreCaractere2 + ' Caractere(s) restant';
+                    $('#compt_descr2').text(msg2);
+
+
+                }) 
+
+
             });
          function fileValidation() { 
             var fileInput =  document.getElementById('image'); 

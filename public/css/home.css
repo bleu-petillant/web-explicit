@@ -90,7 +90,7 @@ margin-top: -14px;
 }
 
 .card-ressource-home {
-    height: 447px!important;
+    height: 478px!important;
 }
 
 .card-image{
@@ -128,8 +128,13 @@ margin-top: -14px;
     color: #6d7aea;
     border:  solid #6d7aea 2px;
     border-radius: 7px;
-    padding: 7px 50px;
+    padding: 7px 34px;
 }
+
+
+
+   
+
 
 .ressource-home-button-div{
     position: absolute;
@@ -162,6 +167,9 @@ margin-top: -14px;
 
 /*cas d'usage*/
 
+.home-cas-usage{
+    
+}
 
 .cas-usage:hover .cas-usage-miniature{
     opacity: 0.7;
@@ -214,7 +222,7 @@ margin-top: -14px;
 
 /* ------------------------------------- Responsive */
 
-@media screen and (max-width: 1214px) {
+@media screen and (max-width: 1290px) {
     
     .presentation-home-text{
         border-left: #6d7aea 5px solid;
@@ -225,6 +233,37 @@ margin-top: -14px;
     .card-ressource-home {
         height: 500px!important;
     }
+
+    .ressources-text{
+        margin: 6% 4%;
+    }
+    
+    
+}
+
+
+@media screen and (max-width: 1199px) {
+    
+    .ressources-text{
+        margin: 3% 4%;
+
+    }
+
+    .formation-home-text {
+      
+        margin: 1% 2% 5% -9%;
+
+    }
+    
+}
+
+@media screen and (max-width: 1126px) {
+    
+    .ressources-text{
+        margin: 3% 4%;
+    }
+
+  
     
 }
 
@@ -272,7 +311,7 @@ margin-top: -14px;
         z-index: 1;
         padding-left: 0;
         padding-top: 14%;
-        margin-top: -12%;
+        margin-top: -14%;
     }
 
 }

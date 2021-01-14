@@ -25,7 +25,7 @@
                         @method('PATCH')
                         @csrf
                      <div class="form-group">
-                        <label class="text-center" for="primary_ressource">modifiez la première ressource</label>
+                        <label class="text-center" for="primary_ressource">Modifiez la première ressource</label>
                         <select class="custom-select custom-select-sm my-2" name="ref[]" id="primary_ressource">
                             <option value="{{ $first->id}}"selected>{{ $first->slug}}</option>
                         @foreach ($references as $reference)
@@ -34,7 +34,7 @@
                         </select>
                     </div> 
                     <div class="form-group">
-                        <label class="text-center" for="secondary_ressource">modifiez la deuxième ressource</label>
+                        <label class="text-center" for="secondary_ressource">Modifiez la deuxième ressource</label>
                         <select class="custom-select custom-select-sm my-2" name="ref[]" id="secondary_ressource">
                             <option value="{{ $second->id}}"selected>{{ $second->slug}}</option>
                         @foreach ($references as $reference)
@@ -62,22 +62,25 @@
                     </div>
 
                     <hr class="hr-light">
-                    <label for="alt" class="label"> ajouter une description pour l'image (ALT)</label>
-                    <input type="text" id="alt" name="alt" value="{{ $course->alt}}" class="form-control my-2" placeholder="description de l'image">
+                    <label for="alt" class="label"> Ajouter une description pour l'image (ALT)</label>
+                    <input type="text" id="imgDesc" name="alt" value="{{ $course->alt}}" class="form-control my-2" placeholder="description de l'image">
+                    <span id="compt_descr0" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
                     <div class="my-2"></div>
 
-                    <label for="title">modifiez le titre de la formation</label>
+                    <label for="title">Modifiez le titre de la formation</label>
                     <input type="text" id="title" name="title" value="{{ $course->title }}" class="form-control my-2" placeholder="">
 
-                    <label for="meta">modifiez votre meta description <small class="text-danger">(max 255 caractères)</small></label>
+                    <label for="meta">Modifiez votre meta description <small class="text-danger">(max 255 caractères)</small></label>
                     <input type="text" id="meta" name="meta" value="{{ $course->meta }}" class="form-control my-2" placeholder="meta description" required>
+                    <span id="compt_descr1" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
 
 
                     <hr class="hr-light">
-                    <label for="content">modifiez la description de cette formation</label>
-                    <textarea type="text" id="desc" name="desc" class="form-control my-2 editor" placeholder="{{ $course->desc }}">{{ $course->desc }}</textarea>
+                    <label for="content">Modifiez la description de cette formation</label>
+                    <textarea type="text" id="desc2" name="desc" class="form-control my-2 editor" placeholder="{{ $course->desc }}">{{ $course->desc }}</textarea>
+                    <span id="compt_descr2" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
 
-                        <button class="btn btn-success btn-block" type="submit"><span class="fas fa-pen pr-2"></span>modifier la formation</button>
+                        <button class="btn btn-success btn-block" type="submit"><span class="fas fa-pen pr-2"></span>Modifier la formation</button>
                     </form>
             </div>
         </div>
@@ -86,6 +89,55 @@
         $(document).ready(function () {
                 $('#image').val("");
                 $('#alert').html("");
+
+
+                $('#imgDesc').keyup(function() {
+                    
+                    var nombreCaractere0 = $(this).val().length;
+                    var nombreCaractere0 = 255 - nombreCaractere0;
+                    
+                    var nombreMots0 = jQuery.trim($(this).val()).split(' ').length;
+                    if($(this).val() === '') {
+                        nombreMots = 0;
+                    }
+                    
+                    var msg0 = ' ' + nombreMots0 + ' mot(s) | ' + nombreCaractere0 + ' Caractere(s) restant';
+                    $('#compt_descr0').text(msg0);
+
+                })  
+
+                $('#meta').keyup(function() {
+                    
+                    var nombreCaractere1 = $(this).val().length;
+                    var nombreCaractere1 = 255 - nombreCaractere1;
+                    
+                    var nombreMots1 = jQuery.trim($(this).val()).split(' ').length;
+                    if($(this).val() === '') {
+                        nombreMots = 0;
+                    }
+                    
+                    var msg1 = ' ' + nombreMots1 + ' mot(s) | ' + nombreCaractere1 + ' Caractere(s) restant';
+                    $('#compt_descr1').text(msg1);
+
+                })  
+
+                
+                $('#desc2').keyup(function() {
+                    
+                    var nombreCaractere2 = $(this).val().length;
+                    var nombreCaractere2 = 255 - nombreCaractere2;
+                    
+                    var nombreMots2 = jQuery.trim($(this).val()).split(' ').length;
+                    if($(this).val() === '') {
+                        nombreMots2 = 0;
+                    }
+                    
+                    var msg2 = ' ' + nombreMots2 + ' mot(s) | ' + nombreCaractere2 + ' Caractere(s) restant';
+                    $('#compt_descr2').text(msg2);
+
+                }) 
+
+
             });
          function fileValidation() { 
             var fileInput =  document.getElementById('image'); 

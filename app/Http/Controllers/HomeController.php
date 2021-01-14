@@ -31,6 +31,11 @@ class HomeController extends Controller
         return view('contact');
     }
 
+    public function test()
+    {
+        return view('test');
+    }
+
 
     public function allResources()
     {

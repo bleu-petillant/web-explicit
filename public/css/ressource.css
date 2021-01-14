@@ -2,6 +2,13 @@
   color: #6d7aea;
 }
 
+.search-bar h1{
+    text-align: center;
+    position: relative;
+    width: 42%;
+    margin: 0 auto;
+}
+
 .contenu{
   margin: 0 auto;
   width: 70%;
@@ -19,9 +26,25 @@
 }
 
 .card-ressource{
-  height: 436px!important;
+  height: 524px!important;
 }
 
+.news-ressource{
+  height: 550px!important;
+}
+
+.news-ressource-button{
+    bottom: 10px;
+    left: 0;
+    right: 0;
+}
+.grid-item-test:hover .card-content::before {
+  -moz-transform: skew(0deg, 0deg) ;
+  -webkit-transform: skew(0deg, 0deg) ;
+  -o-transform: skew(0deg, 0deg) ;
+  -ms-transform: skew(0deg, 0deg) ;
+  transform: skew(0deg, 0deg) ;
+}
 
 
 .grid-item:hover .card-content::before {
@@ -93,6 +116,10 @@
   border-radius: 5px;
 }
 
+.all-pdf-card-content {
+  border-left: 3px solid #66cc99;;
+}
+
 .all-video-card-content{
   border-left: 3px solid #58b1c6;
 }
@@ -156,6 +183,22 @@
   width: 27%;
   border: 2px solid #66cc99;
   border-radius: 5px;
+}
+
+.pdf-button:hover {
+  background-color:  #66cc99;
+  color: white!important;
+}
+
+
+.video-button:hover {
+  background-color:  #58b1c6;
+  color: white!important;
+}
+
+.podcast-button:hover {
+  background-color:  #cc6699;
+  color: white!important;
 }
 
 
@@ -359,7 +402,7 @@
 
   .contenu-all-ressource{
     margin: 0 auto;
-    width: 90%;
+    width: 100%;
 
   }
 
@@ -388,7 +431,17 @@
     width: 31vw;
   }
 
-  
+  .card-ressource{
+    height: 570px!important;
+  }
+
+}
+
+@media screen and (max-width: 708px) {
+
+  .card-ressource{
+    height: 565px!important;
+  }
 
 }
 
@@ -396,9 +449,70 @@
 
   /* barre de recherche*/
 
+  .search-bar h1{
+    text-align: center;
+    position: relative;
+    width: 63%;
+    margin: 0 auto;
+}
+
+  .wrapper .search_box {
+    border-radius: 0px;
+  }
+
   .isotope{
     width: 376px!important;
   }
 
+  .book-ressource{
+    margin-top: -19%;
+  }
+
+  /* all ressources */
+
+  .contenu{
+    width: 80%;
+  }
+
+  .grid-item{
+    width: 335px;
+  }
+
+  .card-ressource{
+    height: 524px!important;
+  }
+
+  .wrapper .search_box {
+    width: 100vw;
+    
+  }
+
+  .wrapper .search_box .search_field{
+    width: 50vw;
+  }
+
+  .wrapper .search_box .dropdown {
+    width: 44vw;
+}
+  
+
 
 }
+
+@media screen and (max-width: 320px) {
+
+  /* barre de recherche*/
+
+  .isotope{
+    width: 100vw!important;
+  }
+
+  /* all ressources */
+
+  .grid-item{
+    width: 300px;
+  }
+
+
+}
+

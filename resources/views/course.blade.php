@@ -6,8 +6,8 @@
     <div class="row flex-column-reverse flex-lg-row">
         <div class="col-lg-4 container left-quizz-container mx-auto ">
             <a href="{{route('formations.all')}}">
-                <img class="block lg:hidden w-auto logo-course-explicit" src="{{ asset('img/logo/logonoir.png') }}" alt="Workflow" >
-                <img class="hidden lg:block w-auto logo-course-explicit" src="{{ asset('img/logo/logonoir.png') }}" alt="Workflow" >
+                <img class="block lg:hidden w-auto logo-course-explicit" src="{{ asset('img/logo/logo_couleur.svg') }}" alt="Workflow" >
+                <img class="hidden lg:block w-auto logo-course-explicit" src="{{ asset('img/logo/logo_couleur.svg') }}" alt="Workflow" >
             </a>
             <div class="mb-2 mt-20">
                 <div class="flex justify-end">
@@ -42,8 +42,9 @@
             </div>
 
             <div id="indice"></div>
-            <div id="ressources" class="flex ressource-course-container  mx-auto">
-                <p>Avant de retenter ta chance, voici ce que tu dois connaitre : </p>
+            <div id="title_ressources"></div>
+            <div id="ressources" class="row ressource-course-container  mx-auto">
+                
             </div>
             <div class="gap-4 flex justify-evenly mt-10">
             <div id="reset"  class="hidden">

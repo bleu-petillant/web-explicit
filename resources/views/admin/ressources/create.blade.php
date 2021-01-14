@@ -15,7 +15,7 @@
         </div><!-- /.container-fluid -->
         <div class="row justify-content-center">
             <div class="col-md-6 card">
-                <form class="text-center" action="{{route('reference.store')}}" method="POST" enctype="multipart/form-data">
+                <form class="text-center p-2" action="{{route('reference.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @include('includes.errors')
 
@@ -23,52 +23,53 @@
                     <label for="title">Ajouter un titre pour votre ressource.</label>
                     <input type="text" id="title" name="title" value="{{ old('title')}}" class="form-control my-2" placeholder="titre de la ressource..." required>
 
-                    <div class=" my-4"></div>
-                    <label for="category">selectionez une catégorie pour votre ressource</label>
+                    
+                    <label for="category">Sélectionez une catégorie pour votre ressource</label>
                     <select name="category" id="category" class="custom-select custom-select-sm my-2" required>
-                        <option value=""selected style="display: none">selectionez une catégorie</option>
+                        <option value=""selected style="display: none">Selectionez une catégorie</option>
                         @foreach ($categories as $cat)
                     <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                         @endforeach
                     </select>
-                     <div class=" my-4"></div>
-                    		<div class="form-group">
-                                <label for="tags">écrivez vos tags ici <strong class="text-red-800">(5 maximum)</strong>(mots clef court de quelques lettres qui seront associer à cette resources )</label>
-                                <input data-role="tagsinput" type="text" name="tags" id="tags" placeholder="psychologie,cerveau,humain,psy,cas,maladie etc......" required>
-                            </div>
-                     <div class=" my-4"></div>
+
+                    <div class="form-group">
+                        <label for="tags">Écrivez vos tags ici <strong class="text-red-800">(5 maximum)</strong>(mots clef court de quelques lettres qui seront associer à cette resources )</label>
+                        <input data-role="tagsinput" type="text" name="tags" id="tags" placeholder="psychologie,cerveau,humain,psy,cas,maladie etc......" required>
+                    </div>
+
                     <div class="custom-file" id="file">
-                      <input type="file" class="custom-file-input my-2" name="image" id="image" lang="fr" onchange="return fileValidation() " required>
-                      <label class="custom-file-label"  for="image">Sélectionner une image</label>
+                        <input type="file" class="custom-file-input my-2" name="image" id="image" lang="fr" onchange="return fileValidation() " required>
+                        <label class="custom-file-label"  for="image">Sélectionner une image</label>
                         <div id="alert"></div>
                     </div>
                     <div id="imagePreview" class="col-lg-2"></div> 
                         
-                      <label for="alt" class="label"> ajouter une description pour l'image (ALT)</label>
-                      <input type="text" id="alt" name="alt" class="form-control my-4" value="{{ old('alt')}}" placeholder="description de l'image">
+                    <label for="alt" class="label"> Ajouter une description pour l'image <small class="text-danger">(max 255 caractères)</small><label>
+                    <input type="text" name="alt" id="imgDesc" class="form-control my-4" value="{{ old('alt')}}" placeholder="description de l'images" maxlength="255">
+                    <span id="compt_descr0" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
+                    
+                    <div class=" my-6" id="file-type">
                     </div>
 
-                      <div class=" my-6" id="file-type">
+                    <label for="meta">Ajouter une meta description <small class="text-danger">(max 255 caractères)</small></label>
+                    <input type="text" id="meta" name="meta" value="{{ old('meta')}}" class="form-control my-2" placeholder="meta description" required maxlength="255">
+                    <span id="compt_descr1" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
+                    <br>
+        
 
-                    </div>
+                    <label for="desc">Décrivez votre ressources: <small class="text-danger">(max 255 caractères)</small></label>
+                    <textarea type="text" id="desc2" name="desc" class="form-control my-2"  placeholder="décrivez votre ressources" required maxlength="255"></textarea>
+                    <span id="compt_descr2" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
 
-                    <div class=" my-4"></div>
-                    <label for="meta">ajouter une meta description pour mieux referencer votre ressource <small class="text-danger">(max 255 caractères)</small></label>
-                    <input type="text" id="meta" name="meta" value="{{ old('meta')}}" class="form-control my-2" placeholder="meta description" required>
-           
-                    <div class=" my-4"></div>
-                        <label for="desc">décrivez votre ressources: <small class="text-danger">(max 255 caractères)</small></label>
-                        <textarea type="text" id="desc" name="desc" class="form-control my-2"  placeholder="décrivez votre ressources" required></textarea>
-                         <div class=" my-4"></div>
 
-                        <label for="duration">ajouter une durée de lecture pour votre ressource <small class="text-danger">(uniquement en chiffres, en minutes et sans le mot minutes !)</small></label>
-                         <input type="text" id="duration" name="duration" value="{{ old('duration')}}" class="form-control my-2" placeholder="ex: 3, 5, 10, 20 etc....." required>
+                    <label for="duration">Ajouter une durée de lecture pour votre ressource <small class="text-danger">(uniquement en chiffres, en minutes et sans le mot minutes !)</small></label>
+                    <input type="text" id="duration" name="duration" value="{{ old('duration')}}" class="form-control my-2" placeholder="ex: 3, 5, 10, 20 etc....." required>
 
-                        <label for="private">ressource privée ?</label>
-                        <input type="checkbox" name="private" id="private" class="form-checkbox" value="0">
-                  
-                     <div class=" my-4"></div>
-                    <button class="btn btn-info  my-4" type="submit"><span class="fas fa-plus pr-2"></span>créez cette ressource</button>
+                    <label for="private">Ressource privée ?</label>
+                    <input type="checkbox" name="private" id="private" class="form-checkbox" value="0">
+
+                    <br>
+                    <button class="btn btn-info  my-4" type="submit"><span class="fas fa-plus pr-2"></span>Créez cette ressource</button>
                 </form>
             </div>
         </div>
@@ -101,6 +102,55 @@
         $(document).ready(function () {
                 $('#image').val("");
                 $('#alert').html("");
+
+
+                $('#imgDesc').keyup(function() {
+                    
+                    var nombreCaractere0 = $(this).val().length;
+                    var nombreCaractere0 = 255 - nombreCaractere0;
+                    
+                    var nombreMots0 = jQuery.trim($(this).val()).split(' ').length;
+                    if($(this).val() === '') {
+                        nombreMots = 0;
+                    }
+                    
+                    var msg0 = ' ' + nombreMots0 + ' mot(s) | ' + nombreCaractere0 + ' Caractere(s) restant';
+                    $('#compt_descr0').text(msg0);
+
+                })  
+
+                $('#meta').keyup(function() {
+                    
+                    var nombreCaractere1 = $(this).val().length;
+                    var nombreCaractere1 = 255 - nombreCaractere1;
+                    
+                    var nombreMots1 = jQuery.trim($(this).val()).split(' ').length;
+                    if($(this).val() === '') {
+                        nombreMots = 0;
+                    }
+                    
+                    var msg1 = ' ' + nombreMots1 + ' mot(s) | ' + nombreCaractere1 + ' Caractere(s) restant';
+                    $('#compt_descr1').text(msg1);
+
+                })  
+
+                
+                $('#desc2').keyup(function() {
+                    
+                    var nombreCaractere2 = $(this).val().length;
+                    var nombreCaractere2 = 255 - nombreCaractere2;
+                    
+                    var nombreMots2 = jQuery.trim($(this).val()).split(' ').length;
+                    if($(this).val() === '') {
+                        nombreMots2 = 0;
+                    }
+                    
+                    var msg2 = ' ' + nombreMots2 + ' mot(s) | ' + nombreCaractere2 + ' Caractere(s) restant';
+                    $('#compt_descr2').text(msg2);
+
+
+                }) 
+
             });
          function fileValidation() { 
             var fileInput =  document.getElementById('image'); 

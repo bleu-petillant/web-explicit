@@ -32,7 +32,7 @@ class ValideQuestionController extends Controller
 
 
         // try to get next course if exist;
-        $Ncourse = Course::where('id','>',$course_id)->with('references')->first();
+        $Ncourse = Course::where('id','!=',$course_id)->with('references')->first();
 
         $user = auth()->user();
         $Course_user = $course->users()->first();
@@ -95,7 +95,7 @@ class ValideQuestionController extends Controller
                 {
                
                     $course->users()->updateExistingPivot($user,['activated'=>0,'question_position'=>$start,'validate'=>1],true);
-                    $nextCourse = $courses_all->where('id','>',$course_id)->first();
+                    $nextCourse = $courses_all->where('id','!=',$course_id)->first();
                     if($nextCourse){
                           
                         return response()->json(['status'=>'next',$course,$nextCourse]);
@@ -111,7 +111,7 @@ class ValideQuestionController extends Controller
                 {
   
                    $course->users()->updateExistingPivot($user,['activated'=>0,'question_position' => $start],true);
-                    $nextCourse = $courses_all->where('id','>',$course_id)->first();
+                    $nextCourse = $courses_all->where('id','!=',$course_id)->first();
                     if($nextCourse){
 
                        return response()->json(['status'=>'next',$course,$nextCourse]);

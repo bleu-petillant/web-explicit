@@ -23,13 +23,6 @@
                         
                     </p>
                     @include('includes.errors')
-                    {{-- <label for="category">Sélectionez une catégorie</label>
-                    <select name="category" id="category" class="custom-select custom-select-sm my-2">
-                        <option value=""selected style="display: none">selectionez une catégorie</option>
-                        @foreach ($categories as $cat)
-                    <option value="{{ $cat->id }}">{{ $cat->name }}</option>
-                        @endforeach
-                    </select> --}}
                     <hr class="hr-light">
                      <div class="form-group">
                         <label class="text-center" for="primary_ressource">Sélectionez la première ressource</label>

@@ -75,20 +75,23 @@ class HomeController extends Controller
         if($slug != null){
 
             $course = Course::with('questions')->where('slug',$slug)->first();
+           
             $id = $course->id;
             $user = Auth::user();
             $user_id = $user->id;
             $total = Question::where('course_id',$course->id)->count();
             $validate = Course::find($id)->users()->first();
 
-
+            
             if($validate == null )
             {
                 $course->users()->attach($course,['course_id'=>$id,'user_id'=>$user_id,'activated'=>0,'question_position' => 1 ,'validate'=>0]);
                 $validate = Course::find($id)->users()->first();
                 $position = $validate->pivot->question_position;
+                
             }else{
                 $position = $validate->pivot->question_position;
+                
             }
 
                 $nextslug = Course::where('id', '>', $course->id)->orderBy('id','desc')->first();
@@ -97,8 +100,10 @@ class HomeController extends Controller
                 ->where('course_id',$course->id)
                 ->where('question_position',$position)
                 ->first();
+              
                 if($course && $questions)
                 {
+                     
                     return view('course',['course' => $course,'questions' => $questions,'total'=>$total,'nextslug'=>$nextslug,'position'=>$position]);
                 }
             

@@ -16,7 +16,7 @@ class CreateReponsesTable extends Migration
         Schema::create('reponses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('question_id')->constrained('questions')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('reponse');
+            $table->string('reponse')->nullable();
             $table->tinyInteger('correct')->nullable()->default(0);
             $table->timestamps();
         });

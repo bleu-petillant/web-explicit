@@ -100,6 +100,14 @@ Route::get('/permissions', function(){
     return view('errors.permissions');
 })->name('permissions');
 
+Route::get('/404', function(){
+    return view('errors.404');
+})->name('404');
+
+Route::get('/500', function(){
+    return view('errors.500');
+})->name('500');
+
 
 
 

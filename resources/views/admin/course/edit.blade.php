@@ -77,7 +77,7 @@
 
                     <hr class="hr-light">
                     <label for="content">Modifiez la description de cette formation</label>
-                    <textarea type="text" id="desc2" name="desc" class="form-control my-2 editor" placeholder="{{ $course->desc }}">{{ $course->desc }}</textarea>
+                    <textarea type="text" id="desc" name="desc" class="form-control my-2 editor" placeholder="{{ $course->desc }}">{{ $course->desc }}</textarea>
                     <span id="compt_descr2" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
 
                         <button class="btn btn-success btn-block" type="submit"><span class="fas fa-pen pr-2"></span>Modifier la formation</button>
@@ -122,7 +122,7 @@
                 })  
 
                 
-                $('#desc2').keyup(function() {
+                $('#desc').keyup(function() {
                     
                     var nombreCaractere2 = $(this).val().length;
                     var nombreCaractere2 = 255 - nombreCaractere2;

@@ -74,17 +74,28 @@ class GetData
     {
         $('#question').text(question);
         $('#reponses').html("");
+
         for (let i = 0; i < reponses.length; i++) {
+    
+                let reponse_id = reponses[i].id;
+                let question_id = reponses[i].question_id;
+                let reponses_name = reponses[i].reponse;
+                
+                while (reponses_name != null) {
+                    $('#reponses').append('<div class="reponse-checkbox"><label><input type="checkbox" name="reponses_id[]" class="checkbox-quizz" value="'+reponse_id+'"> <span class="span-reponse">'+reponses_name+'</span></label></div>');
+                    break;
+                }
+                 
         
-            let reponse_id = reponses[i].id;
-            let question_id = reponses[i].question_id;
-            let reponses_name = reponses[i].reponse;
+            
+                // spawn the question
+                $('#question_id').val(question_id);
+            
+
 
             // we spawn  the answers in span and input
-            
-            $('#reponses').append('<div class="reponse-checkbox"><label><input type="checkbox" name="reponses_id[]" class="checkbox-quizz" value="'+reponse_id+'"> <span class="span-reponse">'+reponses_name+'</span></label></div>');
-            // spawn the question
-            $('#question_id').val(question_id);
+
+
             //$('#position').val(pos);
             $('#course_id').val(course_id)
         }  

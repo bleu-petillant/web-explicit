@@ -25,13 +25,18 @@
                          @if($courses->count() > 0)
                         <label class="text-center" for="course">selectionez une formation</label>
                         <select  name="course" id="course" class="custom-select custom-select-sm my-2" required  autofocus>
-                            <option value=""selected style="display: none">selectionez la formation</option>
-                        @foreach ($courses as $course)
-                            <option value="{{ $course->id }}">{{ $course->title }}</option>
-                        @endforeach
-                        </select>
+                             @if(!empty($course_id))
+                              <option value="{{ $course_id }}"selected style="display: none">{{ $title }}</option>
+                              </select>
+                              @else
+                               <option value=""selected style="display: none">selectionez la formation</option>
+                            @foreach ($courses as $course)
+                                <option value="{{ $course->id }}">{{ $course->title }}</option>
+                            @endforeach
+                            </select>
+                            @endif
                         @else
-                        <h3>vous n'avez pas encore de formations à associer votre question , veuillez créer en premier votre formation</h3>
+                        <h3>vous n'avez pas encore de formations à associer votre question , veuillez créer en premier une formation</h3>
                         @endif
                     </div> 
                     <div class="my-2"></div>
@@ -50,7 +55,7 @@
                     <label for="reponse1" class="control-label">reponse possible 1</label>
                     <input type="text" id="reponse1" name="reponse[]" class="form-control" placeholder="réponse 1...." required min="1" max="255">
                     <div class="my-2"></div>
-                    <select name="correct[]" id="correct" class="form-select">
+                    <select name="correct[]" id="correct" class="form-select" required>
                          <option value=""selected style="display: none">réponse correct ?</option>
                         <option value="1">vraie</option>
                         <option value="0">faux</option>
@@ -68,9 +73,9 @@
                 </div>
                 <div class="form-group">
                     <label for="reponse3" class="control-label">reponse possible 3</label>
-                    <input type="text" id="reponse3" name="reponse[]" class="form-control" placeholder="réponse 3...." required min="1" max="255">
+                    <input type="text" id="reponse3" name="reponse[]" class="form-control" placeholder="réponse 3...."  min="1" max="255">
                      <div class="my-2"></div>
-                    <select name="correct[]" id="correct" class="form-select" required>
+                    <select name="correct[]" id="correct" class="form-select" >
                          <option value=""selected style="display: none">réponse correct ?</option>
                         <option value="1">vraie</option>
                         <option value="0">faux</option>
@@ -78,9 +83,9 @@
                 </div>
                  <div class="form-group">
                     <label for="reponse4" class="control-label">reponse possible 4</label>
-                    <input type="text" id="reponse4" name="reponse[]" class="form-control" placeholder="réponse 4...." required min="1" max="255">
+                    <input type="text" id="reponse4" name="reponse[]" class="form-control" placeholder="réponse 4...."  min="1" max="255">
                 <div class="my-2"></div>
-                    <select name="correct[]" id="correct" class="form-select" required>
+                    <select name="correct[]" id="correct" class="form-select" >
                          <option value=""selected style="display: none">réponse correct ?</option>
                         <option value="1">vraie</option>
                         <option value="0">faux</option>
@@ -88,9 +93,9 @@
                 </div>
                 <div class="form-group">
                     <label for="reponse5" class="control-label">reponse possible 5</label>
-                    <input type="text" id="reponse5" name="reponse[]" class="form-control" placeholder="réponse 5...." required min="1" max="255">
+                    <input type="text" id="reponse5" name="reponse[]" class="form-control" placeholder="réponse 5...."  min="1" max="255">
                 <div class="my-2"></div>
-                    <select name="correct[]" id="correct" class="form-select" required>
+                    <select name="correct[]" id="correct" class="form-select" >
                          <option value=""selected style="display: none">réponse correct ?</option>
                         <option value="1">vraie</option>
                         <option value="0">faux</option>

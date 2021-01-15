@@ -90,7 +90,7 @@ margin-top: -14px;
 }
 
 .card-ressource-home {
-    height: 478px!important;
+    height: 526px!important;
 }
 
 .card-image{
@@ -100,6 +100,12 @@ margin-top: -14px;
 
 .card-text{
     padding: 0 13px 0 0;
+}
+
+.card-text-usage{
+    position: absolute;
+    left: .5rem;
+    bottom: 1rem;
 }
 
 .category{
@@ -175,6 +181,9 @@ margin-top: -14px;
     opacity: 0.7;
 }
 
+.cas-usage{
+    height: 334px!important;
+}
 
 .image-usage-div{
     position: relative;

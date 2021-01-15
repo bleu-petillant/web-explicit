@@ -330,6 +330,11 @@
   margin: auto;
 }
 
+.container-all-ressource{
+  margin: 0 auto;
+  width: 80%;
+}
+
 .tittle-all-ressource{
   text-align: right;
 }
@@ -403,7 +408,11 @@
   .contenu-all-ressource{
     margin: 0 auto;
     width: 100%;
+  }
 
+  .container-all-ressource{
+    margin: 0 auto;
+    width: 100%;
   }
 
   .tittle-all-ressource{

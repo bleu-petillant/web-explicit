@@ -95,7 +95,7 @@ class ValideQuestionController extends Controller
                 {
                
                     $course->users()->updateExistingPivot($user,['activated'=>0,'question_position'=>$start,'validate'=>1],true);
-                    $nextCourse = $courses_all->where('id','>',$course_id)->first();
+                    $nextCourse = $courses_all->where('id','!=',$course_id)->first();
                     if($nextCourse){
                           
                         return response()->json(['status'=>'next',$course,$nextCourse]);

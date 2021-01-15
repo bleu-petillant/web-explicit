@@ -57,7 +57,7 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //$pos = $request->input('position');
+
         $id = $request->input('course');
         $last_question_pos = question::where('course_id',$id)->latest('question_position')->first();
         if($last_question_pos != null){
@@ -80,7 +80,7 @@ class QuestionController extends Controller
       $newpos = $positions +1;
         $this->validate($request,
         [
-            'content'=>'bail|required|unique:questions,content',
+            'content'=>'bail|required',
             'course'=>'required',
             'video' => 'mimetypes:video/mp4',
             'indice'=>'required|max:255',

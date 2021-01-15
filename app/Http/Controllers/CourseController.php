@@ -135,7 +135,18 @@ class CourseController extends Controller
         $course->save();
 
         $request->session()->flash('success', 'votre cours as bien été publier');
-        return redirect()->route('question.create');
+
+     
+        $courses = Course::with('questions','users')->get();
+        $course_id =$course->id;
+        $title = $course->title;
+        $questions =Question::all();
+        $references = Reference::all();
+        $reponses = Reponse::all();
+    
+        
+        return view('admin.questions.create', compact(['reponses','courses','references','questions','course_id','title']));
+
     }
 
 

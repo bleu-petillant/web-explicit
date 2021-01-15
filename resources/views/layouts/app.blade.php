@@ -74,9 +74,9 @@
             <li class="li-navigation"><a class="text-gray" href="{{route('usage')}}">Cas d'usage</a></li>
         @endif
         @if ( request()->routeIs('contact'))
-            <li class="li-navigation"><a class="text-gray" href="{{route('contact')}}">Contact</a></li>
-        @else
             <li class="li-navigation"><a class="current-page" href="{{route('contact')}}">Contact</a></li>
+        @else
+            <li class="li-navigation"><a class="text-gray" href="{{route('contact')}}">Contact</a></li>
         @endif
             <!-- <li  class="li-navigation"><a href="{{route('login')}}"><i class="connexion-icon text-xl fas fa-user"></i></a></li> -->
             <li class="li-navigation-dropdown">
@@ -183,43 +183,48 @@
     </nav>
 
         @else
-    <nav>
-        <input type="checkbox" id="check">
-        <label id="" for="check" class="checkbtn burger-menu-open">
-            <i class=" burger-menu fas fa-bars"></i>
-        </label>
-        <label id="" for="check" class=" checkbtn burger-menu-close ">
-            <i class=" burger-menu fas fa-times"></i>
-        </label>
-        <label class="logo-navigation"><a href="{{route('home')}}">
-            <img class=" logo-img-explicit w-auto" src="{{ asset('img/logo/logo_couleur.svg') }}" alt="Workflow">
-        </a></label>
-        <ul class="ul-navigation">
-        @if ( request()->routeIs('ressources.all'))
-            <li class="li-navigation"><a class="current-page" href="{{route('ressources.all')}}">Ressources</a></li>
-        @else
-            <li class="li-navigation"><a class="text-gray" href="{{route('ressources.all')}}">Ressources</a></li>
-        @endif
-        @if ( request()->routeIs('formations.all'))
-            <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formation interactive</a></li>
-        @elseif ( request()->routeIs('ressources.private'))
-            <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formation interactive</a></li>
-        @else
-            <li class="li-navigation"><a class="text-gray" href="{{route('formations.all')}}">Formation interactive</a></li>
-        @endif
-        @if ( request()->routeIs('usage'))
-            <li class="li-navigation"><a class="current-page" href="{{route('usage')}}">Cas d'usage</a></li>
-        @else
-            <li class="li-navigation"><a class="text-gray" href="{{route('usage')}}">Cas d'usage</a></li>
-        @endif
-        @if ( request()->routeIs('contact'))
-            <li class="li-navigation"><a class="text-gray" href="{{route('contact')}}">Contact</a></li>
-        @else
-            <li class="li-navigation"><a class="current-page" href="{{route('contact')}}">Contact</a></li>
-        @endif
-            <li  class="li-navigation"><a href="{{route('login')}}"><i class="connexion-icon text-xl fas fa-user"></i></a></li>
-        </ul>
-    </nav>
+
+                <nav>
+                    <input type="checkbox" id="check">
+                    <label id="" for="check" class="checkbtn burger-menu-open">
+                        <i class=" burger-menu fas fa-bars"></i>
+                    </label>
+                    <label id="" for="check" class=" checkbtn burger-menu-close ">
+                        <i class=" burger-menu fas fa-times"></i>
+                    </label>
+                    <label class="logo-navigation"><a href="{{route('home')}}">
+                        <img class=" logo-img-explicit w-auto" src="{{ asset('img/logo/logo_couleur.svg') }}" alt="Workflow">
+                    </a></label>
+                    <ul class="ul-navigation">
+                    @if ( request()->routeIs('ressources.all'))
+                        <li class="li-navigation"><a class="current-page" href="{{route('ressources.all')}}">Ressources</a></li>
+                    @else
+                        <li class="li-navigation"><a class="text-gray" href="{{route('ressources.all')}}">Ressources</a></li>
+                    @endif
+
+                    @if ( request()->routeIs('formations.all'))
+                        <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formation interactive</a></li>
+                    @elseif ( request()->routeIs('ressources.private'))
+                        <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formation interactive</a></li>
+                    @else
+                        <li class="li-navigation"><a class="text-gray" href="{{route('formations.all')}}">Formation interactive</a></li>
+                    @endif
+
+                    @if ( request()->routeIs('usage'))
+                        <li class="li-navigation"><a class="current-page" href="{{route('usage')}}">Cas d'usage</a></li>
+                    @else
+                        <li class="li-navigation"><a class="text-gray" href="{{route('usage')}}">Cas d'usage</a></li>
+                    @endif
+
+                    @if ( request()->routeIs('contact'))
+                        <li class="li-navigation"><a class="current-page" href="{{route('contact')}}">Contact</a></li>
+                    @else
+                        <li class="li-navigation"><a class="text-gray" href="{{route('contact')}}">Contact</a></li>
+                    @endif
+
+                        <li  class="li-navigation"><a href="{{route('login')}}"><i class="connexion-icon text-xl fas fa-user"></i></a></li>
+                    </ul>
+                </nav>
                         
             @endif
         @endif
@@ -260,7 +265,6 @@
 
         @livewireScripts
         <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
-        <!-- <script src="{{asset('vendor/cookie-consent/js/cookie-consent.js')}}"></script> -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
         
     </body>

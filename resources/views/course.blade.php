@@ -41,6 +41,11 @@
                 </form>
             </div>
 
+            <div id="victory" class="relative">
+                    <img class="absolute victory-img" src="{{ asset('img/victory.png') }}" alt="">
+                    <p class="text-center victory-text">Félicitation</p>
+            </div>
+
             <div id="indice"></div>
             <div id="title_ressources"></div>
             <div id="ressources" class="row ressource-course-container  mx-auto">
@@ -50,9 +55,9 @@
             <div id="reset"  class="hidden">
                 <button type="submit" id="resetbutton" ><i class="fa-2x fas fa-redo"></i></button> 
             </div>
-            <div id="valide" class="hidden">          
+            <!-- <div id="valide" class="hidden">          
                     <button type="submit" id="check" class="hover:underline ">Valider cette réponse ?</button>
-            </div>
+            </div> -->
             </div>
         </div>
 
@@ -61,7 +66,9 @@
             <div id="right_course_side" class="right-quizz-container relative">
                 <div id="nextcourse">
                     <h3 class="">Autre formation</h3>
-
+                </div>
+                <div id="valide" class="hidden">          
+                    <button type="submit" id="check" class="hover:underline ">Valider cette réponse ?</button>
                 </div>
                 <video controls playsinline autoplay id="video_run" class="w-full">
                     <source src="{{asset($questions->video)}}" type="video/mp4">

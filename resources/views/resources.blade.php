@@ -137,12 +137,12 @@
 </div>
 
 
-<div class="md:mx-8">
+<div  class="md:mx-8 container-all-ressource ">
 
 
     @if($references->count() > 0)
 
-        <div class="wrapper-grid ">
+        <div id="container-all-ressource" class="wrapper-grid isotop">
         @foreach ($references as $ref)
             @if ($ref->category_id == '1')
                 <div class=" grid-item-test shadow-lg" data-filter="pdf">

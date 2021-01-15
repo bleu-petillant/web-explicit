@@ -233,11 +233,15 @@ class CheckResponse
         let next_course_object =nextcourse;
         let img = next_course_object.image;
         let title = next_course_object.title;
-        console.log(next_course_object);
+
         this.showRessources(course);
         this.nextcourseContainer.show();
         const base_url = window.location.origin;
         $('#video_run').hide();
+        $('#question').html("");
+        $('#reponses').html("");
+        $('#victory').show();
+
         $('#right_course_side').removeClass('right-quizz-container');
         $('#right_course_side').addClass('right-quizz-container2');
         // div 

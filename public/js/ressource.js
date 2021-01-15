@@ -44,9 +44,9 @@ $(document).ready(function(){
 
     
 
-      var itemSelector = '.grid-item'; 
+      var itemSelector = '.grid-item-test'; 
 
-      var $container = $('#container').isotope({
+      var $container = $('#container-all-ressource').isotope({
         itemSelector: itemSelector,
         masonry: {
           columnWidth: 100,
@@ -62,7 +62,7 @@ $(document).ready(function(){
     
       var itemsPerPageDefault = 6;
       var itemsPerPage = defineItemsPerPage();
-      let items = $('.grid-item').length;
+      let items = $('.grid-item-test').length;
       var currentNumberPages = 1;
       var currentPage = 1;
       var currentFilter = '*';

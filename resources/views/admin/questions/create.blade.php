@@ -123,8 +123,9 @@
                 </div> 
 
                 <div class="form-group">
-                    <label for="indice" class="control-label">indices pour aider les éléves : (max caractere 255 !)</label>
+                    <label for="indice" class="control-label">indices pour aider les éléves <small class="text-danger">(max 255 caractères)</small></label>
                     <textarea type="text" id="indice" name="indice" class="form-control" placeholder="écrivez votre indice" required maxlength="255"></textarea>
+                    <span id="compt_descr2" class="text-right">0 mots | 255 caractère(s) restant(s)</span>
                 </div>
                     <button class="btn btn-success my-3" type="submit"><span class="fas fa-plus pr-2"></span>publiez votre questions</button>
                 </form>
@@ -136,6 +137,23 @@
             let courseSelect = $('#course');
             $('#video').val("");
             $('#alert').html("");
+
+            $('#indice').keyup(function() {
+                    
+                    var nombreCaractere2 = $(this).val().length;
+                    var nombreCaractere2 = 255 - nombreCaractere2;
+                    
+                    var nombreMots2 = jQuery.trim($(this).val()).split(' ').length;
+                    if($(this).val() === '') {
+                        nombreMots2 = 0;
+                    }
+                    
+                    var msg2 = ' ' + nombreMots2 + ' mot(s) | ' + nombreCaractere2 + ' Caractere(s) restant';
+                    $('#compt_descr2').text(msg2);
+
+
+                }); 
+
 
     });
 

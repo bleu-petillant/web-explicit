@@ -13,12 +13,12 @@
 <section class="presentation-home flex my-10">
     <div class="presentation-home-text md:ml-8  md:flex lg:flex my-10">
             <h2 class="presentation-home-title uppercase absolute font-bold text-4xl ml-2 " >Présentation</h2>
-                <p class="text-xl text-justify mt-10 mr-2 px-2 flex-initial  ">
-                Pellentesque nisl dolor, varius et est non, aliquam aliquet ligula. Fusce a auctor sapien. Aenean fermentum,urna in volutpatull amcorper, ante dolorrhoncus dui, et tristique nunc risus et ex. In hachab itasse platead ictumst. Donec volutpat ullamcorper, ante dolor rhoncus dui, 
-                </p>
-                <p class="text-xl text-justify mt-10 px-2 flex-initial home-present-tex2 mr-2">
-                Pellentesque nisl dolor, varius et est non, aliquam aliquet ligula. Fusce a auctor sapien. Aenean fermentum,urna in volutpatull amcorper, ante dolorrhoncus dui, et tristique nunc risus et ex. In hachab itasse platead ictumst. Donec volutpat ullamcorper, ante dolor rhoncus dui, 
-                </p>             
+            <p class="text-xl text-justify mt-10 mr-2 px-2 flex-initial  ">
+            Pellentesque nisl dolor, varius et est non, aliquam aliquet ligula. Fusce a auctor sapien. Aenean fermentum,urna in volutpatull amcorper, ante dolorrhoncus dui, et tristique nunc risus et ex. In hachab itasse platead ictumst. Donec volutpat ullamcorper, ante dolor rhoncus dui, 
+            </p>
+            <p class="text-xl text-justify mt-10 px-2 flex-initial home-present-tex2 mr-2">
+            Pellentesque nisl dolor, varius et est non, aliquam aliquet ligula. Fusce a auctor sapien. Aenean fermentum,urna in volutpatull amcorper, ante dolorrhoncus dui, et tristique nunc risus et ex. In hachab itasse platead ictumst. Donec volutpat ullamcorper, ante dolor rhoncus dui, 
+            </p>             
     </div>
 <img class="flex-initial present-image" src="img/present-image-laptop.png" alt=""> 
 
@@ -103,19 +103,21 @@
     <div class="flex home-cas-usage">
         @if ($usages->count() > 0)
         @foreach ($usages as $usage)
-        <div class="card cas-usage cas-usage3 bg-white w-1/3 shadow-lg hover:shadow-xl mx-10">
-            <a href="{{route('usage')}}">
+        <div class="card cas-usage cas-usage3 relative bg-white w-1/3 shadow-lg hover:shadow-xl mx-10">
+            <a class="h-full relative" href="{{route('usage')}}">
                     <div class="image-usage-div">
                         <img class="card-image w-full h-48 object-cover cas-usage-miniature" src="{{asset($usage->image)}}" alt="{{$usage->alt}}">
                         <!-- <i class="play-usage-button button-usage-1 fas fa-play"></i> -->
                         <div class="round"><i class="play-usage-button button-usage-1 fas fa-play"></i></div>
                     </div>
 
-                    <div class="py-3 pl-2">
+                    <div class="relative py-3 pl-2">
                         <h3 class="card-title text-2xl font-bold">{{$usage->title}}</h3>
-                        <p class="card-text">détail sur le cas</p>
+                        
                     </div>
+                    
                 </a>
+                <a href="{{route('usage')}}" class="  card-text-usage">détail sur le cas</a>
         </div>
         @endforeach
         @else

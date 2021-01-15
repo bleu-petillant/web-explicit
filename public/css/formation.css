@@ -149,6 +149,10 @@
     margin-right: 10px;
 }
 
+.card-mini{
+    border-radius: 5px;
+}
+
 
 /* ressource private */
 
@@ -208,7 +212,7 @@
 
 .formation-right{
     background-color: black;
-    height: 100vh;
+    
 }
 
 .left-quizz-container{
@@ -218,11 +222,12 @@
 
 .right-quizz-container{
     width: 100%;
+    height: 100vh;
 }
 
 .right-quizz-container2{
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
 
@@ -251,13 +256,18 @@
 /* reponse */
 
 #reponses{
-    margin-top: 12%;
+    margin-top: 5%;
 }
 
+
 /* reponse check*/
+.reponse-checkbox input{
+    position: absolute;
+}
+
 .question-container .reponse-checkbox{
     cursor: pointer;
-    margin: 14px auto;
+    margin: 10px auto;
     padding-left: 7px;
 }
 
@@ -315,7 +325,11 @@
 
 #valide{
     margin-top: -50px;
+    position: absolute;
+    
 }
+
+
 
 /* reponse false */
 
@@ -376,6 +390,35 @@
 .next-formation-overlay{
     background-color: #6d7aea;
 }
+
+/* victory */
+
+#victory{
+    display: none;
+    height: 35vh;
+    width: 100%;
+}
+
+.victory-img{
+    margin: auto;
+    width: 20%;
+    top: -17px;
+    left: 0;
+    right: 0;
+    bottom: 32px;
+}
+
+.victory-text{
+    position: absolute;
+    margin: 0 auto;
+    bottom: 41px;
+    left: 0;
+    right: 0;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
 /* Ressources */
 
 .ressource-course-container{
@@ -385,7 +428,7 @@
 /* video */
 
 #video_run{
-    margin-top: 8rem;
+    margin-top: 5rem;
     outline: none;
 }
 

@@ -20,7 +20,6 @@
         <link href="{{ asset('css/contact.css') }}" rel="stylesheet">
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.css' />
-        <script src="{{ asset('js/app.js') }}"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
         
         @livewireStyles
@@ -40,7 +39,6 @@
         @stack('modals')
 
         @livewireScripts
-        <script src="{{asset('vendor/cookie-consent/js/cookie-consent.js')}}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
     </body>

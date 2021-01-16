@@ -11,13 +11,12 @@
 }
 
 .logo-course-explicit{
+    display: block;
     width: 170px;
     position: absolute;
     top: 0;
     left: 34px;
 }
-
-
 
 .link-formation{
     cursor: pointer;
@@ -26,9 +25,7 @@
 .selected-choice{
     font-weight: bold;
     padding-left: 5px;
-
 }
-
 
 .selected-choice::before{
     content: "";
@@ -37,7 +34,6 @@
     margin-left: -10px;
     width: 7px;
     background-color: rgba(109, 122, 234, 1);
-
 }
 
 .category-course-ref{
@@ -209,6 +205,14 @@
 
 /*-------------------------------------Unique Course*/
 
+.phone-logo-formation{
+    display: none;
+}
+
+.phone-logo{
+    width: 201px;
+    padding: 3px 1.5rem;
+}
 
 .formation-right{
     background-color: black;
@@ -513,6 +517,16 @@
         .grille {
             grid-template-columns: 1fr 1fr ;
         }
+
+        .phone-logo-formation{
+            display: block;
+        }
+
+        .logo-course-explicit{
+            display: none;
+        }
+
+
 
      /*video quizz*/
 

@@ -2,12 +2,16 @@
 @section('course')
 <section>
         
+    <div class="phone-logo-formation">
+        <a href="{{route('formations.all')}}">
+            <img class="lg:block w-auto phone-logo" src="{{ asset('img/logo/logo_couleur.svg') }}" alt="Workflow" >
+        </a>
+    </div>
 
     <div class="row flex-column-reverse flex-lg-row">
         <div class="col-lg-4 container left-quizz-container mx-auto ">
             <a href="{{route('formations.all')}}">
                 <img class="block lg:hidden w-auto logo-course-explicit" src="{{ asset('img/logo/logo_couleur.svg') }}" alt="Workflow" >
-                <img class="hidden lg:block w-auto logo-course-explicit" src="{{ asset('img/logo/logo_couleur.svg') }}" alt="Workflow" >
             </a>
             <div class="mb-2 mt-20">
                 <div class="flex justify-end">

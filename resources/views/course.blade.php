@@ -52,25 +52,31 @@
                 
             </div>
             <div class="gap-4 flex justify-evenly mt-10">
-            <div id="reset"  class="hidden">
-                <button type="submit" id="resetbutton" ><i class="fa-2x fas fa-redo"></i></button> 
-            </div>
-            <!-- <div id="valide" class="hidden">          
+            
+            <div id="valide" class="hidden">          
                     <button type="submit" id="check" class="hover:underline ">Valider cette réponse ?</button>
-            </div> -->
+            </div>
             </div>
         </div>
 
         {{--  start aside vidéo   --}}
         <div class="col-lg-8 formation-right">
+            <div class="overlay-video"></div>
             <div id="right_course_side" class="right-quizz-container relative">
+                <!-- <div id="valide" class="hidden">          
+                    <button type="submit" id="check" class="hover:underline ">Valider cette réponse ?</button>
+                </div> -->
+                <div id="reset"  class="hidden">
+                    <button type="submit" id="resetbutton" ><i class="fa-2x fas fa-redo"></i></button> 
+                </div>
+                <div id="next_question_content">
+                    
+                </div>
                 <div id="nextcourse">
                     <h3 class="">Autre formation</h3>
                 </div>
-                <div id="valide" class="hidden">          
-                    <button type="submit" id="check" class="hover:underline ">Valider cette réponse ?</button>
-                </div>
-                <video controls playsinline autoplay id="video_run" class="w-full">
+                
+                <video controls playsinline autoplay controlsList="nodownload" id="video_run" class="w-full">
                     <source src="{{asset($questions->video)}}" type="video/mp4">
                 </video>
             </div>

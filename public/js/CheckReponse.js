@@ -57,7 +57,9 @@ class CheckResponse
 
          // validation button
         $('#check').on('click',function(e){
-
+            console.log("check");
+            $('.overlay-video').show();
+            $('#video_run').trigger('pause');
              // get the value of question_id
 
             let question_id = $('#question_id').val();
@@ -135,7 +137,7 @@ class CheckResponse
         
         
         // on vide le html de l'indice
-        this.ressourceContainerTitle.append('<p style="width: 90%" class=" mx-auto pl-4">Avant de retenter ta chance, voici ce que tu dois connaitre : </p>');
+        this.ressourceContainer.append('<p class=" mx-auto pl-4">Avant de retenter ta chance, voici ce que tu dois connaitre : </p>');
         this.indiceContainer.show();
         // on instancie un nouvel indice avec la valeur indice dedans
         this.indiceContainer.append('<div class="indice"><p class="font-bold mb-2">Indice</p><p>'+indice.indice+'</p></div>');
@@ -182,6 +184,7 @@ class CheckResponse
             this.showTheIndice(ressource,indice);
             getdata.resetQuestion();
         }, seconds);
+        
 
     }
 
@@ -197,7 +200,7 @@ class CheckResponse
         let ref = ressource.references;
 
         this.ressourceContainer.show();
-        this.ressourceContainer.append('<p>Avant de retenter ta chance, voici ce que tu dois connaitre : </p>');
+        this.ressourceContainer.append('<p class="pl-4">Aprofondissez avec ces ressources : </p>');
 
         // on instancie les ressources associer
         for (let i = 0; i < ref.length; i++) {
@@ -241,6 +244,7 @@ class CheckResponse
         $('#question').html("");
         $('#reponses').html("");
         $('#victory').show();
+        
 
         $('#right_course_side').removeClass('right-quizz-container');
         $('#right_course_side').addClass('right-quizz-container2');
@@ -251,10 +255,11 @@ class CheckResponse
             '<p class="text-center">'+title+'</p>'+
             '<a href="'+nextslug+'" id="next_course_link" ><div class="relative formation-next-image"><div class="round-formation"><i class="play-button button-usage-1 fas fa-play" aria-hidden="true"></i></div><div class="w-full  absolute"><img src="'+base_url+'/'+img+'"></div></div></a>'+
             '<p class="mt-4 text-center"> Référence nécessaire pour cette formation</p>'+
-            '<div id="ressource_course_next" class="flex"> </div>'
+            '<div id="ressource_course_next" class="row"> </div>'
             );
        
         // on instancie les ressources associer
+        
         for (let i = 0; i < next_ref.length; i++) {
             let title = next_ref[i].title;
             let cat = next_ref[i].category_id;

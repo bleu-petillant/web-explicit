@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('allressourcesprivate')
 
-<section id="formation_title" class="p-5">
+<section id="formation_title" class="md:p-5">
     <div class="grid grid-title-2 w-3/4 mx-auto">
         <div class="">
             <h1 class="h1-main-tittle text-white sm:text-3xl md:text-6xl font-bold uppercase leading-none">Formation<br>interactive</h1>

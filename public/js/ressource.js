@@ -35,12 +35,12 @@ $(document).ready(function(){
       
     });
 
-    let seconds = 1000;
+    // let seconds = 1000;
     
-    setTimeout(() => {
-        $('#loading').toggleClass('hidden');
-        $("body").toggleClass("")
-    }, seconds);
+    // setTimeout(() => {
+    //     $('#loading').toggleClass('hidden');
+    //     $("body").toggleClass("")
+    // }, seconds);
 
     
 

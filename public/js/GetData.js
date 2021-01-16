@@ -146,8 +146,8 @@ class GetData
 
 
         if(validate){
-        
-            $('#valide').html('').append('<a href="" id="next" ><i class="fa-2x fas fa-check"></i></a>').on('click',function(e){
+            
+            $('#next_question_content').html('').show().append('<a href="" id="next" ><i class="fa-2x fas fa-forward"></i></a>').on('click',function(e){
                 e.preventDefault();
                 let slug = $('#slug').val();
                 let url = "/formation/"+slug+"";

@@ -2,13 +2,10 @@
 @section('resources')
 
 
-    <div class="">
-        <div id="loading" class="h-screen w-screen  bg-white absolute z-40 top-0 bot-0 left-0 right-0">
+        <div id="loading" class="h-full fixed w-full bg-white  z-40 top-0 left-0 ">
             <img class="block w-1/12 w-auto logo-loading" src="{{ asset('img/logo/logo_couleur.svg') }}" alt="Workflow">
             <img class="gif-loading" src="{{ asset('img/785.gif') }}" alt="">
         </div>
-    </div>
-    
 
 
     <section class="search-bar w-screen">
@@ -214,6 +211,11 @@
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 <script src="{{asset('js/SearchEngine.js')}}"></script>
 <script>
+
+$(document).on("load",function(){
+    $("#loadind").hide();
+});
+
     const searchengine = new SearchEngine();
 $(".default_option").click(function(){
     $(".dropdown ul").addClass("active");

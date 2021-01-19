@@ -31,7 +31,7 @@
         <div>
             <img class="ressource-book" src="img/ressource-book-image.png" alt="">
         </div>
-        <div class="presentation-home-text ressources-text ">
+        <div class="ressource-home-text ressources-text ">
             <h2 class="ressource-home-title uppercase absolute font-bold text-4xl ml-4" >Ressources</h2>
             <p class=" text-xl text-justify mt-10 px-4 w-3/4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus recusandae ipsam aliquam commodi officia voluptates quis reiciendis fugit eligendi tempora?</p>
         </div>
@@ -105,19 +105,16 @@
         @foreach ($usages as $usage)
         <div class="card cas-usage cas-usage3 relative bg-white w-1/3 shadow-lg hover:shadow-xl mx-10">
             <a class="h-full relative" href="{{route('usage')}}">
-                    <div class="image-usage-div">
-                        <img class="card-image w-full h-48 object-cover cas-usage-miniature" src="{{asset($usage->image)}}" alt="{{$usage->alt}}">
-                        <!-- <i class="play-usage-button button-usage-1 fas fa-play"></i> -->
-                        <div class="round"><i class="play-usage-button button-usage-1 fas fa-play"></i></div>
-                    </div>
+                <div class="image-usage-div">
+                    <img class="card-image w-full h-48 object-cover cas-usage-miniature" src="{{asset($usage->image)}}" alt="{{$usage->alt}}">
+                    <!-- <i class="play-usage-button button-usage-1 fas fa-play"></i> -->
+                    <div class="round"><i class="play-usage-button button-usage-1 fas fa-play"></i></div>
+                </div>
 
-                    <div class="relative py-3 pl-2">
-                        <h3 class="card-title text-2xl font-bold">{{$usage->title}}</h3>
-                        
-                    </div>
-                    
-                </a>
-                <a href="{{route('usage')}}" class="  card-text-usage">détail sur le cas</a>
+                <div class="relative py-3 pl-2">
+                    <h3 class="card-title text-2xl font-bold">{{$usage->title}}</h3>
+                </div> 
+            </a>
         </div>
         @endforeach
         @else

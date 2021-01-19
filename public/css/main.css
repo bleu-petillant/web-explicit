@@ -137,8 +137,6 @@ footer{
     position: relative;
     width: 100%;
     min-height: 1px;
-    padding-right: 0px!important;
-    padding-left: 0px!important;
 }
 
 
@@ -152,6 +150,10 @@ p {
     
     .ul-navigation{
         display: none;
+    }
+
+    .current-page {
+        color: #000!important;
     }
     
 }

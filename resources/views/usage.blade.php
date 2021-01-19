@@ -34,7 +34,7 @@
                     <p>2</p>
                 </div>
                 <div class="col-lg-7 ">
-                    <iframe class="w-screen usage-video" src="{{$usage->link}}" frameborder="0"></iframe>
+                    <iframe class="w-full usage-video" src="{{$usage->link}}" frameborder="0"></iframe>
                 </div>
             </div>
         @endif

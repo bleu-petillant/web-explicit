@@ -59,7 +59,7 @@
                             <a href="" >
                                 <img class="video-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
                                 <div class="mt-2 py-3 pl-2 all-video-card-content">
-                                    <p class="category video-color ">video</p>
+                                    <p class="category video-color ">vidéo</p>
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p>
                                 </div>
@@ -123,14 +123,14 @@
 
 <section class="all-ressources ">
 <div class="contenu-all-ressource ">
-    <h2 class="font-bold text-5xl mt-4 mb-5 mx-8 tittle-all-ressource">Toute nos ressources</h2>
+    <h2 class="font-bold text-5xl mt-4 mb-5 mx-8 tittle-all-ressource">Toutes nos ressources</h2>
 
     <ul class="filters flex justify-around">
 		<li><a  href="javascript:void(0);" data-filter="*">Tout</a></li>
 		<li><a class="podcast-color" href="javascript:void(0);" data-filter="podcast">Podcast</a></li>
-		<li><a class="video-color" href="javascript:void(0);" data-filter="video">video</a></li>
-        <li><a class="pdf-color" href="javascript:void(0);" data-filter="pdf">pdf</a></li>
-        <li><a class="podcast-color" href="javascript:void(0);" data-filter="articles">autres</a></li>
+		<li><a class="video-color" href="javascript:void(0);" data-filter="video">Vidéo</a></li>
+        <li><a class="pdf-color" href="javascript:void(0);" data-filter="pdf">Pdf</a></li>
+        <li><a class="podcast-color" href="javascript:void(0);" data-filter="articles">Article</a></li>
     </ul>
 </div>
 
@@ -162,7 +162,7 @@
                         <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
                         <div class="card-content">
                             <div class="mt-2 py-3 pl-2 video-card-content ">
-                                <p class="category video-color ">Video</p>
+                                <p class="category video-color ">Vidéo</p>
                                 <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
                                 <p class="card-text">{{$ref->desc}}</p>
                             </div>
@@ -190,7 +190,7 @@
                         <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
                         <div class="card-content">
                             <div class="mt-2 py-3 pl-2 podcast-card-content ">
-                                <p class="category podcast-color ">Podcast</p>
+                                <p class="category podcast-color ">Article</p>
                                 <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
                                 <p class="card-text">{{$ref->desc}}</p>
                             </div>
@@ -202,7 +202,7 @@
         @endforeach
         </div>
     @else
-        <h4>pas de ressources actuellement dans la base de donnée</h4>
+        <h4>Pas de ressources actuellement dans la base de donnée</h4>
     @endif   
 </div>
 </section>

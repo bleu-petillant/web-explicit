@@ -172,13 +172,13 @@ class CheckResponse
     {
         $.each($(".checked "), function(){
 
-            // pour chaque checkbox  et reponse fausse change la classe des checkbox pour les passer en rouge
+            // pour chaque checkbox et reponse fausse change la classe des checkbox pour les passer en rouge
             $(this).next('.span-reponse').toggleClass('span-reponse').addClass('reponse-false');
             
             
         });
         let seconds = 500;
-        // au bout de 2 seconde , on montre l'indice, tu peux changer le timer avec la variable seconds
+        // au bout de 2 seconde, on montre l'indice, tu peux changer le timer avec la variable seconds
         setTimeout(() => {
             $('#reponses_form').hide();
             this.showTheIndice(ressource,indice);
@@ -251,7 +251,7 @@ class CheckResponse
         // div 
         this.nextcourseContainer.append(
             
-            '<h3 class="text-center mt-4"> Autre formation</h3>'+
+            '<h3 class="text-center mt-4">Autre formation</h3>'+
             '<p class="text-center">'+title+'</p>'+
             '<a href="'+nextslug+'" id="next_course_link" ><div class="relative formation-next-image"><div class="round-formation"><i class="play-button button-usage-1 fas fa-play" aria-hidden="true"></i></div><div class="w-full  absolute"><img src="'+base_url+'/'+img+'"></div></div></a>'+
             '<p class="mt-4 text-center"> Référence nécessaire pour cette formation</p>'+

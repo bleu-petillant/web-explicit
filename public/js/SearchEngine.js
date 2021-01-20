@@ -100,14 +100,14 @@ class SearchEngine {
     DisplayNoResult()
     {
         this.container_ref.html("");
-        $('#noresult').text("pas de résultats pour cette recherche");
+        $('#noresult').text("Pas de résultats pour cette recherche");
         this.reset = false;
     }
         //display
     displayRefByCat(data)
     {
         
-        $('#result').text("résultat de la recherche");
+        $('#result').text("Résultats de la recherche");
         const data_ref = data[0];
         let container_ref = $('.news-ressource-cards');
         container_ref.html("");
@@ -180,7 +180,7 @@ class SearchEngine {
                 )
             }else{
                 // no ressources , display div or span with error messages
-                container_ref.append('<span>pas de ressources dans cette cat</span>');
+                container_ref.append('<span>Pas de ressources dans cette cat</span>');
             }
 
 
@@ -192,7 +192,7 @@ class SearchEngine {
 
     displayRefByQuery(data)
     {
-        $('#result').text("résultat de la recherche");
+        $('#result').text("Résultat de la recherche");
         const data_ref = data[0];
         let container_ref = $('.news-ressource-cards');
         container_ref.html("");
@@ -265,7 +265,7 @@ class SearchEngine {
                 )
             }else{
                 // no ressources , display div or span with error messages
-                container_ref.append('<span>pas de ressources dans cette cat</span>')
+                container_ref.append('<span>Pas de ressources dans cette catégorie</span>')
             }
 
         }
@@ -276,7 +276,7 @@ class SearchEngine {
 
      displayRefByQuery(data)
      {
-        $('#result').text("résultat de la recherche");
+        $('#result').text("Résultat de la recherche");
          const data_ref = data[0];
          let container_ref = $('.news-ressource-cards');
          container_ref.html("");
@@ -349,7 +349,7 @@ class SearchEngine {
                  )
               }else{
                   // no ressources , display div or span with error messages
-                  container_ref.append('<span>pas de ressources dans cette cat</span>')
+                  container_ref.append('<span>Pas de ressources dans cette catégorie</span>')
              }
              
          }

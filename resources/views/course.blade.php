@@ -2,12 +2,16 @@
 @section('course')
 <section>
         
+    <div class="phone-logo-formation">
+        <a href="{{route('formations.all')}}">
+            <img class="lg:block w-auto phone-logo" src="{{ asset('img/logo/logo_couleur.svg') }}" alt="Workflow" >
+        </a>
+    </div>
 
-    <div class="row flex-column-reverse flex-lg-row">
-        <div class="col-lg-4 container left-quizz-container mx-auto ">
+    <div class="row flex-column-reverse flex-lg-row" >
+        <div class="col-lg-4 container left-quizz-container mx-auto " style="overflow-y: auto;">
             <a href="{{route('formations.all')}}">
                 <img class="block lg:hidden w-auto logo-course-explicit" src="{{ asset('img/logo/logo_couleur.svg') }}" alt="Workflow" >
-                <img class="hidden lg:block w-auto logo-course-explicit" src="{{ asset('img/logo/logo_couleur.svg') }}" alt="Workflow" >
             </a>
             <div class="mb-2 mt-20">
                 <div class="flex justify-end">
@@ -47,20 +51,20 @@
             </div>
 
             <div id="indice"></div>
+            <div class="gap-4 flex justify-evenly mt-10">
+                <div id="valide" class="hidden">          
+                        <button type="submit" id="check" class="hover:underline ">Valider cette réponse ?</button>
+                </div>
+            </div>
             <div id="title_ressources"></div>
             <div id="ressources" class="row ressource-course-container  mx-auto">
                 
             </div>
-            <div class="gap-4 flex justify-evenly mt-10">
             
-            <div id="valide" class="hidden">          
-                    <button type="submit" id="check" class="hover:underline ">Valider cette réponse ?</button>
-            </div>
-            </div>
         </div>
 
         {{--  start aside vidéo   --}}
-        <div class="col-lg-8 formation-right">
+        <div class="col-lg-8 formation-right " >
             <div class="overlay-video"></div>
             <div id="right_course_side" class="right-quizz-container relative">
                 <!-- <div id="valide" class="hidden">          

@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="contact-submit mt-4">
-                    <button id="submit" type="submit" class=""> <p class="text-center">envoyer</p> </button>
+                    <button id="submit" type="submit" class=""> <p class="text-center">Envoyer</p> </button>
                 </div>
                 
             </div>

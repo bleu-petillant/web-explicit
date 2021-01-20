@@ -35,7 +35,18 @@ a:focus{
     bottom: 0;
     left: 0;
     right: 0;
+    width: 15%;
 }
+
+.gif-loading{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: -33%;
+    left: 0;
+    right: 0;
+}
+
 
 /* footer */
 body{
@@ -126,8 +137,6 @@ footer{
     position: relative;
     width: 100%;
     min-height: 1px;
-    padding-right: 0px!important;
-    padding-left: 0px!important;
 }
 
 
@@ -141,6 +150,10 @@ p {
     
     .ul-navigation{
         display: none;
+    }
+
+    .current-page {
+        color: #000!important;
     }
     
 }

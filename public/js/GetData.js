@@ -85,7 +85,7 @@ class GetData
                     $('#reponses').append('<div class="reponse-checkbox"><label><input type="checkbox" name="reponses_id[]" class="checkbox-quizz" value="'+reponse_id+'"> <span class="span-reponse">'+reponses_name+'</span></label></div>');
                     break;
                 }
-                 
+            
         
             
                 // spawn the question

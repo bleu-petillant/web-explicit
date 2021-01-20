@@ -30,11 +30,9 @@
                         <h2 class="ressource-home-title uppercase  font-bold text-4xl ml-4 pr-4 w-3/4" >{{$usage->title}}</h2>
                         <p class=" text-xl text-justify px-4 w-3/4">{{$usage->desc}}</p>
                     </div>
-                    
-                    <p>2</p>
                 </div>
                 <div class="col-lg-7 ">
-                    <iframe class="w-screen usage-video" src="{{$usage->link}}" frameborder="0"></iframe>
+                    <iframe class="w-full usage-video" src="{{$usage->link}}" frameborder="0"></iframe>
                 </div>
             </div>
         @endif

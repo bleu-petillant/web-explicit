@@ -81,6 +81,12 @@ margin-top: -14px;
 
 /* ressource */
 
+.ressource-home-text {
+    border-left: #FBB03C 5px solid;
+    height: 100%;
+    margin-left: 8vw;
+}
+
 .ressource-home-title {
     margin-top: -14px;
 }
@@ -182,7 +188,7 @@ margin-top: -14px;
 }
 
 .cas-usage{
-    height: 334px!important;
+    height: 300px!important;
 }
 
 .image-usage-div{

@@ -94,12 +94,6 @@ class GetData
 
 
             // we spawn  the answers in span and input
-<<<<<<< Updated upstream
-=======
-
-
-           
->>>>>>> Stashed changes
             $('#course_id').val(course_id)
         }  
     }

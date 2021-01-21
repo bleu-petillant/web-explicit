@@ -50,6 +50,7 @@
                                     <p class="category pdf-color ">pdf</p>
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p>
+                                    <span>publier le {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
                                 </div>
                                 <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->pdf}}" class="pdf-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>
                             </a>
@@ -62,7 +63,7 @@
                                     <p class="category video-color ">vidéo</p>
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p><br>
-                                    <span>Publiée le</span>
+                                   <span>publier le {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
                                 </div>
                                 <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" class="video-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>
                             </a>
@@ -76,7 +77,7 @@
 
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p><br>
-                                    <span>Publiée le</span>
+                                   <span>publier le {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
                                 </div>
                                 <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" target="__blank" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
                             </a>
@@ -90,7 +91,7 @@
 
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p><br>
-                                    <span>Publiée le</span>
+                                    <span>publier le {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
                                 </div>
                                 <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" target="__blank" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
                             </a>
@@ -154,7 +155,7 @@
                                 <p class="category pdf-color ">Pdf</p>
                                 <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
                                 <p class="card-text">{{$ref->desc}}</p><br>
-                                    <span>Publiée le</span>
+                                   <span>publier le {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>
                             </div>
                         </div>
                         <p class="absolute news-ressource-button text-center my-4"><a href="{{$ref->pdf}}" class="pdf-button uppercase mx-auto tracking-wider" target="_blank">Lien</a></p>
@@ -169,7 +170,7 @@
                                 <p class="category video-color ">Vidéo</p>
                                 <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
                                 <p class="card-text">{{$ref->desc}}</p><br>
-                                    <span>Publiée le</span>
+                                    <span>publier le {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>
                             </div>
                         </div>
                         <p class="absolute news-ressource-button text-center my-4"><a href="{{$ref->link}}" class="video-button uppercase mx-auto tracking-wider" target="_blank">Lien</a></p>
@@ -184,7 +185,7 @@
                                 <p class="category podcast-color ">Podcast</p>
                                 <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
                                 <p class="card-text">{{$ref->desc}}</p><br>
-                                    <span>Publiée le</span>
+                                    <span>publier le {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>
                             </div>
                         </div>
                         <p class="absolute news-ressource-button text-center my-4"><a href="{{$ref->link}}" class="podcast-button uppercase mx-auto tracking-wider" target="_blank">Lien</a></p>
@@ -199,7 +200,7 @@
                                 <p class="category podcast-color ">Article</p>
                                 <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
                                 <p class="card-text">{{$ref->desc}}</p><br>
-                                    <span>Publiée le</span>
+                                  <span>publier le {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>
                             </div>
                         </div>
                         <p class="absolute news-ressource-button text-center my-4"><a href="{{$ref->link}}" class="podcast-button uppercase mx-auto tracking-wider" target="_blank">Lien</a></p>

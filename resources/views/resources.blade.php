@@ -98,12 +98,10 @@
                             <a href="{{$reference->link}}" target="__blank" >
                                 <img class="podcast-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
                                 <div class="mt-2 py-3 pl-2 all-podcast-card-content">
-
                                     <div class="row justify-between">
                                         <p class="category podcast-color ">article</p>
                                         <p class="float-right" style="margin-right:13px">{{$reference->duration}}</p>
                                     </div>
-
 
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p><br>

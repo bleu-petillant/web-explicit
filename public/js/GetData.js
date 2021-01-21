@@ -94,9 +94,6 @@ class GetData
 
 
             // we spawn  the answers in span and input
-
-
-            //$('#position').val(pos);
             $('#course_id').val(course_id)
         }  
     }

@@ -45,22 +45,22 @@
                     </div>
                     <div id="imagePreview" class="col-lg-2"></div> 
                         
-                    <label for="alt" class="label"> Ajouter une description pour l'image <small class="text-danger">(max 255 caractères)</small><label>
-                    <input type="text" name="alt" id="imgDesc" class="form-control my-4" value="{{ old('alt')}}" placeholder="Description de l'image" maxlength="255">
-                    <span id="compt_descr0" class="text-right">0 mot(s) | 255   caractère(s) restant(s)</span>
+                    <label for="alt" class="label"> Ajouter une description pour l'image <small class="text-danger">(max 245 caractères)</small><label>
+                    <input type="text" name="alt" id="imgDesc" class="form-control my-4" value="{{ old('alt')}}" placeholder="Description de l'image" maxlength="245">
+                    <span id="compt_descr0" class="text-right">0 mot(s) | 245   caractère(s) restant(s)</span>
                     
                     <div class=" my-6" id="file-type">
                     </div>
 
-                    <label for="meta">Ajouter une métadescription <small class="text-danger">(max 255 caractères)</small></label>
-                    <input type="text" id="meta" name="meta" value="{{ old('meta')}}" class="form-control my-2" placeholder="Métadescription" required maxlength="255">
-                    <span id="compt_descr1" class="text-right">0 mot(s) | 255   caractère(s) restant(s)</span>
+                    <label for="meta">Ajouter une métadescription <small class="text-danger">(max 245 caractères)</small></label>
+                    <input type="text" id="meta" name="meta" value="{{ old('meta')}}" class="form-control my-2" placeholder="Métadescription" required maxlength="245">
+                    <span id="compt_descr1" class="text-right">0 mot(s) | 245   caractère(s) restant(s)</span>
                     <br>
         
 
-                    <label for="desc">Décrire votre ressource  <small class="text-danger">(max 255 caractères)</small></label>
-                    <textarea type="text" id="desc2" name="desc" class="form-control my-2"  placeholder="Décrivez votre ressource" required maxlength="255"></textarea>
-                    <span id="compt_descr2" class="text-right">0 mot(s) | 255   caractère(s) restant(s)</span>
+                    <label for="desc">Décrire votre ressource  <small class="text-danger">(max 245 caractères)</small></label>
+                    <textarea type="text" id="desc2" name="desc" class="form-control my-2"  placeholder="Décrivez votre ressource" required maxlength="245"></textarea>
+                    <span id="compt_descr2" class="text-right">0 mot(s) | 245   caractère(s) restant(s)</span>
 
 
                     <label for="duration">Ajouter une durée de lecture pour votre ressource <small class="text-danger">(Exemple : écrire "2:30" pour 2 minutes et 30 secondes de vidéo)</small></label>
@@ -108,7 +108,7 @@
                 $('#imgDesc').keyup(function() {
                     
                     var nombreCaractere0 = $(this).val().length;
-                    var nombreCaractere0 = 255 - nombreCaractere0;
+                    var nombreCaractere0 = 245 - nombreCaractere0;
                     
                     var nombreMots0 = jQuery.trim($(this).val()).split(' ').length;
                     if($(this).val() === '') {
@@ -123,7 +123,7 @@
                 $('#meta').keyup(function() {
                     
                     var nombreCaractere1 = $(this).val().length;
-                    var nombreCaractere1 = 255 - nombreCaractere1;
+                    var nombreCaractere1 = 245 - nombreCaractere1;
                     
                     var nombreMots1 = jQuery.trim($(this).val()).split(' ').length;
                     if($(this).val() === '') {
@@ -139,7 +139,7 @@
                 $('#desc2').keyup(function() {
                     
                     var nombreCaractere2 = $(this).val().length;
-                    var nombreCaractere2 = 255 - nombreCaractere2;
+                    var nombreCaractere2 = 245 - nombreCaractere2;
                     
                     var nombreMots2 = jQuery.trim($(this).val()).split(' ').length;
                     if($(this).val() === '') {

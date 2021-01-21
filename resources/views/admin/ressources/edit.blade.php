@@ -83,20 +83,20 @@
                     <input type="text" id="title" name="title" value="{{ $reference->title }}" class="form-control my-2" placeholder="">
                     
 
-                    <label for="meta">Modifier la métadescription <small class="text-danger">(max 255 caractères)</small></label>
-                    <input type="text" id="meta" name="meta" value="{{ $reference->meta }}" class="form-control my-2" placeholder="Métadescription" maxlength="255"> 
-                    <span id="compt_descr1" class="text-right">0 mot(s) | 255   caractère(s) restant(s)</span>
+                    <label for="meta">Modifier la métadescription <small class="text-danger">(max 245 caractères)</small></label>
+                    <input type="text" id="meta" name="meta" value="{{ $reference->meta }}" class="form-control my-2" placeholder="Métadescription" maxlength="245"> 
+                    <span id="compt_descr1" class="text-right">0 mot(s) | 245   caractère(s) restant(s)</span>
                     <br>
 
                      
-                    <label for="alt" class="label">Modifier la description de l'image <small class="text-danger">(max 255 caractères)</small></label>
-                    <input type="text" id="imgDesc" name="alt" value="{{ $reference->alt }}" class="form-control my-2" placeholder="{{ $reference->alt }}" maxlength="255">
-                    <span id="compt_descr0" class="text-right">0 mot(s) | 255   caractère(s) restant(s)</span>
+                    <label for="alt" class="label">Modifier la description de l'image <small class="text-danger">(max 245 caractères)</small></label>
+                    <input type="text" id="imgDesc" name="alt" value="{{ $reference->alt }}" class="form-control my-2" placeholder="{{ $reference->alt }}" maxlength="245">
+                    <span id="compt_descr0" class="text-right">0 mot(s) | 245   caractère(s) restant(s)</span>
                     <br>
                     
                     <label for="desc2">Modifier la description de votre ressource</label>
-                    <textarea id="desc" name="desc" class="form-control my-2 " maxlength="255" >{{ $reference->desc }}</textarea>
-                    <span id="compt_descr2" class="text-right">0 mot(s) | 255   caractère(s) restant(s)</span>
+                    <textarea id="desc" name="desc" class="form-control my-2 " maxlength="245" >{{ $reference->desc }}</textarea>
+                    <span id="compt_descr2" class="text-right">0 mot(s) | 245   caractère(s) restant(s)</span>
                     <br>
 
                     <div>
@@ -136,7 +136,7 @@
                 $('#imgDesc').keyup(function() {
                     
                     var nombreCaractere0 = $(this).val().length;
-                    var nombreCaractere0 = 255 - nombreCaractere0;
+                    var nombreCaractere0 = 245 - nombreCaractere0;
                     
                     var nombreMots0 = jQuery.trim($(this).val()).split(' ').length;
                     if($(this).val() === '') {
@@ -151,7 +151,7 @@
                 $('#meta').keyup(function() {
                     
                     var nombreCaractere1 = $(this).val().length;
-                    var nombreCaractere1 = 255 - nombreCaractere1;
+                    var nombreCaractere1 = 245 - nombreCaractere1;
                     
                     var nombreMots1 = jQuery.trim($(this).val()).split(' ').length;
                     if($(this).val() === '') {
@@ -166,7 +166,7 @@
                 $('#desc').keyup(function() {
                     
                     var nombreCaractere2 = $(this).val().length;
-                    var nombreCaractere2 = 255 - nombreCaractere2;
+                    var nombreCaractere2 = 245 - nombreCaractere2;
                     
                     var nombreMots2 = jQuery.trim($(this).val()).split(' ').length;
                     if($(this).val() === '') {

@@ -94,6 +94,12 @@ class GetData
 
 
             // we spawn  the answers in span and input
+<<<<<<< Updated upstream
+=======
+
+
+           
+>>>>>>> Stashed changes
             $('#course_id').val(course_id)
         }  
     }
@@ -119,16 +125,6 @@ class GetData
 
         $('#resetbutton').on("click", function(e){
             e.preventDefault();
-            // console.log("click");
-            // $('#valide').hide();
-            // $('#indice').hide();
-            // $('#ressources').hide();
-            // $('#video_run')[0].load();
-            // $('#video_run')[0].play();
-            // $('#reponses_form').show();
-            // $('#reponses').show();
-            // getdata.displayQuestionReponse(content,reponses,course_id);
-            // reset.hide();
             location.reload(true);
         });
 

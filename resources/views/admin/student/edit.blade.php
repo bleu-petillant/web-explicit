@@ -8,7 +8,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{__('Dashboard')}}</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('student.index') }}">Liste des étudients</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('student.index') }}">Liste des étudiants</a></li>
                         <li class="breadcrumb-item active">modifier {{$user->name}}</li>
                     </ol>
                 </div><!-- /.col -->
@@ -74,20 +74,20 @@
 
         <!-- Prénom -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="prenom" value="{{ __('modifier son prénom') }}" />
+            <x-jet-label for="prenom" value="{{ __('Modifier son prénom') }}" />
         <x-jet-input id="prenom" type="text"  class="mt-1 block w-full" name="prenom" wire:model.defer="state.prenom" autocomplete="prenom" value="{{$user->prenom}}" />
             <x-jet-input-error for="prenom" class="mt-2" />
         </div>
                 <!-- Nom -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="name" value="{{ __('modifier son nom de famille') }}" />
+            <x-jet-label for="name" value="{{ __('Modifier son nom de famille') }}" />
             <x-jet-input id="name" type="text" name="name" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" value="{{$user->name}}"/>
             <x-jet-input-error for="name" class="mt-2" />
         </div>
 
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="email" value="{{ __('modifier son adresse email') }}" />
+            <x-jet-label for="email" value="{{ __('Modifier son adresse email') }}" />
             <x-jet-input id="email" type="email" name="email" class="mt-1 block w-full" wire:model.defer="state.email" value="{{$user->email}}" />
             <x-jet-input-error for="email" class="mt-2" />
         </div>

@@ -7,9 +7,9 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">dashboard admin</a></li>
-                        <li class="breadcrumb-item active">créer un nouveau cours</li>
-                        <li class="breadcrumb-item"><a href="{{ route('course.index') }}" >revenir à la liste des cours</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('course.index') }}" >revenir à la liste des formations</a></li>
+                        <li class="breadcrumb-item active">créer une nouvelle formation</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -18,25 +18,21 @@
             <div class="col-md-6 card">
                 <form class="text-center p-2" action="{{route('course.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <p class="h4 mb-4">Créer un nouveau cours</p>
-                    <p>
-                        
-                    </p>
                     @include('includes.errors')
                     <hr class="hr-light">
                      <div class="form-group">
-                        <label class="text-center" for="primary_ressource">Sélectionez la première ressource</label>
+                        <label class="text-center" for="primary_ressource">Sélectionner la première ressource</label>
                         <select class="custom-select custom-select-sm my-2" name="ref[]" id="primary_ressource" required>
-                            <option value=""selected style="display: none">Sélectionez la resource</option>
+                            <option value=""selected style="display: none">Sélectionner la  ressource</option>
                         @foreach ($references as $reference)
                             <option value="{{ $reference->id }}">{{ $reference->slug }}</option>
                         @endforeach
                         </select>
                     </div> 
                     <div class="form-group">
-                        <label class="text-center" for="secondary_ressource">Sélectionez la deuxième ressource</label>
+                        <label class="text-center" for="secondary_ressource">Sélectionner la deuxième ressource</label>
                         <select class="custom-select custom-select-sm my-2" name="ref[]" id="secondary_ressource" required>
-                            <option value=""selected style="display: none">Sélectionez la resource</option>
+                            <option value=""selected style="display: none">Sélectionner la ressource</option>
                         @foreach ($references as $reference)
                             <option value="{{ $reference->id }}">{{ $reference->slug }}</option>
                         @endforeach
@@ -51,27 +47,27 @@
                     <div id="imagePreview" class="col-lg-2"></div> 
                     
                     <label for="alt" class="label"> Ajouter une description pour l'image <small class="text-danger">(max 255 caractères)</small></label>
-                    <input type="text" id="alt" name="alt" value="{{ old('alt')}}" class="form-control my-2" placeholder="description de l'image" required maxlength="255"> 
-                    <span id="compt_descr3" class="text-right">0 mots | 255 caractère(s) restant(s)</span>
+                    <input type="text" id="alt" name="alt" value="{{ old('alt')}}" class="form-control my-2" placeholder="Description de l'image" required maxlength="255"> 
+                    <span id="compt_descr3" class="text-right">0 mot(s) | 255 caractère(s) restant(s)</span>
 
                        
                     <label for="title">Ajouter un titre</label>
-                    <input type="text" id="title" name="title" value="{{ old('title')}}" class="form-control my-2" placeholder="titre du cours" required>
+                    <input type="text" id="title" name="title" value="{{ old('title')}}" class="form-control my-2" placeholder="Titre du cours" required>
 
                
-                    <label for="meta">Ajouter une meta description <small class="text-danger">(max 255 caractères)</small></label>
-                    <input type="text" id="meta" name="meta" value="{{ old('title')}}" class="form-control my-2" placeholder="meta description" maxlength="255" required>
-                    <span id="compt_descr1" class="text-right">0 mots | 255 caractère(s) restant(s)</span>
+                    <label for="meta">Ajouter une métadescription <small class="text-danger">(max 255 caractères)</small></label>
+                    <input type="text" id="meta" name="meta" value="{{ old('title')}}" class="form-control my-2" placeholder="Métadescription" maxlength="255" required>
+                    <span id="compt_descr1" class="text-right">0 mot(s) | 255 caractère(s) restant(s)</span>
                         
                     <hr class="hr-light">
-                    <label for="desc">Décrivez votre cours <small class="text-danger">(max 255 caractères)</small></label>
-                    <textarea type="text" id="desc" name="desc" class="form-control editor" placeholder="décrivez votre cours ici...." required maxlength="255">{{ old('desc')}}</textarea>
-                    <span id="compt_descr2" class="text-right">0 mots | 255 caractère(s) restant(s)</span>
+                    <label for="desc">Décrire votre formation <small class="text-danger">(max 255 caractères)</small></label>
+                    <textarea type="text" id="desc" name="desc" class="form-control editor" placeholder="Saisir votre formation ici" required maxlength="255">{{ old('desc')}}</textarea>
+                    <span id="compt_descr2" class="text-right">0 mot(s) | 255 caractère(s) restant(s)</span>
                     <br>
                     @if($references->count() > 1)
-                    <button id="sendButton" class="btn btn-success my-3" type="submit" ><span class="fas fa-plus pr-2"></span>publiez votre cours</button>
+                    <button id="sendButton" class="btn btn-success my-3" type="submit" ><span class="fas fa-plus pr-2"></span>Créer votre formation</button>
                     @else
-                    <h3>pas assez de ressources pour créer votre premiere formation, veuillez créer des ressources en premier</h3>
+                    <h3 class="text-danger">Vous n'avez pas assez de ressources. Veuillez créer au moins deux ressources avant de créer votre première formation.</h3>
                     @endif
                     
                 </form>
@@ -149,7 +145,7 @@
             if (!allowedExtensions.exec(filePath)) { 
                 
                 alert.innerHTML = "";
-                alert.innerHTML = '<span class="text-danger font-bold">ceci n"est pas une image valide seul les images extensions (gif, png, jpeg et jpg) sont autoriser merci !</span>';
+                alert.innerHTML = '<span class="text-danger font-bold">Ceci n\'est pas une image valide. Seules les extensions (gif, png, jpeg et jpg) sont autorisées ici.</span>';
                 fileInput.value = ''; 
                  document.getElementById( 'imagePreview').innerHTML ="";
                 return false; 

@@ -57,7 +57,7 @@
                             @elseif($reference->category_id == '3')
                                 <p class="category podcast-color ">podcast</p>
                                 @else
-                                <p class="category podcast-color ">articles</p>
+                                <p class="category podcast-color ">article</p>
                             @endif
                         <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                         <p class="card-text">{{$reference->desc}}</p>
@@ -66,7 +66,7 @@
             </div>
             @endforeach 
             @else
-                <h4 class=" text-xl text-justify mt-10 px-4 w-3/4">désoler nous n' avons pas de ressources pour le moment</h4>
+                <h4 class=" text-xl text-justify mt-10 px-4 w-3/4">désoler nous n'avons pas de ressources pour le moment</h4>
             @endif
         </div>
         <div class="flex mx-auto justify-center">
@@ -87,7 +87,7 @@
             </div>
             <div class="formation-home-text pt-7 pr-20 pb-7 pl-20">
                 <div class="border-l-4 border-white">
-                    <h2 class="leading-tight text-white ressource-home-title uppercase font-bold text-4xl ml-4" >formation <br> interactive</h2>
+                    <h2 class="leading-tight text-white ressource-home-title uppercase font-bold text-4xl ml-4" >formations <br> interactives</h2>
                     <p class=" text-white text-xl text-justify px-4 pt-1 w-3/4 font-light mb-4">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy  nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>                   
                 </div>
             <p class="text-center"><a class="justify-center text-lg bg-white uppercase my-1 py-2 px-10 rounded" href="{{route('formations.all')}}">Commencer</a></p>

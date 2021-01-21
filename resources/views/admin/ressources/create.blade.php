@@ -7,7 +7,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">créer une nouvelle ressource</li>
                     </ol>
                 </div><!-- /.col -->
@@ -20,20 +20,21 @@
                     @include('includes.errors')
 
                   
-                    <label for="title">Ajouter un titre pour votre ressource.</label>
-                    <input type="text" id="title" name="title" value="{{ old('title')}}" class="form-control my-2" placeholder="titre de la ressource..." required>
+                    <label for="title">Ajouter un titre pour votre ressource</label>
+                    <input type="text" id="title" name="title" value="{{ old('title')}}" class="form-control my-2" placeholder="Titre de la ressource" required>
 
                     
-                    <label for="category">Sélectionez une catégorie pour votre ressource</label>
+                    <label for="category">Sélectioner une catégorie pour votre ressource</label>
                     <select name="category" id="category" class="custom-select custom-select-sm my-2" required>
-                        <option value=""selected style="display: none">Selectionez une catégorie</option>
+                        <option value=""selected style="display: none">Sélectioner une catégorie</option>
                         @foreach ($categories as $cat)
                     <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                         @endforeach
                     </select>
 
                     <div class="form-group">
-                        <label for="tags">Écrivez vos tags ici <strong class="text-red-800">(5 maximum)</strong>(mots clef court de quelques lettres qui seront associer à cette resources )</label>
+                        <label for="tags">Écrire vos tags ici <strong class="text-red-800">(5 maximum)</strong> <br>
+                            Mot(s)-clé(s) courts de quelques lettres associé(s) à cette ressource</label>
                         <input data-role="tagsinput" type="text" name="tags" id="tags" placeholder="psychologie,cerveau,humain,psy,cas,maladie etc......" required>
                     </div>
 
@@ -45,31 +46,31 @@
                     <div id="imagePreview" class="col-lg-2"></div> 
                         
                     <label for="alt" class="label"> Ajouter une description pour l'image <small class="text-danger">(max 255 caractères)</small><label>
-                    <input type="text" name="alt" id="imgDesc" class="form-control my-4" value="{{ old('alt')}}" placeholder="description de l'images" maxlength="255">
-                    <span id="compt_descr0" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
+                    <input type="text" name="alt" id="imgDesc" class="form-control my-4" value="{{ old('alt')}}" placeholder="Description de l'image" maxlength="255">
+                    <span id="compt_descr0" class="text-right">0 mot(s) | 255   caractère(s) restant(s)</span>
                     
                     <div class=" my-6" id="file-type">
                     </div>
 
-                    <label for="meta">Ajouter une meta description <small class="text-danger">(max 255 caractères)</small></label>
-                    <input type="text" id="meta" name="meta" value="{{ old('meta')}}" class="form-control my-2" placeholder="meta description" required maxlength="255">
-                    <span id="compt_descr1" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
+                    <label for="meta">Ajouter une métadescription <small class="text-danger">(max 255 caractères)</small></label>
+                    <input type="text" id="meta" name="meta" value="{{ old('meta')}}" class="form-control my-2" placeholder="Métadescription" required maxlength="255">
+                    <span id="compt_descr1" class="text-right">0 mot(s) | 255   caractère(s) restant(s)</span>
                     <br>
         
 
-                    <label for="desc">Décrivez votre ressources: <small class="text-danger">(max 255 caractères)</small></label>
-                    <textarea type="text" id="desc2" name="desc" class="form-control my-2"  placeholder="décrivez votre ressources" required maxlength="255"></textarea>
-                    <span id="compt_descr2" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
+                    <label for="desc">Décrire votre ressource  <small class="text-danger">(max 255 caractères)</small></label>
+                    <textarea type="text" id="desc2" name="desc" class="form-control my-2"  placeholder="Décrivez votre ressource" required maxlength="255"></textarea>
+                    <span id="compt_descr2" class="text-right">0 mot(s) | 255   caractère(s) restant(s)</span>
 
 
-                    <label for="duration">Ajouter une durée de lecture pour votre ressource <small class="text-danger">(uniquement en chiffres, en minutes et sans le mot minutes !)</small></label>
-                    <input type="text" id="duration" name="duration" value="{{ old('duration')}}" class="form-control my-2" placeholder="ex: 3, 5, 10, 20 etc....." required>
+                    <label for="duration">Ajouter une durée de lecture pour votre ressource <small class="text-danger">(Exemple : écrire "2:30" pour 2 minutes et 30 secondes de vidéo)</small></label>
+                    <input type="text" id="duration" name="duration" value="{{ old('duration')}}" class="form-control my-2" placeholder="ex: 2:30, 5:00, 10:00 etc.....">
 
-                    <label for="private">Ressource privée ?</label>
+                    <label for="private">La ressource est-elle privée ?</label>
                     <input type="checkbox" name="private" id="private" class="form-checkbox" value="0">
 
                     <br>
-                    <button class="btn btn-info  my-4" type="submit"><span class="fas fa-plus pr-2"></span>Créez cette ressource</button>
+                    <button class="btn btn-info  my-4" type="submit"><span class="fas fa-plus pr-2"></span>Créer cette ressource</button>
                 </form>
             </div>
         </div>
@@ -164,7 +165,7 @@
             if (!allowedExtensions.exec(filePath)) { 
                 
                 alert.innerHTML = "";
-                alert.innerHTML = '<span class="text-danger font-bold">ceci n"est pas une image valide seul les images extensions (gif, png, jpeg et jpg) sont autoriser merci !</span>';
+                alert.innerHTML = '<span class="text-danger font-bold">Ceci n\'est pas une image valide. Seules les extensions (gif, png, jpeg et jpg) sont autorisées ici.</span>';
                 fileInput.value = ''; 
                  document.getElementById( 'imagePreview').innerHTML ="";
                 return false; 

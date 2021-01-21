@@ -27,7 +27,7 @@ class TeacherTable extends LivewireDatatable
                  ->filterable(),
 
             Column::name('prenom')
-                ->label('Prenom')
+                ->label('Prénom')
                 ->filterable(),
 
             Column::name('name')

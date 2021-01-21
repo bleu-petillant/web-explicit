@@ -19,7 +19,7 @@ class CategoriesSeeder extends Seeder
         $categories->save();
 
         $categories = new Category();
-         $categories->name = 'video';
+         $categories->name = 'vidéo';
         $categories->save();
 
         $categories = new Category();
@@ -28,7 +28,7 @@ class CategoriesSeeder extends Seeder
         $categories->save();
 
         $categories = new Category();
-         $categories->name = 'articles';
+         $categories->name = 'article';
         $categories->save();
     }
 }

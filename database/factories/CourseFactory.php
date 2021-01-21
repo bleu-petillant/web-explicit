@@ -9,6 +9,7 @@ use App\Models\Resource;
 
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CourseFactory extends Factory
@@ -33,7 +34,9 @@ class CourseFactory extends Factory
             'title' => $title,
             'desc' => $this->faker->text(),
             'slug' => $slug,
-            'image'=>  'https://picsum.photos/200/200?random=' .$this->faker->numberBetween($min = 1, $max = 75) ,
+            'image'=> 'storage/course/thumb/alice.jpg',
+           // 'image'=>  'https://picsum.photos/200/200?random=' .$this->faker->numberBetween($min = 1, $max = 75) ,
+            'published_at'=>Carbon::now(),
             'alt'=>$this->faker->word(),
             'meta'=>$this->faker->word(),
             'teacher_id' => $this->faker->numberBetween($min = 4, $max = 20),

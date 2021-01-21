@@ -48,18 +48,18 @@ class AdminSeeder extends Seeder
         ]);
 
 
-        $faker = Factory::create('fr_FR');
-        for ($i = 0; $i < 40; $i++) {
-            $users = new User();
-            $users->prenom = $faker->firstName;
-            $users->name = $faker->lastName;
-            $users->email = $faker->unique()->safeEmail;
-            $users->email_verified_at = now();
-            $users->role_id = '2';
-            $users->password = bcrypt('123456'); // password
-            $users->remember_token = Str::random(10);
-            $users->save();
-        }
+        // $faker = Factory::create('fr_FR');
+        // for ($i = 0; $i < 40; $i++) {
+        //     $users = new User();
+        //     $users->prenom = $faker->firstName;
+        //     $users->name = $faker->lastName;
+        //     $users->email = $faker->unique()->safeEmail;
+        //     $users->email_verified_at = now();
+        //     $users->role_id = '2';
+        //     $users->password = bcrypt('123456'); // password
+        //     $users->remember_token = Str::random(10);
+        //     $users->save();
+        // }
 
 
     }

@@ -236,7 +236,7 @@
         @endforeach
         </div>
     @else
-        <h4>Pas de ressources actuellement dans la base de donnée</h4>
+        <h4>Aucune ressource dans la base de données</h4>
     @endif   
 </div>
 </section>

@@ -7,25 +7,21 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">acceuil du site</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('course.index') }}">liste des formations</a></li>
-                        <li class="breadcrumb-item active">modifier la formation</li>
+                        <li class="breadcrumb-item active">modifier la formation <span class="text-danger font-perso font-italic">"{{ $course->slug }}"</span></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <p class="h4 mb-4">modifier la formation - <span class="text-danger font-perso font-italic">{{ $course->title }}</span></p>
-                    <p>
-                        <a href="{{ route('course.index') }}" class="btn btn-info btn-md">annuler et revenir à la liste des articles</a></li>
-                    </p>
                     @include('includes.errors')
                     <form class="text-center" action="{{ route('course.update',$course->id) }}" method="POST" enctype="multipart/form-data">
                         @method('PATCH')
                         @csrf
                      <div class="form-group">
-                        <label class="text-center" for="primary_ressource">Modifiez la première ressource</label>
+                        <label class="text-center" for="primary_ressource">Modifier la première ressource</label>
                         <select class="custom-select custom-select-sm my-2" name="ref[]" id="primary_ressource">
                             <option value="{{ $first->id}}"selected>{{ $first->slug}}</option>
                         @foreach ($references as $reference)
@@ -34,7 +30,7 @@
                         </select>
                     </div> 
                     <div class="form-group">
-                        <label class="text-center" for="secondary_ressource">Modifiez la deuxième ressource</label>
+                        <label class="text-center" for="secondary_ressource">Modifier la deuxième ressource</label>
                         <select class="custom-select custom-select-sm my-2" name="ref[]" id="secondary_ressource">
                             <option value="{{ $second->id}}"selected>{{ $second->slug}}</option>
                         @foreach ($references as $reference)
@@ -62,23 +58,23 @@
                     </div>
 
                     <hr class="hr-light">
-                    <label for="alt" class="label"> Ajouter une description pour l'image (ALT)</label>
+                    <label for="alt" class="label"> Ajouter une description pour l'image</label>
                     <input type="text" id="imgDesc" name="alt" value="{{ $course->alt}}" class="form-control my-2" placeholder="description de l'image">
-                    <span id="compt_descr0" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
+                    <span id="compt_descr0" class="text-right">0 mot(s) | 255   caractère(s) restant(s)</span>
                     <div class="my-2"></div>
 
-                    <label for="title">Modifiez le titre de la formation</label>
+                    <label for="title">Modifier le titre de la formation</label>
                     <input type="text" id="title" name="title" value="{{ $course->title }}" class="form-control my-2" placeholder="">
 
-                    <label for="meta">Modifiez votre meta description <small class="text-danger">(max 255 caractères)</small></label>
-                    <input type="text" id="meta" name="meta" value="{{ $course->meta }}" class="form-control my-2" placeholder="meta description" required>
-                    <span id="compt_descr1" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
+                    <label for="meta">Modifier votre métadescription <small class="text-danger">(max 255 caractères)</small></label>
+                    <input type="text" id="meta" name="meta" value="{{ $course->meta }}" class="form-control my-2" placeholder="Métadescription" required>
+                    <span id="compt_descr1" class="text-right">0 mot(s) | 255   caractère(s) restant(s)</span>
 
 
                     <hr class="hr-light">
-                    <label for="content">Modifiez la description de cette formation</label>
+                    <label for="content">Modifier la description de cette formation</label>
                     <textarea type="text" id="desc" name="desc" class="form-control my-2 editor" placeholder="{{ $course->desc }}">{{ $course->desc }}</textarea>
-                    <span id="compt_descr2" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
+                    <span id="compt_descr2" class="text-right">0 mot(s) | 255   caractère(s) restant(s)</span>
 
                         <button class="btn btn-success btn-block" type="submit"><span class="fas fa-pen pr-2"></span>Modifier la formation</button>
                     </form>
@@ -151,7 +147,7 @@
             if (!allowedExtensions.exec(filePath)) { 
                 
                 alert.innerHTML = "";
-                alert.innerHTML = '<span class="text-danger font-bold">ceci n"est pas une image valide seul les images extensions (gif, png, jpeg et jpg) sont autoriser merci !</span>';
+                alert.innerHTML = '<span class="text-danger font-bold">Ceci n\'est pas une image valide. Seules les extensions (gif, png, jpeg et jpg) sont autorisées ici.</span>';
                 fileInput.value = ''; 
                  document.getElementById( 'imagePreview').innerHTML ="";
                 return false; 

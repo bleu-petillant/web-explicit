@@ -137,7 +137,7 @@ class CheckResponse
         
         
         // on vide le html de l'indice
-        this.ressourceContainer.append('<p class=" mx-auto pl-4">Avant de retenter ta chance, voici ce que tu dois connaitre : </p>');
+        this.ressourceContainer.append('<p class=" mx-auto pl-4">Avant de retenter votre chance, voici ce que vous devez connaître : </p>');
         this.indiceContainer.show();
         // on instancie un nouvel indice avec la valeur indice dedans
         this.indiceContainer.append('<div class="indice"><p class="font-bold mb-2">Indice</p><p>'+indice.indice+'</p></div>');
@@ -200,7 +200,7 @@ class CheckResponse
         let ref = ressource.references;
 
         this.ressourceContainer.show();
-        this.ressourceContainer.append('<div class="col-md-12 col-lg-12 col-sm-12 mt-2"><p class="pl-4">Approfondissez avec ces ressources : </p></div>');
+        this.ressourceContainer.append('<div class="col-md-12 col-lg-12 col-sm-12 mt-2"><p class="pl-4">Approfondir avec ces ressources : </p></div>');
 
         // on instancie les ressources associer
         for (let i = 0; i < ref.length; i++) {

@@ -14,7 +14,7 @@
       <div class="col-12">
       	<div class="card card-list">
             <div class="card-header bg-dark py-3 d-flex justify-content-center my-4">
-                <a href="{{route('question.create')}}" class="btn btn-success btn-md px-3 my-0 mr-0 white-text"><i class="fas fa-plus pr-2"></i>créer une nouvelle question pour une formation</a>
+                <a href="{{route('question.create')}}" class="btn btn-success btn-md px-3 my-0 mr-0 white-text"><i class="fas fa-plus pr-2"></i>Créer une nouvelle question pour une formation</a>
             </div>
           <div class="card-body">
            <livewire:question-table 

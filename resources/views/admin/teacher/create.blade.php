@@ -7,8 +7,8 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Tableau de bord</a></li>
-                        <li class="breadcrumb-item active">créer un nouveau professeur</li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">créer un nouveau profil professeur</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -32,7 +32,7 @@
                 <x-jet-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" :value="old('prenom')" required autofocus autocomplete="prenom" placeholder="Jean" />
             </div>
             <div>
-                <x-jet-label for="name" value="{{ __('Nom de famille du professeur') }}" />
+                <x-jet-label for="name" value="{{ __('Nom du professeur') }}" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Dupond" />
             </div>
 
@@ -43,12 +43,12 @@
 
             <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
-                <span class="muted text-cool-gray-600">8 caractère minimum contenant 1 majuscule et 1 chiffre</span>
+                <span class="muted text-cool-gray-600">8 caractères minimum contenant 1 majuscule et 1 chiffre</span>
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" placeholder="Password1234"/>
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                <x-jet-label for="password_confirmation" value="{{ __('Confirmer votre mot de passe') }}" />
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 

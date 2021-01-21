@@ -7,21 +7,20 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">acceuil du site</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('reference.index') }}">liste des ressources</a></li>
-                        <li class="breadcrumb-item active">modifier la ressource</li>
+                        <li class="breadcrumb-item active">modifier la ressource <span class="text-danger font-perso font-italic">"{{ $reference->title }}"</span></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <p class="h4 mb-4">modifier la ressources - <span class="text-danger font-perso font-italic">{{ $reference->title }}</span></p>
                     @include('includes.errors')
                     <form class="text-center" action="{{ route('reference.update',$reference->id) }}" method="POST" enctype="multipart/form-data">
                         @method('PATCH')
                         @csrf
-                        <label for="category">modifiez la catégorie (si besoin)</label>
+                        <label for="category">Modifier la catégorie (si besoin)</label>
                     <select name="category" id="category" class="custom-select custom-select-sm my-2">
                         <option value=""selected style="display: none">selectionez une catégorie</option>
                         @foreach ($categories as $cat)
@@ -31,14 +30,13 @@
 
                     
                     @if ($reference->pdf  != 'pdf')
-                    <p class="text-center my-4 text-red-600">cette ressource est  un pdf interne, les lien externes ne sont pas autoriser dans ce cas</p>
+                    <p class="text-center my-4 text-red-600">cette ressource est  un pdf interne, les liens externes ne sont pas autoriser dans ce cas</p>
                      <div class="custom-file">
                         <input type="file" class="custom-file-input my-2" name="pdf" id="pdf" lang="fr">
-                        <label class="custom-file-label" for="pdf">Modifiez votre PDF </label>
+                        <label class="custom-file-label" for="pdf">Modifier votre PDF </label>
                     </div>
                         @else
-                        <p class="text-center text-red-600 my-4">cette ressource est  un lien externe</p>
-                        <label for="link">ajouter votre lien externe<small class="text-danger">(exemples: https://www.monlien.fr) sauf pour les  pdf</small></label>
+                        <label for="link">Ajouter votre lien externe<small class="text-danger"> (exemples: https://www.monlien.fr) sauf pour les pdf</small></label>
                         <input type="url" id="link" name="link" value="{{ $reference->link }}" class="form-control my-2" placeholder="{{ $reference->link }}">
                     @endif
 
@@ -46,7 +44,7 @@
                     <div class="my-8"></div>
                     <div class="form-group mb-4">
                         @if ($tags->count() > 0 )
-                         <p class="text-center font-bold my-4">modifiez les tags: (mots clef cours de quelques lettres)</p>
+                         <p class="text-center font-bold my-4">modifier les tags: (mots clef cours de quelques lettres)</p>
                         @foreach ($tags as $tag)
                          <div class="custom-control custom-checkbox custom-control-inline">
                             <input type="checkbox" class="custom-control-input" id="tag{{ $tag->id }}" name="tags[]" value="{{ $tag->tag_slug }}" checked>
@@ -54,15 +52,15 @@
                         </div> 
                         @endforeach 
                         @else
-                        <p class="text-center text-red-500 my-3">vous n'avez pas encore créée de tags pour cette ressource</p> 
+                        <p class="text-center text-red-500 my-3">vous n'avez pas encore créé de tags pour cette ressource...</p> 
                             <div class="form-group">
-                                <label for="tags">créer vos tags ici <strong class="text-red-800">(5 maximum)</strong></label>
+                                <label for="tags">Créer vos tags ici <strong class="text-red-800">(5 maximum)</strong></label>
                                 <input data-role="tagsinput" type="text" name="tags" id="tags" >
                             </div>
                          @endif
                     </div>
                     <div class="mt-4">
-                        <p class="text-center font-bold">modifiez votre image:</p>
+                        <p class="text-center font-bold">Modifier votre image</p>
                     </div>
                     <div class="d-flex justify-content-center align-content-center my-8">
                         <div class="col-6 my-4">
@@ -81,33 +79,34 @@
           
 
                     
-                    <label for="title">Modifiez le titre</label>
+                    <label for="title">Modifier le titre</label>
                     <input type="text" id="title" name="title" value="{{ $reference->title }}" class="form-control my-2" placeholder="">
                     
 
-                    <label for="meta">Modifiez la meta description <small class="text-danger">(max 255 caractères)</small></label>
-                    <input type="text" id="meta" name="meta" value="{{ $reference->meta }}" class="form-control my-2" placeholder="meta description" maxlength="255"> 
-                    <span id="compt_descr1" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
+                    <label for="meta">Modifier la métadescription <small class="text-danger">(max 255 caractères)</small></label>
+                    <input type="text" id="meta" name="meta" value="{{ $reference->meta }}" class="form-control my-2" placeholder="Métadescription" maxlength="255"> 
+                    <span id="compt_descr1" class="text-right">0 mot(s) | 255   caractère(s) restant(s)</span>
                     <br>
 
                      
-                    <label for="alt" class="label">Modifiez la description de l'image <small class="text-danger">(max 255 caractères)</small></label>
+                    <label for="alt" class="label">Modifier la description de l'image <small class="text-danger">(max 255 caractères)</small></label>
                     <input type="text" id="imgDesc" name="alt" value="{{ $reference->alt }}" class="form-control my-2" placeholder="{{ $reference->alt }}" maxlength="255">
-                    <span id="compt_descr0" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
+                    <span id="compt_descr0" class="text-right">0 mot(s) | 255   caractère(s) restant(s)</span>
                     <br>
                     
-                    <label for="desc2">Modifiez la description de votre ressource</label>
+                    <label for="desc2">Modifier la description de votre ressource</label>
                     <textarea id="desc" name="desc" class="form-control my-2 " maxlength="255" >{{ $reference->desc }}</textarea>
-                    <span id="compt_descr2" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
+                    <span id="compt_descr2" class="text-right">0 mot(s) | 255   caractère(s) restant(s)</span>
                     <br>
 
                     <div>
-                        <label for="private">Ressource privée ?</label>
+                        <label for="private">La ressource est-elle privée ?</label>
                         <input type="checkbox" name="private" id="private" class="form-checkbox" value="{{ $reference->private }}" @if($reference->private == 1) checked @endif>
                     </div>
-                     <label for="duration">Ajouter une durée de lecture pour votre ressource <small class="text-danger">(uniquement en chiffres, en minutes et sans le mot minutes !)</small></label>
-                         <input type="text" id="duration" name="duration" value="{{ old('duration')}}" class="form-control my-2" placeholder="ex: 3, 5, 10, 20 etc....." required>
-                        <button class="btn btn-success " type="submit"><span class="fas fa-pen pr-2"></span>modifier la ressource</button>
+                     <label for="duration">Ajouter une durée de lecture pour votre ressource <br>
+                        <small class="text-danger">(Écrire 2:30 pour 2 minutes et 30 secondes de vidéo)</small></label>
+                         <input type="text" id="duration" name="duration" value="{{ old('duration')}}" class="form-control my-2" placeholder="ex: 2:30, 5:00, 10:00 etc.">
+                        <button class="btn btn-success " type="submit"><span class="fas fa-pen pr-2"></span>Modifier la ressource</button>
                     </form>
             </div>
         </div>
@@ -194,7 +193,7 @@
             if (!allowedExtensions.exec(filePath)) { 
                 
                 alert.innerHTML = "";
-                alert.innerHTML = '<span class="text-danger font-bold">ceci n"est pas une image valide seul les images extensions (gif, png, jpeg et jpg) sont autoriser merci !</span>';
+                alert.innerHTML = '<span class="text-danger font-bold">Ceci n\'est pas une image valide. Seules les extensions (gif, png, jpeg et jpg) sont autorisées ici.</span>';
                 fileInput.value = ''; 
                  document.getElementById( 'imagePreview').innerHTML ="";
                 return false; 

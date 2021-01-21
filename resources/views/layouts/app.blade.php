@@ -62,11 +62,11 @@
             <li class="li-navigation"><a class="text-gray" href="{{route('ressources.all')}}">Ressources</a></li>
         @endif
         @if ( request()->routeIs('formations.all'))
-            <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formation interactive</a></li>
+            <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formations interactives</a></li>
         @elseif ( request()->routeIs('ressources.private'))
-            <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formation interactive</a></li>
+            <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formations interactives</a></li>
         @else
-            <li class="li-navigation"><a class="text-gray" href="{{route('formations.all')}}">Formation interactive</a></li>
+            <li class="li-navigation"><a class="text-gray" href="{{route('formations.all')}}">Formations interactives</a></li>
         @endif
         @if ( request()->routeIs('usage'))
             <li class="li-navigation"><a class="current-page" href="{{route('usage')}}">Cas d'usage</a></li>
@@ -203,11 +203,11 @@
                     @endif
 
                     @if ( request()->routeIs('formations.all'))
-                        <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formation interactive</a></li>
+                        <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formations interactives</a></li>
                     @elseif ( request()->routeIs('ressources.private'))
-                        <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formation interactive</a></li>
+                        <li class="li-navigation"><a class="current-page" href="{{route('formations.all')}}">Formations interactives</a></li>
                     @else
-                        <li class="li-navigation"><a class="text-gray" href="{{route('formations.all')}}">Formation interactive</a></li>
+                        <li class="li-navigation"><a class="text-gray" href="{{route('formations.all')}}">Formations interactives</a></li>
                     @endif
 
                     @if ( request()->routeIs('usage'))
@@ -246,7 +246,7 @@
                     <img src="{{ asset('img/logo/logo_blanc.svg') }}" class="footer-img-logo" alt="">
                 </div>
                 <div class="legal ">
-                    <a class="text-white font-bold" href="{{route('mentions')}}">Mention légales</a>
+                    <a class="text-white font-bold" href="{{route('mentions')}}">Mentions légales</a>
                     <p class="text-white">© {{ \Carbon\Carbon::now()->year }} </p>
                 </div>
                 <a href="#" id="top">

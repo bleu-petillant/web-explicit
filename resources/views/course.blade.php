@@ -77,7 +77,7 @@
                     
                 </div>
                 <div id="nextcourse">
-                    <h3 class="">Autre formation</h3>
+                    
                 </div>
                 
                 <video controls playsinline autoplay controlsList="nodownload" id="video_run" class="w-full">

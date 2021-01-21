@@ -118,18 +118,21 @@ class SearchEngine {
             const desc = data_ref[i].desc;
             const pdf = data_ref[i].pdf;
             const link = data_ref[i].link;
+            const published = data_ref[i].published_at;
+
             
             if (data_ref[i].category_id == 1)
             {
                 container_ref.append(
-                    '<div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
+                    '<div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+pdf+'" >'+
                                 '<img class="pdf-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
                                 '<div class="mt-2 py-3 pl-2 all-pdf-card-content">'+
                                     '<p class="category pdf-color ">pdf</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
-                                '<p class="text-center mt-5 mb-5"><a href="'+pdf+'" class="pdf-button uppercase mx-auto tracking-wider">Lien</a></p>'+
+                                '<span>publier le '+published+'</span>'+
+                                '<p class="text-center mt-5 mb-5"><a href="'+pdf+'" class="pdf-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
                 )
@@ -137,14 +140,15 @@ class SearchEngine {
             else if (data_ref[i].category_id == 2)
             {
                 container_ref.append(
-                    '<div class="video-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
+                    '<div class="video-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+link+'" >'+
                                 '<img class="video-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
                                 '<div class="mt-2 py-3 pl-2 all-video-card-content">'+
-                                    '<p class="category video-color ">video</p>'+
+                                    '<p class="category video-color ">vidéo</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
-                                '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="video-button uppercase mx-auto tracking-wider">Lien</a></p>'+
+                                '<span>publier le '+published+'</span>'+
+                                '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="video-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
                 )
@@ -152,14 +156,15 @@ class SearchEngine {
             else if (data_ref[i].category_id == 3)
             {
                 container_ref.append(
-                    '<div class="podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
+                    '<div class="podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+link+'" >'+
                                 '<img class="podcast-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
                                 '<div class="mt-2 py-3 pl-2 all-podcast-card-content">'+
                                     '<p class="category podcsat-color ">podcast</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
-                                '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>'+
+                                  '<span>publier le '+published+'</span>'+
+                                '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="podcast-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
                 )
@@ -167,14 +172,15 @@ class SearchEngine {
             else if (data_ref[i].category_id == 4)
             {
                 container_ref.append(
-                    '<div class="podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
+                    '<div class="podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+link+'" >'+
                                 '<img class="podcast-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
                                 '<div class="mt-2 py-3 pl-2 all-podcast-card-content">'+
-                                    '<p class="category podcast-color ">articles</p>'+
+                                    '<p class="category podcast-color ">article</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
-                                '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>'+
+                                  '<span>publier le '+published+'</span>'+
+                                '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="podcast-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
                 )
@@ -203,18 +209,20 @@ class SearchEngine {
             const desc = data_ref[i].desc;
             const pdf = data_ref[i].pdf;
             const link = data_ref[i].link;
+            const published = data_ref[i].published_at;
 
             if (data_ref[i].category_id == 1)
             {
                 container_ref.append(
-                    '<div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
+                    '<div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+pdf+'" >'+
                                 '<img class="pdf-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
                                 '<div class="mt-2 py-3 pl-2 all-pdf-card-content">'+
                                     '<p class="category pdf-color ">pdf</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
-                                '<p class="text-center mt-5 mb-5"><a href="'+pdf+'" class="pdf-button uppercase mx-auto tracking-wider">Lien</a></p>'+
+                                  '<span>publier le '+published+'</span>'+
+                                '<p class="text-center mt-5 mb-5"><a href="'+pdf+'" class="pdf-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
                 )
@@ -222,14 +230,15 @@ class SearchEngine {
             else if (data_ref[i].category_id == 2)
             {
                 container_ref.append(
-                    '<div class="video-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
+                    '<div class="video-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+link+'" >'+
                                 '<img class="video-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
                                 '<div class="mt-2 py-3 pl-2 all-video-card-content">'+
-                                    '<p class="category video-color ">video</p>'+
+                                    '<p class="category video-color ">vidéo</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
-                                '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="video-button uppercase mx-auto tracking-wider">Lien</a></p>'+
+                                  '<span>publier le '+published+'</span>'+
+                                '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="video-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
                 )
@@ -237,14 +246,15 @@ class SearchEngine {
             else if (data_ref[i].category_id == 3)
             {
                 container_ref.append(
-                    '<div class="podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
+                    '<div class="podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+link+'" >'+
                                 '<img class="podcast-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
                                 '<div class="mt-2 py-3 pl-2 all-podcast-card-content">'+
                                     '<p class="category podcsat-color ">podcast</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
-                                '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>'+
+                                  '<span>publier le '+published+'</span>'+
+                                '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="podcast-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
                 )
@@ -252,14 +262,15 @@ class SearchEngine {
             else if (data_ref[i].category_id == 4)
             {
                 container_ref.append(
-                    '<div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
+                    '<div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+link+'" >'+
                                 '<img class="pdf-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
                                 '<div class="mt-2 py-3 pl-2 all-pdf-card-content">'+
-                                    '<p class="category pdf-color ">articles</p>'+
+                                    '<p class="category pdf-color ">article</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
-                                '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="pdf-button uppercase mx-auto tracking-wider">Lien</a></p>'+
+                                  '<span>publier le '+published+'</span>'+
+                                '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="pdf-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
                 )
@@ -273,90 +284,6 @@ class SearchEngine {
         this.resetSlickSlider();
     }
 
-
-     displayRefByQuery(data)
-     {
-        $('#result').text("Résultat de la recherche");
-         const data_ref = data[0];
-         let container_ref = $('.news-ressource-cards');
-         container_ref.html("");
-         for (let i = 0; i < data_ref.length; i++) {
-             const images = data_ref[i].image;
-             const alt = data_ref[i].alt;
-             const title = data_ref[i].title;
-             const desc = data_ref[i].desc;
-             const pdf = data_ref[i].pdf;
-             const link = data_ref[i].link;
- 
-             if (data_ref[i].category_id == 1)
-             {
-                 container_ref.append(
-                     '<div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
-                                 '<img class="pdf-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
-                                 '<div class="mt-2 py-3 pl-2 all-pdf-card-content">'+
-                                     '<p class="category pdf-color ">pdf</p>'+
-                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
-                                     '<p class="card-text">'+desc+'</p>'+
-                                 '</div>'+
-                                 '<p class="text-center mt-5 mb-5"><a href="'+pdf+'" class="pdf-button uppercase mx-auto tracking-wider">Lien</a></p>'+
-                             '</a>'+
-                         '</div>'
-                 )
-             }
-             else if (data_ref[i].category_id == 2)
-             {
-                 container_ref.append(
-                     '<div class="video-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
-                                 '<img class="video-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
-                                 '<div class="mt-2 py-3 pl-2 all-video-card-content">'+
-                                     '<p class="category video-color ">video</p>'+
-                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
-                                     '<p class="card-text">'+desc+'</p>'+
-                                 '</div>'+
-                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="video-button uppercase mx-auto tracking-wider">Lien</a></p>'+
-                             '</a>'+
-                         '</div>'
-                 )
-              }
-              else if (data_ref[i].category_id == 3)
-              {
-                 container_ref.append(
-                     '<div class="podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
-                                 '<img class="podcast-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
-                                 '<div class="mt-2 py-3 pl-2 all-podcast-card-content">'+
-                                     '<p class="category podcsat-color ">podcast</p>'+
-                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
-                                     '<p class="card-text">'+desc+'</p>'+
-                                 '</div>'+
-                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>'+
-                             '</a>'+
-                         '</div>'
-                 )
-              }
-              else if (data_ref[i].category_id == 4)
-              {
-                 container_ref.append(
-                     '<div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="" >'+
-                                 '<img class="pdf-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
-                                 '<div class="mt-2 py-3 pl-2 all-pdf-card-content">'+
-                                     '<p class="category pdf-color ">articles</p>'+
-                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
-                                     '<p class="card-text">'+desc+'</p>'+
-                                 '</div>'+
-                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="pdf-button uppercase mx-auto tracking-wider">Lien</a></p>'+
-                             '</a>'+
-                         '</div>'
-                 )
-              }else{
-                  // no ressources , display div or span with error messages
-                  container_ref.append('<span>Pas de ressources dans cette catégorie</span>')
-             }
-             
-         }
-         this.reset = false;
-         this.resetSlickSlider();
-         
-    }
 
 
     resetReferences()

@@ -96,7 +96,7 @@
             </li>
             <li class="nav-item my-2 bg-white">
                 <a href="{{ route('usage.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-briefcase"></i>Liste des cas d'usages
+                    <i class="nav-icon fas fa-briefcase"></i>Liste des cas d'usage
                 </a>
             </li>
             <li class="nav-item my-2 bg-white">

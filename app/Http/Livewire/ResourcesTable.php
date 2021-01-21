@@ -38,13 +38,13 @@ class ResourcesTable extends LivewireDatatable
                 ->label('Description'),
 
                 Column::name('category.name')
-                ->label('Categories'),
+                ->label('Catégories'),
 
                 Column::name('tagged.tag_name')
                 ->label('Tags associés'),
 
                 Column::name('private',1)
-                ->label(' privé 1 = oui'),
+                ->label('1 = oui*'),
 
 
             Column::callback(['image'], function ($image) {

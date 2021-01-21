@@ -47,7 +47,7 @@
 
             <div id="victory" class="relative">
                     <img class="absolute victory-img" src="{{ asset('img/victory.png') }}" alt="">
-                    <p class="text-center victory-text">Félicitation</p>
+                    <p class="text-center victory-text">Félicitations</p>
             </div>
 
             <div id="indice"></div>

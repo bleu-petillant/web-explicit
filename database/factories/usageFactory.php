@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Usage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class usageFactory extends Factory
@@ -28,8 +29,9 @@ class usageFactory extends Factory
             'desc' => $this->faker->text(),
             'slug' => $slug,
             'image'=> 'https://picsum.photos/200/200?random=' .$this->faker->numberBetween($min = 1, $max = 75) ,
-            'link'=>'https://www.youtube.com/embed/_RDtBJPOsV8',
+            'link'=>'https://www.youtube.com/embed/ISQKNR7lJgI',
             'meta'=>$this->faker->word(),
+             'published_at'=>Carbon::now(),
             'alt'=>$this->faker->word(),
             'teacher_id' => $this->faker->numberBetween($min = 4, $max = 20),
         ];

@@ -7,8 +7,8 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">home</a></li>
-                        <li class="breadcrumb-item active">créer un nouveau cas d 'usage</li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">créer un nouveau cas d'usage</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -20,8 +20,8 @@
                     @include('includes.errors')
 
                   
-                    <label for="title">Ajouter un titre pour votre cas d'usage.</label>
-                    <input type="text" id="title" name="title" value="{{ old('title')}}" class="form-control my-2" placeholder="titre du cas d'usage..." required> <br>
+                    <label for="title">Ajouter un titre pour votre cas d'usage</label>
+                    <input type="text" id="title" name="title" value="{{ old('title')}}" class="form-control my-2" placeholder="Titre du cas d'usage" required> <br>
 
                      <div class=" my-4"></div>
                      <div class="custom-file" id="file">
@@ -32,24 +32,24 @@
                     <div id="imagePreview" class="col-lg-2"></div> <br> 
                         
                     <label for="alt" class="label"> Ajouter une description pour l'image <small class="text-danger">(max 255 caractères)</small></label>
-                    <input type="text" id="imgDesc" name="alt" class="form-control " value="{{ old('alt')}}" placeholder="description de l'image" required maxlength="255">
-                    <span id="compt_descr0" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
+                    <input type="text" id="imgDesc" name="alt" class="form-control " value="{{ old('alt')}}" placeholder="Description de l'image" required maxlength="255">
+                    <span id="compt_descr0" class="text-right">0 mot(s) | 255   caractère(s) restant(s)</span>
                     <br> <br>
                     
-                    <label for="link">votre lien vers la vidéo heberger (ex: youtube,viméo,dailymotion etc....):<small class="text-danger">(exemples:https://www.youtube.com/embed/_RDtBJPOsV8) </small></label>
+                    <label for="link">Votre lien vers la vidéo hébergée (ex: youtube, viméo, dailymotion etc.):<small class="text-danger">(exemples:https://www.youtube.com/embed/_RDtBJPOsV8) </small></label>
                     <input type="url" id="link" name="link" value="{{ old('link')}}" class="form-control my-2" placeholder="https://www.votrelien.com">
                         <br>
 
-                    <label for="meta">Ajouter une meta description pour mieux referencer votre cas d'usage <small class="text-danger">(max 255 caractères)</small></label>
-                    <input type="text" id="meta" name="meta" value="{{ old('meta')}}" class="form-control my-2" placeholder="meta description" required maxlength="255">
-                    <span id="compt_descr1" class="text-right">0 mots | 255   caractère(s) restant(s)</span>
+                    <label for="meta">Ajouter une métadescription pour mieux référencer votre cas d'usage <small class="text-danger">(max 255 caractères)</small></label>
+                    <input type="text" id="meta" name="meta" value="{{ old('meta')}}" class="form-control my-2" placeholder="Métadescription" required maxlength="255">
+                    <span id="compt_descr1" class="text-right">0 mot(s) | 255   caractère(s) restant(s)</span>
                     <br> <br>
  
-                    <label for="desc">Articles sur votre cas d'usage: </label>
-                    <textarea type="text" id="desc" name="desc" class="form-control my-2"  placeholder="décrivez votre cas d'usage" required></textarea>
+                    <label for="desc">Description du cas d'usage: </label>
+                    <textarea type="text" id="desc" name="desc" class="form-control my-2"  placeholder="Décrire ce cas d'usage" required></textarea>
 
                      <div class=" my-4"></div>
-                    <button class="btn btn-info  my-4" type="submit"><span class="fas fa-plus pr-2"></span>Créez ce cas d' usage</button>
+                    <button class="btn btn-info  my-4" type="submit"><span class="fas fa-plus pr-2"></span>Créer ce cas d'usage</button>
                 </form>
             </div>
         </div>
@@ -104,7 +104,7 @@
             if (!allowedExtensions.exec(filePath)) { 
                 
                 alert.innerHTML = "";
-                alert.innerHTML = '<span class="text-danger font-bold">ceci n"est pas une image valide seul les images extensions (gif, png, jpeg et jpg) sont autoriser merci !</span>';
+                alert.innerHTML = '<span class="text-danger font-bold">Ceci n\'est pas une image valide. Seules les extensions (gif, png, jpeg et jpg) sont autorisées ici.</span>';
                 fileInput.value = ''; 
                  document.getElementById( 'imagePreview').innerHTML ="";
                 return false; 

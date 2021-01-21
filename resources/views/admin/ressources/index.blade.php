@@ -14,9 +14,10 @@
       <div class="col-12">
       	<div class="card card-list">
         <div class="card-header bg-dark py-3 d-flex justify-content-center my-4">
-          <a href="{{route('reference.create')}}" class="btn btn-success btn-md px-3 my-0 mr-0 white-text"><i class="fas fa-plus pr-2"></i>créer une nouvelle ressources</a>
+          <a href="{{route('reference.create')}}" class="btn btn-success btn-md px-3 my-0 mr-0 white-text"><i class="fas fa-plus pr-2"></i>Créer une nouvelle ressource</a>
           </div>
           <div class="card-body">
+            <span>*Pour une ressource privée</span>
             <livewire:resources-table 
             {{-- include="id ,tagged.tag_name|Tags, title,desc,category.name|Catégories,slug"  --}}
             searchable="title,slug"/>

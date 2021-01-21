@@ -24,7 +24,7 @@
                         <div  class="default_option">
                             <option value="" selected>Toutes les catégories</option>
                             @foreach ($categories as $cat)
-                            <option  value="{{$cat->id}}" >{{$cat->name}} </option > 
+                            <option  value="{{$cat->id}}" >{{$cat->name}}</option > 
                             @endforeach
                         </div>
                     </select>
@@ -44,7 +44,7 @@
                     
                     @if ($reference->category_id == '1')
                         <div class="news-ressource pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 relative">
-                            <a href="" >
+                            <a href="{{$reference->pdf}}"  target="__blank">
                                 <img class="pdf-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
                                 <div class="mt-2 py-3 pl-2 all-pdf-card-content">
                                     <div class="row justify-between">
@@ -53,14 +53,16 @@
                                     </div>
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p>
-                                    <span>Publié le : 10/12/2020</span>
+
+                                    <span>publier le {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
+
                                 </div>
-                                <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->pdf}}" class="pdf-button uppercase mx-auto tracking-wider">Lien</a></p>
+                                <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->pdf}}" class="pdf-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>
                             </a>
                         </div>
                     @elseif($reference->category_id == '2')
                         <div class="news-ressource video-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 relative">
-                            <a href="" >
+                            <a href="{{$reference->link}}" target="__blank" >
                                 <img class="video-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
                                 <div class="mt-2 py-3 pl-2 all-video-card-content">
                                 <div class="row justify-between">
@@ -68,14 +70,15 @@
                                         <p class="float-right" style="margin-right:13px">{{$reference->duration}}</p>
                                     </div>
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
-                                    <p class="card-text">{{$reference->desc}}</p>
+                                    <p class="card-text">{{$reference->desc}}</p><br>
+                                   <span>publier le {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
                                 </div>
-                                <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" class="video-button uppercase mx-auto tracking-wider">Lien</a></p>
+                                <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" class="video-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>
                             </a>
                         </div>
                     @elseif($reference->category_id == '3')
                         <div class="news-ressource podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 relative">
-                            <a href="" >
+                            <a href="{{$reference->link}}" target="__blank" >
                                 <img class="podcast-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
                                 <div class="mt-2 py-3 pl-2 all-podcast-card-content">
                                     <div class="row justify-between">
@@ -84,25 +87,29 @@
                                     </div>
 
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
-                                    <p class="card-text">{{$reference->desc}}</p>
+                                    <p class="card-text">{{$reference->desc}}</p><br>
+                                   <span>publier le {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
                                 </div>
-                                <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
+                                <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" target="__blank" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
                             </a>
                         </div>
                     @elseif($reference->category_id == '4')
                         <div class="news-ressource podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 relative">
-                            <a href="" >
+                            <a href="{{$reference->link}}" target="__blank" >
                                 <img class="podcast-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
                                 <div class="mt-2 py-3 pl-2 all-podcast-card-content">
+
                                     <div class="row justify-between">
                                         <p class="category podcast-color ">article</p>
                                         <p class="float-right" style="margin-right:13px">{{$reference->duration}}</p>
                                     </div>
 
+
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
-                                    <p class="card-text">{{$reference->desc}}</p>
+                                    <p class="card-text">{{$reference->desc}}</p><br>
+                                    <span>publier le {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
                                 </div>
-                                <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
+                                <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" target="__blank" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
                             </a>
                         </div>
                     @endif
@@ -157,7 +164,7 @@
         @foreach ($references as $ref)
             @if ($ref->category_id == '1')
                 <div class=" grid-item-test shadow-lg" data-filter="pdf">
-                    <a href="{{asset($ref->pdf)}}" class="card-link">   
+                    <a href="{{$ref->pdf}}" class="card-link" target="_blank">   
                         <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
                         <div class="card-content">
                             <div class="mt-2 py-3 pl-2 pdf-card-content ">
@@ -166,15 +173,16 @@
                                         <p class="float-right" style="margin-right:13px">{{$reference->duration}}</p>
                                     </div>
                                 <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
-                                <p class="card-text">{{$ref->desc}}</p>
+                                <p class="card-text">{{$ref->desc}}</p><br>
+                                   <span>publier le {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>
                             </div>
                         </div>
-                        <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->pdf}}" class="pdf-button uppercase mx-auto tracking-wider">Lien</a></p>
+                        <p class="absolute news-ressource-button text-center my-4"><a href="{{$ref->pdf}}" class="pdf-button uppercase mx-auto tracking-wider" target="_blank">Lien</a></p>
                     </a>
                 </div>
             @elseif($ref->category_id == '2')
                 <div class=" grid-item-test shadow-lg" data-filter="video">
-                    <a href="{{asset($ref->video)}}" class="card-link">   
+                    <a href="{{asset($ref->video)}}" class="card-link" target="_blank">   
                         <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
                         <div class="card-content">
                             <div class="mt-2 py-3 pl-2 video-card-content ">
@@ -183,15 +191,16 @@
                                         <p class="float-right" style="margin-right:13px">{{$reference->duration}}</p>
                                     </div>
                                 <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
-                                <p class="card-text">{{$ref->desc}}</p>
+                                <p class="card-text">{{$ref->desc}}</p><br>
+                                    <span>publier le {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>
                             </div>
                         </div>
-                        <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" class="video-button uppercase mx-auto tracking-wider">Lien</a></p>
+                        <p class="absolute news-ressource-button text-center my-4"><a href="{{$ref->link}}" class="video-button uppercase mx-auto tracking-wider" target="_blank">Lien</a></p>
                     </a>   
                 </div>
             @elseif($ref->category_id == '3')
                 <div class=" grid-item-test shadow-lg"  data-filter="podcast">
-                    <a href="{{asset($ref->podcast)}}" class="card-link">   
+                    <a href="{{asset($ref->podcast)}}" class="card-link" target="_blank">   
                         <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
                         <div class="card-content">
                             <div class="mt-2 py-3 pl-2 podcast-card-content ">
@@ -200,15 +209,16 @@
                                         <p class="float-right" style="margin-right:13px">{{$reference->duration}}</p>
                                     </div>
                                 <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
-                                <p class="card-text">{{$ref->desc}}</p>
+                                <p class="card-text">{{$ref->desc}}</p><br>
+                                    <span>publier le {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>
                             </div>
                         </div>
-                        <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
+                        <p class="absolute news-ressource-button text-center my-4"><a href="{{$ref->link}}" class="podcast-button uppercase mx-auto tracking-wider" target="_blank">Lien</a></p>
                     </a>  
                 </div>
             @elseif($ref->category_id == '4')
                 <div class=" grid-item-test shadow-lg" data-filter="articles">
-                    <a href="{{asset($ref->link)}}" class="card-link">   
+                    <a href="{{asset($ref->link)}}" class="card-link" target="_blank">   
                         <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
                         <div class="card-content">
                             <div class="mt-2 py-3 pl-2 podcast-card-content ">
@@ -217,10 +227,11 @@
                                         <p class="float-right" style="margin-right:13px">{{$reference->duration}}</p>
                                     </div>
                                 <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
-                                <p class="card-text">{{$ref->desc}}</p>
+                                <p class="card-text">{{$ref->desc}}</p><br>
+                                  <span>publier le {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>
                             </div>
                         </div>
-                        <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
+                        <p class="absolute news-ressource-button text-center my-4"><a href="{{$ref->link}}" class="podcast-button uppercase mx-auto tracking-wider" target="_blank">Lien</a></p>
                     </a>
                 </div>
             @endif

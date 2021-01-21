@@ -15,7 +15,7 @@
       	<div class="card card-list">
           <div class="card-body"></div>
             <div class="card-header bg-dark py-3 my-4 d-flex justify-content-center">
-                <a href="{{route('teacher.create')}}" class="btn btn-success btn-md px-3 my-0 mr-0 white-text"><i class="fas fa-plus pr-2"></i>créer un nouveau professeur</a>
+                <a href="{{route('teacher.create')}}" class="btn btn-success btn-md px-3 my-0 mr-0 white-text"><i class="fas fa-plus pr-2"></i>Créer un nouveau profil professeur</a>
             </div>
             <livewire:teacher-table searchable="name,prenom,email"/>
           </div>

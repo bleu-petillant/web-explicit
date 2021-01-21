@@ -204,8 +204,12 @@ class CheckResponse
         let ref = ressource.references;
 
         this.ressourceContainer.show();
+
+      
         this.ressourceContainer.append('<div class="col-md-12 col-lg-12 col-sm-12 mt-2"><p class="pl-4">Approfondir avec ces ressources : </p></div>');
 
+
+      
         // on instancie les ressources associer
         for (let i = 0; i < ref.length; i++) {
             let title = ref[i].title;

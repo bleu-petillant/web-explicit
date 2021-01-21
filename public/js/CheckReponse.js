@@ -13,6 +13,8 @@ class CheckResponse
         this.ressourceContainer = $('#ressources');
         this.ressourceContainerTitle = $('#title_ressources');
         this.nextcourseContainer = $('#nextcourse');
+        this.nextcourseContainer.html('');
+        this.nextcourseContainer.hide();
         this.resetAllContainer();
         this.checkTheReponse();
 
@@ -27,8 +29,9 @@ class CheckResponse
         this.nextcourseContainer.html("");
         this.indiceContainer.hide();
         this.ressourceContainer.hide();
-        this.nextcourseContainer.hide();
+        this.nextcourseContainer.hide();   
     }
+
     checkTheReponse()
     {
         let valide = $('#valide');
@@ -89,6 +92,7 @@ class CheckResponse
 
                             this.validate = true;
                             reponse.showRessources(response[0]);
+                            valide.hide();
                             getdata.NextQuestions(this.validate); 
                             
                         }else if(response.status == 'error'){

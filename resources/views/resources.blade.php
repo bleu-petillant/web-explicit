@@ -47,7 +47,10 @@
                             <a href="{{$reference->pdf}}"  target="__blank">
                                 <img class="pdf-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
                                 <div class="mt-2 py-3 pl-2 all-pdf-card-content">
-                                    <p class="category pdf-color ">pdf</p>
+                                    <div class="row justify-between">
+                                        <p class="category pdf-color ">pdf</p>
+                                        <p class="float-right" style="margin-right:13px">{{$reference->duration}}</p>
+                                    </div>
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p>
                                     <span>publier le {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
@@ -60,7 +63,10 @@
                             <a href="{{$reference->link}}" target="__blank" >
                                 <img class="video-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
                                 <div class="mt-2 py-3 pl-2 all-video-card-content">
-                                    <p class="category video-color ">vidéo</p>
+                                <div class="row justify-between">
+                                        <p class="category video-color ">vidéo</p>
+                                        <p class="float-right" style="margin-right:13px">{{$reference->duration}}</p>
+                                    </div>
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p><br>
                                    <span>publier le {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
@@ -73,7 +79,10 @@
                             <a href="{{$reference->link}}" target="__blank" >
                                 <img class="podcast-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
                                 <div class="mt-2 py-3 pl-2 all-podcast-card-content">
-                                    <p class="category podcast-color ">podcast</p>
+                                    <div class="row justify-between">
+                                        <p class="category podcast-color ">podcast</p>
+                                        <p class="float-right" style="margin-right:13px">{{$reference->duration}}</p>
+                                    </div>
 
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p><br>
@@ -87,7 +96,10 @@
                             <a href="{{$reference->link}}" target="__blank" >
                                 <img class="podcast-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
                                 <div class="mt-2 py-3 pl-2 all-podcast-card-content">
-                                    <p class="category podcast-color ">article</p>
+                                    <div class="row justify-between">
+                                        <p class="category podcast-color ">article</p>
+                                        <p class="float-right" style="margin-right:13px">{{$reference->duration}}</p>
+                                    </div>
 
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p><br>
@@ -152,7 +164,10 @@
                         <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
                         <div class="card-content">
                             <div class="mt-2 py-3 pl-2 pdf-card-content ">
-                                <p class="category pdf-color ">Pdf</p>
+                                    <div class="row justify-between">
+                                        <p class="category pdf-color ">pdf</p>
+                                        <p class="float-right" style="margin-right:13px">{{$reference->duration}}</p>
+                                    </div>
                                 <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
                                 <p class="card-text">{{$ref->desc}}</p><br>
                                    <span>publier le {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>
@@ -167,7 +182,10 @@
                         <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
                         <div class="card-content">
                             <div class="mt-2 py-3 pl-2 video-card-content ">
-                                <p class="category video-color ">Vidéo</p>
+                                    <div class="row justify-between">
+                                        <p class="category video-color ">vidéo</p>
+                                        <p class="float-right" style="margin-right:13px">{{$reference->duration}}</p>
+                                    </div>
                                 <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
                                 <p class="card-text">{{$ref->desc}}</p><br>
                                     <span>publier le {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>
@@ -182,7 +200,10 @@
                         <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
                         <div class="card-content">
                             <div class="mt-2 py-3 pl-2 podcast-card-content ">
-                                <p class="category podcast-color ">Podcast</p>
+                                    <div class="row justify-between">
+                                        <p class="category podcast-color ">podcast</p>
+                                        <p class="float-right" style="margin-right:13px">{{$reference->duration}}</p>
+                                    </div>
                                 <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
                                 <p class="card-text">{{$ref->desc}}</p><br>
                                     <span>publier le {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>
@@ -197,7 +218,10 @@
                         <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
                         <div class="card-content">
                             <div class="mt-2 py-3 pl-2 podcast-card-content ">
-                                <p class="category podcast-color ">Article</p>
+                                    <div class="row justify-between">
+                                        <p class="category podcast-color ">podcast</p>
+                                        <p class="float-right" style="margin-right:13px">{{$reference->duration}}</p>
+                                    </div>
                                 <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
                                 <p class="card-text">{{$ref->desc}}</p><br>
                                   <span>publier le {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>

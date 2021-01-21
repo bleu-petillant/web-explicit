@@ -431,6 +431,7 @@
     left: 0;
     margin: auto;
     z-index: 57;
+    display: none;
 }
 
 #ressource_course_next{

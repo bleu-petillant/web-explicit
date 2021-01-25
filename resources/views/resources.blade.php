@@ -65,7 +65,7 @@
                             <a href="{{$reference->link}}" target="__blank" >
                                 <img class="video-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
                                 <div class="mt-2 py-3 pl-2 all-video-card-content">
-                                <div class="row justify-between">
+                                    <div class="row justify-between">
                                         <p class="category video-color ">vidéo</p>
                                         <p class="float-right" style="margin-right:13px">{{$reference->duration}}</p>
                                     </div>

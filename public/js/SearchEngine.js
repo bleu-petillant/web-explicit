@@ -133,7 +133,9 @@ class SearchEngine {
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
+
                                 '<span>Publié(e)  '+published+'</span>'+
+
                                 '<p class="text-center mt-5 mb-5"><a href="'+pdf+'" class="pdf-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -149,7 +151,9 @@ class SearchEngine {
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
+
                                 '<span>Publié(e)  '+published+'</span>'+
+
                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="video-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -165,7 +169,9 @@ class SearchEngine {
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
+
                                   '<span>Publié(e) '+published+'</span>'+
+
                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="podcast-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -181,7 +187,9 @@ class SearchEngine {
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
+
                                   '<span>Publié(e)  '+published+'</span>'+
+
                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="podcast-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -223,7 +231,11 @@ class SearchEngine {
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
-                                  '<span>Publié(e)  '+published+'</span>'+
+
+         
+
+                                  '<span class="publish-date"> Publié(e) '+published+'</span>'+
+
                                 '<p class="text-center mt-5 mb-5"><a href="'+pdf+'" class="pdf-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -239,7 +251,9 @@ class SearchEngine {
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
-                                  '<span>Publié(e)  '+published+'</span>'+
+
+                                  '<span class="publish-date">Publié(e) '+published+'</span>'+
+
                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="video-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -255,7 +269,11 @@ class SearchEngine {
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
-                                  '<span>Publié(e)  '+published+'</span>'+
+
+                                 
+
+                                  '<span class="publish-date">Publié(e) '+published+'</span>'+
+
                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="podcast-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -271,7 +289,11 @@ class SearchEngine {
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
-                                  '<span>Publié(e)  '+published+'</span>'+
+
+                   
+
+                                  '<span class="publish-date">Publié(e) '+published+'</span>'+
+
                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="pdf-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'

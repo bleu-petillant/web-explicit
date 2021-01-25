@@ -88,6 +88,11 @@
   cursor: pointer;
 }
 
+.publish-date{
+  color: gray;
+  font-size: 15px;
+}
+
 .slick-next{
   position: absolute;
   top: 35%;

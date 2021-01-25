@@ -73,6 +73,7 @@
                     <button class="btn btn-info  my-4" type="submit"><span class="fas fa-plus pr-2"></span>Créer cette ressource</button>
                 </form>
             </div>
+            
         </div>
     </div>
 <script>
@@ -87,7 +88,7 @@
 
         $("select[id=category]").change(function(){
             if($(this).val() == 1){
-                $('#file-type').html("").append('<p class=" text-center my-4">cette ressource est un PDF</p><div class="custom-file"><input type="file" class="custom-file-input my-2" name="pdf" id="pdf" lang="fr"><label class="custom-file-label" for="pdf">Sélectionner votre PDF </label></div>');
+                $('#file-type').html("").append('<p class=" text-center my-4">cette ressource est un PDF</p><div class="custom-file"><input type="file" class="custom-file-input my-2" name="pdf" id="pdf" lang="fr" onchange="return pdfValidation()"><label class="custom-file-label" for="pdf">Sélectionner votre PDF </label><div id="alert_pdf"></div></div>');
             }else if($(this).val() == 2){
                 $('#file-type').html("").append('<p class=" text-center my-4">cette ressource est une vidéo</p><label for="link">ajouter votre lien vidéo externe ici:<small class="text-danger">(exemples: https://www.youtube.....) </small></label><input type="url" id="link" name="link" value="{{ old('link')}}" class="form-control my-2" placeholder="https://www.youtube.com/embed....">');
             }else if($(this).val() == 3){
@@ -153,6 +154,36 @@
                 }) 
 
             });
+
+        function pdfValidation() {
+            var fileInput =  document.getElementById('pdf');
+            
+            
+            var filePath = fileInput.value; 
+            var alert = document.getElementById('alert_pdf');
+            // Allowing file type 
+            var allowedExtensions =  
+                    /(\.pdf)$/i;
+
+            if (!allowedExtensions.exec(filePath)) { 
+                
+                alert.innerHTML = "";
+                alert.innerHTML = '<span class="text-danger font-bold">Ceci n\'est pas un pdf</span>';
+                fileInput.value = ''; 
+                return false; 
+            }  
+            else  
+            { 
+                alert.innerHTML = "";
+                // Image preview 
+                if (fileInput.files && fileInput.files[0]) { 
+
+                    alert.innerHTML = filePath;
+                }
+            }
+        }
+
+
          function fileValidation() { 
             var fileInput =  document.getElementById('image'); 
               
@@ -161,6 +192,7 @@
             // Allowing file type 
             var allowedExtensions =  
                     /(\.jpg|\.jpeg|\.png|\.gif)$/i; 
+            
               
             if (!allowedExtensions.exec(filePath)) { 
                 

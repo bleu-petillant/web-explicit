@@ -66,7 +66,7 @@
             </div>
             @endforeach 
             @else
-                <h4 class=" text-xl text-justify mt-10 px-4 w-3/4">désoler nous n'avons pas de ressources pour le moment</h4>
+                <h4 class=" text-xl text-justify mt-10 px-4 w-3/4">Pas de ressource pour le moment</h4>
             @endif
         </div>
         <div class="flex mx-auto justify-center">
@@ -118,7 +118,7 @@
         </div>
         @endforeach
         @else
-        <h1>pas de cas d 'usage pour le moment</h1>
+        <h1>Pas de cas d'usage pour le moment</h1>
         @endif
     </div>
         <div class="flex mx-auto justify-center">

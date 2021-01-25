@@ -31,9 +31,14 @@
                 <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
                 <div class>
                     <div class="mt-2 py-3 pl-2 all-pdf-card-content">
-                        <p class="category pdf-color ">Pdf</p>
+                            <div class="row justify-between">
+                                <p class="category pdf-color ">pdf</p>
+                                <p class="float-right" style="margin-right:13px">{{$ref->duration}}</p>
+                            </div>
                         <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
-                        <p class="card-text">{{$ref->desc}}</p>
+                        <p class="card-text">{{$ref->desc}}</p><br>
+
+                        <span class="publish-date">Publié(e) {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>
                     </div>
                 </a>
                 <p class="text-center mt-5 mb-5"><a href="{{$ref->pdf}}" class=" private-pdf-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
@@ -44,9 +49,14 @@
                 <a href="{{$ref->link}}"target="_blank" >
                 <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
                     <div class="mt-2 py-3 pl-2 all-video-card-content">
-                        <p class="category video-color ">Vidéo</p>
+                        <div class="row justify-between">
+                            <p class="category video-color ">vidéo</p>
+                            <p class="float-right" style="margin-right:13px">{{$ref->duration}}</p>
+                        </div>
                         <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
-                        <p class="card-text">{{$ref->desc}}</p>
+                        <p class="card-text">{{$ref->desc}}</p><br>
+
+                        <span class="publish-date">Publié(e) {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>
                     </div>
                 </a>
                 <p class="text-center mt-5 mb-5"><a href="{{$ref->link}}" class=" private-video-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
@@ -56,9 +66,13 @@
                 <a href="{{$ref->link}}"target="_blank" >
                 <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
                     <div class="mt-2 py-3 pl-2 all-podcast-card-content">
-                        <p class="category podcast-color ">Podcast</p>
+                        <div class="row justify-between">
+                            <p class="category podcast-color ">podcast</p>
+                            <p class="float-right" style="margin-right:13px">{{$ref->duration}}</p>
+                        </div>
                         <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
-                        <p class="card-text">{{$ref->desc}}</p>
+                        <p class="card-text">{{$ref->desc}}</p><br>
+                        <span class="publish-date">Publié(e) {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>
                     </div>
                 </a>
                 <p class="text-center mt-5 mb-5"><a href="{{$ref->link}}" class=" private-podcast-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>
@@ -68,9 +82,14 @@
                 <a href="{{$ref->link}}"target="_blank" >
                 <img class=" card-image w-full h-40 object-cover" src="{{asset($ref->image)}}" alt="{{$ref->alt}}">
                     <div class="mt-2 py-3 pl-2 all-podcast-card-content">
-                        <p class="category podcast-color ">Article</p>
+                        <div class="row justify-between">
+                            <p class="category podcast-color ">article</p>
+                            <p class="float-right" style="margin-right:13px">{{$ref->duration}}</p>
+                        </div>
                         <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
                         <p class="card-text">{{$ref->desc}}</p>
+                        <br>
+                        <span class="publish-date">Publié(e) {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>
                     </div>
                 </a>
                 <p class="text-center mt-5 mb-5"><a href="{{$ref->link}}" class=" private-podcast-button uppercase mx-auto tracking-wider"  target="_blank">Lien</a></p>

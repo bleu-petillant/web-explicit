@@ -237,13 +237,14 @@
         @yield('contact')
         @yield('mentions')
         @yield('polices')
+        
 
         @yield('allressourcesprivate')
 
         <footer class="pt-8 pb-3 w-screen">
             <div class="flex">
                 <div class="footer-logo pl-8">
-                    <img src="{{ asset('img/logo/logo_blanc.svg') }}" class="footer-img-logo" alt="">
+                    <img src="img/logo/logo_blanc.svg" class="footer-img-logo" alt="">
                 </div>
                 <div class="legal ">
                     <a class="text-white font-bold" href="{{route('mentions')}}">Mentions légales</a>

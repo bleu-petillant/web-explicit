@@ -54,7 +54,7 @@
         @auth
         <div class="image">
                 <a href="{{ route('home') }}">
-                    <img class="block w-1/4 admin-logo" src="{{ asset('img/logo/logo_blanc.svg') }}" alt="Workflow">
+                    <img class="block w-1/4 admin-logo" src="img/logo/logo_blanc.svg'" alt="Workflow">
                 </a>
                 <p class="d-block raleway text-center text-white underline">{{ Auth::user()->name }}</p>
         </div>

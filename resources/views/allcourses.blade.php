@@ -159,7 +159,7 @@
     </div>
         @endforeach
         @else
-    <p>pas de formation pour le moment</p>
+    <!-- <p>pas de formation pour le moment</p> -->
     @endif
     </div>
 </section>

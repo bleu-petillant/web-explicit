@@ -54,7 +54,10 @@
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p>
 
-                                    <span>Publié(e)  {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
+
+
+                                    <span class="publish-date">Publié(e) {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
+
 
                                 </div>
                                 <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->pdf}}" class="pdf-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>
@@ -65,13 +68,17 @@
                             <a href="{{$reference->link}}" target="__blank" >
                                 <img class="video-card card-image w-full h-40 object-cover" src="{{asset($reference->image)}}" alt="{{$reference->alt}}">
                                 <div class="mt-2 py-3 pl-2 all-video-card-content">
-                                <div class="row justify-between">
+                                    <div class="row justify-between">
                                         <p class="category video-color ">vidéo</p>
                                         <p class="float-right" style="margin-right:13px">{{$reference->duration}}</p>
                                     </div>
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p><br>
-                                   <span>Publié(e) {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
+
+           
+
+                                    <span class="publish-date">Publié(e) {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
+
                                 </div>
                                 <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" class="video-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>
                             </a>
@@ -88,7 +95,11 @@
 
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p><br>
-                                   <span>Publié(e)  {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
+
+                           
+
+                                    <span class="publish-date">Publié(e) {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
+
                                 </div>
                                 <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" target="__blank" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
                             </a>
@@ -105,7 +116,11 @@
 
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p><br>
-                                    <span>Publié(e)  {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
+
+                      
+
+                                    <span class="publish-date">Publié(e) {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
+
                                 </div>
                                 <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" target="__blank" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
                             </a>

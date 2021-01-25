@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Reference;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class SearchEngineController extends Controller
 {
@@ -13,6 +14,7 @@ class SearchEngineController extends Controller
         $id = $request->id;
         if($id != null){
             $refBycat = Reference::where('category_id',$id)->where('private',0)->get();
+            
                 if($refBycat->count() > 0){
                       return response()->json(['status'=>'success',$refBycat]);
                 }else{

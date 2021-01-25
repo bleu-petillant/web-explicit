@@ -54,7 +54,10 @@
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p>
 
+
+
                                     <span class="publish-date">Publié(e) {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
+
 
                                 </div>
                                 <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->pdf}}" class="pdf-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>
@@ -71,7 +74,11 @@
                                     </div>
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p><br>
+
+           
+
                                     <span class="publish-date">Publié(e) {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
+
                                 </div>
                                 <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" class="video-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>
                             </a>
@@ -88,7 +95,11 @@
 
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p><br>
+
+                           
+
                                     <span class="publish-date">Publié(e) {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
+
                                 </div>
                                 <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" target="__blank" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
                             </a>
@@ -105,7 +116,11 @@
 
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p><br>
+
+                      
+
                                     <span class="publish-date">Publié(e) {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
+
                                 </div>
                                 <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" target="__blank" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
                             </a>
@@ -243,7 +258,9 @@
 
 
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
 <script src="{{asset('js/SearchEngine.js')}}"></script>
+
 <script>
 
 $(document).on("load",function(){

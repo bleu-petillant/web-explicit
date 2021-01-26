@@ -52,10 +52,8 @@
                                         <p class="float-right" style="margin-right:13px">{{$reference->duration}}</p>
                                     </div>
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
-                                    <p class="card-text">{{$reference->desc}}</p>
-
+                                    <p class="card-text">{{$reference->desc}}</p><br>
                                     <span class="publish-date">Publié(e) {{ \Carbon\Carbon::parse($reference->published_at)->diffForHumans() }}</span>
-
                                 </div>
                                 <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->pdf}}" class="pdf-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>
                             </a>

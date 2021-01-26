@@ -550,7 +550,7 @@
     grid-template-columns: repeat(auto-fit, 20rem);
     justify-content: center;
     gap: 48px;
-    margin: initial;
+    margin: initial!important;
 }
 
 

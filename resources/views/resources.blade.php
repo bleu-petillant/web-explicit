@@ -69,7 +69,7 @@
                                     </div>
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p><br>
-                                   <span class="publish-date">Publié(e) {{ \Carbon\Carbon::parse($reference->created_at)->diffForHumans() }}</span>
+                                    <span class="publish-date">Publié(e) {{ \Carbon\Carbon::parse($reference->created_at)->diffForHumans() }}</span>
                                 </div>
                                 <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" class="video-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>
                             </a>
@@ -86,7 +86,7 @@
 
                                     <h3 class="card-title text-2xl font-bold">{{$reference->title}}</h3>
                                     <p class="card-text">{{$reference->desc}}</p><br>
-                                   <span class="publish-date">Publié(e)  {{ \Carbon\Carbon::parse($reference->created_at)->diffForHumans() }}</span>
+                                    <span class="publish-date">Publié(e)  {{ \Carbon\Carbon::parse($reference->created_at)->diffForHumans() }}</span>
                                 </div>
                                 <p class="absolute news-ressource-button text-center my-4"><a href="{{$reference->link}}" target="__blank" class="podcast-button uppercase mx-auto tracking-wider">Lien</a></p>
                             </a>
@@ -170,7 +170,7 @@
                                     </div>
                                 <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
                                 <p class="card-text">{{$ref->desc}}</p><br>
-                                   <span class="publish-date">Publié(e) {{ \Carbon\Carbon::parse($ref->created_at)->diffForHumans() }}</span>
+                                    <span class="publish-date">Publié(e) {{ \Carbon\Carbon::parse($ref->created_at)->diffForHumans() }}</span>
                             </div>
                         </div>
                         <p class="absolute news-ressource-button text-center my-4"><a href="{{$ref->pdf}}" class="pdf-button uppercase mx-auto tracking-wider" target="_blank">Lien</a></p>
@@ -224,7 +224,7 @@
                                     </div>
                                 <h3 class="card-title text-2xl font-bold">{{$ref->title}}</h3>
                                 <p class="card-text">{{$ref->desc}}</p><br>
-                                  <span class="publish-date">Publié(e) {{ \Carbon\Carbon::parse($ref->created_at)->diffForHumans() }}</span>
+                                    <span class="publish-date">Publié(e) {{ \Carbon\Carbon::parse($ref->created_at)->diffForHumans() }}</span>
                             </div>
                         </div>
                         <p class="absolute news-ressource-button text-center my-4"><a href="{{$ref->link}}" class="podcast-button uppercase mx-auto tracking-wider" target="_blank">Lien</a></p>

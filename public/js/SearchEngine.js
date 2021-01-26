@@ -126,16 +126,14 @@ class SearchEngine {
             if (data_ref[i].category_id == 1)
             {
                 container_ref.append(
-                    '<div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+pdf+'" >'+
+                    '<div class="news-ressource pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+pdf+'" >'+
                                 '<img class="pdf-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
                                 '<div class="mt-2 py-3 pl-2 all-pdf-card-content">'+
                                     '<p class="category pdf-color ">pdf</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
-                                    '<p class="card-text">'+desc+'</p>'+
+                                    '<p class="card-text">'+desc+'</p><br>'+
+                                    '<span class="publish-date">Publié(e) '+published+'</span>'+
                                 '</div>'+
-
-                                '<span class="publish-date">Publié(e)  '+published+'</span>'+
-
                                 '<p class="text-center mt-5 mb-5"><a href="'+pdf+'" class="pdf-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -144,16 +142,14 @@ class SearchEngine {
             else if (data_ref[i].category_id == 2)
             {
                 container_ref.append(
-                    '<div class="video-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+link+'" >'+
+                    '<div class="news-ressource video-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+link+'" >'+
                                 '<img class="video-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
                                 '<div class="mt-2 py-3 pl-2 all-video-card-content">'+
                                     '<p class="category video-color ">vidéo</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
-                                    '<p class="card-text">'+desc+'</p>'+
+                                    '<p class="card-text">'+desc+'</p><br>'+
+                                    '<span class="publish-date">Publié(e) '+published+'</span>'+
                                 '</div>'+
-
-                                '<span class="publish-date">Publié(e)  '+published+'</span>'+
-
                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="video-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -162,16 +158,14 @@ class SearchEngine {
             else if (data_ref[i].category_id == 3)
             {
                 container_ref.append(
-                    '<div class="podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+link+'" >'+
+                    '<div class="news-ressource podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+link+'" >'+
                                 '<img class="podcast-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
                                 '<div class="mt-2 py-3 pl-2 all-podcast-card-content">'+
                                     '<p class="category podcsat-color ">podcast</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
-                                    '<p class="card-text">'+desc+'</p>'+
+                                    '<p class="card-text">'+desc+'</p><br>'+
+                                    '<span class="publish-date">Publié(e) '+published+'</span>'+
                                 '</div>'+
-
-                                  '<span class="publish-date">Publié(e) '+published+'</span>'+
-
                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="podcast-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -180,16 +174,15 @@ class SearchEngine {
             else if (data_ref[i].category_id == 4)
             {
                 container_ref.append(
-                    '<div class="podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+link+'" >'+
+                    '<div class="news-ressource podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+link+'" >'+
                                 '<img class="podcast-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
                                 '<div class="mt-2 py-3 pl-2 all-podcast-card-content">'+
                                     '<p class="category podcast-color ">article</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
-                                    '<p class="card-text">'+desc+'</p>'+
+                                    '<p class="card-text">'+desc+'</p><br>'+
+                                    '<span class="publish-date">Publié(e) '+published+'</span>'+
                                 '</div>'+
-
-                                  '<span class="publish-date">Publié(e)  '+published+'</span>'+
-
+                                
                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="podcast-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -224,18 +217,14 @@ class SearchEngine {
             if (data_ref[i].category_id == 1)
             {
                 container_ref.append(
-                    '<div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+pdf+'" >'+
+                    '<div class="news-ressource pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+pdf+'" >'+
                                 '<img class="pdf-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
                                 '<div class="mt-2 py-3 pl-2 all-pdf-card-content">'+
                                     '<p class="category pdf-color ">pdf</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
+                                    '<span class="publish-date"> Publié(e) '+published+'</span>'+
                                 '</div>'+
-
-         
-
-                                  '<span class="publish-date"> Publié(e) '+published+'</span>'+
-
                                 '<p class="text-center mt-5 mb-5"><a href="'+pdf+'" class="pdf-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -244,16 +233,14 @@ class SearchEngine {
             else if (data_ref[i].category_id == 2)
             {
                 container_ref.append(
-                    '<div class="video-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+link+'" >'+
+                    '<div class="news-ressource video-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+link+'" >'+
                                 '<img class="video-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
                                 '<div class="mt-2 py-3 pl-2 all-video-card-content">'+
                                     '<p class="category video-color ">vidéo</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
-                                    '<p class="card-text">'+desc+'</p>'+
+                                    '<p class="card-text">'+desc+'</p><br>'+
+                                    '<span class="publish-date">Publié(e) '+published+'</span>'+
                                 '</div>'+
-
-                                  '<span class="publish-date">Publié(e) '+published+'</span>'+
-
                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="video-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -262,17 +249,14 @@ class SearchEngine {
             else if (data_ref[i].category_id == 3)
             {
                 container_ref.append(
-                    '<div class="podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+link+'" >'+
+                    '<div class="news-ressource podcast-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+link+'" >'+
                                 '<img class="podcast-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
                                 '<div class="mt-2 py-3 pl-2 all-podcast-card-content">'+
                                     '<p class="category podcsat-color ">podcast</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
-                                    '<p class="card-text">'+desc+'</p>'+
+                                    '<p class="card-text">'+desc+'</p><br>'+
+                                    '<span class="publish-date">Publié(e) '+published+'</span>'+
                                 '</div>'+
-
-                                 
-
-                                  '<span class="publish-date">Publié(e) '+published+'</span>'+
 
                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="podcast-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
@@ -282,18 +266,14 @@ class SearchEngine {
             else if (data_ref[i].category_id == 4)
             {
                 container_ref.append(
-                    '<div class="pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+link+'" >'+
+                    '<div class="news-ressource pdf-card card bg-white w-1/3 shadow-lg hover:shadow-xl mx-8 "><a href="'+link+'" >'+
                                 '<img class="pdf-card card-image w-full h-40 object-cover" src="'+images+'" alt="'+alt+'">'+
                                 '<div class="mt-2 py-3 pl-2 all-pdf-card-content">'+
                                     '<p class="category pdf-color ">article</p>'+
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
-                                    '<p class="card-text">'+desc+'</p>'+
+                                    '<p class="card-text">'+desc+'</p><br>'+
+                                    '<span class="publish-date">Publié(e) '+published+'</span>'+
                                 '</div>'+
-
-                   
-
-                                  '<span class="publish-date">Publié(e) '+published+'</span>'+
-
                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="pdf-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'

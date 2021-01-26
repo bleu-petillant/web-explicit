@@ -109,6 +109,7 @@ class SearchEngine {
         
         $('#result').text("Résultats de la recherche");
         const data_ref = data[0];
+        const date_ref = data[1];
         let container_ref = $('.news-ressource-cards');
         container_ref.html("");
         for (let i = 0; i < data_ref.length; i++) {
@@ -118,7 +119,8 @@ class SearchEngine {
             const desc = data_ref[i].desc;
             const pdf = data_ref[i].pdf;
             const link = data_ref[i].link;
-            const published = data_ref[i].published_at;
+            let published = data_ref[i].created_at;
+           published =  moment(published).locale('fr').fromNow();
 
             
             if (data_ref[i].category_id == 1)
@@ -131,7 +133,9 @@ class SearchEngine {
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
-                                '<span>Publié(e) {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>'+
+
+                                '<span class="publish-date">Publié(e)  '+published+'</span>'+
+
                                 '<p class="text-center mt-5 mb-5"><a href="'+pdf+'" class="pdf-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -147,7 +151,9 @@ class SearchEngine {
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
-                                '<span>Publié(e) {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>'+
+
+                                '<span class="publish-date">Publié(e)  '+published+'</span>'+
+
                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="video-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -163,7 +169,9 @@ class SearchEngine {
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
-                                '<span>Publié(e) {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>'+
+
+                                  '<span class="publish-date">Publié(e) '+published+'</span>'+
+
                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="podcast-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -179,7 +187,9 @@ class SearchEngine {
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
-                                '<span>Publié(e) {{ \Carbon\Carbon::parse($ref->published_at)->diffForHumans() }}</span>'+
+
+                                  '<span class="publish-date">Publié(e)  '+published+'</span>'+
+
                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="podcast-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -209,8 +219,8 @@ class SearchEngine {
             const desc = data_ref[i].desc;
             const pdf = data_ref[i].pdf;
             const link = data_ref[i].link;
-            const published = data_ref[i].published_at;
-
+            let published = data_ref[i].created_at;
+            published =  moment(published).locale('fr').fromNow();
             if (data_ref[i].category_id == 1)
             {
                 container_ref.append(
@@ -221,7 +231,11 @@ class SearchEngine {
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
+
+         
+
                                   '<span class="publish-date"> Publié(e) '+published+'</span>'+
+
                                 '<p class="text-center mt-5 mb-5"><a href="'+pdf+'" class="pdf-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -237,7 +251,9 @@ class SearchEngine {
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
+
                                   '<span class="publish-date">Publié(e) '+published+'</span>'+
+
                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="video-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -253,7 +269,11 @@ class SearchEngine {
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
+
+                                 
+
                                   '<span class="publish-date">Publié(e) '+published+'</span>'+
+
                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="podcast-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'
@@ -269,7 +289,11 @@ class SearchEngine {
                                     '<h3 class="card-title text-2xl font-bold">'+title+'</h3>'+
                                     '<p class="card-text">'+desc+'</p>'+
                                 '</div>'+
+
+                   
+
                                   '<span class="publish-date">Publié(e) '+published+'</span>'+
+
                                 '<p class="text-center mt-5 mb-5"><a href="'+link+'" class="pdf-button uppercase mx-auto tracking-wider" target="__blank">Lien</a></p>'+
                             '</a>'+
                         '</div>'

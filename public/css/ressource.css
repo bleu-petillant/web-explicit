@@ -526,7 +526,47 @@
   .grid-item{
     width: 300px;
   }
+  
+  
+
+}
+
+@media screen and (max-width: 454px) {
+
+
+  .news-ressource{
+    height: 756px!important;
+  }
 
 
 }
+
+
+@media screen and (max-width: 380px) {
+
+
+  .wrapper-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 20rem);
+    justify-content: center;
+    gap: 48px;
+    margin: initial;
+}
+
+
+}
+
+@media screen and (max-width: 280px) {
+
+
+  .news-ressource{
+    height: 770px!important;
+  }
+
+
+}
+
+
+
+
 

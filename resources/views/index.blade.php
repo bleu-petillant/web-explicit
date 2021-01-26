@@ -2,7 +2,7 @@
 @section('home')
 
 <!-- image avec titre -->
-<section class="first-image-home h-screen">
+<section class="first-image-home h-screen relative">
     <h1 class="main-title w-4/5 text-white text-4xl leading-tight sm:mx-10 md:mx-10 lg:mx-10 font-bold pl-4 object-left-bottom absolute bottom-20 left-3 sm:text-6xl">
         Découvrir et apprendre les méthodes d'explicitation 
     </h1>

@@ -145,6 +145,7 @@ p {
     margin-bottom: unset!important; 
 }
 
+/* Media-queries */
 
 @media screen and (max-width: 930px) {
     

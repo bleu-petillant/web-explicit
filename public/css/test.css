@@ -72,6 +72,8 @@ header .mobile-menu {
     text-align: center;
 }
 
+/*--------------------------------------------*/
+
 #menuToggle input
 {
     display: block;
@@ -132,6 +134,7 @@ header .mobile-menu {
     transform: rotate(-45deg) translate(0, -1px);
 }
 
+
 #menu
 {
     display: flex;
@@ -148,7 +151,7 @@ header .mobile-menu {
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     transform-origin: -50px -50px;
-    transform: translate(1000%, 0);
+    /* transform: translate(1000%, 0); */
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 

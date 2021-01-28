@@ -354,7 +354,7 @@
                         </div>
                     </nav>
 
-                    <nav class="nav-bar-header mobile-menu" role="navigation">
+                    <!-- <nav class="nav-bar-header mobile-menu" role="navigation">
                         <div id="menuToggle">
                             <input type="checkbox">
                             <span class="up-span"></span>
@@ -390,7 +390,7 @@
                             <li><p class="text-center"><a href="{{route('login')}}"><i class="connexion-icon text-xl fas fa-user"></i></a></p></li>   
                             </ul>
                         </div>
-                    </nav>
+                    </nav> -->
                 
 
             </header>

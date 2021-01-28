@@ -10,7 +10,14 @@
 }
 
 
-
+.sidebar-admin {
+    height: 100vh!important;
+    overflow-y: none!important;
+    padding-bottom: 0;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    padding-top: 0;
+}
 
 /* body */
 
@@ -84,7 +91,7 @@ footer{
 
 
 /* cookie */
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 .cookie-style{
     background-color: #6d7aea;
     width: 100vw;
@@ -166,5 +173,217 @@ p {
         font-size: 2rem;
     }
     
+}
+
+
+
+/*old test*/
+
+
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+.nav-bar-header{
+    background: white;
+    height: 80px;
+    width: 100%;
+}
+
+.burger-menu{
+    color: #6d7aea;
+}
+
+
+
+label.logo-navigation {
+    color: black;
+    position: absolute;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0px 2.5rem;
+    font-weight: bold;
+    display: flex;
+    width: 50%;
+}
+nav .ul-navigation{
+    float: right;
+    margin-right: 20px;
+}
+
+.connexion-icon{
+    color: #6d7aea;
+}
+
+nav .ul-navigation .li-navigation-dropdown{
+    display: inline-block;
+    margin: 0 5px;
+}
+
+nav .ul-navigation .li-navigation{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+nav .ul-navigation .li-navigation a{
+    color: black;
+    font-size: 20px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    font-weight:500;
+}
+nav a:hover{
+    color: #6d7aea!important;
+}
+.checkbtn{
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    
+}
+
+#burger-menu-close{
+    display: none;
+    font-size: 30px;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+#check{
+    display: none;
+}
+
+.burger-menu-open{
+    display: none;
+}
+
+.burger-menu-close{
+    display: none;
+}
+
+
+/* grid test */
+
+.wrapper-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 20rem);
+    justify-content: center;
+    gap: 48px;
+    margin: 0 auto;
+}
+
+.grid-item-test{
+    height: 500px;
+    width: 345px;
+    background-color: #fff;
+    margin: 13px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+@media (min-width: 930px){
+
+    .burger-menu-open{
+        display: none;
+    }
+    
+    .burger-menu-close{
+        display: none;
+    }
+    
+
+}
+
+@media (max-width: 930px){
+
+    label.logo{
+        font-size: 30px;
+        padding-left: 50px;
+    }
+    nav .ul-navigation .li-navigation a{
+        font-size: 16px;
+    }
+
+    nav a:hover{
+        color: #000!important;
+    }
+
+    
+    .burger-menu-open{
+        display: block;
+    }
+    
+    .ul-navigation{
+        position: absolute;
+        z-index: 999;
+        width: 100%;
+        height: 100vh;
+        background: #6d7aea;
+        top: 80px;
+        right: -100%;
+        text-align: center;
+        transition: all .5s;
+    }
+    
+    nav .ul-navigation {
+        float: right;
+        margin-right: 0px; 
+    }
+
+    nav .ul-navigation .li-navigation{
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+
+    nav .ul-navigation .li-navigation a{
+        font-size: 20px;
+        color: white;
+    }
+
+    a:hover,a.active{
+        color: #6d7aea;
+    }
+
+
+
+    #check:checked ~ .ul-navigation{
+        right: 0;
+    }
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    
+    .connexion-icon{
+        color: white;
+    }
+
+}
+
+@media screen and (max-height: 500px) {
+    
+    .ul-navigation {
+        position: absolute;
+        z-index: 999;
+        width: 100%;
+        height: auto;
+        background: #6d7aea;
+        top: 80px;
+        right: -100%;
+        text-align: center;
+        transition: all .5s;
+    }
+
 }
 

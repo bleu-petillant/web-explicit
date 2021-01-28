@@ -40,29 +40,371 @@
 
     <body>
 
-    @yield('home')
-    
-    
-    <footer class="pt-8 pb-3">
-        <div class="flex">
-            <div class="footer-logo pl-8">
-                <img src="{{ asset('img/logo/logoblanc.png') }}" class="footer-img-logo" alt="">
-            </div>
-            <div class="legal ">
-                <a class="text-white font-bold" href="">Mention légales</a>
-                <p class="text-white">© 2020</p>
-            </div>
-            <a href="#" id="top">
-                <i class="fas fa-chevron-up white-text fa-2x"></i>
-            </a>
-        </div>
-    </footer>
+    <!-- menu connecté  -->
+    @if (Route::has('login'))
+        @auth
+
+            <header>
+                    <a class="brand" href="{{route('home')}}">
+                        <img class=" logo w-auto" src="{{ asset('img/logo/logo_couleur.svg') }}" alt="Workflow">
+                    </a>
+
+                    <nav class="actions" role="navigation">  
+                        <div class="menu-link">
+                        @if ( request()->routeIs('ressources.all'))
+                            <a class="current-page" href="{{route('ressources.all')}}">Ressources</a>
+                        @else
+                            <a class="text-gray" href="{{route('ressources.all')}}">Ressources</a>
+                        @endif
+
+                        @if ( request()->routeIs('formations.all'))
+                            <a class="current-page" href="{{route('formations.all')}}">Formations interactives</a>
+                        @elseif ( request()->routeIs('ressources.private'))
+                            <a class="current-page" href="{{route('formations.all')}}">Formations interactives</a>
+                        @else
+                            <a class="text-gray" href="{{route('formations.all')}}">Formations interactives</a>
+                        @endif
+
+                        @if ( request()->routeIs('usage'))
+                            <a class="current-page"  href="{{route('usage')}}">Cas d'usage</a>
+                        @else   
+                            <a class="text-gray"  href="{{route('usage')}}">Cas d'usage</a>
+                        @endif
+
+                        @if ( request()->routeIs('contact'))
+                            <a class="current-page"  href="{{route('contact')}}">Contact</a>
+                        @else
+                            <a class="text-gray"  href="{{route('contact')}}">Contact</a>
+                        @endif
+
+                            <div class="li-navigation-dropdown">
+                                <button class="  text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-haspopup="true">
+                                    <span class="sr-only">Open user menu</span>
+                                </button>
+                                    <div class="sm:flex sm:items-center sm:ml-6">
+                                        <x-jet-dropdown align="right" width="48">
+                                            <x-slot name="trigger">
+                                                    <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out py-2">
+                                                        <div class="auth-nav-name">{{ Auth::user()->name }}</div>
+                                                        <div class="ml-1">
+                                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                            </svg>
+                                                        </div>
+                                                    </button>
+
+                                            </x-slot>
+
+                                            <x-slot name="content">
+                                                <!-- Account Management -->
+                                                @if (auth()->user()->role_id == 1)
+                                                <x-jet-dropdown-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
+                                                    {{ __('Dashboard') }}
+                                                </x-dropdown-link>
+                                                        @elseif(auth()->user()->role_id == 2)
+                                                <x-jet-dropdown-link href="{{ route('teacher.dashboard') }}" :active="request()->routeIs('teacher.dashboard')">
+                                                    {{ __('Dashboard') }}
+                                                </x-jet-dropdown-link>
+                                                @endif
+                                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                                    {{ __('Manage Account') }}
+                                                </div>
+                                                @if(auth()->user()->role_id == 1)
+                                                <x-jet-dropdown-link href="{{ route('admin.dashboard') }}">
+                                                    {{ __('Profile') }}
+                                                </x-jet-dropdown-link>
+                                                @elseif(auth()->user()->role_id == 2)
+                                                <x-jet-dropdown-link href="{{ route('teacher.dashboard') }}">
+                                                    {{ __('Profile') }}
+                                                </x-jet-dropdown-link>
+                                                @else
+                                                <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                                    {{ __('Profile') }}
+                                                </x-jet-dropdown-link>
+                                                @endif
+                                                @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                                                    <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
+                                                        {{ __('API Tokens') }}
+                                                    </x-jet-dropdown-link>
+                                                @endif
+
+                                                <div class="border-t border-gray-100"></div>
+
+                                                <!-- Team Management -->
+                                                @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
+                                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                                        {{ __('Manage Team') }}
+                                                    </div>
+
+                                                    <!-- Team Settings -->
+                                                    <x-jet-dropdown-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
+                                                        {{ __('Team Settings') }}
+                                                    </x-jet-dropdown-link>
+
+                                                    @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
+                                                        <x-jet-dropdown-link href="{{ route('teams.create') }}">
+                                                            {{ __('Create New Team') }}
+                                                        </x-jet-dropdown-link>
+                                                    @endcan
+
+                                                    <div class="border-t border-gray-100"></div>
+
+                                                    <!-- Team Switcher -->
+                                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                                        {{ __('Switch Teams') }}
+                                                    </div>
+
+                                                    @foreach (Auth::user()->allTeams() as $team)
+                                                        <x-jet-switchable-team :team="$team" />
+                                                    @endforeach
+
+                                                    <div class="border-t border-gray-100"></div>
+                                                @endif
+
+                                                <!-- Authentication -->
+                                                <form method="POST" action="{{ route('logout') }}">
+                                                    @csrf
+
+                                                    <x-jet-dropdown-link href="{{ route('logout') }}"
+                                                                        onclick="event.preventDefault();
+                                                                                    this.closest('form').submit();">
+                                                        {{ __('Logout') }}
+                                                    </x-jet-dropdown-link>
+                                                </form>
+                                            </x-slot>
+                                        </x-jet-dropdown>
+                    
+                                </div>
+                            </div>                   
+                        </div>
+                    </nav>
+
+                    <nav class="mobile-menu" role="navigation">
+                        <div id="menuToggle">
+                            <input type="checkbox">
+                            <span class="up-span"></span>
+                            <span class="middle-span"></span>
+                            <span class="down-span"></span>
+                            <ul id="menu">
+                            @if ( request()->routeIs('ressources.all'))
+                                <li><p class="text-center"><a class="text-black" href="{{route('ressources.all')}}">Ressources</a></p></li>
+                            @else
+                                <li><p class="text-center"><a class="text-white" href="{{route('ressources.all')}}">Ressources</a></p></li>
+                            @endif
+
+                            @if ( request()->routeIs('formations.all'))
+                                <li><p class="text-center"><a class="text-black" href="{{route('formations.all')}}">Formations interactives</a></p></li>
+                            @elseif ( request()->routeIs('ressources.private'))
+                                <li><p class="text-center"><a class="text-black" href="{{route('formations.all')}}">Formations interactives</a></p></li>
+                            @else
+                                <li><p class="text-center"><a class="text-white" href="{{route('formations.all')}}">Formations interactives</a></p></li>
+                            @endif
+
+                            @if ( request()->routeIs('usage'))
+                                <li><p class="text-center"><a class="text-black"  href="{{route('usage')}}">Cas d'usage</a></p></li>
+                            @else
+                                <li><p class="text-center"><a class="text-white"  href="{{route('usage')}}">Cas d'usage</a></p></li>
+                            @endif
+
+                            @if ( request()->routeIs('contact'))
+                                <li><p class="text-center"><a class="text-black"  href="{{route('contact')}}">Contact</a></p></li>
+                            @else
+                                <li><p class="text-center"><a class="text-white"  href="{{route('contact')}}">Contact</a></p></li>
+                            @endif
+
+                                <div class="li-navigation-dropdown">
+                                    <button class="  text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-haspopup="true">
+                                        <span class="sr-only">Open user menu</span>
+                                    </button>
+                                        <div class="sm:flex sm:items-center sm:ml-6 content-dropdown">
+                                            <x-jet-dropdown width="48">
+                                                <x-slot name="trigger">
+                                                        <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out py-2">
+                                                            <div class="auth-nav-name">{{ Auth::user()->name }}</div>
+                                                            <div class="ml-1">
+                                                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                                </svg>
+                                                            </div>
+                                                        </button>
+
+                                                </x-slot>
+
+                                                <x-slot name="content">
+                                                    <!-- Account Management -->
+                                                    @if (auth()->user()->role_id == 1)
+                                                    <x-jet-dropdown-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
+                                                        {{ __('Dashboard') }}
+                                                    </x-dropdown-link>
+                                                            @elseif(auth()->user()->role_id == 2)
+                                                    <x-jet-dropdown-link href="{{ route('teacher.dashboard') }}" :active="request()->routeIs('teacher.dashboard')">
+                                                        {{ __('Dashboard') }}
+                                                    </x-jet-dropdown-link>
+                                                    @endif
+                                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                                        {{ __('Manage Account') }}
+                                                    </div>
+                                                    @if(auth()->user()->role_id == 1)
+                                                    <x-jet-dropdown-link href="{{ route('admin.dashboard') }}">
+                                                        {{ __('Profile') }}
+                                                    </x-jet-dropdown-link>
+                                                    @elseif(auth()->user()->role_id == 2)
+                                                    <x-jet-dropdown-link href="{{ route('teacher.dashboard') }}">
+                                                        {{ __('Profile') }}
+                                                    </x-jet-dropdown-link>
+                                                    @else
+                                                    <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                                        {{ __('Profile') }}
+                                                    </x-jet-dropdown-link>
+                                                    @endif
+                                                    @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                                                        <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
+                                                            {{ __('API Tokens') }}
+                                                        </x-jet-dropdown-link>
+                                                    @endif
+
+                                                    <div class="border-t border-gray-100"></div>
+
+                                                    <!-- Team Management -->
+                                                    @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
+                                                        <div class="block px-4 py-2 text-xs text-gray-400">
+                                                            {{ __('Manage Team') }}
+                                                        </div>
+
+                                                        <!-- Team Settings -->
+                                                        <x-jet-dropdown-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
+                                                            {{ __('Team Settings') }}
+                                                        </x-jet-dropdown-link>
+
+                                                        @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
+                                                            <x-jet-dropdown-link href="{{ route('teams.create') }}">
+                                                                {{ __('Create New Team') }}
+                                                            </x-jet-dropdown-link>
+                                                        @endcan
+
+                                                        <div class="border-t border-gray-100"></div>
+
+                                                        <!-- Team Switcher -->
+                                                        <div class="block px-4 py-2 text-xs text-gray-400">
+                                                            {{ __('Switch Teams') }}
+                                                        </div>
+
+                                                        @foreach (Auth::user()->allTeams() as $team)
+                                                            <x-jet-switchable-team :team="$team" />
+                                                        @endforeach
+
+                                                        <div class="border-t border-gray-100"></div>
+                                                    @endif
+
+                                                    <!-- Authentication -->
+                                                    <form method="POST" action="{{ route('logout') }}">
+                                                        @csrf
+
+                                                        <x-jet-dropdown-link href="{{ route('logout') }}"
+                                                                            onclick="event.preventDefault();
+                                                                                        this.closest('form').submit();">
+                                                            {{ __('Logout') }}
+                                                        </x-jet-dropdown-link>
+                                                    </form>
+                                                </x-slot>
+                                            </x-jet-dropdown>
+                        
+                                    </div>
+                                </div>  
+                            </ul>
+                        </div>
+                    </nav>
+                
+
+            </header>
+
+    @else
+
+            <header>
+                    <a class="brand" href="{{route('home')}}">
+                        <img class=" logo w-auto" src="{{ asset('img/logo/logo_couleur.svg') }}" alt="Workflow">
+                    </a>
+
+                    <nav class="actions" role="navigation">  
+                        <div class="menu-link">
+                        @if ( request()->routeIs('ressources.all'))
+                            <a class="current-page" href="{{route('ressources.all')}}">Ressources</a>
+                        @else
+                            <a class="text-gray" href="{{route('ressources.all')}}">Ressources</a>
+                        @endif
+
+                        @if ( request()->routeIs('formations.all'))
+                            <a class="current-page" href="{{route('formations.all')}}">Formations interactives</a>
+                        @elseif ( request()->routeIs('ressources.private'))
+                            <a class="current-page" href="{{route('formations.all')}}">Formations interactives</a>
+                        @else
+                            <a class="text-gray" href="{{route('formations.all')}}">Formations interactives</a>
+                        @endif
+
+                        @if ( request()->routeIs('usage'))
+                            <a class="current-page"  href="{{route('usage')}}">Cas d'usage</a>
+                        @else   
+                            <a class="text-gray"  href="{{route('usage')}}">Cas d'usage</a>
+                        @endif
+
+                        @if ( request()->routeIs('contact'))
+                            <a class="current-page"  href="{{route('contact')}}">Contact</a>
+                        @else
+                            <a class="text-gray"  href="{{route('contact')}}">Contact</a>
+                        @endif
+                            <a href="{{route('login')}}"><i class="connexion-icon text-xl fas fa-user"></i></a>                    
+                        </div>
+                    </nav>
+
+                    <nav class="mobile-menu" role="navigation">
+                        <div id="menuToggle">
+                            <input type="checkbox">
+                            <span class="up-span"></span>
+                            <span class="middle-span"></span>
+                            <span class="down-span"></span>
+                            <ul id="menu">
+                            @if ( request()->routeIs('ressources.all'))
+                                <li><p class="text-center"><a class="text-black" href="{{route('ressources.all')}}">Ressources</a></p></li>
+                            @else
+                                <li><p class="text-center"><a class="text-white" href="{{route('ressources.all')}}">Ressources</a></p></li>
+                            @endif
+
+                            @if ( request()->routeIs('formations.all'))
+                                <li><p class="text-center"><a class="text-black" href="{{route('formations.all')}}">Formations interactives</a></p></li>
+                            @elseif ( request()->routeIs('ressources.private'))
+                                <li><p class="text-center"><a class="text-black" href="{{route('formations.all')}}">Formations interactives</a></p></li>
+                            @else
+                                <li><p class="text-center"><a class="text-white" href="{{route('formations.all')}}">Formations interactives</a></p></li>
+                            @endif
+
+                            @if ( request()->routeIs('usage'))
+                                <li><p class="text-center"><a class="text-black"  href="{{route('usage')}}">Cas d'usage</a></p></li>
+                            @else
+                                <li><p class="text-center"><a class="text-white"  href="{{route('usage')}}">Cas d'usage</a></p></li>
+                            @endif
+
+                            @if ( request()->routeIs('contact'))
+                                <li><p class="text-center"><a class="text-black"  href="{{route('contact')}}">Contact</a></p></li>
+                            @else
+                                <li><p class="text-center"><a class="text-white"  href="{{route('contact')}}">Contact</a></p></li>
+                            @endif
+
+                            <li><p class="text-center"><a href="{{route('login')}}"><i class="connexion-icon text-xl fas fa-user"></i></a></p></li>   
+                            </ul>
+                        </div>
+                    </nav>
+                
+
+            </header>
 
 
-            <!-- Page Content -->
-        </div>
+        @endif
+    @endif
 
-        @stack('modals')
+            
+    @yield('test')
+
+    @stack('modals')
 
         @livewireScripts
         <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>

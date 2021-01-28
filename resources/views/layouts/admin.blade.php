@@ -64,7 +64,7 @@
     @if(auth()->user()->role_id == 1)
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item my-2 bg-white hover:bg-black hover:text-white ">
+            <li class="nav-item my-2 bg-white ">
                 <a href="{{route('student.index')}}" class="nav-link">
                     <i class="nav-icon fas fa-user-graduate"></i>Liste des étudiants
                 </a>
@@ -225,10 +225,7 @@
 </aside>
 <!-- /.control-sidebar -->
 
-<!-- Main Footer -->
-<footer class="main-footer elegant-color">
 
-</footer>
 </div>
 
 <!-- ./wrapper -->

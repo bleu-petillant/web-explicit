@@ -198,7 +198,7 @@ header .mobile-menu {
 
     
     #menuToggle{
-        display: block;
+        display: block!important;
         z-index: 1;
         user-select: none;
     }
@@ -219,7 +219,7 @@ header .mobile-menu {
 
     header .mobile-menu {
         width: 100%;
-        display: block;
+        display: block!important;
         order: 2;
         padding-right: 10%;
     }

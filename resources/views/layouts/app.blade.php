@@ -18,7 +18,7 @@
         <link href="{{ asset('css/formation.css') }}" rel="stylesheet">
         <link href="{{ asset('css/usage.css') }}" rel="stylesheet">
         <link href="{{ asset('css/contact.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/test.css') }}" rel="stylesheet">
+        <!-- <link href="{{ asset('css/test.css') }}" rel="stylesheet"> -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>

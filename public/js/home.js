@@ -41,8 +41,8 @@ $(document).ready(function(){
         slidesToShow: 3,
         slidesToScroll: 3,
         arrows: true,
-        nextArrow: '<i class="slick-next fa fa-chevron-right"></i>',
-        prevArrow: '<i class="slick-prev fa fa-chevron-left"></i>',
+        nextArrow: '<i class="slick-next-home fa fa-chevron-right"></i>',
+        prevArrow: '<i class="slick-prev-home fa fa-chevron-left"></i>',
         adaptiveHeight: true,
         responsive: [
           {

@@ -95,8 +95,32 @@ margin-top: -14px;
     margin: 8% 4%;
 }
 
+.slick-next-home, .slick-prev-home{
+    color: #6d7aea;
+    font-size: 40px;
+    cursor: pointer;
+  }
+
+.slick-prev-home{
+    position: absolute;
+    top: 35%;
+    left: 0;
+}
+
+.slick-next-home{
+    position: absolute;
+    top: 35%;
+    right: 0;
+}
+
+
+
 .card-ressource-home {
     height: 526px!important;
+    transform: none;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform:translate3d(0,0,0);
+    -webkit-transform:translate3d(0,0,0);
 }
 
 .card-image{
@@ -120,7 +144,11 @@ margin-top: -14px;
 }
 
 .ressource-cards {
-    /* height: 416px; */
+    
+    transform: none;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform:translate3d(0,0,0);
+    -webkit-transform:translate3d(0,0,0);
 }
 
 .pdf-color{

@@ -56,6 +56,7 @@ class CheckResponse
             }
             // show or hide the button validation if  one  at least checkbox is checked
             valide.toggle( $(".checkbox-quizz:checked").length > 0 );
+            $('#check').show();
         });
 
          // validation button

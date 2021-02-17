@@ -32,6 +32,19 @@ class CheckResponse
         this.nextcourseContainer.hide();   
     }
 
+    checknumber() {
+
+        var numberCheck = document.getElementsByClassName("checkbox-quizz:checked");
+            if(numberCheck.length > 0){
+                if (valide.style.display === "none") {
+                    valide.style.display = "block";
+                } else {
+                    valide.style.display = "none";
+                }
+            }
+        
+    }
+
     checkTheReponse()
     {
         let valide = $('#valide');
@@ -56,7 +69,8 @@ class CheckResponse
             }
             // show or hide the button validation if  one  at least checkbox is checked
             valide.toggle( $(".checkbox-quizz:checked").length > 0 );
-            $('#check').show();
+            
+            // reponse.checknumber();   
         });
 
          // validation button

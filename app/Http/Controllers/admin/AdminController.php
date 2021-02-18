@@ -80,7 +80,7 @@ class AdminController extends Controller
             'password' => Hash::make($request['password']),
             'role_id' => $request['role_id'],
         ]);
-        $admin->students()->attach($admin);
+        // $admin->students()->attach($admin);
         $request->session()->flash('success', 'l\'admin a été créée avec succès');
         return redirect()->to('admin/list');
 

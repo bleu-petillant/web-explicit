@@ -7,7 +7,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">dashboard admin</a></li>
-                        <li class="breadcrumb-item active">créer un nouvel étudient</li>
+                        <li class="breadcrumb-item active">Créer un nouvel admin</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -25,11 +25,11 @@
             @include('includes.errors')
             <input hidden type="text" id="role_id" name="role_id" value="1">
             <div>
-                <x-jet-label for="prenom" value="{{ __('Prénom de l\'admin') }}" />
+                <x-jet-label for="prenom" value="{{ __('Prénom') }}" />
                 <x-jet-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" :value="old('prenom')" required autofocus autocomplete="prenom" placeholder="Admin" />
             </div>
             <div>
-                <x-jet-label for="name" value="{{ __('nom de famille de l\'admin') }}" />
+                <x-jet-label for="name" value="{{ __('Nom de famille') }}" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Super-Admin" />
             </div>
 

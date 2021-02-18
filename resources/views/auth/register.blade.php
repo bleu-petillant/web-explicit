@@ -10,11 +10,11 @@
             @csrf
             <div>
                 <x-jet-label for="prenom" value="{{ __('Prénom') }}" />
-                <x-jet-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" :value="old('prenom')" required autofocus autocomplete="prenom" placeholder="votre prénom...." />
+                <x-jet-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" :value="old('prenom')" required autofocus autocomplete="prenom" placeholder="Votre prénom...." />
             </div>
             <div>
                 <x-jet-label for="name" value="{{ __('nom') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="votre nom...." />
+                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Votre nom...." />
             </div>
 
             <div class="mt-4">
@@ -32,7 +32,7 @@
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
-            <p for="role-select" class="font-semibold text-gray-700">enregistrer en tant que :</p>
+            <p for="role-select" class="font-semibold text-gray-700">Enregistrer en tant que :</p>
                 <div class="flex justify-between items-center">
                     <label for="admin">Admin
                         <input type="radio" value="1" id="admin" name="role_id">
@@ -43,7 +43,7 @@
                     <input type="radio" value="2" id="teacher" name="role_id">
                     <span class="checkmark"></span>
                 </label>
-                <label for="student">étudient
+                <label for="student">ÉStudiant
                     <input type="radio" value="3" id="student" name="role_id">
                     <span class="checkmark"></span>
                 </label>

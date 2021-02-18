@@ -3,6 +3,7 @@
 
 .current-page{
     color: #6d7aea!important;
+    font-weight: bold;
 }
 
 .logo-img-explicit {
@@ -161,6 +162,7 @@ p {
 
     .current-page {
         color: #000!important;
+        font-weight: bold;
     }
     
 }
@@ -197,7 +199,6 @@ p {
 }
 
 
-
 label.logo-navigation {
     color: black;
     position: absolute;
@@ -215,6 +216,7 @@ nav .ul-navigation{
 
 .connexion-icon{
     color: #6d7aea;
+    font-size: 1.2em;
 }
 
 nav .ul-navigation .li-navigation-dropdown{
@@ -236,6 +238,7 @@ nav .ul-navigation .li-navigation a{
 }
 nav a:hover{
     color: #6d7aea!important;
+    
 }
 .checkbtn{
     font-size: 30px;

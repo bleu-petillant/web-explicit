@@ -102,14 +102,15 @@ class QuestionController extends Controller
             }
             
         foreach ($request->reponse as $key => $value) {
-         
+         if(!empty($request->reponse))
+         {
             $status = $request->input('correct') == $key ? 0 : 1;
-              $reponse=  Reponse::create([
+            $reponse=  Reponse::create([
                     'question_id' => $question->id,
                     'reponse'      => $request->reponse[$key],
                     'correct'     => $request->correct[$key]
-                ]);
-            
+             ]);
+         }   
         }
 
         if($request->hasFile('video'))
@@ -211,20 +212,30 @@ class QuestionController extends Controller
             }
             $question->content  = $request->content;
             $question->indice  = $request->indice;
-             $question->question_position  = $request->position;
+            $question->question_position  = $request->position;
             $ref =  $request->ref;
             $question ->references()->sync($ref,['question_id'=>$question->id,'reference_id'=>$ref],true);
+            $id = $request->input('id');
+            $reponse = $request->input('reponse');
+            $reponses = Reponse::where('question_id',$question->id)->get();
 
+             if($reponses){
+                foreach ($reponses as $r ) {
+
+                    $r->delete();
+                }
+            
+            }
             foreach ($request->reponse as $key => $value) {
          
-                $status = $request->input('correct') == $key ? 0 : 1;
-                DB::table('reponses')->updateOrInsert([
+            $status = $request->input('correct') == $key ? 0 : 1;
+              $reponse=  Reponse::create([
                     'question_id' => $question->id,
                     'reponse'      => $request->reponse[$key],
                     'correct'     => $request->correct[$key]
                 ]);
             
-            }
+        }
 
         if($request->hasFile('video'))
         {

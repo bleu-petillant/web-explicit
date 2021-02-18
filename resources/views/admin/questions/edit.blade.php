@@ -64,6 +64,7 @@
                         @foreach ($reponses as $reponse) 
                         <div class="my-2"></div>
                     <label for="reponse[]" class="control-label">Réponse valide ?</label>
+                    
                     <input type="text" id="reponse[]" name="reponse[]" class="form-control" value="{{ $reponse->reponse }}" placeholder="{{ $reponse->reponse }}">
                      <div class="my-2"></div>
                     <select name="correct[]" id="correct" class="form-select">
@@ -71,6 +72,7 @@
                         <option value="1">Oui</option>
                         <option value="0">Non</option>
                     </select>
+                    <input type="hidden" hidden name="id[]" id="id[]" value="{{$reponse->id}}">
                         @endforeach
                     @endif
                      </div>
